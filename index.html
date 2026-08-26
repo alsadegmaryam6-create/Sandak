@@ -1,0 +1,1997 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#16894b">
+<title>سندك في الحياة V0.15.1</title>
+<style>
+:root{--g:#16894b;--g2:#0f6e3b;--bg:#f6faf7;--text:#152019;--muted:#6b766e;--line:#e4eee7;--bad:#b42318;--blue:#235a9f}
+*{box-sizing:border-box}body{margin:0;font-family:Tahoma,Arial,sans-serif;background:var(--bg);color:var(--text);padding-bottom:76px}
+.app{max-width:720px;margin:auto;min-height:100vh}header{background:#fff;padding:13px 15px;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
+.top{display:flex;justify-content:space-between;align-items:center;gap:8px}.brand{display:flex;align-items:center;gap:9px}.logo{width:44px;height:44px;border-radius:14px;background:var(--g);color:#fff;display:grid;place-items:center;font-size:25px;font-weight:bold}
+h1{font-size:19px;margin:0}.ver{font-size:10px;color:var(--g);font-weight:bold}small{color:var(--muted)}button{font-family:inherit}
+.secondary{border:1px solid var(--g);background:#fff;color:var(--g);padding:10px 13px;border-radius:13px;font-weight:bold}.primary{border:0;background:var(--g);color:#fff;padding:13px 16px;border-radius:13px;font-weight:bold}
+.hero{padding:18px}.hero-card{background:linear-gradient(135deg,var(--g),var(--g2));color:#fff;border-radius:24px;padding:22px}.hero-card h2{font-size:27px;margin:0 0 8px}.hero-card p{line-height:1.7}
+.search{background:#fff;border-radius:15px;padding:0 12px;display:flex;align-items:center}.search input{border:0;outline:0;width:100%;padding:14px;font-size:15px;background:transparent}
+
+.search-go{border:0;background:transparent;font-size:20px;padding:8px 3px;cursor:pointer}
+.global-search-box{display:flex;gap:8px;background:#fff;border:1px solid var(--line);border-radius:15px;padding:7px;margin-bottom:12px}
+.global-search-box input{flex:1;border:0;outline:0;background:transparent;padding:9px;font-size:15px;font-family:inherit;min-width:0}
+.global-search-box button{border:0;background:var(--g);color:#fff;border-radius:11px;padding:8px 15px;font-weight:bold;font-family:inherit}
+
+.search-filters{display:flex;gap:7px;overflow-x:auto;padding:2px 0 10px;margin-bottom:4px;scrollbar-width:none}
+.search-filters::-webkit-scrollbar{display:none}
+.search-filter{border:1px solid #d9e7dd;background:#fff;color:#516157;border-radius:999px;padding:8px 12px;white-space:nowrap;font-family:inherit;font-size:12px;font-weight:bold}
+.search-filter.active{background:var(--g);color:#fff;border-color:var(--g)}
+
+.search-summary{font-size:12px;color:var(--muted);margin:8px 2px 12px}
+
+.fav-btn{border:1px solid #eadde2;background:#fff;border-radius:999px;padding:7px 11px;font-size:18px;line-height:1;cursor:pointer}
+.fav-btn.saved{background:#fff0f4;border-color:#f0cbd7}
+.fav-inline{display:flex;justify-content:flex-end;margin:8px 0 2px}
+.fav-page-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:14px;margin:10px 0;box-shadow:0 6px 18px #1a49270b}
+.fav-page-head{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
+.fav-page-title{font-size:17px;font-weight:bold}
+.fav-page-kind{display:inline-block;background:#eef7f1;color:#24673e;border-radius:999px;padding:5px 9px;font-size:11px;margin-top:5px}
+.fav-page-meta{font-size:12px;color:#58645d;line-height:1.8;margin-top:8px}
+.fav-page-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+.fav-page-actions a{display:flex;align-items:center;justify-content:center;text-decoration:none;border-radius:12px;padding:10px;font-weight:bold}
+
+.search-result{background:#fff;border:1px solid var(--line);border-radius:18px;padding:14px;margin:10px 0;box-shadow:0 6px 18px #1a49270b}
+.search-result-top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+.search-result-title{font-size:17px;font-weight:bold;line-height:1.5}
+.search-kind{white-space:nowrap;background:#eef7f1;border-radius:999px;padding:6px 9px;font-size:11px;color:#24673e}
+.search-meta{font-size:12px;color:#58645d;line-height:1.8;margin-top:7px}
+.search-desc{font-size:13px;line-height:1.8;margin-top:8px}
+.search-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:11px}
+.search-actions a{display:flex;align-items:center;justify-content:center;text-decoration:none;border-radius:12px;padding:10px;font-weight:bold}
+.search-call{background:#edf3ff;color:#245da8}
+.search-wa{background:#edf9f0;color:#18763f}
+.search-price{font-weight:bold;color:var(--g);margin-top:5px}
+.search-empty{padding:35px 15px;text-align:center;color:var(--muted);line-height:1.8}
+
+.section{padding:4px 18px 18px}.section-title{display:flex;justify-content:space-between;align-items:center;gap:8px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:11px}
+.cat{background:#fff;border:1px solid var(--line);border-radius:18px;padding:15px;min-height:108px;box-shadow:0 6px 18px #1a492710}.cat:active{transform:scale(.98)}.ico{width:40px;height:40px;background:#eaf7ef;border-radius:12px;display:grid;place-items:center;font-size:22px;margin-bottom:9px}.cat b{display:block}.cat small{font-size:11px;color:var(--muted)}
+.notice{background:#fff;border:1px solid var(--line);border-radius:16px;padding:13px;font-size:12px;line-height:1.7;color:var(--muted)}.notice strong{color:var(--text)}
+.page{display:none;padding:16px 18px 28px}.page.show{display:block}#home.show{display:block}#home{display:none}.pagehead{display:flex;align-items:center;gap:10px;margin-bottom:14px}.back{width:42px;height:42px;border-radius:13px;border:1px solid var(--line);background:#fff;font-size:20px}
+.card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:16px;margin-bottom:14px}.hint{background:#eef8f1;border-radius:14px;padding:12px;font-size:12px;line-height:1.7;margin-bottom:12px}
+.field{margin:13px 0}.field label{display:block;font-size:13px;font-weight:bold;margin-bottom:7px}.field input,.field textarea,.field select{width:100%;padding:13px;border:1px solid #d9e7dd;border-radius:13px;font-size:15px;font-family:inherit;background:#fff}.field textarea{min-height:105px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}.msg{font-size:13px;margin-top:10px;min-height:20px;line-height:1.6}.ok{color:var(--g)}.err{color:var(--bad)}
+.provider-box{background:#edf8f1;border:1px solid #cfe8d7;border-radius:18px;padding:14px;margin-bottom:14px}.provider-box b{display:block;margin-bottom:6px}.provider-box small{line-height:1.7}
+.req-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:14px;margin:10px 0;box-shadow:0 5px 15px #1a49270d}.req-card h4{margin:0 0 7px;font-size:16px}.req-card p{margin:0 0 8px;line-height:1.7;font-size:13px}
+.meta{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0}.chip{background:#f0f5f2;border-radius:999px;padding:5px 8px;font-size:10px;color:#526158}.status{display:inline-block;border-radius:999px;padding:5px 9px;font-size:10px;background:#edf3f9;color:var(--blue)}
+.interest{width:100%;margin-top:8px}.interest.done{background:#eaf7ef;color:var(--g2);border:1px solid #cce7d5}
+.offer{border-top:1px solid var(--line);padding-top:12px;margin-top:12px}.offer:first-of-type{border-top:0}.offer-head{display:flex;justify-content:space-between;align-items:center;gap:10px}.verified{color:var(--g);font-size:11px}.select-btn{width:100%;margin-top:9px}.selected{background:#eaf7ef!important;color:var(--g2)!important;border:1px solid #cce7d5!important}.contact-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:9px}.contact-btn{display:block;text-align:center;text-decoration:none;padding:11px 8px;border-radius:13px;font-weight:bold}.call-btn{background:#eef4ff;color:#245da8;border:1px solid #d7e4f8}.wa-btn{background:#eaf8ef;color:#11783e;border:1px solid #cce9d7}.start-btn{width:100%;margin-top:9px}.progress-box{background:#fff8e9;border:1px solid #f0dfb1;color:#7a5a0a;padding:11px;border-radius:13px;margin-top:9px;text-align:center;font-weight:bold}.complete-btn{width:100%;margin-top:9px;background:#245da8;color:#fff;border:0;padding:12px;border-radius:13px;font-weight:bold}
+.review-box{background:#fffaf0;border:1px solid #ecdcae;border-radius:15px;padding:12px;margin-top:10px}
+.review-box label{display:block;font-size:12px;font-weight:bold;margin:8px 0 6px}
+.review-box select,.review-box textarea{width:100%;padding:11px;border:1px solid #e4d8b8;border-radius:11px;font-family:inherit;font-size:14px;background:#fff}
+.review-box textarea{min-height:80px}
+.review-stars{font-size:18px;letter-spacing:2px;color:#ad7a00;margin-top:5px}
+.review-done{background:#eef8f1;border:1px solid #cfe8d7;border-radius:13px;padding:11px;margin-top:10px}
+.review-done b{color:var(--g2)}
+.empty{text-align:center;padding:22px;color:var(--muted);font-size:13px}
+.bottom{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:min(720px,100%);background:#fff;border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(5,1fr);padding:7px 4px;z-index:10}.nav{border:0;background:transparent;color:#68736b;font-size:11px}.nav i{display:block;font-style:normal;font-size:21px}.nav.active{color:var(--g);font-weight:bold}
+.modal{position:fixed;inset:0;background:#0007;display:none;align-items:flex-end;z-index:20}.modal.show{display:flex}.sheet{background:#fff;width:100%;max-width:720px;margin:auto;border-radius:24px 24px 0 0;padding:20px}
+.tabs{display:grid;grid-template-columns:1fr 1fr;background:#edf4ef;border-radius:13px;padding:4px}.tab{border:0;padding:9px;background:transparent}.tab.active{background:#fff;color:var(--g);border-radius:10px;font-weight:bold}
+
+.property-tabs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px;background:#edf4ef;border-radius:14px;padding:5px}
+.property-tab{border:0;background:transparent;padding:10px;border-radius:11px;font-weight:bold;color:#5f6b63}
+.property-tab.active{background:#fff;color:var(--g);box-shadow:0 3px 12px #1a492713}
+.property-card{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;margin:12px 0;box-shadow:0 6px 18px #1a49270c}
+.property-img{width:100%;height:180px;object-fit:cover;background:#eef5f0;display:block}
+.property-img-placeholder{height:150px;background:#eef5f0;display:grid;place-items:center;font-size:46px}
+.property-body{padding:14px}
+.property-title-row{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+.property-title-row h4{margin:0;font-size:17px}
+.property-price{font-weight:bold;color:var(--g2);white-space:nowrap}
+.property-desc{font-size:13px;line-height:1.7;color:#536158}
+.property-actions{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:11px}
+.property-contact{display:flex;align-items:center;justify-content:center;text-decoration:none;padding:11px;border-radius:12px;font-weight:bold}
+.property-call{background:#edf3ff;color:#245da8}
+.property-wa{background:#edf9f0;color:#18763f}
+.image-preview{width:100%;max-height:220px;object-fit:cover;border-radius:14px;margin-top:8px;display:none}
+.property-success{background:#edf8f1;border:1px solid #cfe8d7;padding:12px;border-radius:13px;color:var(--g2);margin-top:10px}
+
+
+.product-tabs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px;background:#edf4ef;border-radius:14px;padding:5px}
+.product-tab{border:0;background:transparent;padding:10px;border-radius:11px;font-weight:bold;color:#5f6b63}
+.product-tab.active{background:#fff;color:var(--g);box-shadow:0 3px 12px #1a492713}
+.product-card{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;margin:12px 0;box-shadow:0 6px 18px #1a49270c}
+.product-img{width:100%;height:180px;object-fit:cover;background:#eef5f0;display:block}
+.product-img-placeholder{height:150px;background:#eef5f0;display:grid;place-items:center;font-size:46px}
+.product-body{padding:14px}
+.product-title-row{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+.product-title-row h4{margin:0;font-size:17px}
+.product-price{font-weight:bold;color:var(--g2);white-space:nowrap}
+.product-desc{font-size:13px;line-height:1.7;color:#536158}
+.product-actions{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:11px}
+.product-contact{display:flex;align-items:center;justify-content:center;text-decoration:none;padding:11px;border-radius:12px;font-weight:bold}
+.product-call{background:#edf3ff;color:#245da8}
+.product-wa{background:#edf9f0;color:#18763f}
+
+
+.doctor-tabs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px;background:#edf4ef;border-radius:14px;padding:5px}
+.doctor-tab{border:0;background:transparent;padding:10px;border-radius:11px;font-weight:bold;color:#5f6b63}
+.doctor-tab.active{background:#fff;color:var(--g);box-shadow:0 3px 12px #1a492713}
+.doctor-filter{margin:10px 0 14px}
+.doctor-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:15px;margin:12px 0;box-shadow:0 6px 18px #1a49270c}
+.doctor-head{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.doctor-avatar{width:52px;height:52px;border-radius:16px;background:#eaf7ef;display:grid;place-items:center;font-size:28px}
+.doctor-head h4{margin:0 0 4px;font-size:17px}
+.doctor-specialty{color:var(--g2);font-size:12px;font-weight:bold}
+.doctor-info{font-size:13px;line-height:1.85;color:#536158}
+.doctor-contact-note{background:#f2f8f4;border-radius:12px;padding:9px;margin-top:10px;font-size:12px}
+.doctor-actions{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:11px}
+.doctor-contact{display:flex;align-items:center;justify-content:center;text-decoration:none;padding:11px;border-radius:12px;font-weight:bold}
+.doctor-call{background:#edf3ff;color:#245da8}
+.doctor-wa{background:#edf9f0;color:#18763f}
+.days-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:7px}
+.day-check{display:flex;align-items:center;justify-content:center;gap:4px;border:1px solid #d9e7dd;border-radius:10px;padding:8px 4px;background:#fff;font-size:12px}
+.day-check input{width:auto}
+
+
+.hospital-tabs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px;background:#edf4ef;border-radius:14px;padding:5px}
+.hospital-tab{border:0;background:transparent;padding:10px;border-radius:11px;font-weight:bold;color:#5f6b63}
+.hospital-tab.active{background:#fff;color:var(--g);box-shadow:0 3px 12px #1a492713}
+.hospital-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:15px;margin:12px 0;box-shadow:0 6px 18px #1a49270c}
+.hospital-head{display:flex;gap:12px;align-items:center;margin-bottom:10px}
+.hospital-icon{width:54px;height:54px;border-radius:16px;background:#eaf7ef;display:grid;place-items:center;font-size:29px}
+.hospital-head h4{margin:0 0 4px;font-size:18px}
+.hospital-info{font-size:13px;line-height:1.85;color:#536158}
+.dept-wrap{display:flex;flex-wrap:wrap;gap:6px;margin:9px 0}
+.dept-chip{background:#eff6f1;border-radius:999px;padding:6px 9px;font-size:11px}
+.room-state{border-radius:12px;padding:10px;margin-top:10px;font-weight:bold;text-align:center}
+.room-available{background:#edf8f1;color:#18763f}
+.room-confirm{background:#fff8e9;color:#7a5a0a}
+.room-unavailable{background:#f6eeee;color:#8b3d3d}
+.hospital-actions{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:10px}
+.hospital-contact{display:flex;align-items:center;justify-content:center;text-decoration:none;padding:11px;border-radius:12px;font-weight:bold}
+.hospital-call{background:#edf3ff;color:#245da8}
+.hospital-wa{background:#edf9f0;color:#18763f}
+.emergency-btn{width:100%;display:flex;align-items:center;justify-content:center;text-decoration:none;border-radius:12px;padding:11px;margin-top:9px;background:#fff0f0;color:#a32929;font-weight:bold}
+.room-btn{width:100%;margin-top:9px;background:var(--g);color:#fff;border:0;padding:12px;border-radius:12px;font-weight:bold}
+.room-btn:disabled{background:#c8d3cc;color:#6b756e}
+.hospital-depts{display:grid;grid-template-columns:repeat(2,1fr);gap:7px}
+.hospital-dept-check{display:flex;gap:6px;align-items:center;border:1px solid #d9e7dd;border-radius:10px;padding:8px;background:#fff}
+.hospital-dept-check input{width:auto}
+.request-card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px;margin-top:9px}
+.request-status{display:inline-block;border-radius:999px;padding:5px 8px;background:#eef3f0;font-size:11px}
+.request-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:9px}
+.request-actions button{border:0;border-radius:10px;padding:10px;font-weight:bold}
+.accept-request{background:#edf8f1;color:#18763f}
+.reject-request{background:#f8eeee;color:#9b3434}
+
+
+@media(max-width:470px){
+  .room-request-row{grid-template-columns:1fr!important;gap:10px!important}
+  .room-request-row .field{min-width:0;width:100%}
+  .room-request-row input{width:100%;box-sizing:border-box}
+  #roomModal .modalbox{max-height:86vh;overflow-y:auto;padding-bottom:18px}
+}
+
+
+.pharmacy-tabs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px;background:#edf4ef;border-radius:14px;padding:5px}
+.pharmacy-tab{border:0;background:transparent;padding:10px;border-radius:11px;font-weight:bold;color:#5f6b63}
+.pharmacy-tab.active{background:#fff;color:var(--g);box-shadow:0 3px 12px #1a492713}
+.pharmacy-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:15px;margin:12px 0;box-shadow:0 6px 18px #1a49270c}
+.pharmacy-head{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.pharmacy-icon{width:54px;height:54px;border-radius:16px;background:#eaf7ef;display:grid;place-items:center;font-size:29px}
+.pharmacy-head h4{margin:0 0 4px;font-size:18px}
+.pharmacy-info{font-size:13px;line-height:1.85;color:#536158}
+.pharmacy-actions{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:11px}
+.pharmacy-contact{display:flex;align-items:center;justify-content:center;text-decoration:none;padding:11px;border-radius:12px;font-weight:bold}
+.pharmacy-call{background:#edf3ff;color:#245da8}
+.pharmacy-wa{background:#edf9f0;color:#18763f}
+.delivery-badge{display:inline-block;background:#eef8f1;color:#18763f;border-radius:999px;padding:6px 9px;margin-top:8px;font-size:12px;font-weight:bold}
+.pharmacy-days{display:grid;grid-template-columns:repeat(4,1fr);gap:7px}
+.pharmacy-day-check{display:flex;align-items:center;justify-content:center;gap:4px;border:1px solid #d9e7dd;border-radius:10px;padding:8px 4px;background:#fff;font-size:12px}
+.pharmacy-day-check input{width:auto}
+.toggle-line{display:flex;align-items:center;gap:8px;padding:10px;border:1px solid #d9e7dd;border-radius:12px;background:#f8fbf9;margin-bottom:10px}
+.toggle-line input{width:auto}
+@media(max-width:470px){
+  .pharmacy-time-row{grid-template-columns:1fr!important;gap:10px!important}
+}
+
+
+.delivery-tabs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px;background:#edf4ef;border-radius:14px;padding:5px}
+.delivery-tab{border:0;background:transparent;padding:11px 7px;border-radius:11px;font-weight:bold;color:#5f6b63}
+.delivery-tab.active{background:#fff;color:var(--g);box-shadow:0 3px 12px #1a492713}
+.delivery-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:15px;margin:12px 0;box-shadow:0 6px 18px #1a49270c}
+.delivery-route{display:grid;grid-template-columns:1fr auto 1fr;gap:8px;align-items:center;background:#f3f8f4;border-radius:14px;padding:10px;margin:9px 0}
+.delivery-route .place{text-align:center;font-size:13px;line-height:1.6}
+.delivery-route .arrow{font-size:20px;color:var(--g)}
+.delivery-meta{display:flex;flex-wrap:wrap;gap:6px;margin:9px 0}
+.delivery-chip{background:#eef4f0;border-radius:999px;padding:6px 9px;font-size:11px}
+.delivery-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+.delivery-actions button,.delivery-actions a{border:0;border-radius:12px;padding:11px;font-weight:bold;text-align:center;text-decoration:none}
+.delivery-select{background:var(--g);color:#fff}
+.delivery-cancel{background:#f8eeee;color:#943b3b}
+.delivery-complete{background:#2f68b4;color:#fff}
+.delivery-call{background:#edf3ff;color:#245da8}
+.delivery-wa{background:#edf9f0;color:#18763f}
+.delivery-status{display:inline-block;border-radius:999px;padding:5px 9px;background:#eef3f0;font-size:11px;margin-bottom:8px}
+.offer-card{border-top:1px solid #e5ece7;padding-top:10px;margin-top:10px}
+.offer-head{display:flex;justify-content:space-between;gap:8px;align-items:center}
+.offer-price{color:var(--g);font-weight:bold}
+.driver-box{background:#eef8f1;border:1px solid #d7eadc;border-radius:16px;padding:13px;margin:10px 0}
+.driver-box h4{margin:0 0 6px}
+.driver-market-note{background:#f2f8f4;border-radius:12px;padding:10px;font-size:12px;margin:8px 0}
+.driver-job{background:#fff;border:1px solid var(--line);border-radius:16px;padding:13px;margin:10px 0}
+.vehicle-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.offer-modal-actions{display:grid;grid-template-columns:1fr;gap:8px}
+@media(max-width:470px){
+ .delivery-route{grid-template-columns:1fr;gap:3px}
+ .delivery-route .arrow{transform:rotate(90deg)}
+ .delivery-form-row{grid-template-columns:1fr!important;gap:10px!important}
+ .vehicle-grid{grid-template-columns:1fr}
+}
+
+@media(max-width:470px){h1{font-size:17px}}
+</style>
+</head>
+<body>
+<div class="app">
+<header><div class="top"><div class="brand"><div class="logo">س</div><div><h1>سندك في الحياة 🇸🇩</h1><div class="ver">V0.15.1</div></div></div><button id="authBtn" class="secondary">دخول</button></div></header>
+
+<div id="home" class="show">
+<section class="hero"><div class="hero-card"><h2>محتاج شنو اليوم؟</h2><p>خدمات، طبيب، عقار، منتج أو توصيل… كلها في مكان واحد.</p><div class="search"><button id="homeSearchGo" class="search-go" aria-label="بحث">🔎</button><input id="homeSearchInput" placeholder="ابحث عن خدمة أو طبيب أو مستشفى أو منتج"></div></div></section>
+<section class="section"><div class="section-title"><h3>الأقسام الرئيسية</h3><span>بورتسودان</span></div>
+<div class="grid">
+<div class="cat" id="offerBtn"><div class="ico">🛠️</div><b>أقدم خدمة</b><small>خدمتك والطلبات المناسبة لك</small></div>
+<div class="cat" id="needBtn"><div class="ico">🙋</div><b>أحتاج خدمة</b><small>طلب جديد + العروض التي وصلتك</small></div>
+<div class="cat" id="propertyBtn"><div class="ico">🏠</div><b>السكن والعقارات</b><small>بيع وإيجار وإضافة عقار</small></div>
+<div class="cat" id="productBtn"><div class="ico">🛒</div><b>البيع والشراء</b><small>منتجات جديدة ومستعملة</small></div>
+<div class="cat" id="doctorBtn"><div class="ico">👨‍⚕️</div><b>الأطباء</b><small>حسب التخصص والتواصل مع الاستقبال</small></div>
+<div class="cat" id="hospitalBtn"><div class="ico">🏥</div><b>المستشفيات</b><small>الأقسام والغرف والاستقبال</small></div>
+<div class="cat" id="pharmacyBtn"><div class="ico">💊</div><b>الصيدليات</b><small>الموقع وساعات العمل والتواصل</small></div>
+<div class="cat" id="deliveryBtn"><div class="ico">🛵</div><b>التوصيل</b><small>اطلب توصيل أو سجّل كسائق</small></div>
+</div></section>
+<section class="section"><div class="notice"><strong>✅ النسخة V0.15.1</strong><br>تم تفعيل قسم التوصيل: طلب توصيل وعروض السائقين واختيار السائق والتواصل بعد الاختيار.</div></section>
+</div>
+
+<section id="needPage" class="page">
+<div class="pagehead"><button class="back" data-home>→</button><h2>🙋 أحتاج خدمة</h2></div>
+<div class="hint">اكتب المطلوب والمكان فقط. بياناتك الشخصية لا تظهر لمقدمي الخدمة قبل الاختيار.</div>
+<div class="card">
+<div class="field"><label>نوع الخدمة *</label><select id="reqCat"><option value="">جاري التحميل…</option></select></div>
+<div class="field"><label>تفاصيل الطلب *</label><textarea id="reqDesc" placeholder="مثال: أحتاج كهربائي لفحص عطل في المنزل"></textarea></div>
+<div class="field"><label>الحي أو المكان *</label><input id="reqLoc" placeholder="مثال: ديم المدينة، بورتسودان"></div>
+<div class="field"><label>متى تحتاج الخدمة؟</label><select id="reqWhen"><option value="">غير محدد</option><option value="asap">في أقرب وقت</option><option value="today">اليوم</option><option value="tomorrow">غدًا</option><option value="this_week">هذا الأسبوع</option><option value="flexible">الوقت مرن</option></select></div>
+<div class="row"><div class="field"><label>الميزانية</label><input id="reqBudget" type="number" min="0" inputmode="numeric" placeholder="اختياري"></div><div class="field"><label>طريقة الميزانية</label><select id="reqBudgetMode"><option value="unspecified">غير محددة</option><option value="agreement">حسب الاتفاق</option><option value="fixed">مبلغ محدد</option></select></div></div>
+<button id="sendReq" class="primary" style="width:100%">إرسال الطلب</button><div id="reqMsg" class="msg"></div>
+</div>
+
+<div class="section-title"><h3>طلباتي والعروض</h3><button id="refreshMine" class="secondary" style="padding:7px 10px">تحديث</button></div>
+<div id="myRequests"><div class="empty">جاري تحميل طلباتك…</div></div>
+</section>
+
+
+<section id="propertyPage" class="page">
+<div class="pagehead"><button class="back" data-home>→</button><h2>🏠 السكن والعقارات</h2></div>
+
+<div class="property-tabs">
+<button id="browsePropertyTab" class="property-tab active">عرض العقارات</button>
+<button id="addPropertyTab" class="property-tab">إضافة عقار</button>
+</div>
+
+<div id="propertyBrowseWrap">
+<div class="section-title"><h3>العقارات المنشورة</h3><button id="refreshProperties" class="secondary" style="padding:7px 10px">تحديث</button></div>
+<div class="hint">يمكنك تصفح العقارات المنشورة والتواصل مباشرة مع المعلن.</div>
+<div id="propertyList"><div class="empty">جاري تحميل العقارات…</div></div>
+</div>
+
+<div id="propertyAddWrap" style="display:none">
+<div class="hint">سجّل الدخول لإضافة عقار. أول إعلان ينشئ لك ملف عقارات تلقائيًا ويبدأ فترة التجربة المجانية.</div>
+<div class="card">
+<div class="field"><label>عنوان الإعلان *</label><input id="propTitle" placeholder="مثال: منزل للبيع في ديم المدينة"></div>
+<div class="row">
+<div class="field"><label>نوع العقار *</label><select id="propCat"><option value="">جاري التحميل…</option></select></div>
+<div class="field"><label>بيع أم إيجار؟ *</label><select id="propTransaction"><option value="sale">بيع</option><option value="rent">إيجار</option></select></div>
+</div>
+<div class="field"><label>المكان أو الحي *</label><input id="propAddress" placeholder="مثال: بورتسودان - ديم المدينة"></div>
+<div class="row">
+<div class="field"><label>المساحة بالمتر²</label><input id="propArea" type="number" min="0" inputmode="decimal" placeholder="اختياري"></div>
+<div class="field"><label>عدد الغرف</label><input id="propRooms" type="number" min="0" inputmode="numeric" placeholder="اختياري"></div>
+</div>
+<div class="field"><label>السعر بالجنيه السوداني</label><input id="propPrice" type="number" min="0" inputmode="decimal" placeholder="اختياري"></div>
+<div class="field"><label>وصف العقار</label><textarea id="propDesc" placeholder="اكتب تفاصيل العقار والمميزات"></textarea></div>
+<div class="field"><label>اسم المعلن *</label><input id="propContactName" placeholder="مثال: محمد أحمد"></div>
+<div class="row">
+<div class="field"><label>رقم الهاتف *</label><input id="propPhone" inputmode="tel" placeholder="0912345678"></div>
+<div class="field"><label>واتساب</label><input id="propWhats" inputmode="tel" placeholder="إذا كان مختلفًا"></div>
+</div>
+<div class="field"><label>صورة العقار (اختياري)</label><input id="propImage" type="file" accept="image/*"><img id="propImagePreview" class="image-preview" alt="معاينة الصورة"></div>
+<button id="sendProperty" class="primary" style="width:100%">نشر العقار</button>
+<div id="propMsg" class="msg"></div>
+</div>
+</div>
+</section>
+
+
+<section id="productPage" class="page">
+<div class="pagehead"><button class="back" data-home>→</button><h2>🛒 البيع والشراء</h2></div>
+
+<div class="product-tabs">
+<button id="browseProductTab" class="product-tab active">عرض المنتجات</button>
+<button id="addProductTab" class="product-tab">إضافة منتج</button>
+</div>
+
+<div id="productBrowseWrap">
+<div class="section-title"><h3>المنتجات المنشورة</h3><button id="refreshProducts" class="secondary" style="padding:7px 10px">تحديث</button></div>
+<div class="hint">تصفح المنتجات وتواصل مباشرة مع البائع عبر الاتصال أو واتساب.</div>
+<div id="productList"><div class="empty">جاري تحميل المنتجات…</div></div>
+</div>
+
+<div id="productAddWrap" style="display:none">
+<div class="hint">سجّل الدخول لإضافة منتج. أول إعلان ينشئ لك ملف بائع تلقائيًا ويبدأ فترة التجربة المجانية.</div>
+<div class="card">
+<div class="field"><label>اسم المنتج *</label><input id="prodTitle" placeholder="مثال: ثلاجة مستعملة بحالة ممتازة"></div>
+<div class="row">
+<div class="field"><label>الفئة *</label><select id="prodCat"><option value="">جاري التحميل…</option></select></div>
+<div class="field"><label>حالة المنتج *</label><select id="prodCondition"><option value="new">جديد</option><option value="used">مستعمل</option></select></div>
+</div>
+<div class="field"><label>السعر بالجنيه السوداني</label><input id="prodPrice" type="number" min="0" inputmode="decimal" placeholder="اختياري"></div>
+<div class="field"><label>وصف المنتج</label><textarea id="prodDesc" placeholder="اكتب تفاصيل المنتج وحالته"></textarea></div>
+<div class="field"><label>رقم الهاتف *</label><input id="prodPhone" inputmode="tel" placeholder="0912345678"></div>
+<div class="field"><label>واتساب</label><input id="prodWhats" inputmode="tel" placeholder="إذا كان مختلفًا"></div>
+<div class="field"><label>صورة المنتج (اختياري)</label><input id="prodImage" type="file" accept="image/*"><img id="prodImagePreview" class="image-preview" alt="معاينة الصورة"></div>
+<button id="sendProduct" class="primary" style="width:100%">نشر المنتج</button>
+<div id="prodMsg" class="msg"></div>
+</div>
+</div>
+</section>
+
+
+<section id="doctorPage" class="page">
+<div class="pagehead"><button class="back" data-home>→</button><h2>👨‍⚕️ الأطباء</h2></div>
+
+<div class="doctor-tabs">
+<button id="browseDoctorTab" class="doctor-tab active">عرض الأطباء</button>
+<button id="addDoctorTab" class="doctor-tab">إضافة طبيب</button>
+</div>
+
+<div id="doctorBrowseWrap">
+<div class="hint">الحجز يتم مباشرة مع موظف الاستقبال عبر الاتصال أو واتساب. لا يوجد حجز مواعيد داخل التطبيق.</div>
+<div class="doctor-filter field"><label>التخصص</label><select id="doctorFilter"><option value="">كل التخصصات</option></select></div>
+<div class="section-title"><h3>الأطباء</h3><button id="refreshDoctors" class="secondary" style="padding:7px 10px">تحديث</button></div>
+<div id="doctorList"><div class="empty">جاري تحميل الأطباء…</div></div>
+</div>
+
+<div id="doctorAddWrap" style="display:none">
+<div class="hint">أدخل بيانات الطبيب وموظف الاستقبال. رقم الاستقبال هو الرقم الذي سيظهر للمستخدمين للحجز والتواصل.</div>
+<div class="card">
+<div class="field"><label>اسم الطبيب *</label><input id="docName" placeholder="مثال: د. محمد أحمد"></div>
+<div class="field"><label>التخصص *</label><select id="docSpecialty"><option value="">جاري التحميل…</option></select></div>
+<div class="field"><label>اسم العيادة أو المستشفى</label><input id="docClinic" placeholder="مثال: عيادة الشفاء"></div>
+<div class="field"><label>الموقع أو الحي *</label><input id="docAddress" placeholder="مثال: بورتسودان - ديم المدينة"></div>
+<div class="field"><label>اسم موظف الاستقبال *</label><input id="docReceptionist" placeholder="مثال: أحمد محمد"></div>
+<div class="row">
+<div class="field"><label>رقم الاستقبال *</label><input id="docPhone" inputmode="tel" placeholder="0912345678"></div>
+<div class="field"><label>واتساب الاستقبال</label><input id="docWhats" inputmode="tel" placeholder="إذا كان مختلفًا"></div>
+</div>
+<div class="field"><label>سعر الكشف</label><input id="docPrice" type="number" min="0" inputmode="decimal" placeholder="اختياري"></div>
+
+<div class="field"><label>أيام العمل</label>
+<div class="days-grid">
+<label class="day-check"><input type="checkbox" class="doc-day" value="6">السبت</label>
+<label class="day-check"><input type="checkbox" class="doc-day" value="0">الأحد</label>
+<label class="day-check"><input type="checkbox" class="doc-day" value="1">الاثنين</label>
+<label class="day-check"><input type="checkbox" class="doc-day" value="2">الثلاثاء</label>
+<label class="day-check"><input type="checkbox" class="doc-day" value="3">الأربعاء</label>
+<label class="day-check"><input type="checkbox" class="doc-day" value="4">الخميس</label>
+<label class="day-check"><input type="checkbox" class="doc-day" value="5">الجمعة</label>
+</div></div>
+<div class="row">
+<div class="field"><label>من الساعة</label><input id="docOpen" type="time"></div>
+<div class="field"><label>إلى الساعة</label><input id="docClose" type="time"></div>
+</div>
+
+<button id="sendDoctor" class="primary" style="width:100%">تسجيل الطبيب</button>
+<div id="docMsg" class="msg"></div>
+</div>
+</div>
+</section>
+
+
+<section id="hospitalPage" class="page">
+<div class="pagehead"><button class="back" data-home>→</button><h2>🏥 المستشفيات</h2></div>
+
+<div class="hospital-tabs">
+<button id="browseHospitalTab" class="hospital-tab active">عرض المستشفيات</button>
+<button id="addHospitalTab" class="hospital-tab">إضافة مستشفى</button>
+</div>
+
+<div id="hospitalBrowseWrap">
+<div class="hint">للطوارئ استخدم زر الاتصال المباشر. طلب الغرفة لا يعتبر حجزًا مؤكدًا إلا بعد قبول المستشفى.</div>
+<div class="section-title"><h3>المستشفيات</h3><button id="refreshHospitals" class="secondary" style="padding:7px 10px">تحديث</button></div>
+<div id="hospitalList"><div class="empty">جاري تحميل المستشفيات…</div></div>
+</div>
+
+<div id="hospitalAddWrap" style="display:none">
+<div class="hint">أدخل بيانات المستشفى والاستقبال والأقسام. يمكنك تحديث حالة الغرف لاحقًا.</div>
+<div class="card">
+<div class="field"><label>اسم المستشفى *</label><input id="hospName" placeholder="مثال: مستشفى السلام"></div>
+<div class="field"><label>الموقع أو الحي *</label><input id="hospAddress" placeholder="مثال: بورتسودان - ديم المدينة"></div>
+<div class="field"><label>اسم موظف الاستقبال</label><input id="hospReceptionName" placeholder="مثال: أحمد محمد"></div>
+<div class="row">
+<div class="field"><label>رقم الاستقبال *</label><input id="hospReceptionPhone" inputmode="tel" placeholder="0912345678"></div>
+<div class="field"><label>واتساب الاستقبال</label><input id="hospReceptionWhats" inputmode="tel" placeholder="إذا كان مختلفًا"></div>
+</div>
+<div class="field"><label>رقم الطوارئ</label><input id="hospEmergency" inputmode="tel" placeholder="رقم مباشر للطوارئ إن وجد"></div>
+
+<div class="field"><label>حالة الغرف *</label>
+<select id="hospRoomStatus">
+<option value="available">متاحة</option>
+<option value="call_to_confirm">اتصل للتأكيد</option>
+<option value="unavailable">غير متاحة</option>
+</select></div>
+
+<div class="field"><label>الأقسام</label><div id="hospitalDeptChoices" class="hospital-depts"></div></div>
+
+<button id="sendHospital" class="primary" style="width:100%">تسجيل المستشفى</button>
+<div id="hospMsg" class="msg"></div>
+</div>
+
+<div id="ownedHospitalPanel" style="display:none">
+<div class="section-title"><h3>إدارة مستشفاي</h3><button id="refreshHospitalRequests" class="secondary" style="padding:7px 10px">تحديث</button></div>
+<div class="card">
+<div class="field"><label>تحديث حالة الغرف</label>
+<select id="ownerRoomStatus">
+<option value="available">متاحة</option>
+<option value="call_to_confirm">اتصل للتأكيد</option>
+<option value="unavailable">غير متاحة</option>
+</select></div>
+<button id="saveOwnerRoomStatus" class="primary" style="width:100%">حفظ حالة الغرف</button>
+</div>
+<div id="hospitalRequests"></div>
+</div>
+</div>
+</section>
+
+<div id="roomModal" class="modal">
+<div class="modalbox">
+<h3>🛏️ طلب غرفة</h3>
+<div class="hint">هذا طلب مبدئي، ولا يصبح مؤكدًا إلا بعد قبول المستشفى.</div>
+<div class="field"><label>اسم المريض *</label><input id="roomPatientName" placeholder="اسم المريض"></div>
+<div class="field"><label>رقم التواصل *</label><input id="roomPhone" inputmode="tel" placeholder="0912345678"></div>
+<div class="field"><label>نوع الغرفة</label><input id="roomType" placeholder="مثال: غرفة عادية"></div>
+<div class="row room-request-row">
+<div class="field"><label>التاريخ المطلوب</label><input id="roomDate" type="date"></div>
+<div class="field"><label>عدد الأيام المتوقع</label><input id="roomDays" type="number" min="1" inputmode="numeric" placeholder="مثال: 2"></div>
+</div>
+<div class="field"><label>ملاحظات</label><textarea id="roomNotes" placeholder="اختياري"></textarea></div>
+<button id="sendRoomRequest" class="primary" style="width:100%">إرسال طلب الغرفة</button>
+<button id="closeRoomModal" class="secondary" style="width:100%;margin-top:8px">إغلاق</button>
+<div id="roomMsg" class="msg"></div>
+</div>
+</div>
+
+<section id="pharmacyPage" class="page">
+<div class="pagehead"><button class="back" data-home>→</button><h2>💊 الصيدليات</h2></div>
+
+<div class="pharmacy-tabs">
+<button id="browsePharmacyTab" class="pharmacy-tab active">عرض الصيدليات</button>
+<button id="addPharmacyTab" class="pharmacy-tab">إضافة صيدلية</button>
+</div>
+
+<div id="pharmacyBrowseWrap">
+<div class="hint">تصفح الصيدليات وتواصل مباشرة عبر الاتصال أو واتساب. البحث عن مخزون الأدوية سنضيفه في مرحلة لاحقة.</div>
+<div class="section-title"><h3>الصيدليات</h3><button id="refreshPharmacies" class="secondary" style="padding:7px 10px">تحديث</button></div>
+<div id="pharmacyList"><div class="empty">جاري تحميل الصيدليات…</div></div>
+</div>
+
+<div id="pharmacyAddWrap" style="display:none">
+<div class="hint">أدخل بيانات الصيدلية والمسؤول وساعات العمل. يمكنك تحديد أنها تعمل 24 ساعة إذا كان ذلك صحيحًا.</div>
+<div class="card">
+<div class="field"><label>اسم الصيدلية *</label><input id="pharmName" placeholder="مثال: صيدلية الشفاء"></div>
+<div class="field"><label>الموقع أو الحي *</label><input id="pharmAddress" placeholder="مثال: بورتسودان - ديم المدينة"></div>
+<div class="field"><label>اسم المسؤول *</label><input id="pharmManager" placeholder="مثال: محمد أحمد"></div>
+<div class="row">
+<div class="field"><label>رقم الهاتف *</label><input id="pharmPhone" inputmode="tel" placeholder="0912345678"></div>
+<div class="field"><label>واتساب</label><input id="pharmWhats" inputmode="tel" placeholder="إذا كان مختلفًا"></div>
+</div>
+
+<label class="toggle-line"><input id="pharmDelivery" type="checkbox"> 🛵 يوجد توصيل</label>
+<label class="toggle-line"><input id="pharm24" type="checkbox"> 🕛 الصيدلية تعمل 24 ساعة</label>
+
+<div id="pharmHoursWrap">
+<div class="field"><label>أيام العمل</label>
+<div class="pharmacy-days">
+<label class="pharmacy-day-check"><input type="checkbox" class="pharm-day" value="6">السبت</label>
+<label class="pharmacy-day-check"><input type="checkbox" class="pharm-day" value="0">الأحد</label>
+<label class="pharmacy-day-check"><input type="checkbox" class="pharm-day" value="1">الاثنين</label>
+<label class="pharmacy-day-check"><input type="checkbox" class="pharm-day" value="2">الثلاثاء</label>
+<label class="pharmacy-day-check"><input type="checkbox" class="pharm-day" value="3">الأربعاء</label>
+<label class="pharmacy-day-check"><input type="checkbox" class="pharm-day" value="4">الخميس</label>
+<label class="pharmacy-day-check"><input type="checkbox" class="pharm-day" value="5">الجمعة</label>
+</div></div>
+
+<div class="row pharmacy-time-row">
+<div class="field"><label>من الساعة</label><input id="pharmOpen" type="time"></div>
+<div class="field"><label>إلى الساعة</label><input id="pharmClose" type="time"></div>
+</div>
+</div>
+
+<button id="sendPharmacy" class="primary" style="width:100%">تسجيل الصيدلية</button>
+<div id="pharmMsg" class="msg"></div>
+</div>
+</div>
+</section>
+
+
+
+
+<section id="favoritesPage" class="page">
+<div class="pagehead"><button class="back" data-home>→</button><h2>❤️ المفضلة</h2></div>
+<div class="hint">احفظ ما يعجبك من الخدمات والأطباء والمستشفيات والصيدليات والعقارات والمنتجات، وارجع إليه من هنا في أي وقت.</div>
+<div class="section-title"><h3>العناصر المحفوظة</h3><button id="refreshFavorites" class="secondary" style="padding:7px 10px">تحديث</button></div>
+<div id="favoritesList"><div class="empty">جاري تحميل المفضلة…</div></div>
+</section>
+
+<section id="searchPage" class="page">
+<div class="pagehead"><button class="back" data-home>→</button><h2>🔎 البحث</h2></div>
+<div class="global-search-box">
+<input id="globalSearchInput" placeholder="اكتب اسم خدمة، طبيب، مستشفى، صيدلية، عقار أو منتج">
+<button id="globalSearchGo">بحث</button>
+</div>
+<div class="hint">يمكنك البحث بالاسم أو التخصص أو الفئة أو الحي. تظهر لك النتائج المنشورة فقط.</div>
+<div class="search-filters" id="searchFilters">
+<button class="search-filter active" data-filter="all">الكل</button>
+<button class="search-filter" data-filter="service">خدمات</button>
+<button class="search-filter" data-filter="doctor">أطباء</button>
+<button class="search-filter" data-filter="hospital">مستشفيات</button>
+<button class="search-filter" data-filter="pharmacy">صيدليات</button>
+<button class="search-filter" data-filter="property">عقارات</button>
+<button class="search-filter" data-filter="product">منتجات</button>
+</div>
+<div id="searchSummary" class="search-summary"></div>
+<div id="globalSearchResults"><div class="search-empty">اكتب ما تبحث عنه ثم اضغط «بحث».</div></div>
+</section>
+
+<section id="deliveryPage" class="page">
+<div class="pagehead"><button class="back" data-home>→</button><h2>🛵 التوصيل</h2></div>
+
+<div class="delivery-tabs">
+<button id="deliveryCustomerTab" class="delivery-tab active">أحتاج توصيل</button>
+<button id="deliveryDriverTab" class="delivery-tab">سائق توصيل</button>
+</div>
+
+<div id="deliveryCustomerWrap">
+<div class="hint">أرسل طلب التوصيل. السائقون المناسبون يرون تفاصيل المشوار فقط، ولا يظهر رقمك إلا للسائق الذي تختاره.</div>
+<div class="card">
+<div class="field"><label>مكان الاستلام *</label><input id="delPickup" placeholder="مثال: ديم المدينة"></div>
+<div class="field"><label>مكان التسليم *</label><input id="delDropoff" placeholder="مثال: السوق الكبير"></div>
+<div class="field"><label>ماذا تريد توصيله؟ *</label><textarea id="delItem" placeholder="مثال: طرد صغير أو مشتريات من متجر"></textarea></div>
+<div class="row delivery-form-row">
+<div class="field"><label>موعد التوصيل</label><input id="delWhen" type="datetime-local"></div>
+<div class="field"><label>رقم التواصل *</label><input id="delContact" inputmode="tel" placeholder="0912345678"></div>
+</div>
+<div class="row delivery-form-row">
+<div class="field"><label>طريقة السعر</label><select id="delPriceMode"><option value="agreement">حسب الاتفاق</option><option value="fixed">سعر مقترح</option><option value="unspecified">غير محدد</option></select></div>
+<div class="field" id="delPriceWrap" style="display:none"><label>السعر المقترح</label><input id="delPrice" type="number" min="0" inputmode="decimal" placeholder="اختياري"></div>
+</div>
+<button id="sendDeliveryRequest" class="primary" style="width:100%">إرسال طلب التوصيل</button>
+<div id="deliveryRequestMsg" class="msg"></div>
+</div>
+
+<div class="section-title"><h3>طلباتي وعروض السائقين</h3><button id="refreshMyDelivery" class="secondary" style="padding:7px 10px">تحديث</button></div>
+<div id="myDeliveryRequests"><div class="empty">سجّل الدخول لمشاهدة طلباتك.</div></div>
+</div>
+
+<div id="deliveryDriverWrap" style="display:none">
+<div id="driverRegisterWrap">
+<div class="hint">سجّل كسائق توصيل. أول تسجيل يبدأ فترة التجربة المجانية المقررة في النظام.</div>
+<div class="card">
+<div class="field"><label>اسم السائق *</label><input id="driverName" placeholder="مثال: محمد أحمد"></div>
+<div class="row delivery-form-row">
+<div class="field"><label>رقم الهاتف *</label><input id="driverPhone" inputmode="tel" placeholder="0912345678"></div>
+<div class="field"><label>واتساب</label><input id="driverWhats" inputmode="tel" placeholder="إذا كان مختلفًا"></div>
+</div>
+<div class="field"><label>منطقة العمل *</label><input id="driverArea" placeholder="مثال: بورتسودان"></div>
+<div class="vehicle-grid">
+<div class="field"><label>نوع المركبة *</label><select id="driverVehicle"><option value="">جاري التحميل…</option></select></div>
+<div class="field"><label>رقم المركبة</label><input id="driverVehicleNo" placeholder="اختياري"></div>
+</div>
+<div class="field"><label>ملاحظة عن السعر</label><input id="driverPricing" placeholder="مثال: حسب المسافة والاتفاق"></div>
+<button id="registerDriver" class="primary" style="width:100%">تسجيل كسائق توصيل</button>
+<div id="driverRegisterMsg" class="msg"></div>
+</div>
+</div>
+
+<div id="driverDashboard" style="display:none">
+<div id="driverSummary" class="driver-box"></div>
+<div class="section-title"><h3>طلبات توصيل متاحة</h3><button id="refreshDeliveryMarket" class="secondary" style="padding:7px 10px">تحديث</button></div>
+<div class="driver-market-note">🔒 لا نعرض رقم العميل هنا. يظهر رقم التواصل فقط بعد أن يختارك العميل.</div>
+<div id="deliveryMarketplace"><div class="empty">جاري تحميل الطلبات…</div></div>
+<div class="section-title"><h3>مشاويري المختارة</h3><button id="refreshDriverJobs" class="secondary" style="padding:7px 10px">تحديث</button></div>
+<div id="driverJobs"><div class="empty">لا توجد مشاوير مختارة حاليًا.</div></div>
+</div>
+</div>
+</section>
+
+<div id="deliveryOfferModal" class="modal">
+<div class="modalbox">
+<h3>🛵 إرسال عرض توصيل</h3>
+<div class="hint">اكتب سعرك المقترح ورسالة قصيرة للعميل. رقم العميل لا يظهر قبل اختيارك.</div>
+<div class="field"><label>السعر المقترح</label><input id="driverOfferPrice" type="number" min="0" inputmode="decimal" placeholder="اختياري"></div>
+<div class="field"><label>رسالة للعميل</label><textarea id="driverOfferMessage" placeholder="مثال: متاح الآن ويمكنني الوصول خلال 15 دقيقة"></textarea></div>
+<div class="offer-modal-actions">
+<button id="sendDriverOffer" class="primary">إرسال العرض</button>
+<button id="closeDeliveryOfferModal" class="secondary">إغلاق</button>
+</div>
+<div id="driverOfferMsg" class="msg"></div>
+</div>
+</div>
+
+<section id="offerPage" class="page">
+<div class="pagehead"><button class="back" data-home>→</button><h2>🛠️ أقدم خدمة</h2></div>
+<div id="providerExisting" class="provider-box" style="display:none"><b id="providerTitle"></b><small id="providerInfo"></small></div>
+<div id="matchedSection" style="display:none">
+<div class="section-title"><h3>طلبات مناسبة لي</h3><button id="refreshMatches" class="secondary" style="padding:7px 10px">تحديث</button></div>
+<div class="hint">نعرض لك الطلبات المطابقة لخدمتك ومدينة عملك فقط، دون بيانات العميل الخاصة.</div>
+<div id="matchedRequests"><div class="empty">جاري تحميل الطلبات…</div></div>
+</div>
+<div id="providerFormWrap" style="display:none">
+<div class="hint">إذا لم تكن مسجلًا كمقدم خدمة، سجّل خدمتك هنا.</div>
+<div class="card">
+<div class="field"><label>اسم مقدم الخدمة *</label><input id="proName" placeholder="مثال: محمد أحمد"></div>
+<div class="field"><label>نوع الخدمة *</label><select id="proCat"><option value="">جاري التحميل…</option></select></div>
+<div class="field"><label>وصف الخدمة</label><textarea id="proDesc" placeholder="اكتب خبرتك والخدمات التي تقدمها"></textarea></div>
+<div class="field"><label>رقم الهاتف *</label><input id="proPhone" inputmode="tel" placeholder="مثال: 0912345678"></div>
+<div class="field"><label>واتساب</label><input id="proWhats" inputmode="tel" placeholder="إذا كان مختلفًا عن رقم الهاتف"></div>
+<div class="field"><label>الحي أو مكان العمل *</label><input id="proLoc" placeholder="مثال: بورتسودان - ديم المدينة"></div>
+<div class="row"><div class="field"><label>طريقة السعر</label><select id="proPriceMode"><option value="agreement">حسب الاتفاق</option><option value="negotiable">قابل للتفاوض</option><option value="starting_from">يبدأ من</option><option value="fixed">سعر ثابت</option></select></div><div class="field"><label>السعر</label><input id="proPrice" type="number" min="0" inputmode="numeric" placeholder="اختياري"></div></div>
+<button id="sendPro" class="primary" style="width:100%">تسجيل خدمتي</button><div id="proMsg" class="msg"></div>
+</div>
+</div>
+</section>
+</div>
+
+<nav class="bottom">
+<button id="homeNav" class="nav active"><i>🏠</i>الرئيسية</button>
+<button id="searchNav" class="nav"><i>🔎</i>بحث</button>
+<button id="addNav" class="nav"><i>➕</i>إضافة</button>
+<button id="favNav" class="nav"><i>❤️</i>المفضلة</button>
+<button id="accountNav" class="nav"><i>👤</i>حسابي</button>
+</nav>
+
+<div id="authModal" class="modal"><div class="sheet">
+<h3>مرحبًا بك في سندك 💚</h3>
+<div class="tabs"><button id="loginTab" class="tab active">دخول</button><button id="signupTab" class="tab">حساب جديد</button></div>
+<div class="field"><label>البريد الإلكتروني</label><input id="email" type="email"></div>
+<div class="field"><label>كلمة المرور</label><input id="pass" type="password"></div>
+<button id="authSubmit" class="primary" style="width:100%">تسجيل الدخول</button><div id="authMsg" class="msg"></div>
+<button id="closeAuth" class="secondary" style="width:100%;margin-top:8px">إغلاق</button>
+</div></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+const sb=supabase.createClient("https://xcdobqsqfdupovtwamer.supabase.co","sb_publishable_cbFKfqs1Aibfup2Iuh_ltg_nA5NlQNS");
+let mode='login',cityId=null,catsLoaded=false,currentProvider=null;const $=x=>document.getElementById(x);
+function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]))}
+function page(p){$('home').classList.toggle('show',p==='home');$('needPage').classList.toggle('show',p==='need');$('offerPage').classList.toggle('show',p==='offer');$('propertyPage').classList.toggle('show',p==='property');$('productPage').classList.toggle('show',p==='product');$('doctorPage').classList.toggle('show',p==='doctor');$('hospitalPage').classList.toggle('show',p==='hospital');$('pharmacyPage').classList.toggle('show',p==='pharmacy');$('deliveryPage').classList.toggle('show',p==='delivery');$('searchPage').classList.toggle('show',p==='search');$('favoritesPage').classList.toggle('show',p==='favorites');window.scrollTo(0,0)}
+$('needBtn').onclick=()=>{page('need');loadData();loadMyRequests()};$('offerBtn').onclick=()=>{page('offer');loadOfferArea()};$('propertyBtn').onclick=()=>{page('property');showPropertyTab('browse');loadPropertyData();loadProperties()};$('productBtn').onclick=()=>{page('product');showProductTab('browse');loadProductData();loadProducts()};$('doctorBtn').onclick=()=>{page('doctor');showDoctorTab('browse');loadDoctorData();loadDoctors()};$('hospitalBtn').onclick=()=>{page('hospital');showHospitalTab('browse');loadHospitalData();loadHospitals()};$('pharmacyBtn').onclick=()=>{page('pharmacy');showPharmacyTab('browse');loadPharmacies()};$('deliveryBtn').onclick=()=>{page('delivery');showDeliveryTab('customer');loadDeliveryVehicleTypes();loadMyDeliveryRequests()};$('addNav').onclick=()=>{page('need');loadData();loadMyRequests()};$('homeNav').onclick=()=>page('home');$('searchNav').onclick=()=>openGlobalSearch($('homeSearchInput').value);$('favNav').onclick=()=>{page('favorites');loadFavoritesPage()};
+document.querySelectorAll('[data-home]').forEach(b=>b.onclick=()=>page('home'));document.querySelectorAll('[data-soon]').forEach(x=>x.onclick=()=>alert(x.dataset.soon+' قيد التجهيز'));
+
+
+
+
+function favButton(type,id){
+ return `<button class="fav-btn" data-fav-type="${esc(type)}" data-fav-id="${esc(id)}" aria-label="إضافة للمفضلة">🤍</button>`;
+}
+async function bindFavoriteButtons(root=document){
+ const buttons=[...root.querySelectorAll('.fav-btn[data-fav-type][data-fav-id]')];
+ if(!buttons.length)return;
+ const {data:{user}}=await sb.auth.getUser();
+ if(!user){
+   buttons.forEach(b=>{
+     b.classList.remove('saved'); b.textContent='🤍';
+     b.onclick=()=>openAuth();
+   });
+   return;
+ }
+ const r=await sb.from('favorites').select('target_type,target_id').eq('user_id',user.id);
+ const saved=new Set((r.data||[]).map(x=>`${x.target_type}:${x.target_id}`));
+ buttons.forEach(b=>{
+   const key=`${b.dataset.favType}:${b.dataset.favId}`;
+   const on=saved.has(key);
+   b.classList.toggle('saved',on); b.textContent=on?'❤️':'🤍';
+   b.onclick=async()=>{
+     b.disabled=true;
+     const type=b.dataset.favType,id=b.dataset.favId;
+     const now=b.classList.contains('saved');
+     let res;
+     if(now){
+       res=await sb.from('favorites').delete().eq('user_id',user.id).eq('target_type',type).eq('target_id',id);
+     }else{
+       res=await sb.from('favorites').insert({user_id:user.id,target_type:type,target_id:id});
+     }
+     b.disabled=false;
+     if(res.error){alert('تعذر تحديث المفضلة: '+res.error.message);return}
+     b.classList.toggle('saved',!now); b.textContent=!now?'❤️':'🤍';
+     if($('favoritesPage').classList.contains('show') && now) loadFavoritesPage();
+   };
+ });
+}
+
+async function loadFavoritesPage(){
+ const box=$('favoritesList');
+ box.innerHTML='<div class="empty">جاري تحميل المفضلة…</div>';
+ const {data:{user}}=await sb.auth.getUser();
+ if(!user){
+   box.innerHTML='<div class="notice">سجّل الدخول أولًا حتى تحفظ مفضلتك وتجدها هنا.</div>';
+   openAuth();
+   return;
+ }
+ const fr=await sb.from('favorites').select('id,target_type,target_id,created_at').eq('user_id',user.id).order('created_at',{ascending:false});
+ if(fr.error){box.innerHTML='<div class="notice">تعذر تحميل المفضلة الآن.</div>';return}
+ const favs=fr.data||[];
+ if(!favs.length){box.innerHTML='<div class="empty">لا توجد عناصر محفوظة بعد. اضغط 🤍 على أي عنصر لإضافته هنا.</div>';return}
+
+ const idsBy={};
+ favs.forEach(f=>(idsBy[f.target_type]??=[]).push(f.target_id));
+ const dataMap=new Map();
+
+ if(idsBy.provider?.length){
+   const r=await sb.from('provider_profiles').select('id,display_name,description,address_text,phone,whatsapp,provider_categories(categories(name_ar))').in('id',idsBy.provider);
+   (r.data||[]).forEach(x=>dataMap.set(`provider:${x.id}`,{
+     type:'provider',id:x.id,kind:'خدمة',icon:'🛠️',title:x.display_name||'مقدم خدمة',
+     meta:`${(x.provider_categories||[]).map(v=>v.categories?.name_ar).filter(Boolean).join('، ')}${x.address_text?' • 📍 '+x.address_text:''}`,
+     phone:x.phone,wa:x.whatsapp
+   }));
+ }
+ if(idsBy.doctor?.length){
+   const r=await sb.from('doctor_profiles').select('provider_id,clinic_or_hospital_name,receptionist_phone,receptionist_whatsapp,provider_profiles(display_name,address_text),categories!doctor_profiles_specialty_category_id_fkey(name_ar)').in('provider_id',idsBy.doctor);
+   (r.data||[]).forEach(x=>dataMap.set(`doctor:${x.provider_id}`,{
+     type:'doctor',id:x.provider_id,kind:'طبيب',icon:'👨‍⚕️',title:x.provider_profiles?.display_name||'طبيب',
+     meta:`${x.categories?.name_ar||''}${x.clinic_or_hospital_name?' • '+x.clinic_or_hospital_name:''}${x.provider_profiles?.address_text?' • 📍 '+x.provider_profiles.address_text:''}`,
+     phone:x.receptionist_phone,wa:x.receptionist_whatsapp
+   }));
+ }
+ if(idsBy.hospital?.length){
+   const r=await sb.from('hospital_profiles').select('provider_id,reception_phone,reception_whatsapp,provider_profiles(display_name,address_text)').in('provider_id',idsBy.hospital);
+   (r.data||[]).forEach(x=>dataMap.set(`hospital:${x.provider_id}`,{
+     type:'hospital',id:x.provider_id,kind:'مستشفى',icon:'🏥',title:x.provider_profiles?.display_name||'مستشفى',
+     meta:`📍 ${x.provider_profiles?.address_text||'بورتسودان'}`,phone:x.reception_phone,wa:x.reception_whatsapp
+   }));
+ }
+ if(idsBy.pharmacy?.length){
+   const r=await sb.from('pharmacy_profiles').select('provider_id,manager_phone,manager_whatsapp,delivery_available,provider_profiles(display_name,address_text)').in('provider_id',idsBy.pharmacy);
+   (r.data||[]).forEach(x=>dataMap.set(`pharmacy:${x.provider_id}`,{
+     type:'pharmacy',id:x.provider_id,kind:'صيدلية',icon:'💊',title:x.provider_profiles?.display_name||'صيدلية',
+     meta:`📍 ${x.provider_profiles?.address_text||'بورتسودان'}${x.delivery_available?' • 🛵 التوصيل متاح':''}`,phone:x.manager_phone,wa:x.manager_whatsapp
+   }));
+ }
+ if(idsBy.property?.length){
+   const r=await sb.from('properties').select('id,title,address_text,price,contact_phone,whatsapp,categories(name_ar)').in('id',idsBy.property);
+   (r.data||[]).forEach(x=>dataMap.set(`property:${x.id}`,{
+     type:'property',id:x.id,kind:'عقار',icon:'🏠',title:x.title,
+     meta:`${x.categories?.name_ar||'عقار'}${x.address_text?' • 📍 '+x.address_text:''}${x.price?' • '+money(x.price):''}`,phone:x.contact_phone,wa:x.whatsapp
+   }));
+ }
+ if(idsBy.product?.length){
+   const r=await sb.from('products').select('id,title,price,contact_phone,whatsapp,categories(name_ar)').in('id',idsBy.product);
+   (r.data||[]).forEach(x=>dataMap.set(`product:${x.id}`,{
+     type:'product',id:x.id,kind:'منتج',icon:'🛒',title:x.title,
+     meta:`${x.categories?.name_ar||'منتج'}${x.price?' • '+money(x.price):''}`,phone:x.contact_phone,wa:x.whatsapp
+   }));
+ }
+
+ const rows=favs.map(f=>dataMap.get(`${f.target_type}:${f.target_id}`)).filter(Boolean);
+ if(!rows.length){box.innerHTML='<div class="empty">العناصر المحفوظة لم تعد منشورة أو متاحة.</div>';return}
+ box.innerHTML=rows.map(x=>{
+   const p=normalizePhone(x.phone),w=sudanWa(x.wa||x.phone);
+   return `<div class="fav-page-card">
+    <div class="fav-page-head">
+      <div><div class="fav-page-title">${esc(x.icon)} ${esc(x.title)}</div><span class="fav-page-kind">${esc(x.kind)}</span></div>
+      ${favButton(x.type,x.id)}
+    </div>
+    ${x.meta?`<div class="fav-page-meta">${esc(x.meta)}</div>`:''}
+    ${(p||w)?`<div class="fav-page-actions">${p?`<a class="search-call" href="tel:${esc(p)}">📞 اتصال</a>`:'<span></span>'}${w?`<a class="search-wa" target="_blank" href="https://wa.me/${esc(w)}">💬 واتساب</a>`:'<span></span>'}</div>`:''}
+   </div>`;
+ }).join('');
+ await bindFavoriteButtons(box);
+}
+$('refreshFavorites').onclick=loadFavoritesPage;
+
+
+function searchNorm(v){
+ return String(v??'').toLowerCase()
+   .replace(/[\u064B-\u065F\u0670\u0640]/g,'')
+   .replace(/[أإآٱ]/g,'ا').replace(/ى/g,'ي').replace(/ؤ/g,'و').replace(/ئ/g,'ي').replace(/ة/g,'ه')
+   .replace(/\s+/g,' ').trim();
+}
+function searchMatch(q,...parts){
+ const words=searchNorm(q).split(' ').filter(Boolean);
+ const hay=searchNorm(parts.flat(Infinity).filter(Boolean).join(' '));
+ return words.every(w=>{
+   const variants=[w];
+   if(w.startsWith('ال') && w.length>3) variants.push(w.slice(2));
+   return variants.some(v=>hay.includes(v));
+ });
+}
+function resultContact(phone,wa){
+ const p=normalizePhone(phone),w=sudanWa(wa||phone);
+ if(!p&&!w)return '';
+ return `<div class="search-actions">${p?`<a class="search-call" href="tel:${esc(p)}">📞 اتصال</a>`:'<span></span>'}${w?`<a class="search-wa" target="_blank" href="https://wa.me/${esc(w)}">💬 واتساب</a>`:'<span></span>'}</div>`;
+}
+let globalSearchItems=[],globalSearchQuery='',globalSearchFilter='all';
+function renderGlobalResults(items,q){
+ globalSearchItems=items||[];
+ globalSearchQuery=q||globalSearchQuery||'';
+ const box=$('globalSearchResults');
+ const filtered=globalSearchFilter==='all'?globalSearchItems:globalSearchItems.filter(x=>x.type===globalSearchFilter);
+ const labels={all:'الكل',service:'خدمات',doctor:'أطباء',hospital:'مستشفيات',pharmacy:'صيدليات',property:'عقارات',product:'منتجات'};
+ $('searchSummary').textContent=filtered.length
+   ?`تم العثور على ${filtered.length} نتيجة في ${labels[globalSearchFilter]} لـ «${globalSearchQuery}»`
+   :`لا توجد نتائج في ${labels[globalSearchFilter]} لـ «${globalSearchQuery}»`;
+ if(!filtered.length){
+   box.innerHTML='<div class="search-empty">لا توجد نتائج ضمن هذا النوع. جرّب فلترًا آخر أو كلمة بحث مختلفة.</div>';
+   return;
+ }
+ const order={service:1,doctor:2,hospital:3,pharmacy:4,property:5,product:6};
+ filtered.sort((a,b)=>(order[a.type]||99)-(order[b.type]||99));
+ box.innerHTML=filtered.slice(0,60).map(x=>`<div class="search-result">
+   <div class="search-result-top"><div class="search-result-title">${esc(x.icon||'🔎')} ${esc(x.title)}</div><span class="search-kind">${esc(x.kind)}</span></div>
+   ${x.meta?`<div class="search-meta">${x.meta}</div>`:''}
+   ${x.price?`<div class="search-price">${esc(x.price)}</div>`:''}
+   ${x.desc?`<div class="search-desc">${esc(x.desc)}</div>`:''}
+   ${x.targetType&&x.targetId?`<div class="fav-inline">${favButton(x.targetType,x.targetId)}</div>`:''}
+   ${resultContact(x.phone,x.wa)}
+ </div>`).join('');
+ bindFavoriteButtons(box);
+}
+document.querySelectorAll('.search-filter').forEach(btn=>{
+ btn.onclick=()=>{
+   globalSearchFilter=btn.dataset.filter;
+   document.querySelectorAll('.search-filter').forEach(x=>x.classList.toggle('active',x===btn));
+   renderGlobalResults(globalSearchItems,globalSearchQuery);
+ };
+});
+async function openGlobalSearch(initial=''){
+ page('search');
+ const q=String(initial||'').trim();
+ $('globalSearchInput').value=q;
+ if(q) await runGlobalSearch();
+ else {$('searchSummary').textContent='';$('globalSearchResults').innerHTML='<div class="search-empty">اكتب ما تبحث عنه ثم اضغط «بحث».</div>'}
+}
+async function runGlobalSearch(){
+ const q=$('globalSearchInput').value.trim();
+ $('homeSearchInput').value=q;
+ globalSearchFilter='all';
+ document.querySelectorAll('.search-filter').forEach(x=>x.classList.toggle('active',x.dataset.filter==='all'));
+ const box=$('globalSearchResults');
+ if(!q){$('searchSummary').textContent='';box.innerHTML='<div class="search-empty">اكتب كلمة للبحث.</div>';return}
+ box.innerHTML='<div class="search-empty">جاري البحث…</div>';$('searchSummary').textContent='';
+
+ const [svc,docs,hosps,pharms,props,prods]=await Promise.all([
+   sb.from('provider_profiles').select('id,display_name,description,address_text,phone,whatsapp,price_mode,price_amount,verification_status,provider_categories(category_id,categories(name_ar))').eq('provider_type','professional').eq('account_status','active').eq('is_published',true).limit(100),
+   sb.from('doctor_profiles').select('provider_id,clinic_or_hospital_name,receptionist_name,receptionist_phone,receptionist_whatsapp,consultation_price,provider_profiles(display_name,address_text,verification_status,account_status,is_published),categories!doctor_profiles_specialty_category_id_fkey(name_ar)').limit(100),
+   sb.from('hospital_profiles').select('provider_id,reception_name,reception_phone,reception_whatsapp,room_availability_status,provider_profiles(display_name,address_text,verification_status,account_status,is_published)').limit(100),
+   sb.from('pharmacy_profiles').select('provider_id,manager_name,manager_phone,manager_whatsapp,delivery_available,provider_profiles(display_name,address_text,verification_status,account_status,is_published)').limit(100),
+   sb.from('properties').select('id,title,transaction_type,address_text,price,description,contact_name,contact_phone,whatsapp,categories(name_ar)').eq('status','published').order('created_at',{ascending:false}).limit(100),
+   sb.from('products').select('id,title,item_condition,price,description,contact_phone,whatsapp,categories(name_ar)').eq('status','published').order('created_at',{ascending:false}).limit(100)
+ ]);
+
+ const items=[];
+
+ (svc.data||[]).forEach(p=>{
+   const cats=(p.provider_categories||[]).map(v=>v.categories?.name_ar).filter(Boolean);
+   if(searchMatch(q,p.display_name,p.description,p.address_text,cats,'خدمة','خدمات')){
+     items.push({type:'service',targetType:'provider',targetId:p.id,kind:'خدمة',icon:'🛠️',title:p.display_name||'مقدم خدمة',
+       meta:`${cats.length?'الخدمة: '+esc(cats.join('، '))+' • ':''}📍 ${esc(p.address_text||'بورتسودان')}`,
+       price:p.price_amount?money(p.price_amount):'',desc:p.description||'',phone:p.phone,wa:p.whatsapp});
+   }
+ });
+
+ (docs.data||[]).filter(d=>d.provider_profiles?.account_status==='active'&&d.provider_profiles?.is_published!==false).forEach(d=>{
+   const p=d.provider_profiles||{},sp=d.categories?.name_ar||'';
+   if(searchMatch(q,p.display_name,sp,d.clinic_or_hospital_name,p.address_text,'طبيب','دكتور','اطباء')){
+     items.push({type:'doctor',targetType:'doctor',targetId:d.provider_id,kind:'طبيب',icon:'👨‍⚕️',title:p.display_name||'طبيب',
+       meta:`${sp?esc(sp)+' • ':''}${d.clinic_or_hospital_name?esc(d.clinic_or_hospital_name)+' • ':''}📍 ${esc(p.address_text||'بورتسودان')}`,
+       price:d.consultation_price?`سعر الكشف: ${money(d.consultation_price)}`:'',phone:d.receptionist_phone,wa:d.receptionist_whatsapp});
+   }
+ });
+
+ let deptBy={};
+ const hospRows=(hosps.data||[]).filter(h=>h.provider_profiles?.account_status==='active'&&h.provider_profiles?.is_published!==false);
+ if(hospRows.length){
+   const dr=await sb.from('hospital_departments').select('hospital_provider_id,categories(name_ar)').in('hospital_provider_id',hospRows.map(h=>h.provider_id));
+   (dr.data||[]).forEach(d=>(deptBy[d.hospital_provider_id]??=[]).push(d.categories?.name_ar));
+ }
+ hospRows.forEach(h=>{
+   const p=h.provider_profiles||{},deps=(deptBy[h.provider_id]||[]).filter(Boolean);
+   if(searchMatch(q,p.display_name,p.address_text,h.reception_name,deps,'مستشفى','مستشفيات')){
+     const state={available:'الغرف متاحة',call_to_confirm:'اتصل لتأكيد الغرف',unavailable:'الغرف غير متاحة'}[h.room_availability_status]||'';
+     items.push({type:'hospital',targetType:'hospital',targetId:h.provider_id,kind:'مستشفى',icon:'🏥',title:p.display_name||'مستشفى',
+       meta:`📍 ${esc(p.address_text||'بورتسودان')}${deps.length?' • '+esc(deps.join('، ')):''}${state?' • '+esc(state):''}`,
+       phone:h.reception_phone,wa:h.reception_whatsapp});
+   }
+ });
+
+ (pharms.data||[]).filter(x=>x.provider_profiles?.account_status==='active'&&x.provider_profiles?.is_published!==false).forEach(x=>{
+   const p=x.provider_profiles||{};
+   if(searchMatch(q,p.display_name,p.address_text,x.manager_name,'صيدلية','صيدليات','دواء')){
+     items.push({type:'pharmacy',targetType:'pharmacy',targetId:x.provider_id,kind:'صيدلية',icon:'💊',title:p.display_name||'صيدلية',
+       meta:`📍 ${esc(p.address_text||'بورتسودان')}${x.delivery_available?' • 🛵 التوصيل متاح':''}`,
+       phone:x.manager_phone,wa:x.manager_whatsapp});
+   }
+ });
+
+ (props.data||[]).forEach(p=>{
+   const cat=p.categories?.name_ar||'',tx=p.transaction_type==='rent'?'إيجار':p.transaction_type==='sale'?'بيع':p.transaction_type||'';
+   if(searchMatch(q,p.title,p.description,p.address_text,cat,tx,'عقار','عقارات','منزل','شقة')){
+     items.push({type:'property',targetType:'property',targetId:p.id,kind:'عقار',icon:'🏠',title:p.title,
+       meta:`${cat?esc(cat)+' • ':''}${tx?esc(tx)+' • ':''}📍 ${esc(p.address_text||'بورتسودان')}`,
+       price:p.price?money(p.price):'السعر حسب الاتفاق',desc:p.description||'',phone:p.contact_phone,wa:p.whatsapp});
+   }
+ });
+
+ (prods.data||[]).forEach(p=>{
+   const cat=p.categories?.name_ar||'',cond=p.item_condition==='used'?'مستعمل':'جديد';
+   if(searchMatch(q,p.title,p.description,cat,cond,'منتج','منتجات','بيع','شراء')){
+     items.push({type:'product',targetType:'product',targetId:p.id,kind:'منتج',icon:'🛒',title:p.title,
+       meta:`${cat?esc(cat)+' • ':''}${esc(cond)}`,price:p.price?money(p.price):'السعر حسب الاتفاق',
+       desc:p.description||'',phone:p.contact_phone,wa:p.whatsapp});
+   }
+ });
+
+ const errors=[svc,docs,hosps,pharms,props,prods].filter(r=>r.error);
+ if(errors.length===6){$('searchSummary').textContent='';box.innerHTML='<div class="notice">تعذر إجراء البحث الآن. حاول مرة أخرى.</div>';return}
+ renderGlobalResults(items,q);
+}
+$('globalSearchGo').onclick=runGlobalSearch;
+$('globalSearchInput').addEventListener('keydown',e=>{if(e.key==='Enter')runGlobalSearch()});
+$('homeSearchGo').onclick=()=>openGlobalSearch($('homeSearchInput').value);
+$('homeSearchInput').addEventListener('keydown',e=>{if(e.key==='Enter')openGlobalSearch(e.target.value)});
+
+
+let propertyCatsLoaded=false,realEstateProvider=null;
+
+function showPropertyTab(tab){
+ const browse=tab==='browse';
+ $('propertyBrowseWrap').style.display=browse?'block':'none';
+ $('propertyAddWrap').style.display=browse?'none':'block';
+ $('browsePropertyTab').classList.toggle('active',browse);
+ $('addPropertyTab').classList.toggle('active',!browse);
+ if(!browse) loadPropertyData();
+}
+$('browsePropertyTab').onclick=()=>{showPropertyTab('browse');loadProperties()};
+$('addPropertyTab').onclick=()=>showPropertyTab('add');
+$('refreshProperties').onclick=loadProperties;
+
+function normalizePhone(raw){return String(raw||'').replace(/[^\d+]/g,'')}
+function sudanWa(raw){
+ let d=String(raw||'').replace(/\D/g,'');
+ if(d.startsWith('00249'))d=d.slice(2);
+ if(d.startsWith('0'))d='249'+d.slice(1);
+ if(!d.startsWith('249') && d.length===9)d='249'+d;
+ return d;
+}
+function money(n){
+ if(n===null||n===undefined||n==='') return 'السعر حسب الاتفاق';
+ return Number(n).toLocaleString('ar-EG')+' ج.س';
+}
+
+async function loadPropertyData(){
+ if(!cityId) await loadData();
+ if(propertyCatsLoaded) return;
+ const r=await sb.from('categories').select('id,name_ar').eq('section','property').eq('is_active',true).order('sort_order');
+ if(r.error){$('propCat').innerHTML='<option value="">تعذر التحميل</option>';return}
+ $('propCat').innerHTML='<option value="">اختر نوع العقار</option>'+r.data.map(x=>`<option value="${x.id}">${esc(x.name_ar)}</option>`).join('');
+ propertyCatsLoaded=true;
+}
+
+async function loadProperties(){
+ const box=$('propertyList'); box.innerHTML='<div class="empty">جاري تحميل العقارات…</div>';
+ const r=await sb.from('properties')
+   .select('id,title,transaction_type,address_text,area_sqm,rooms_count,price,description,contact_name,contact_phone,whatsapp,created_at,categories(name_ar),property_media(storage_path,is_primary,sort_order)')
+   .eq('status','published').order('created_at',{ascending:false}).limit(40);
+ if(r.error){box.innerHTML='<div class="notice">تعذر تحميل العقارات الآن.</div>';return}
+ if(!r.data||!r.data.length){box.innerHTML='<div class="empty">لا توجد عقارات منشورة حتى الآن. يمكنك إضافة أول عقار.</div>';return}
+ box.innerHTML=r.data.map(p=>{
+   const media=(p.property_media||[]).sort((a,b)=>(b.is_primary?1:0)-(a.is_primary?1:0)||(a.sort_order||0)-(b.sort_order||0))[0];
+   let img='';
+   if(media?.storage_path){
+     const pub=sb.storage.from('property-media').getPublicUrl(media.storage_path).data.publicUrl;
+     img=`<img class="property-img" src="${esc(pub)}" alt="${esc(p.title)}">`;
+   } else img='<div class="property-img-placeholder">🏠</div>';
+   const phone=normalizePhone(p.contact_phone), wa=sudanWa(p.whatsapp||p.contact_phone);
+   const trans=p.transaction_type==='rent'?'للإيجار':'للبيع';
+   return `<div class="property-card">${img}<div class="property-body">
+    <div class="property-title-row"><h4>${esc(p.title)}</h4><span class="property-price">${esc(money(p.price))}</span></div>
+    <div class="meta"><span class="chip">🏷️ ${esc(p.categories?.name_ar||'عقار')}</span><span class="chip">${trans}</span><span class="chip">📍 ${esc(p.address_text||'بورتسودان')}</span>${p.area_sqm!==null?`<span class="chip">📐 ${esc(p.area_sqm)} م²</span>`:''}${p.rooms_count!==null?`<span class="chip">🚪 ${esc(p.rooms_count)} غرف</span>`:''}</div>
+    ${p.description?`<div class="property-desc">${esc(p.description)}</div>`:''}
+    ${p.contact_name?`<small>المعلن: ${esc(p.contact_name)}</small>`:''}
+    <div class="property-actions">${phone?`<a class="property-contact property-call" href="tel:${esc(phone)}">📞 اتصال</a>`:'<span></span>'}${wa?`<a class="property-contact property-wa" target="_blank" href="https://wa.me/${esc(wa)}">💬 واتساب</a>`:'<span></span>'}</div>
+   </div></div>`;
+ }).join('');
+}
+
+async function getOrCreateRealEstateProvider(user,name,phone,whatsapp,address){
+ let r=await sb.from('provider_profiles').select('id,display_name').eq('owner_user_id',user.id).eq('provider_type','real_estate').eq('account_status','active').order('created_at',{ascending:false}).limit(1).maybeSingle();
+ if(r.data){realEstateProvider=r.data;return r.data}
+ const ins=await sb.from('provider_profiles').insert({
+   owner_user_id:user.id,provider_type:'real_estate',display_name:name||'معلن عقارات',
+   phone:phone||null,whatsapp:whatsapp||phone||null,city_id:cityId,address_text:address||'بورتسودان',
+   price_mode:'agreement',is_available:true,is_published:true
+ }).select('id,display_name').single();
+ if(ins.error) throw ins.error;
+ realEstateProvider=ins.data;return ins.data;
+}
+
+$('propImage').onchange=()=>{
+ const f=$('propImage').files?.[0],img=$('propImagePreview');
+ if(!f){img.style.display='none';img.src='';return}
+ img.src=URL.createObjectURL(f);img.style.display='block';
+};
+
+$('sendProperty').onclick=async()=>{
+ const {data:{user}}=await sb.auth.getUser();
+ if(!user){$('propMsg').className='msg err';$('propMsg').textContent='سجّل الدخول أولًا لنشر عقار';openAuth();return}
+ await loadPropertyData();
+ const title=$('propTitle').value.trim(),category_id=$('propCat').value,address=$('propAddress').value.trim(),name=$('propContactName').value.trim(),phone=$('propPhone').value.trim();
+ if(!title||!category_id||!address||!name||!phone){$('propMsg').className='msg err';$('propMsg').textContent='أكملي عنوان الإعلان، نوع العقار، المكان، اسم المعلن ورقم الهاتف';return}
+ const area=$('propArea').value.trim(),rooms=$('propRooms').value.trim(),price=$('propPrice').value.trim(),whatsapp=$('propWhats').value.trim()||phone;
+ $('sendProperty').disabled=true;$('sendProperty').textContent='جاري النشر…';$('propMsg').textContent='';
+ try{
+   const provider=await getOrCreateRealEstateProvider(user,name,phone,whatsapp,address);
+   const ins=await sb.from('properties').insert({
+     provider_id:provider.id,title,category_id,transaction_type:$('propTransaction').value,
+     city_id:cityId,address_text:address,area_sqm:area?Number(area):null,rooms_count:rooms?Number(rooms):null,
+     price:price?Number(price):null,description:$('propDesc').value.trim()||null,
+     contact_name:name,contact_phone:phone,whatsapp,status:'published'
+   }).select('id').single();
+   if(ins.error) throw ins.error;
+
+   const file=$('propImage').files?.[0];
+   if(file){
+     const safe=(file.name||'property.jpg').replace(/[^a-zA-Z0-9._-]/g,'_');
+     const path=`${user.id}/${ins.data.id}/${Date.now()}-${safe}`;
+     const up=await sb.storage.from('property-media').upload(path,file,{cacheControl:'3600',upsert:false});
+     if(!up.error){
+       await sb.from('property_media').insert({property_id:ins.data.id,storage_path:path,is_primary:true,sort_order:0});
+     }
+   }
+
+   $('propMsg').className='msg ok';$('propMsg').textContent='✅ تم نشر العقار بنجاح';
+   ['propTitle','propAddress','propArea','propRooms','propPrice','propDesc','propContactName','propPhone','propWhats'].forEach(id=>$(id).value='');
+   $('propCat').value='';$('propTransaction').value='sale';$('propImage').value='';$('propImagePreview').style.display='none';
+   showPropertyTab('browse');await loadProperties();
+ }catch(e){
+   $('propMsg').className='msg err';$('propMsg').textContent='تعذر نشر العقار: '+(e.message||'خطأ غير معروف');
+ }finally{
+   $('sendProperty').disabled=false;$('sendProperty').textContent='نشر العقار';
+ }
+};
+
+
+
+let productCatsLoaded=false,sellerProvider=null;
+
+function showProductTab(tab){
+ const browse=tab==='browse';
+ $('productBrowseWrap').style.display=browse?'block':'none';
+ $('productAddWrap').style.display=browse?'none':'block';
+ $('browseProductTab').classList.toggle('active',browse);
+ $('addProductTab').classList.toggle('active',!browse);
+ if(!browse) loadProductData();
+}
+$('browseProductTab').onclick=()=>{showProductTab('browse');loadProducts()};
+$('addProductTab').onclick=()=>showProductTab('add');
+$('refreshProducts').onclick=loadProducts;
+
+async function loadProductData(){
+ if(!cityId) await loadData();
+ if(productCatsLoaded) return;
+ const r=await sb.from('categories').select('id,name_ar').eq('section','product').eq('is_active',true).order('sort_order');
+ if(r.error){$('prodCat').innerHTML='<option value="">تعذر التحميل</option>';return}
+ $('prodCat').innerHTML='<option value="">اختر الفئة</option>'+r.data.map(x=>`<option value="${x.id}">${esc(x.name_ar)}</option>`).join('');
+ productCatsLoaded=true;
+}
+
+async function loadProducts(){
+ const box=$('productList');box.innerHTML='<div class="empty">جاري تحميل المنتجات…</div>';
+ const r=await sb.from('products')
+   .select('id,title,item_condition,price,description,contact_phone,whatsapp,created_at,categories(name_ar),product_media(storage_path,is_primary,sort_order)')
+   .eq('status','published').order('created_at',{ascending:false}).limit(50);
+ if(r.error){box.innerHTML='<div class="notice">تعذر تحميل المنتجات الآن.</div>';return}
+ if(!r.data||!r.data.length){box.innerHTML='<div class="empty">لا توجد منتجات منشورة حتى الآن. يمكنك إضافة أول منتج.</div>';return}
+ box.innerHTML=r.data.map(p=>{
+   const media=(p.product_media||[]).sort((a,b)=>(b.is_primary?1:0)-(a.is_primary?1:0)||(a.sort_order||0)-(b.sort_order||0))[0];
+   let img='';
+   if(media?.storage_path){
+     const pub=sb.storage.from('product-media').getPublicUrl(media.storage_path).data.publicUrl;
+     img=`<img class="product-img" src="${esc(pub)}" alt="${esc(p.title)}">`;
+   } else img='<div class="product-img-placeholder">🛍️</div>';
+   const phone=normalizePhone(p.contact_phone),wa=sudanWa(p.whatsapp||p.contact_phone);
+   const cond=p.item_condition==='used'?'مستعمل':'جديد';
+   return `<div class="product-card">${img}<div class="product-body">
+     <div class="product-title-row"><h4>${esc(p.title)}</h4><span class="product-price">${esc(money(p.price))}</span></div>
+     <div class="meta"><span class="chip">🏷️ ${esc(p.categories?.name_ar||'منتج')}</span><span class="chip">${cond==='جديد'?'✨':'♻️'} ${cond}</span><span class="chip">📍 بورتسودان</span></div>
+     ${p.description?`<div class="product-desc">${esc(p.description)}</div>`:''}
+     <div class="fav-inline">${favButton('product',p.id)}</div>
+     <div class="product-actions">${phone?`<a class="product-contact product-call" href="tel:${esc(phone)}">📞 اتصال</a>`:'<span></span>'}${wa?`<a class="product-contact product-wa" target="_blank" href="https://wa.me/${esc(wa)}">💬 واتساب</a>`:'<span></span>'}</div>
+   </div></div>`;
+ }).join('');
+ await bindFavoriteButtons(box);
+}
+
+async function getOrCreateSellerProvider(user,phone,whatsapp){
+ let r=await sb.from('provider_profiles').select('id,display_name').eq('owner_user_id',user.id).eq('provider_type','seller').eq('account_status','active').order('created_at',{ascending:false}).limit(1).maybeSingle();
+ if(r.data){sellerProvider=r.data;return r.data}
+ const ins=await sb.from('provider_profiles').insert({
+   owner_user_id:user.id,provider_type:'seller',display_name:'بائع',
+   phone:phone||null,whatsapp:whatsapp||phone||null,city_id:cityId,address_text:'بورتسودان',
+   price_mode:'agreement',is_available:true,is_published:true
+ }).select('id,display_name').single();
+ if(ins.error) throw ins.error;
+ sellerProvider=ins.data;return ins.data;
+}
+
+$('prodImage').onchange=()=>{
+ const f=$('prodImage').files?.[0],img=$('prodImagePreview');
+ if(!f){img.style.display='none';img.src='';return}
+ img.src=URL.createObjectURL(f);img.style.display='block';
+};
+
+$('sendProduct').onclick=async()=>{
+ const {data:{user}}=await sb.auth.getUser();
+ if(!user){$('prodMsg').className='msg err';$('prodMsg').textContent='سجّل الدخول أولًا لنشر منتج';openAuth();return}
+ await loadProductData();
+ const title=$('prodTitle').value.trim(),category_id=$('prodCat').value,phone=$('prodPhone').value.trim();
+ if(!title||!category_id||!phone){$('prodMsg').className='msg err';$('prodMsg').textContent='أكملي اسم المنتج والفئة ورقم الهاتف';return}
+ const price=$('prodPrice').value.trim(),whatsapp=$('prodWhats').value.trim()||phone;
+ $('sendProduct').disabled=true;$('sendProduct').textContent='جاري النشر…';$('prodMsg').textContent='';
+ try{
+   const provider=await getOrCreateSellerProvider(user,phone,whatsapp);
+   const ins=await sb.from('products').insert({
+     provider_id:provider.id,title,category_id,item_condition:$('prodCondition').value,
+     price:price?Number(price):null,description:$('prodDesc').value.trim()||null,
+     city_id:cityId,contact_phone:phone,whatsapp,status:'published'
+   }).select('id').single();
+   if(ins.error) throw ins.error;
+
+   const file=$('prodImage').files?.[0];
+   if(file){
+     const safe=(file.name||'product.jpg').replace(/[^a-zA-Z0-9._-]/g,'_');
+     const path=`${user.id}/${ins.data.id}/${Date.now()}-${safe}`;
+     const up=await sb.storage.from('product-media').upload(path,file,{cacheControl:'3600',upsert:false});
+     if(!up.error){
+       await sb.from('product_media').insert({product_id:ins.data.id,storage_path:path,is_primary:true,sort_order:0});
+     }
+   }
+
+   $('prodMsg').className='msg ok';$('prodMsg').textContent='✅ تم نشر المنتج بنجاح';
+   ['prodTitle','prodPrice','prodDesc','prodPhone','prodWhats'].forEach(id=>$(id).value='');
+   $('prodCat').value='';$('prodCondition').value='new';$('prodImage').value='';$('prodImagePreview').style.display='none';
+   showProductTab('browse');await loadProducts();
+ }catch(e){
+   $('prodMsg').className='msg err';$('prodMsg').textContent='تعذر نشر المنتج: '+(e.message||'خطأ غير معروف');
+ }finally{
+   $('sendProduct').disabled=false;$('sendProduct').textContent='نشر المنتج';
+ }
+};
+
+
+
+let doctorSpecialtiesLoaded=false;
+
+const dayNames={0:'الأحد',1:'الاثنين',2:'الثلاثاء',3:'الأربعاء',4:'الخميس',5:'الجمعة',6:'السبت'};
+
+function showDoctorTab(tab){
+ const browse=tab==='browse';
+ $('doctorBrowseWrap').style.display=browse?'block':'none';
+ $('doctorAddWrap').style.display=browse?'none':'block';
+ $('browseDoctorTab').classList.toggle('active',browse);
+ $('addDoctorTab').classList.toggle('active',!browse);
+ if(!browse) loadDoctorData();
+}
+$('browseDoctorTab').onclick=()=>{showDoctorTab('browse');loadDoctors()};
+$('addDoctorTab').onclick=()=>showDoctorTab('add');
+$('refreshDoctors').onclick=loadDoctors;
+$('doctorFilter').onchange=loadDoctors;
+
+async function loadDoctorData(){
+ if(!cityId) await loadData();
+ if(doctorSpecialtiesLoaded) return;
+ const r=await sb.from('categories').select('id,name_ar').eq('section','doctor_specialty').eq('is_active',true).order('sort_order');
+ if(r.error){$('docSpecialty').innerHTML='<option value="">تعذر التحميل</option>';return}
+ const opts='<option value="">اختر التخصص</option>'+r.data.map(x=>`<option value="${x.id}">${esc(x.name_ar)}</option>`).join('');
+ $('docSpecialty').innerHTML=opts;
+ $('doctorFilter').innerHTML='<option value="">كل التخصصات</option>'+r.data.map(x=>`<option value="${x.id}">${esc(x.name_ar)}</option>`).join('');
+ doctorSpecialtiesLoaded=true;
+}
+
+function fmtTime(t){
+ if(!t) return '';
+ const [h,m]=String(t).split(':');
+ let hh=Number(h),amp=hh>=12?'م':'ص';
+ hh=hh%12||12;
+ return `${hh}:${m||'00'} ${amp}`;
+}
+
+async function loadDoctors(){
+ await loadDoctorData();
+ const box=$('doctorList');box.innerHTML='<div class="empty">جاري تحميل الأطباء…</div>';
+ let q=sb.from('doctor_profiles').select('provider_id,specialty_category_id,clinic_or_hospital_name,receptionist_name,receptionist_phone,receptionist_whatsapp,consultation_price,provider_profiles(display_name,address_text,verification_status,account_status,is_published),categories!doctor_profiles_specialty_category_id_fkey(name_ar)');
+ const filter=$('doctorFilter').value;
+ if(filter) q=q.eq('specialty_category_id',filter);
+ const r=await q;
+ if(r.error){box.innerHTML='<div class="notice">تعذر تحميل الأطباء الآن.</div>';return}
+
+ const rows=(r.data||[]).filter(d=>d.provider_profiles?.account_status==='active' && d.provider_profiles?.is_published!==false);
+ if(!rows.length){box.innerHTML='<div class="empty">لا يوجد أطباء منشورون حاليًا. يمكنك إضافة أول طبيب.</div>';return}
+
+ const ids=rows.map(x=>x.provider_id);
+ const wh=await sb.from('provider_working_hours').select('provider_id,day_of_week,opens_at,closes_at,is_closed').in('provider_id',ids).order('day_of_week');
+ const hoursBy={};
+ (wh.data||[]).forEach(h=>(hoursBy[h.provider_id]??=[]).push(h));
+
+ box.innerHTML=rows.map(d=>{
+   const p=d.provider_profiles||{};
+   const phone=normalizePhone(d.receptionist_phone),wa=sudanWa(d.receptionist_whatsapp||d.receptionist_phone);
+   const hs=(hoursBy[d.provider_id]||[]).filter(x=>!x.is_closed);
+   let hours='أوقات العمل: اتصل للاستفسار';
+   if(hs.length){
+     const grouped={};
+     hs.forEach(x=>{
+       const key=(x.opens_at||'')+'|'+(x.closes_at||'');
+       (grouped[key]??=[]).push(dayNames[x.day_of_week]||'');
+     });
+     hours=Object.entries(grouped).map(([k,days])=>{
+       const [o,c]=k.split('|');
+       return `${days.join('، ')}: ${fmtTime(o)} - ${fmtTime(c)}`;
+     }).join('<br>');
+   }
+   const price=d.consultation_price?Number(d.consultation_price).toLocaleString('ar-EG')+' ج.س':'اتصل للاستفسار';
+   return `<div class="doctor-card">
+    <div class="doctor-head"><div class="doctor-avatar">👨‍⚕️</div><div><h4>${esc(p.display_name||'طبيب')}</h4><div class="doctor-specialty">${esc(d.categories?.name_ar||'تخصص طبي')}</div>${p.verification_status==='verified'?'<span class="verified">✅ موثّق</span>':''}</div></div>
+    <div class="doctor-info">
+      ${d.clinic_or_hospital_name?`🏥 ${esc(d.clinic_or_hospital_name)}<br>`:''}
+      📍 ${esc(p.address_text||'بورتسودان')}<br>
+      👤 الاستقبال: ${esc(d.receptionist_name||'—')}<br>
+      🕒 ${hours}<br>
+      💰 سعر الكشف: ${esc(price)}
+    </div>
+    <div class="doctor-contact-note">📌 الحجز والتواصل يتم مباشرة مع موظف الاستقبال.</div>
+    <div class="fav-inline">${favButton('doctor',d.provider_id)}</div>
+     <div class="doctor-actions">${phone?`<a class="doctor-contact doctor-call" href="tel:${esc(phone)}">📞 اتصال بالاستقبال</a>`:'<span></span>'}${wa?`<a class="doctor-contact doctor-wa" target="_blank" href="https://wa.me/${esc(wa)}">💬 واتساب الاستقبال</a>`:'<span></span>'}</div>
+   </div>`;
+ }).join('');
+}
+
+$('sendDoctor').onclick=async()=>{
+ const {data:{user}}=await sb.auth.getUser();
+ if(!user){$('docMsg').className='msg err';$('docMsg').textContent='سجّل الدخول أولًا لإضافة طبيب';openAuth();return}
+ await loadDoctorData();
+ const name=$('docName').value.trim(),specialty=$('docSpecialty').value,address=$('docAddress').value.trim(),
+       receptionist=$('docReceptionist').value.trim(),phone=$('docPhone').value.trim();
+ if(!name||!specialty||!address||!receptionist||!phone){
+   $('docMsg').className='msg err';$('docMsg').textContent='أكملي اسم الطبيب والتخصص والموقع واسم موظف الاستقبال ورقمه';return
+ }
+ const whats=$('docWhats').value.trim()||phone,price=$('docPrice').value.trim();
+ const selectedDays=[...document.querySelectorAll('.doc-day:checked')].map(x=>Number(x.value));
+ const open=$('docOpen').value,close=$('docClose').value;
+ if(selectedDays.length && (!open||!close)){
+   $('docMsg').className='msg err';$('docMsg').textContent='إذا اخترت أيام العمل، حددي وقت البداية والنهاية';return
+ }
+ $('sendDoctor').disabled=true;$('sendDoctor').textContent='جاري التسجيل…';$('docMsg').textContent='';
+ try{
+   const pr=await sb.from('provider_profiles').insert({
+     owner_user_id:user.id,provider_type:'doctor',display_name:name,
+     phone,whatsapp:whats,city_id:cityId,address_text:address,
+     price_mode:price?'fixed':'agreement',price_amount:price?Number(price):null,
+     is_available:true,is_published:true
+   }).select('id').single();
+   if(pr.error) throw pr.error;
+
+   const dr=await sb.from('doctor_profiles').insert({
+     provider_id:pr.data.id,specialty_category_id:specialty,
+     clinic_or_hospital_name:$('docClinic').value.trim()||null,
+     receptionist_name:receptionist,receptionist_phone:phone,receptionist_whatsapp:whats,
+     consultation_price:price?Number(price):null
+   });
+   if(dr.error) throw dr.error;
+
+   if(selectedDays.length){
+     const rows=selectedDays.map(day=>({provider_id:pr.data.id,day_of_week:day,opens_at:open,closes_at:close,is_closed:false}));
+     const hr=await sb.from('provider_working_hours').insert(rows);
+     if(hr.error) throw hr.error;
+   }
+
+   $('docMsg').className='msg ok';$('docMsg').textContent='✅ تم تسجيل الطبيب بنجاح';
+   ['docName','docClinic','docAddress','docReceptionist','docPhone','docWhats','docPrice','docOpen','docClose'].forEach(id=>$(id).value='');
+   $('docSpecialty').value='';document.querySelectorAll('.doc-day').forEach(x=>x.checked=false);
+   showDoctorTab('browse');await loadDoctors();
+ }catch(e){
+   $('docMsg').className='msg err';$('docMsg').textContent='تعذر تسجيل الطبيب: '+(e.message||'خطأ غير معروف');
+ }finally{
+   $('sendDoctor').disabled=false;$('sendDoctor').textContent='تسجيل الطبيب';
+ }
+};
+
+
+
+let hospitalDeptLoaded=false,roomHospitalId=null,ownedHospitalId=null;
+const roomStateAr={available:'متاحة',call_to_confirm:'اتصل للتأكيد',unavailable:'غير متاحة'};
+const requestStateAr={pending:'قيد المراجعة',accepted:'مقبول',rejected:'مرفوض',needs_contact:'يحتاج تواصل',cancelled:'ملغي'};
+
+function showHospitalTab(tab){
+ const browse=tab==='browse';
+ $('hospitalBrowseWrap').style.display=browse?'block':'none';
+ $('hospitalAddWrap').style.display=browse?'none':'block';
+ $('browseHospitalTab').classList.toggle('active',browse);
+ $('addHospitalTab').classList.toggle('active',!browse);
+ if(!browse){loadHospitalData();loadOwnedHospital()}
+}
+$('browseHospitalTab').onclick=()=>{showHospitalTab('browse');loadHospitals()};
+$('addHospitalTab').onclick=()=>showHospitalTab('add');
+$('refreshHospitals').onclick=loadHospitals;
+$('refreshHospitalRequests').onclick=loadOwnedHospitalRequests;
+
+async function loadHospitalData(){
+ if(!cityId) await loadData();
+ if(hospitalDeptLoaded)return;
+ const r=await sb.from('categories').select('id,name_ar').eq('section','hospital_department').eq('is_active',true).order('sort_order');
+ if(r.error){$('hospitalDeptChoices').innerHTML='<div class="empty">تعذر تحميل الأقسام</div>';return}
+ $('hospitalDeptChoices').innerHTML=r.data.map(x=>`<label class="hospital-dept-check"><input type="checkbox" class="hosp-dept" value="${x.id}">${esc(x.name_ar)}</label>`).join('');
+ hospitalDeptLoaded=true;
+}
+
+async function loadHospitals(){
+ const box=$('hospitalList');box.innerHTML='<div class="empty">جاري تحميل المستشفيات…</div>';
+
+ const r=await sb.from('hospital_profiles').select('provider_id,reception_name,reception_phone,reception_whatsapp,emergency_phone,room_availability_status,last_room_update_at,provider_profiles(display_name,address_text,verification_status,account_status,is_published)');
+ if(r.error){box.innerHTML='<div class="notice">تعذر تحميل المستشفيات الآن.</div>';return}
+
+ const rows=(r.data||[]).filter(h=>h.provider_profiles?.account_status==='active'&&h.provider_profiles?.is_published!==false);
+ if(!rows.length){box.innerHTML='<div class="empty">لا توجد مستشفيات منشورة حاليًا. يمكنك إضافة أول مستشفى.</div>';return}
+
+ const ids=rows.map(h=>h.provider_id);
+ const dr=await sb.from('hospital_departments').select('hospital_provider_id,category_id,categories(name_ar)').in('hospital_provider_id',ids);
+ const deptBy={};
+ (dr.data||[]).forEach(d=>(deptBy[d.hospital_provider_id]??=[]).push(d.categories?.name_ar));
+
+ box.innerHTML=rows.map(h=>{
+   const p=h.provider_profiles||{},phone=normalizePhone(h.reception_phone),wa=sudanWa(h.reception_whatsapp||h.reception_phone),em=normalizePhone(h.emergency_phone);
+   const depts=(deptBy[h.provider_id]||[]).filter(Boolean);
+   const state=h.room_availability_status||'call_to_confirm';
+   const stateClass=state==='available'?'room-available':state==='unavailable'?'room-unavailable':'room-confirm';
+   let roomAction='';
+   if(state==='available') roomAction=`<button class="room-btn" data-room-hospital="${h.provider_id}">🛏️ طلب غرفة</button>`;
+   else if(state==='call_to_confirm') roomAction='<div class="room-state room-confirm">📞 اتصل بالاستقبال للتأكد من توفر الغرفة</div>';
+   else roomAction='<button class="room-btn" disabled>لا توجد غرف متاحة حاليًا</button>';
+   return `<div class="hospital-card">
+     <div class="hospital-head"><div class="hospital-icon">🏥</div><div><h4>${esc(p.display_name||'مستشفى')}</h4>${p.verification_status==='verified'?'<span class="verified">✅ موثّق</span>':''}</div></div>
+     <div class="hospital-info">📍 ${esc(p.address_text||'بورتسودان')}<br>👤 الاستقبال: ${esc(h.reception_name||'—')}</div>
+     ${depts.length?`<div class="dept-wrap">${depts.map(x=>`<span class="dept-chip">${esc(x)}</span>`).join('')}</div>`:''}
+     <div class="room-state ${stateClass}">🛏️ حالة الغرف: ${esc(roomStateAr[state]||state)}</div>
+     <div class="hospital-actions">${phone?`<a class="hospital-contact hospital-call" href="tel:${esc(phone)}">📞 الاستقبال</a>`:'<span></span>'}${wa?`<a class="hospital-contact hospital-wa" target="_blank" href="https://wa.me/${esc(wa)}">💬 واتساب</a>`:'<span></span>'}</div>
+     ${em?`<a class="emergency-btn" href="tel:${esc(em)}">🚑 اتصال مباشر بالطوارئ</a>`:''}
+     ${roomAction}
+   </div>`;
+ }).join('');
+ document.querySelectorAll('[data-room-hospital]').forEach(b=>b.onclick=()=>openRoomRequest(b.dataset.roomHospital));
+}
+
+function openRoomRequest(hospitalId){
+ roomHospitalId=hospitalId;
+ $('roomMsg').textContent='';
+ $('roomModal').classList.add('show');
+}
+$('closeRoomModal').onclick=()=>{$('roomModal').classList.remove('show');roomHospitalId=null};
+
+$('sendRoomRequest').onclick=async()=>{
+ const {data:{user}}=await sb.auth.getUser();
+ if(!user){$('roomModal').classList.remove('show');openAuth();return}
+ const patient=$('roomPatientName').value.trim(),phone=$('roomPhone').value.trim();
+ if(!roomHospitalId||!patient||!phone){$('roomMsg').className='msg err';$('roomMsg').textContent='أدخل اسم المريض ورقم التواصل';return}
+ const days=$('roomDays').value.trim();
+ $('sendRoomRequest').disabled=true;$('sendRoomRequest').textContent='جاري الإرسال…';
+ const r=await sb.from('hospital_room_requests').insert({
+   hospital_provider_id:roomHospitalId,requester_user_id:user.id,patient_name:patient,contact_phone:phone,
+   room_type:$('roomType').value.trim()||null,desired_date:$('roomDate').value||null,
+   expected_days:days?Number(days):null,notes:$('roomNotes').value.trim()||null,status:'pending'
+ });
+ if(r.error){
+   $('roomMsg').className='msg err';$('roomMsg').textContent='تعذر إرسال الطلب: '+r.error.message;
+ }else{
+   $('roomMsg').className='msg ok';$('roomMsg').textContent='✅ تم إرسال طلب الغرفة للمستشفى';
+   ['roomPatientName','roomPhone','roomType','roomDate','roomDays','roomNotes'].forEach(id=>$(id).value='');
+ }
+ $('sendRoomRequest').disabled=false;$('sendRoomRequest').textContent='إرسال طلب الغرفة';
+};
+
+$('sendHospital').onclick=async()=>{
+ const {data:{user}}=await sb.auth.getUser();
+ if(!user){$('hospMsg').className='msg err';$('hospMsg').textContent='سجّل الدخول أولًا لإضافة مستشفى';openAuth();return}
+ await loadHospitalData();
+ const name=$('hospName').value.trim(),address=$('hospAddress').value.trim(),phone=$('hospReceptionPhone').value.trim();
+ if(!name||!address||!phone){$('hospMsg').className='msg err';$('hospMsg').textContent='أكمل اسم المستشفى والموقع ورقم الاستقبال';return}
+ const whats=$('hospReceptionWhats').value.trim()||phone;
+ $('sendHospital').disabled=true;$('sendHospital').textContent='جاري التسجيل…';$('hospMsg').textContent='';
+ let providerId=null;
+ try{
+   const pr=await sb.from('provider_profiles').insert({
+     owner_user_id:user.id,provider_type:'hospital',display_name:name,phone,whatsapp:whats,
+     city_id:cityId,address_text:address,price_mode:'agreement',is_available:true,is_published:true
+   }).select('id').single();
+   if(pr.error)throw pr.error;
+   providerId=pr.data.id;
+
+   const hp=await sb.from('hospital_profiles').insert({
+     provider_id:providerId,reception_name:$('hospReceptionName').value.trim()||null,
+     reception_phone:phone,reception_whatsapp:whats,emergency_phone:$('hospEmergency').value.trim()||null,
+     room_availability_status:$('hospRoomStatus').value,last_room_update_at:new Date().toISOString()
+   });
+   if(hp.error)throw hp.error;
+
+   const deps=[...document.querySelectorAll('.hosp-dept:checked')].map(x=>x.value);
+   if(deps.length){
+     const dr=await sb.from('hospital_departments').insert(deps.map(category_id=>({hospital_provider_id:providerId,category_id})));
+     if(dr.error)throw dr.error;
+   }
+
+   $('hospMsg').className='msg ok';$('hospMsg').textContent='✅ تم تسجيل المستشفى بنجاح';
+   ['hospName','hospAddress','hospReceptionName','hospReceptionPhone','hospReceptionWhats','hospEmergency'].forEach(id=>$(id).value='');
+   $('hospRoomStatus').value='available';document.querySelectorAll('.hosp-dept').forEach(x=>x.checked=false);
+   showHospitalTab('browse');await loadHospitals();
+ }catch(e){
+   if(providerId){try{await sb.from('provider_profiles').delete().eq('id',providerId)}catch(_){}}
+   $('hospMsg').className='msg err';$('hospMsg').textContent='تعذر تسجيل المستشفى: '+(e.message||'خطأ غير معروف');
+ }finally{
+   $('sendHospital').disabled=false;$('sendHospital').textContent='تسجيل المستشفى';
+ }
+};
+
+async function loadOwnedHospital(){
+ const {data:{user}}=await sb.auth.getUser();
+ if(!user){$('ownedHospitalPanel').style.display='none';return}
+ const r=await sb.from('provider_profiles').select('id,display_name').eq('owner_user_id',user.id).eq('provider_type','hospital').eq('account_status','active').order('created_at',{ascending:false}).limit(1).maybeSingle();
+ if(!r.data){ownedHospitalId=null;$('ownedHospitalPanel').style.display='none';return}
+ ownedHospitalId=r.data.id;$('ownedHospitalPanel').style.display='block';
+ const hp=await sb.from('hospital_profiles').select('room_availability_status').eq('provider_id',ownedHospitalId).maybeSingle();
+ if(hp.data)$('ownerRoomStatus').value=hp.data.room_availability_status;
+ await loadOwnedHospitalRequests();
+}
+$('saveOwnerRoomStatus').onclick=async()=>{
+ if(!ownedHospitalId)return;
+ const r=await sb.from('hospital_profiles').update({room_availability_status:$('ownerRoomStatus').value,last_room_update_at:new Date().toISOString()}).eq('provider_id',ownedHospitalId);
+ if(r.error)alert('تعذر تحديث حالة الغرف: '+r.error.message);
+ else{alert('✅ تم تحديث حالة الغرف');loadHospitals()}
+};
+
+async function loadOwnedHospitalRequests(){
+ const box=$('hospitalRequests');
+ if(!ownedHospitalId){box.innerHTML='';return}
+ box.innerHTML='<div class="empty">جاري تحميل طلبات الغرف…</div>';
+ const r=await sb.from('hospital_room_requests').select('id,patient_name,contact_phone,room_type,desired_date,expected_days,notes,status,hospital_response,created_at').eq('hospital_provider_id',ownedHospitalId).order('created_at',{ascending:false}).limit(30);
+ if(r.error){box.innerHTML='<div class="notice">تعذر تحميل طلبات الغرف.</div>';return}
+ if(!r.data?.length){box.innerHTML='<div class="empty">لا توجد طلبات غرف حاليًا.</div>';return}
+ box.innerHTML=r.data.map(x=>{
+   const actions=x.status==='pending'?`<div class="request-actions"><button class="accept-request" data-room-accept="${x.id}">✅ قبول</button><button class="reject-request" data-room-reject="${x.id}">رفض</button></div>`:'';
+   return `<div class="request-card"><b>${esc(x.patient_name)}</b> <span class="request-status">${esc(requestStateAr[x.status]||x.status)}</span><br><small>📞 ${esc(x.contact_phone)}${x.room_type?' • 🛏️ '+esc(x.room_type):''}${x.desired_date?' • 📅 '+esc(x.desired_date):''}${x.expected_days?' • '+esc(x.expected_days)+' يوم':''}</small>${x.notes?`<p>${esc(x.notes)}</p>`:''}${actions}</div>`;
+ }).join('');
+ document.querySelectorAll('[data-room-accept]').forEach(b=>b.onclick=()=>answerRoomRequest(b.dataset.roomAccept,'accepted'));
+ document.querySelectorAll('[data-room-reject]').forEach(b=>b.onclick=()=>answerRoomRequest(b.dataset.roomReject,'rejected'));
+}
+async function answerRoomRequest(id,status){
+ const text=status==='accepted'?'تم قبول طلب الغرفة، يرجى التواصل مع المستشفى للتأكيد النهائي.':'تعذر توفير الغرفة المطلوبة حاليًا.';
+ const r=await sb.from('hospital_room_requests').update({status,hospital_response:text}).eq('id',id).eq('hospital_provider_id',ownedHospitalId);
+ if(r.error)alert('تعذر تحديث الطلب: '+r.error.message);
+ else await loadOwnedHospitalRequests();
+}
+
+
+
+function showPharmacyTab(tab){
+ const browse=tab==='browse';
+ $('pharmacyBrowseWrap').style.display=browse?'block':'none';
+ $('pharmacyAddWrap').style.display=browse?'none':'block';
+ $('browsePharmacyTab').classList.toggle('active',browse);
+ $('addPharmacyTab').classList.toggle('active',!browse);
+}
+$('browsePharmacyTab').onclick=()=>{showPharmacyTab('browse');loadPharmacies()};
+$('addPharmacyTab').onclick=()=>showPharmacyTab('add');
+$('refreshPharmacies').onclick=loadPharmacies;
+$('pharm24').onchange=()=>{
+ const on=$('pharm24').checked;
+ $('pharmHoursWrap').style.display=on?'none':'block';
+};
+
+async function loadPharmacies(){
+ const box=$('pharmacyList');box.innerHTML='<div class="empty">جاري تحميل الصيدليات…</div>';
+ const r=await sb.from('pharmacy_profiles').select('provider_id,manager_name,manager_phone,manager_whatsapp,delivery_available,provider_profiles(display_name,address_text,verification_status,account_status,is_published)');
+ if(r.error){box.innerHTML='<div class="notice">تعذر تحميل الصيدليات الآن.</div>';return}
+ const rows=(r.data||[]).filter(x=>x.provider_profiles?.account_status==='active'&&x.provider_profiles?.is_published!==false);
+ if(!rows.length){box.innerHTML='<div class="empty">لا توجد صيدليات منشورة حاليًا. يمكنك إضافة أول صيدلية.</div>';return}
+
+ const ids=rows.map(x=>x.provider_id);
+ const hr=await sb.from('provider_working_hours').select('provider_id,day_of_week,opens_at,closes_at,is_closed').in('provider_id',ids).order('day_of_week');
+ const hoursBy={};
+ (hr.data||[]).forEach(h=>(hoursBy[h.provider_id]??=[]).push(h));
+
+ box.innerHTML=rows.map(x=>{
+   const p=x.provider_profiles||{},phone=normalizePhone(x.manager_phone),wa=sudanWa(x.manager_whatsapp||x.manager_phone);
+   const hs=(hoursBy[x.provider_id]||[]).filter(h=>!h.is_closed);
+   let hours='🕒 ساعات العمل: اتصل للاستفسار';
+   if(hs.length===7 && hs.every(h=>String(h.opens_at).startsWith('00:00') && String(h.closes_at).startsWith('23:59'))){
+     hours='🕛 مفتوحة 24 ساعة';
+   }else if(hs.length){
+     const grouped={};
+     hs.forEach(h=>{
+       const key=(h.opens_at||'')+'|'+(h.closes_at||'');
+       (grouped[key]??=[]).push(dayNames[h.day_of_week]||'');
+     });
+     hours='🕒 '+Object.entries(grouped).map(([k,days])=>{
+       const [o,c]=k.split('|');
+       return `${days.join('، ')}: ${fmtTime(o)} - ${fmtTime(c)}`;
+     }).join('<br>🕒 ');
+   }
+   return `<div class="pharmacy-card">
+     <div class="pharmacy-head"><div class="pharmacy-icon">💊</div><div><h4>${esc(p.display_name||'صيدلية')}</h4>${p.verification_status==='verified'?'<span class="verified">✅ موثّقة</span>':''}</div></div>
+     <div class="pharmacy-info">📍 ${esc(p.address_text||'بورتسودان')}<br>👤 المسؤول: ${esc(x.manager_name||'—')}<br>${hours}</div>
+     ${x.delivery_available?'<span class="delivery-badge">🛵 التوصيل متاح</span>':''}
+     <div class="fav-inline">${favButton('pharmacy',x.provider_id)}</div>
+     <div class="pharmacy-actions">${phone?`<a class="pharmacy-contact pharmacy-call" href="tel:${esc(phone)}">📞 اتصال</a>`:'<span></span>'}${wa?`<a class="pharmacy-contact pharmacy-wa" target="_blank" href="https://wa.me/${esc(wa)}">💬 واتساب</a>`:'<span></span>'}</div>
+   </div>`;
+ }).join('');
+ await bindFavoriteButtons(box);
+}
+
+$('sendPharmacy').onclick=async()=>{
+ const {data:{user}}=await sb.auth.getUser();
+ if(!user){$('pharmMsg').className='msg err';$('pharmMsg').textContent='سجّل الدخول أولًا لإضافة صيدلية';openAuth();return}
+ if(!cityId) await loadData();
+
+ const name=$('pharmName').value.trim(),address=$('pharmAddress').value.trim(),
+       manager=$('pharmManager').value.trim(),phone=$('pharmPhone').value.trim();
+ if(!name||!address||!manager||!phone){
+   $('pharmMsg').className='msg err';$('pharmMsg').textContent='أكمل اسم الصيدلية والموقع واسم المسؤول ورقم الهاتف';return
+ }
+
+ const is24=$('pharm24').checked,days=[...document.querySelectorAll('.pharm-day:checked')].map(x=>Number(x.value)),
+       open=$('pharmOpen').value,close=$('pharmClose').value;
+
+ if(!is24 && days.length){
+   if(!open||!close){
+     $('pharmMsg').className='msg err';$('pharmMsg').textContent='إذا اخترت أيام العمل، حدّد وقت البداية والنهاية';return
+   }
+   if(close<=open){
+     $('pharmMsg').className='msg err';$('pharmMsg').textContent='وقت النهاية يجب أن يكون بعد وقت البداية';return
+   }
+ }
+
+ const whats=$('pharmWhats').value.trim()||phone;
+ $('sendPharmacy').disabled=true;$('sendPharmacy').textContent='جاري التسجيل…';$('pharmMsg').textContent='';
+ let providerId=null;
+
+ try{
+   const pr=await sb.from('provider_profiles').insert({
+     owner_user_id:user.id,provider_type:'pharmacy',display_name:name,
+     phone,whatsapp:whats,city_id:cityId,address_text:address,
+     price_mode:'agreement',is_available:true,is_published:true
+   }).select('id').single();
+   if(pr.error)throw pr.error;
+   providerId=pr.data.id;
+
+   const ph=await sb.from('pharmacy_profiles').insert({
+     provider_id:providerId,manager_name:manager,manager_phone:phone,
+     manager_whatsapp:whats,delivery_available:$('pharmDelivery').checked
+   });
+   if(ph.error)throw ph.error;
+
+   let hourRows=[];
+   if(is24){
+     hourRows=[0,1,2,3,4,5,6].map(day=>({provider_id:providerId,day_of_week:day,opens_at:'00:00',closes_at:'23:59',is_closed:false}));
+   }else if(days.length){
+     hourRows=days.map(day=>({provider_id:providerId,day_of_week:day,opens_at:open,closes_at:close,is_closed:false}));
+   }
+   if(hourRows.length){
+     const h=await sb.from('provider_working_hours').insert(hourRows);
+     if(h.error)throw h.error;
+   }
+
+   $('pharmMsg').className='msg ok';$('pharmMsg').textContent='✅ تم تسجيل الصيدلية بنجاح';
+   ['pharmName','pharmAddress','pharmManager','pharmPhone','pharmWhats','pharmOpen','pharmClose'].forEach(id=>$(id).value='');
+   $('pharmDelivery').checked=false;$('pharm24').checked=false;$('pharmHoursWrap').style.display='block';
+   document.querySelectorAll('.pharm-day').forEach(x=>x.checked=false);
+   showPharmacyTab('browse');await loadPharmacies();
+ }catch(e){
+   if(providerId){try{await sb.from('provider_profiles').delete().eq('id',providerId)}catch(_){}}
+   $('pharmMsg').className='msg err';$('pharmMsg').textContent='تعذر تسجيل الصيدلية: '+(e.message||'خطأ غير معروف');
+ }finally{
+   $('sendPharmacy').disabled=false;$('sendPharmacy').textContent='تسجيل الصيدلية';
+ }
+};
+
+
+
+let deliveryVehicleLoaded=false,currentDeliveryProviderId=null,deliveryOfferRequestId=null;
+const deliveryStatusAr={new:'جديد',offers_received:'وصلت عروض',provider_selected:'تم اختيار السائق',in_progress:'قيد التوصيل',completed:'مكتمل',cancelled:'ملغي'};
+const deliveryPriceModeAr={agreement:'حسب الاتفاق',fixed:'سعر مقترح',unspecified:'غير محدد'};
+
+function showDeliveryTab(tab){
+ const customer=tab==='customer';
+ $('deliveryCustomerWrap').style.display=customer?'block':'none';
+ $('deliveryDriverWrap').style.display=customer?'none':'block';
+ $('deliveryCustomerTab').classList.toggle('active',customer);
+ $('deliveryDriverTab').classList.toggle('active',!customer);
+ if(customer) loadMyDeliveryRequests();
+ else loadDriverArea();
+}
+$('deliveryCustomerTab').onclick=()=>showDeliveryTab('customer');
+$('deliveryDriverTab').onclick=()=>showDeliveryTab('driver');
+$('refreshMyDelivery').onclick=loadMyDeliveryRequests;
+$('refreshDeliveryMarket').onclick=loadDeliveryMarketplace;
+$('refreshDriverJobs').onclick=loadDriverJobs;
+$('delPriceMode').onchange=()=>{$('delPriceWrap').style.display=$('delPriceMode').value==='fixed'?'block':'none'};
+
+function fmtDeliveryDate(v){
+ if(!v)return 'في أقرب وقت';
+ try{return new Date(v).toLocaleString('ar-EG',{dateStyle:'medium',timeStyle:'short'})}catch(_){return v}
+}
+
+async function loadDeliveryVehicleTypes(){
+ if(deliveryVehicleLoaded)return;
+ const r=await sb.from('categories').select('id,name_ar').eq('section','delivery_vehicle').eq('is_active',true).order('sort_order');
+ if(r.error){$('driverVehicle').innerHTML='<option value="">تعذر التحميل</option>';return}
+ $('driverVehicle').innerHTML='<option value="">اختر المركبة</option>'+r.data.map(x=>`<option value="${x.id}">${esc(x.name_ar)}</option>`).join('');
+ deliveryVehicleLoaded=true;
+}
+
+$('sendDeliveryRequest').onclick=async()=>{
+ const {data:{user}}=await sb.auth.getUser();
+ if(!user){$('deliveryRequestMsg').className='msg err';$('deliveryRequestMsg').textContent='سجّل الدخول أولًا لإرسال طلب توصيل';openAuth();return}
+ if(!cityId)await loadData();
+ const pickup=$('delPickup').value.trim(),dropoff=$('delDropoff').value.trim(),item=$('delItem').value.trim(),contact=$('delContact').value.trim();
+ if(!pickup||!dropoff||!item||!contact){$('deliveryRequestMsg').className='msg err';$('deliveryRequestMsg').textContent='أكمل مكان الاستلام والتسليم ووصف الطلب ورقم التواصل';return}
+ const mode=$('delPriceMode').value,price=$('delPrice').value.trim(),when=$('delWhen').value;
+ if(mode==='fixed'&&!price){$('deliveryRequestMsg').className='msg err';$('deliveryRequestMsg').textContent='أدخل السعر المقترح أو اختر حسب الاتفاق';return}
+ $('sendDeliveryRequest').disabled=true;$('sendDeliveryRequest').textContent='جاري الإرسال…';
+ const r=await sb.from('delivery_requests').insert({
+   requester_user_id:user.id,city_id:cityId,pickup_area:pickup,dropoff_area:dropoff,item_description:item,
+   desired_at:when?new Date(when).toISOString():null,proposed_price:mode==='fixed'?Number(price):null,
+   price_mode:mode,contact_phone:contact,status:'new'
+ });
+ if(r.error){$('deliveryRequestMsg').className='msg err';$('deliveryRequestMsg').textContent='تعذر إرسال الطلب: '+r.error.message}
+ else{
+   $('deliveryRequestMsg').className='msg ok';$('deliveryRequestMsg').textContent='✅ تم إرسال طلب التوصيل بنجاح';
+   ['delPickup','delDropoff','delItem','delWhen','delContact','delPrice'].forEach(id=>$(id).value='');
+   $('delPriceMode').value='agreement';$('delPriceWrap').style.display='none';
+   await loadMyDeliveryRequests();
+ }
+ $('sendDeliveryRequest').disabled=false;$('sendDeliveryRequest').textContent='إرسال طلب التوصيل';
+};
+
+async function loadMyDeliveryRequests(){
+ const box=$('myDeliveryRequests');
+ const {data:{user}}=await sb.auth.getUser();
+ if(!user){box.innerHTML='<div class="empty">سجّل الدخول لمشاهدة طلباتك.</div>';return}
+ box.innerHTML='<div class="empty">جاري تحميل طلباتك…</div>';
+ const r=await sb.from('delivery_requests').select('id,pickup_area,dropoff_area,item_description,desired_at,proposed_price,price_mode,selected_provider_id,status,created_at').eq('requester_user_id',user.id).order('created_at',{ascending:false}).limit(30);
+ if(r.error){box.innerHTML='<div class="notice">تعذر تحميل طلبات التوصيل.</div>';return}
+ if(!r.data?.length){box.innerHTML='<div class="empty">لا توجد طلبات توصيل حتى الآن.</div>';return}
+ const reqs=r.data,ids=reqs.map(x=>x.id);
+ const or=await sb.from('delivery_offers').select('id,delivery_request_id,provider_id,offered_price,message,status,created_at').in('delivery_request_id',ids).order('created_at');
+ const offers=or.data||[],providerIds=[...new Set(offers.map(x=>x.provider_id).concat(reqs.map(x=>x.selected_provider_id).filter(Boolean)))];
+ let providers={},profiles={},vehicleNames={};
+ if(providerIds.length){
+   const pr=await sb.from('provider_profiles').select('id,display_name,phone,whatsapp,address_text,verification_status').in('id',providerIds);
+   (pr.data||[]).forEach(x=>profiles[x.id]=x);
+   const dp=await sb.from('delivery_profiles').select('provider_id,vehicle_category_id,vehicle_number,pricing_note').in('provider_id',providerIds);
+   (dp.data||[]).forEach(x=>providers[x.provider_id]=x);
+   const catIds=[...new Set((dp.data||[]).map(x=>x.vehicle_category_id).filter(Boolean))];
+   if(catIds.length){const cr=await sb.from('categories').select('id,name_ar').in('id',catIds);(cr.data||[]).forEach(x=>vehicleNames[x.id]=x.name_ar)}
+ }
+ const byReq={};offers.forEach(o=>(byReq[o.delivery_request_id]??=[]).push(o));
+ box.innerHTML=reqs.map(q=>{
+   const os=byReq[q.id]||[];
+   let selectedContact='';
+   if(q.selected_provider_id&&profiles[q.selected_provider_id]){
+     const p=profiles[q.selected_provider_id],phone=normalizePhone(p.phone),wa=sudanWa(p.whatsapp||p.phone);
+     selectedContact=`<div class="driver-box"><b>✅ السائق المختار: ${esc(p.display_name||'سائق')}</b><div class="delivery-actions">${phone?`<a class="delivery-call" href="tel:${esc(phone)}">📞 اتصال</a>`:'<span></span>'}${wa?`<a class="delivery-wa" target="_blank" href="https://wa.me/${esc(wa)}">💬 واتساب</a>`:'<span></span>'}</div></div>`;
+   }
+   const offerHtml=os.length?os.map(o=>{
+     const p=profiles[o.provider_id]||{},d=providers[o.provider_id]||{},veh=vehicleNames[d.vehicle_category_id]||'مركبة توصيل';
+     const canSelect=['new','offers_received'].includes(q.status)&&o.status==='offered';
+     return `<div class="offer-card"><div class="offer-head"><b>${esc(p.display_name||'سائق')}</b><span class="offer-price">${o.offered_price!=null?Number(o.offered_price).toLocaleString('ar-EG')+' ج.س':'حسب الاتفاق'}</span></div><small>🛵 ${esc(veh)}${d.vehicle_number?' • '+esc(d.vehicle_number):''}${p.verification_status==='verified'?' • ✅ موثّق':''}</small>${o.message?`<p>${esc(o.message)}</p>`:''}${canSelect?`<button class="primary" data-select-delivery-offer="${o.id}" style="width:100%;margin-top:7px">اختيار هذا السائق</button>`:`<div class="delivery-status">${o.status==='selected'?'تم اختياره':o.status==='declined'?'لم يتم اختياره':esc(o.status)}</div>`}</div>`;
+   }).join(''):'<div class="empty">لم تصل عروض بعد.</div>';
+   const cancel=['new','offers_received'].includes(q.status)?`<button class="delivery-cancel" data-cancel-delivery="${q.id}">إلغاء الطلب</button>`:'';
+   const complete=['provider_selected','in_progress'].includes(q.status)?`<button class="delivery-complete" data-complete-delivery="${q.id}">✅ إنهاء التوصيل</button>`:'';
+   return `<div class="delivery-card"><span class="delivery-status">${esc(deliveryStatusAr[q.status]||q.status)}</span><div class="delivery-route"><div class="place"><b>📍 الاستلام</b><br>${esc(q.pickup_area)}</div><div class="arrow">←</div><div class="place"><b>🏁 التسليم</b><br>${esc(q.dropoff_area)}</div></div><p>${esc(q.item_description||'')}</p><div class="delivery-meta"><span class="delivery-chip">🕒 ${esc(fmtDeliveryDate(q.desired_at))}</span><span class="delivery-chip">💰 ${q.price_mode==='fixed'&&q.proposed_price!=null?Number(q.proposed_price).toLocaleString('ar-EG')+' ج.س':esc(deliveryPriceModeAr[q.price_mode]||q.price_mode)}</span><span class="delivery-chip">✉️ ${os.length} عرض</span></div>${selectedContact}<h4>عروض السائقين</h4>${offerHtml}${cancel||complete?`<div class="delivery-actions">${cancel}${complete}</div>`:''}</div>`;
+ }).join('');
+ document.querySelectorAll('[data-select-delivery-offer]').forEach(b=>b.onclick=()=>selectDeliveryOffer(b.dataset.selectDeliveryOffer));
+ document.querySelectorAll('[data-cancel-delivery]').forEach(b=>b.onclick=()=>cancelDeliveryRequest(b.dataset.cancelDelivery));
+ document.querySelectorAll('[data-complete-delivery]').forEach(b=>b.onclick=()=>completeDelivery(b.dataset.completeDelivery));
+}
+
+async function selectDeliveryOffer(id){
+ const r=await sb.rpc('select_delivery_offer',{p_offer_id:id});
+ if(r.error)alert('تعذر اختيار السائق: '+r.error.message);else{alert('✅ تم اختيار السائق. ظهرت لك الآن وسائل التواصل معه.');loadMyDeliveryRequests()}
+}
+async function cancelDeliveryRequest(id){
+ if(!confirm('هل تريد إلغاء طلب التوصيل؟'))return;
+ const r=await sb.from('delivery_requests').update({status:'cancelled'}).eq('id',id).in('status',['new','offers_received']);
+ if(r.error)alert('تعذر إلغاء الطلب: '+r.error.message);else loadMyDeliveryRequests();
+}
+async function completeDelivery(id){
+ if(!confirm('تأكيد أن خدمة التوصيل اكتملت؟'))return;
+ const r=await sb.rpc('complete_delivery_request',{p_request_id:id});
+ if(r.error)alert('تعذر إنهاء الطلب: '+r.error.message);else{alert('✅ تم إنهاء التوصيل');loadMyDeliveryRequests()}
+}
+
+async function loadDriverArea(){
+ await loadDeliveryVehicleTypes();
+ const {data:{user}}=await sb.auth.getUser();
+ if(!user){$('driverRegisterWrap').style.display='block';$('driverDashboard').style.display='none';$('driverRegisterMsg').className='msg err';$('driverRegisterMsg').textContent='سجّل الدخول أولًا لتسجيل سائق توصيل';return}
+ const r=await sb.from('provider_profiles').select('id,display_name,phone,whatsapp,address_text,account_status,is_available').eq('owner_user_id',user.id).eq('provider_type','delivery').order('created_at',{ascending:false}).limit(1).maybeSingle();
+ if(r.error||!r.data){currentDeliveryProviderId=null;$('driverRegisterWrap').style.display='block';$('driverDashboard').style.display='none';return}
+ currentDeliveryProviderId=r.data.id;$('driverRegisterWrap').style.display='none';$('driverDashboard').style.display='block';
+ const dp=await sb.from('delivery_profiles').select('vehicle_category_id,vehicle_number,pricing_note').eq('provider_id',currentDeliveryProviderId).maybeSingle();
+ let veh='مركبة توصيل';
+ if(dp.data?.vehicle_category_id){const c=await sb.from('categories').select('name_ar').eq('id',dp.data.vehicle_category_id).maybeSingle();if(c.data)veh=c.data.name_ar}
+ $('driverSummary').innerHTML=`<h4>✅ أنت مسجل كسائق توصيل</h4><div>${esc(r.data.display_name)}</div><small>🛵 ${esc(veh)}${dp.data?.vehicle_number?' • '+esc(dp.data.vehicle_number):''}<br>📍 ${esc(r.data.address_text||'بورتسودان')}</small>`;
+ await loadDeliveryMarketplace();await loadDriverJobs();
+}
+
+$('registerDriver').onclick=async()=>{
+ const {data:{user}}=await sb.auth.getUser();
+ if(!user){openAuth();return}
+ if(!cityId)await loadData();await loadDeliveryVehicleTypes();
+ const name=$('driverName').value.trim(),phone=$('driverPhone').value.trim(),area=$('driverArea').value.trim(),vehicle=$('driverVehicle').value;
+ if(!name||!phone||!area||!vehicle){$('driverRegisterMsg').className='msg err';$('driverRegisterMsg').textContent='أكمل اسم السائق والهاتف ومنطقة العمل ونوع المركبة';return}
+ const whats=$('driverWhats').value.trim()||phone;
+ $('registerDriver').disabled=true;$('registerDriver').textContent='جاري التسجيل…';let providerId=null;
+ try{
+   const pr=await sb.from('provider_profiles').insert({owner_user_id:user.id,provider_type:'delivery',display_name:name,phone,whatsapp:whats,city_id:cityId,address_text:area,price_mode:'agreement',pricing_note:$('driverPricing').value.trim()||null,is_available:true,is_published:true}).select('id').single();
+   if(pr.error)throw pr.error;providerId=pr.data.id;
+   const dr=await sb.from('delivery_profiles').insert({provider_id:providerId,vehicle_category_id:vehicle,vehicle_number:$('driverVehicleNo').value.trim()||null,pricing_note:$('driverPricing').value.trim()||null});
+   if(dr.error)throw dr.error;
+   $('driverRegisterMsg').className='msg ok';$('driverRegisterMsg').textContent='✅ تم تسجيلك كسائق توصيل';currentDeliveryProviderId=providerId;await loadDriverArea();
+ }catch(e){if(providerId){try{await sb.from('provider_profiles').delete().eq('id',providerId)}catch(_){}}$('driverRegisterMsg').className='msg err';$('driverRegisterMsg').textContent='تعذر تسجيل السائق: '+(e.message||'خطأ غير معروف')}
+ $('registerDriver').disabled=false;$('registerDriver').textContent='تسجيل كسائق توصيل';
+};
+
+async function loadDeliveryMarketplace(){
+ const box=$('deliveryMarketplace');if(!currentDeliveryProviderId){box.innerHTML='<div class="empty">سجّل كسائق أولًا.</div>';return}
+ box.innerHTML='<div class="empty">جاري تحميل الطلبات المناسبة…</div>';
+ const r=await sb.rpc('get_delivery_marketplace_requests');
+ if(r.error){box.innerHTML='<div class="notice">تعذر تحميل طلبات التوصيل الآن: '+esc(r.error.message)+'</div>';return}
+ if(!r.data?.length){box.innerHTML='<div class="empty">لا توجد طلبات توصيل مناسبة حاليًا.</div>';return}
+ box.innerHTML=r.data.map(q=>`<div class="delivery-card"><span class="delivery-status">${esc(deliveryStatusAr[q.status]||q.status)}</span><div class="delivery-route"><div class="place"><b>📍 الاستلام</b><br>${esc(q.pickup_area)}</div><div class="arrow">←</div><div class="place"><b>🏁 التسليم</b><br>${esc(q.dropoff_area)}</div></div><p>${esc(q.item_description||'')}</p><div class="delivery-meta"><span class="delivery-chip">🕒 ${esc(fmtDeliveryDate(q.desired_at))}</span><span class="delivery-chip">💰 ${q.price_mode==='fixed'&&q.proposed_price!=null?Number(q.proposed_price).toLocaleString('ar-EG')+' ج.س':esc(deliveryPriceModeAr[q.price_mode]||q.price_mode)}</span><span class="delivery-chip">✉️ ${q.offer_count||0} عرض</span></div><button class="primary" data-open-delivery-offer="${q.id}" style="width:100%">إرسال عرضي</button></div>`).join('');
+ document.querySelectorAll('[data-open-delivery-offer]').forEach(b=>b.onclick=()=>openDeliveryOffer(b.dataset.openDeliveryOffer));
+}
+function openDeliveryOffer(id){deliveryOfferRequestId=id;$('driverOfferPrice').value='';$('driverOfferMessage').value='';$('driverOfferMsg').textContent='';$('deliveryOfferModal').classList.add('show')}
+$('closeDeliveryOfferModal').onclick=()=>{$('deliveryOfferModal').classList.remove('show');deliveryOfferRequestId=null};
+$('sendDriverOffer').onclick=async()=>{
+ if(!deliveryOfferRequestId||!currentDeliveryProviderId)return;
+ const price=$('driverOfferPrice').value.trim(),message=$('driverOfferMessage').value.trim();
+ $('sendDriverOffer').disabled=true;$('sendDriverOffer').textContent='جاري الإرسال…';
+ const r=await sb.from('delivery_offers').insert({delivery_request_id:deliveryOfferRequestId,provider_id:currentDeliveryProviderId,offered_price:price?Number(price):null,message:message||null,status:'offered'});
+ if(r.error){$('driverOfferMsg').className='msg err';$('driverOfferMsg').textContent=r.error.code==='23505'?'سبق أن أرسلت عرضًا لهذا الطلب.':'تعذر إرسال العرض: '+r.error.message}
+ else{$('driverOfferMsg').className='msg ok';$('driverOfferMsg').textContent='✅ تم إرسال عرضك للعميل';setTimeout(()=>{$('deliveryOfferModal').classList.remove('show');deliveryOfferRequestId=null;loadDeliveryMarketplace()},700)}
+ $('sendDriverOffer').disabled=false;$('sendDriverOffer').textContent='إرسال العرض';
+};
+
+async function loadDriverJobs(){
+ const box=$('driverJobs');if(!currentDeliveryProviderId){box.innerHTML='';return}
+ const r=await sb.rpc('get_my_delivery_jobs');
+ if(r.error){box.innerHTML='<div class="notice">تعذر تحميل مشاويرك.</div>';return}
+ if(!r.data?.length){box.innerHTML='<div class="empty">لا توجد مشاوير اختارك فيها العملاء حتى الآن.</div>';return}
+ box.innerHTML=r.data.map(q=>{
+   const phone=normalizePhone(q.contact_phone);
+   const start=q.status==='provider_selected'?`<button class="primary" data-start-delivery="${q.id}" style="width:100%;margin-top:8px">▶️ بدء التوصيل</button>`:'';
+   return `<div class="driver-job"><span class="delivery-status">${esc(deliveryStatusAr[q.status]||q.status)}</span><div class="delivery-route"><div class="place"><b>📍 الاستلام</b><br>${esc(q.pickup_area)}</div><div class="arrow">←</div><div class="place"><b>🏁 التسليم</b><br>${esc(q.dropoff_area)}</div></div><p>${esc(q.item_description||'')}</p><div class="driver-box">✅ تم اختيارك لهذا الطلب. يمكنك الآن التواصل مع العميل.${phone?`<div class="delivery-actions"><a class="delivery-call" href="tel:${esc(phone)}">📞 اتصال بالعميل</a><a class="delivery-wa" target="_blank" href="https://wa.me/${esc(sudanWa(phone))}">💬 واتساب العميل</a></div>`:''}</div>${start}</div>`;
+ }).join('');
+ document.querySelectorAll('[data-start-delivery]').forEach(b=>b.onclick=()=>startDelivery(b.dataset.startDelivery));
+}
+async function startDelivery(id){
+ const r=await sb.rpc('driver_start_delivery',{p_request_id:id});
+ if(r.error)alert('تعذر بدء التوصيل: '+r.error.message);else{alert('✅ تم تحويل الطلب إلى قيد التوصيل');loadDriverJobs()}
+}
+
+
+function openAuth(){$('authModal').classList.add('show')}function closeAuth(){$('authModal').classList.remove('show')}
+$('authBtn').onclick=openAuth;$('accountNav').onclick=openAuth;$('closeAuth').onclick=closeAuth;
+$('loginTab').onclick=()=>{mode='login';$('loginTab').classList.add('active');$('signupTab').classList.remove('active');$('authSubmit').textContent='تسجيل الدخول'};
+$('signupTab').onclick=()=>{mode='signup';$('signupTab').classList.add('active');$('loginTab').classList.remove('active');$('authSubmit').textContent='إنشاء الحساب'};
+
+$('authSubmit').onclick=async()=>{
+ const email=$('email').value.trim(),password=$('pass').value;
+ if(!email||password.length<6){$('authMsg').className='msg err';$('authMsg').textContent='اكتبي بريدًا صحيحًا وكلمة مرور 6 أحرف على الأقل';return}
+ const r=mode==='login'?await sb.auth.signInWithPassword({email,password}):await sb.auth.signUp({email,password});
+ if(r.error){$('authMsg').className='msg err';$('authMsg').textContent=r.error.message;return}
+ if(mode==='signup'&&!r.data.session){$('authMsg').className='msg ok';$('authMsg').textContent='تم إنشاء الحساب. راجعي البريد إذا طُلب التأكيد.';return}
+ closeAuth();await refreshAuth();if($('needPage').classList.contains('show'))loadMyRequests();if($('offerPage').classList.contains('show'))loadOfferArea();
+};
+
+async function refreshAuth(){
+ const {data:{user}}=await sb.auth.getUser();$('authBtn').textContent=user?'خروج':'دخول';
+ $('authBtn').onclick=user?async()=>{await sb.auth.signOut();currentProvider=null;await refreshAuth();if($('needPage').classList.contains('show'))loadMyRequests();if($('offerPage').classList.contains('show'))loadOfferArea()}:openAuth;
+}
+refreshAuth();
+
+async function loadData(){
+ if(!cityId){const r=await sb.from('cities').select('id').eq('is_launch_city',true).eq('is_active',true).limit(1).maybeSingle();if(r.data)cityId=r.data.id}
+ if(catsLoaded)return;
+ const r=await sb.from('categories').select('id,name_ar').eq('section','professional_service').eq('is_active',true).order('sort_order');
+ if(r.error){$('reqCat').innerHTML=$('proCat').innerHTML='<option value="">تعذر التحميل</option>';return}
+ const opts='<option value="">اختر نوع الخدمة</option>'+r.data.map(x=>`<option value="${x.id}">${esc(x.name_ar)}</option>`).join('');
+ $('reqCat').innerHTML=opts;$('proCat').innerHTML=opts;catsLoaded=true;
+}
+
+const statusAr={new:'جديد',offers_received:'وصلت عروض',provider_selected:'تم اختيار مقدم الخدمة',in_progress:'قيد التنفيذ',completed:'مكتمل',cancelled:'ملغي',expired:'منتهي'};
+function telDigits(v){return String(v||'').replace(/\D/g,'')}
+function waDigits(v){let d=telDigits(v);if(d.startsWith('00'))d=d.slice(2);if(d.startsWith('0'))d='249'+d.slice(1);return d}
+
+async function loadMyRequests(){
+ const box=$('myRequests');const {data:{user}}=await sb.auth.getUser();
+ if(!user){box.innerHTML='<div class="notice">سجّل الدخول لعرض طلباتك والعروض التي وصلتك.</div>';return}
+ box.innerHTML='<div class="empty">جاري تحميل طلباتك…</div>';
+ const rq=await sb.from('service_requests').select('id,description,location_text,status,selected_provider_id,created_at,categories(name_ar)').eq('requester_user_id',user.id).order('created_at',{ascending:false}).limit(20);
+ if(rq.error){box.innerHTML='<div class="notice">تعذر تحميل طلباتك الآن.</div>';return}
+ if(!rq.data||!rq.data.length){box.innerHTML='<div class="empty">لا توجد طلبات بعد.</div>';return}
+
+ const ids=rq.data.map(r=>r.id);
+ const iq=await sb.from('service_request_interests').select('id,request_id,provider_id,status,message,proposed_price,created_at').in('request_id',ids).order('created_at',{ascending:true});
+ const interests=iq.data||[];
+ const pids=[...new Set(interests.map(i=>i.provider_id))];
+ let providers={};
+ if(pids.length){
+   const pq=await sb.from('provider_profiles').select('id,display_name,address_text,verification_status,price_mode,price_amount,phone,whatsapp').in('id',pids);
+   (pq.data||[]).forEach(p=>providers[p.id]=p);
+ }
+
+ const rv=await sb.from('reviews').select('id,service_request_id,provider_id,rating,comment,status,created_at').in('service_request_id',ids);
+ const reviewsByRequest={};
+ (rv.data||[]).forEach(x=>reviewsByRequest[x.service_request_id]=x);
+
+ box.innerHTML=rq.data.map(r=>{
+   const offers=interests.filter(i=>i.request_id===r.id);
+   const review=reviewsByRequest[r.id];
+   let offersHtml='';
+   if(!offers.length) offersHtml='<div class="empty" style="padding:12px">لم تصل عروض بعد.</div>';
+   else offersHtml=offers.map(i=>{
+     const p=providers[i.provider_id]||{};
+     const isSelected=r.selected_provider_id===i.provider_id || i.status==='selected';
+     const declined=i.status==='declined';
+     const price=i.proposed_price?Number(i.proposed_price).toLocaleString('ar-EG')+' ج.س':(p.price_mode==='agreement'?'حسب الاتفاق':'');
+     let action='';
+     if(isSelected){
+       const phone=telDigits(p.phone); const wa=waDigits(p.whatsapp||p.phone);
+       const contacts=(phone||wa)?`<div class="contact-row">${phone?`<a class="contact-btn call-btn" href="tel:${phone}">📞 اتصال</a>`:'<span></span>'}${wa?`<a class="contact-btn wa-btn" href="https://wa.me/${wa}" target="_blank">💬 واتساب</a>`:'<span></span>'}</div>`:'';
+       let after='';
+       if(r.status==='in_progress'){
+         after=`<button class="complete-btn" data-complete-request="${r.id}">✅ إنهاء الخدمة</button>`;
+       } else if(r.status==='completed'){
+         if(review){
+           const stars='⭐'.repeat(Number(review.rating)||0);
+           after=`<div class="review-done"><b>✅ تم إرسال تقييمك</b><div class="review-stars">${stars}</div>${review.comment?`<small>${esc(review.comment)}</small>`:''}</div>`;
+         } else {
+           after=`<div class="review-box"><b>قيّم مقدم الخدمة</b><label>التقييم بالنجوم</label><select id="rating-${r.id}"><option value="">اختر التقييم</option><option value="5">⭐⭐⭐⭐⭐ ممتاز</option><option value="4">⭐⭐⭐⭐ جيد جدًا</option><option value="3">⭐⭐⭐ جيد</option><option value="2">⭐⭐ مقبول</option><option value="1">⭐ ضعيف</option></select><label>تعليقك</label><textarea id="comment-${r.id}" placeholder="اكتب رأيك في الخدمة – اختياري"></textarea><button class="primary select-btn" data-review-request="${r.id}" data-review-provider="${i.provider_id}">إرسال التقييم</button></div>`;
+         }
+       }
+       action='<button class="secondary select-btn selected" disabled>✅ تم اختيار مقدم الخدمة</button>'+contacts+after;
+     }
+     else if(declined || r.status==='provider_selected' || r.status==='in_progress' || r.status==='completed') action='<button class="secondary select-btn" disabled>لم يتم الاختيار</button>';
+     else action=`<button class="primary select-btn" data-select-request="${r.id}" data-select-provider="${i.provider_id}">اختيار مقدم الخدمة</button>`;
+     return `<div class="offer"><div class="offer-head"><b>${esc(p.display_name||'مقدم خدمة')}</b>${p.verification_status==='verified'?'<span class="verified">✅ موثّق</span>':''}</div><small>📍 ${esc(p.address_text||'بورتسودان')}${price?' • 💰 '+esc(price):''}</small>${i.message?'<p>'+esc(i.message)+'</p>':''}${action}</div>`;
+   }).join('');
+   return `<div class="req-card"><div class="offer-head"><h4>${esc(r.categories?.name_ar||'طلب خدمة')}</h4><span class="status">${esc(statusAr[r.status]||r.status)}</span></div><p>${esc(r.description)}</p><div class="meta"><span class="chip">📍 ${esc(r.location_text||'بورتسودان')}</span><span class="chip">📨 ${offers.length} عرض</span></div>${offersHtml}</div>`;
+ }).join('');
+
+ document.querySelectorAll('[data-select-request]').forEach(b=>b.onclick=()=>selectProvider(b.dataset.selectRequest,b.dataset.selectProvider));
+ document.querySelectorAll('[data-complete-request]').forEach(b=>b.onclick=()=>completeService(b.dataset.completeRequest,b));
+ document.querySelectorAll('[data-review-request]').forEach(b=>b.onclick=()=>submitReview(b.dataset.reviewRequest,b.dataset.reviewProvider,b));
+}
+
+async function selectProvider(requestId,providerId){
+ if(!confirm('هل تريد اختيار مقدم الخدمة هذا؟'))return;
+ const {data:{user}}=await sb.auth.getUser();if(!user){openAuth();return}
+ const r=await sb.from('service_requests').update({selected_provider_id:providerId,status:'provider_selected'}).eq('id',requestId).eq('requester_user_id',user.id).select('id').maybeSingle();
+ if(r.error){alert('تعذر اختيار مقدم الخدمة: '+r.error.message);return}
+ alert('✅ تم اختيار مقدم الخدمة بنجاح');await loadMyRequests();
+}
+
+async function completeService(requestId,btn){
+ if(!confirm('هل تم إنجاز الخدمة وتريد إنهاء الطلب؟'))return;
+ btn.disabled=true;btn.textContent='جاري الإنهاء…';
+ const {data:{user}}=await sb.auth.getUser();if(!user){openAuth();return}
+ const r=await sb.from('service_requests').update({status:'completed'}).eq('id',requestId).eq('requester_user_id',user.id).eq('status','in_progress').select('id').maybeSingle();
+ if(r.error){btn.disabled=false;btn.textContent='✅ إنهاء الخدمة';alert('تعذر إنهاء الخدمة: '+r.error.message);return}
+ alert('✅ تم إنهاء الخدمة. يمكنك الآن تقييم مقدم الخدمة');await loadMyRequests();
+}
+
+async function submitReview(requestId,providerId,btn){
+ const ratingEl=$('rating-'+requestId), commentEl=$('comment-'+requestId);
+ const rating=Number(ratingEl?.value||0), comment=(commentEl?.value||'').trim();
+ if(rating<1||rating>5){alert('اختاري التقييم من نجمة إلى خمس نجوم');return}
+ const {data:{user}}=await sb.auth.getUser();if(!user){openAuth();return}
+ btn.disabled=true;btn.textContent='جاري إرسال التقييم…';
+ const r=await sb.from('reviews').insert({reviewer_user_id:user.id,provider_id:providerId,service_request_id:requestId,rating,comment:comment||null});
+ if(r.error){btn.disabled=false;btn.textContent='إرسال التقييم';alert('تعذر إرسال التقييم: '+r.error.message);return}
+ alert('⭐ شكرًا، تم حفظ تقييمك');await loadMyRequests();
+}
+
+$('refreshMine').onclick=loadMyRequests;
+
+async function loadOfferArea(){
+ await loadData();const {data:{user}}=await sb.auth.getUser();
+ $('providerExisting').style.display='none';$('matchedSection').style.display='none';$('providerFormWrap').style.display='none';
+ if(!user){$('providerFormWrap').style.display='block';currentProvider=null;return}
+ const p=await sb.from('provider_profiles').select('id,display_name,city_id,address_text,phone,whatsapp').eq('owner_user_id',user.id).eq('provider_type','professional').eq('account_status','active').order('created_at',{ascending:false}).limit(1).maybeSingle();
+ if(p.error||!p.data){$('providerFormWrap').style.display='block';currentProvider=null;return}
+ const pc=await sb.from('provider_categories').select('category_id,categories(name_ar)').eq('provider_id',p.data.id);
+ currentProvider={...p.data,provider_categories:pc.data||[]};
+ const names=currentProvider.provider_categories.map(x=>x.categories?.name_ar).filter(Boolean).join('، ');
+ $('providerTitle').textContent='✅ أنت مسجل كمقدم خدمة';
+ $('providerInfo').innerHTML=esc(currentProvider.display_name)+'<br>الخدمة: '+esc(names||'—')+'<br>المكان: '+esc(currentProvider.address_text||'بورتسودان');
+ $('providerExisting').style.display='block';$('matchedSection').style.display='block';await loadMatches();
+}
+
+async function loadMatches(){
+ const box=$('matchedRequests');if(!currentProvider){box.innerHTML='<div class="empty">سجّل خدمتك أولًا.</div>';return}
+ box.innerHTML='<div class="empty">جاري تحميل الطلبات المناسبة…</div>';
+ const catIds=currentProvider.provider_categories.map(x=>x.category_id).filter(Boolean);if(!catIds.length){box.innerHTML='<div class="empty">لا يوجد نوع خدمة مرتبط بملفك.</div>';return}
+ const q=await sb.from('service_requests').select('id,description,location_text,time_preference,budget_mode,budget_amount,status,selected_provider_id,created_at,categories(name_ar)').in('category_id',catIds).eq('city_id',currentProvider.city_id).in('status',['new','offers_received','provider_selected','in_progress','completed']).order('created_at',{ascending:false});
+ if(q.error){box.innerHTML='<div class="empty">تعذر تحميل الطلبات الآن.</div>';return}
+ const ir=await sb.from('service_request_interests').select('request_id').eq('provider_id',currentProvider.id);const interested=new Set((ir.data||[]).map(x=>x.request_id));
+ if(!q.data||!q.data.length){box.innerHTML='<div class="empty">لا توجد طلبات مناسبة حاليًا.</div>';return}
+ const timeAr={asap:'في أقرب وقت',today:'اليوم',tomorrow:'غدًا',this_week:'هذا الأسبوع',flexible:'وقت مرن'};
+ box.innerHTML=q.data.map(r=>{
+   const budget=r.budget_mode==='agreement'?'حسب الاتفاق':(r.budget_mode==='fixed'&&r.budget_amount?Number(r.budget_amount).toLocaleString('ar-EG')+' ج.س':'غير محددة');
+   const done=interested.has(r.id);
+   const selectedForMe=r.selected_provider_id===currentProvider.id;
+   let action='';
+   if(r.status==='provider_selected' && selectedForMe) action=`<button class="primary start-btn" data-start-request="${r.id}">▶️ بدء تنفيذ الخدمة</button>`;
+   else if(r.status==='in_progress' && selectedForMe) action='<div class="progress-box">🔄 الخدمة قيد التنفيذ</div>';
+   else if(r.status==='completed' && selectedForMe) action='<div class="progress-box">✅ الخدمة مكتملة</div>';
+   else if(r.status==='provider_selected' || r.status==='in_progress' || r.status==='completed') action='<div class="progress-box">تم اختيار مقدم خدمة آخر</div>';
+   else action=`<button class="${done?'secondary interest done':'primary interest'}" data-interest="${r.id}" ${done?'disabled':''}>${done?'✅ تم إرسال اهتمامك':'أنا مهتم'}</button>`;
+   return `<div class="req-card"><div class="offer-head"><h4>${esc(r.categories?.name_ar||'طلب خدمة')}</h4><span class="status">${esc(statusAr[r.status]||r.status)}</span></div><p>${esc(r.description)}</p><div class="meta"><span class="chip">📍 ${esc(r.location_text||'بورتسودان')}</span><span class="chip">⏰ ${esc(timeAr[r.time_preference]||'غير محدد')}</span><span class="chip">💰 ${esc(budget)}</span></div>${action}</div>`;
+ }).join('');
+ await bindFavoriteButtons(box);
+ document.querySelectorAll('[data-interest]').forEach(b=>b.onclick=()=>sendInterest(b.dataset.interest,b));
+ document.querySelectorAll('[data-start-request]').forEach(b=>b.onclick=()=>startService(b.dataset.startRequest,b));
+}
+async function sendInterest(requestId,btn){
+ btn.disabled=true;btn.textContent='جاري الإرسال…';
+ const r=await sb.from('service_request_interests').insert({request_id:requestId,provider_id:currentProvider.id});
+ if(r.error){if(r.error.code==='23505'){btn.className='secondary interest done';btn.textContent='✅ تم إرسال اهتمامك';return}btn.disabled=false;btn.textContent='أنا مهتم';alert('تعذر الإرسال: '+r.error.message);return}
+ btn.className='secondary interest done';btn.textContent='✅ تم إرسال اهتمامك';
+}
+async function startService(requestId,btn){
+ if(!confirm('هل بدأت تنفيذ الخدمة بالفعل؟'))return;
+ btn.disabled=true;btn.textContent='جاري التحديث…';
+ const r=await sb.from('service_requests').update({status:'in_progress'}).eq('id',requestId).eq('selected_provider_id',currentProvider.id).eq('status','provider_selected').select('id').maybeSingle();
+ if(r.error){btn.disabled=false;btn.textContent='▶️ بدء تنفيذ الخدمة';alert('تعذر بدء الخدمة: '+r.error.message);return}
+ alert('✅ تم تحويل الطلب إلى قيد التنفيذ');await loadMatches();
+}
+$('refreshMatches').onclick=loadMatches;
+
+$('sendReq').onclick=async()=>{
+ const {data:{user}}=await sb.auth.getUser();if(!user){$('reqMsg').className='msg err';$('reqMsg').textContent='سجّل الدخول أولًا';openAuth();return}
+ const category_id=$('reqCat').value,description=$('reqDesc').value.trim(),location_text=$('reqLoc').value.trim();
+ if(!category_id||description.length<5||!location_text){$('reqMsg').className='msg err';$('reqMsg').textContent='أكملي نوع الخدمة والتفاصيل والمكان';return}
+ if(!cityId)await loadData();const b=$('reqBudget').value.trim();
+ const r=await sb.from('service_requests').insert({requester_user_id:user.id,category_id,city_id:cityId,description,location_text,time_preference:$('reqWhen').value||null,budget_amount:b?Number(b):null,budget_mode:$('reqBudgetMode').value});
+ if(r.error){$('reqMsg').className='msg err';$('reqMsg').textContent='لم يتم الإرسال: '+r.error.message;return}
+ $('reqMsg').className='msg ok';$('reqMsg').textContent='✅ تم إرسال طلبك بنجاح';$('reqDesc').value='';$('reqLoc').value='';$('reqBudget').value='';await loadMyRequests();
+};
+
+$('sendPro').onclick=async()=>{
+ const {data:{user}}=await sb.auth.getUser();if(!user){$('proMsg').className='msg err';$('proMsg').textContent='سجّل الدخول أولًا';openAuth();return}
+ const name=$('proName').value.trim(),cat=$('proCat').value,phone=$('proPhone').value.trim(),loc=$('proLoc').value.trim();
+ if(!name||!cat||!phone||!loc){$('proMsg').className='msg err';$('proMsg').textContent='أكملي الاسم ونوع الخدمة والهاتف والمكان';return}
+ if(!cityId)await loadData();const p=$('proPrice').value.trim();
+ const ins=await sb.from('provider_profiles').insert({owner_user_id:user.id,provider_type:'professional',display_name:name,description:$('proDesc').value.trim()||null,phone,whatsapp:$('proWhats').value.trim()||phone,city_id:cityId,address_text:loc,price_mode:$('proPriceMode').value,price_amount:p?Number(p):null}).select('id').single();
+ if(ins.error){$('proMsg').className='msg err';$('proMsg').textContent='لم يتم التسجيل: '+ins.error.message;return}
+ const link=await sb.from('provider_categories').insert({provider_id:ins.data.id,category_id:cat});
+ if(link.error){$('proMsg').className='msg err';$('proMsg').textContent='تم إنشاء الملف لكن تعذر ربط نوع الخدمة';return}
+ $('proMsg').className='msg ok';$('proMsg').textContent='✅ تم تسجيل خدمتك بنجاح';await loadOfferArea();
+};
+</script>
+</body></html>
