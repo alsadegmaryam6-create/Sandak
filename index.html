@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#16894b">
-<title>سندك في الحياة V0.15.1</title>
+<title>سندك في الحياة V0.15.4</title>
 <style>
 :root{--g:#16894b;--g2:#0f6e3b;--bg:#f6faf7;--text:#152019;--muted:#6b766e;--line:#e4eee7;--bad:#b42318;--blue:#235a9f}
 *{box-sizing:border-box}body{margin:0;font-family:Tahoma,Arial,sans-serif;background:var(--bg);color:var(--text);padding-bottom:76px}
@@ -227,12 +227,22 @@ h1{font-size:19px;margin:0}.ver{font-size:10px;color:var(--g);font-weight:bold}s
  .vehicle-grid{grid-template-columns:1fr}
 }
 
+
+.subscription-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0}
+.subscription-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:13px;text-align:center}
+.subscription-card b{display:block;margin-bottom:5px}.subscription-price{color:var(--g2);font-weight:bold;font-size:16px}
+.payment-methods{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0}
+.payment-method{background:#f2f8f4;border:1px solid #d9e7dd;border-radius:13px;padding:12px 7px;text-align:center;font-weight:bold}
+.admin-contact{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}.admin-contact a{text-decoration:none;text-align:center;padding:12px;border-radius:12px;font-weight:bold}
+.review-page-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:14px;margin:10px 0}
+@media(max-width:470px){.subscription-grid{grid-template-columns:1fr}.payment-methods{grid-template-columns:1fr 1fr 1fr}.admin-contact{grid-template-columns:1fr}}
+
 @media(max-width:470px){h1{font-size:17px}}
 </style>
 </head>
 <body>
 <div class="app">
-<header><div class="top"><div class="brand"><div class="logo">س</div><div><h1>سندك في الحياة 🇸🇩</h1><div class="ver">V0.15.1</div></div></div><button id="authBtn" class="secondary">دخول</button></div></header>
+<header><div class="top"><div class="brand"><div class="logo">س</div><div><h1>سندك في الحياة 🇸🇩</h1><div class="ver">V0.15.4</div></div></div><button id="authBtn" class="secondary">دخول</button></div></header>
 
 <div id="home" class="show">
 <section class="hero"><div class="hero-card"><h2>محتاج شنو اليوم؟</h2><p>خدمات، طبيب، عقار، منتج أو توصيل… كلها في مكان واحد.</p><div class="search"><button id="homeSearchGo" class="search-go" aria-label="بحث">🔎</button><input id="homeSearchInput" placeholder="ابحث عن خدمة أو طبيب أو مستشفى أو منتج"></div></div></section>
@@ -246,8 +256,10 @@ h1{font-size:19px;margin:0}.ver{font-size:10px;color:var(--g);font-weight:bold}s
 <div class="cat" id="hospitalBtn"><div class="ico">🏥</div><b>المستشفيات</b><small>الأقسام والغرف والاستقبال</small></div>
 <div class="cat" id="pharmacyBtn"><div class="ico">💊</div><b>الصيدليات</b><small>الموقع وساعات العمل والتواصل</small></div>
 <div class="cat" id="deliveryBtn"><div class="ico">🛵</div><b>التوصيل</b><small>اطلب توصيل أو سجّل كسائق</small></div>
+<div class="cat" id="reviewsBtn"><div class="ico">⭐</div><b>التقييمات</b><small>قيّم الخدمة بعد اكتمالها وراجع تقييماتك</small></div>
+<div class="cat" id="paymentBtn"><div class="ico">💳</div><b>الاشتراك والدفع</b><small>الخطط الشهرية وطرق إرسال إشعار الدفع</small></div>
 </div></section>
-<section class="section"><div class="notice"><strong>✅ النسخة V0.15.1</strong><br>تم تفعيل قسم التوصيل: طلب توصيل وعروض السائقين واختيار السائق والتواصل بعد الاختيار.</div></section>
+<section class="section"><div class="notice"><strong>✅ النسخة V0.15.4</strong><br>تم ربط إرسال إشعار الدفع بواتساب الإدارة 0913032542 مع بيانات حسابات الدفع، مع الإبقاء على جميع أقسام النسخة السابقة.</div></section>
 </div>
 
 <section id="needPage" class="page">
@@ -624,6 +636,36 @@ h1{font-size:19px;margin:0}.ver{font-size:10px;color:var(--g);font-weight:bold}s
 </div>
 </div>
 
+<section id="reviewsPage" class="page">
+<div class="pagehead"><button class="back" data-home>→</button><h2>⭐ التقييمات</h2></div>
+<div class="hint">يظهر التقييم بعد اكتمال طلب الخدمة. يمكنك إرسال تقييم من نجمة إلى خمس نجوم مع تعليق اختياري.</div>
+<div class="section-title"><h3>الخدمات المكتملة</h3><button id="refreshReviewsPage" class="secondary" style="padding:7px 10px">تحديث</button></div>
+<div id="reviewsPageList"><div class="empty">جاري تحميل الخدمات المكتملة…</div></div>
+</section>
+
+<section id="paymentPage" class="page">
+<div class="pagehead"><button class="back" data-home>→</button><h2>💳 الاشتراك والدفع</h2></div>
+<div class="hint"><b>🎁 الشهر الأول مجاني</b><br>بعد انتهاء الفترة المجانية يبدأ الاشتراك الشهري لمقدمي الخدمات والجهات المسجلة.</div>
+<div class="subscription-grid">
+  <div class="subscription-card"><b>🛠️ مقدمو الخدمات</b><span class="subscription-price">20,000 ج.س / شهر</span></div>
+  <div class="subscription-card"><b>👨‍⚕️ الأطباء</b><span class="subscription-price">20,000 ج.س / شهر</span></div>
+  <div class="subscription-card"><b>💊 الصيدليات</b><span class="subscription-price">20,000 ج.س / شهر</span></div>
+  <div class="subscription-card"><b>🏥 المستشفيات</b><span class="subscription-price">20,000 ج.س / شهر</span></div>
+  <div class="subscription-card"><b>🛒 البيع والشراء</b><span class="subscription-price">20,000 ج.س / شهر</span></div>
+  <div class="subscription-card"><b>🛵 التوصيل</b><span class="subscription-price">10,000 ج.س / شهر</span></div>
+</div>
+<div class="card">
+  <h3 style="margin-top:0">طرق الدفع</h3>
+  <div class="payment-methods"><div class="payment-method">🏦 بنكك<br><small>2892867</small></div><div class="payment-method">💰 فوري<br><small>51555823</small></div><div class="payment-method">📱 أوكاش<br><small>سيضاف الرقم لاحقًا</small></div></div>
+  <div class="notice"><b>بيانات الدفع:</b><br>بنكك: 2892867<br>فوري: 51555823<br>أوكاش: لم يُضف رقم الحساب بعد.</div>
+  <div class="field"><label>الفئة</label><select id="payCategory"><option>مقدم خدمة</option><option>طبيب</option><option>صيدلية</option><option>مستشفى</option><option>بيع وشراء</option><option>توصيل</option></select></div>
+  <div class="field"><label>طريقة الدفع</label><select id="payMethod"><option>بنكك</option><option>فوري</option><option>أوكاش</option></select></div>
+  <div class="hint">بعد التحويل اضغط الزر أدناه لفتح واتساب الإدارة على الرقم <b>0913032542</b>، ثم أرفق صورة إشعار/إيصال البنك وأرسلها.</div>
+  <button id="sendPaymentNotice" class="primary" style="width:100%">إرسال إشعار الدفع إلى واتساب 0913032542</button>
+  <div class="admin-contact"><a class="call-btn" href="tel:0913032542">📞 اتصال بالإدارة</a><a class="wa-btn" target="_blank" href="https://wa.me/249913032542">💬 واتساب الإدارة</a></div>
+</div>
+</section>
+
 <section id="offerPage" class="page">
 <div class="pagehead"><button class="back" data-home>→</button><h2>🛠️ أقدم خدمة</h2></div>
 <div id="providerExisting" class="provider-box" style="display:none"><b id="providerTitle"></b><small id="providerInfo"></small></div>
@@ -670,8 +712,8 @@ h1{font-size:19px;margin:0}.ver{font-size:10px;color:var(--g);font-weight:bold}s
 const sb=supabase.createClient("https://xcdobqsqfdupovtwamer.supabase.co","sb_publishable_cbFKfqs1Aibfup2Iuh_ltg_nA5NlQNS");
 let mode='login',cityId=null,catsLoaded=false,currentProvider=null;const $=x=>document.getElementById(x);
 function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]))}
-function page(p){$('home').classList.toggle('show',p==='home');$('needPage').classList.toggle('show',p==='need');$('offerPage').classList.toggle('show',p==='offer');$('propertyPage').classList.toggle('show',p==='property');$('productPage').classList.toggle('show',p==='product');$('doctorPage').classList.toggle('show',p==='doctor');$('hospitalPage').classList.toggle('show',p==='hospital');$('pharmacyPage').classList.toggle('show',p==='pharmacy');$('deliveryPage').classList.toggle('show',p==='delivery');$('searchPage').classList.toggle('show',p==='search');$('favoritesPage').classList.toggle('show',p==='favorites');window.scrollTo(0,0)}
-$('needBtn').onclick=()=>{page('need');loadData();loadMyRequests()};$('offerBtn').onclick=()=>{page('offer');loadOfferArea()};$('propertyBtn').onclick=()=>{page('property');showPropertyTab('browse');loadPropertyData();loadProperties()};$('productBtn').onclick=()=>{page('product');showProductTab('browse');loadProductData();loadProducts()};$('doctorBtn').onclick=()=>{page('doctor');showDoctorTab('browse');loadDoctorData();loadDoctors()};$('hospitalBtn').onclick=()=>{page('hospital');showHospitalTab('browse');loadHospitalData();loadHospitals()};$('pharmacyBtn').onclick=()=>{page('pharmacy');showPharmacyTab('browse');loadPharmacies()};$('deliveryBtn').onclick=()=>{page('delivery');showDeliveryTab('customer');loadDeliveryVehicleTypes();loadMyDeliveryRequests()};$('addNav').onclick=()=>{page('need');loadData();loadMyRequests()};$('homeNav').onclick=()=>page('home');$('searchNav').onclick=()=>openGlobalSearch($('homeSearchInput').value);$('favNav').onclick=()=>{page('favorites');loadFavoritesPage()};
+function page(p){$('home').classList.toggle('show',p==='home');$('needPage').classList.toggle('show',p==='need');$('offerPage').classList.toggle('show',p==='offer');$('propertyPage').classList.toggle('show',p==='property');$('productPage').classList.toggle('show',p==='product');$('doctorPage').classList.toggle('show',p==='doctor');$('hospitalPage').classList.toggle('show',p==='hospital');$('pharmacyPage').classList.toggle('show',p==='pharmacy');$('deliveryPage').classList.toggle('show',p==='delivery');$('searchPage').classList.toggle('show',p==='search');$('favoritesPage').classList.toggle('show',p==='favorites');$('reviewsPage').classList.toggle('show',p==='reviews');$('paymentPage').classList.toggle('show',p==='payment');window.scrollTo(0,0)}
+$('needBtn').onclick=()=>{page('need');loadData();loadMyRequests()};$('offerBtn').onclick=()=>{page('offer');loadOfferArea()};$('propertyBtn').onclick=()=>{page('property');showPropertyTab('browse');loadPropertyData();loadProperties()};$('productBtn').onclick=()=>{page('product');showProductTab('browse');loadProductData();loadProducts()};$('doctorBtn').onclick=()=>{page('doctor');showDoctorTab('browse');loadDoctorData();loadDoctors()};$('hospitalBtn').onclick=()=>{page('hospital');showHospitalTab('browse');loadHospitalData();loadHospitals()};$('pharmacyBtn').onclick=()=>{page('pharmacy');showPharmacyTab('browse');loadPharmacies()};$('deliveryBtn').onclick=()=>{page('delivery');showDeliveryTab('customer');loadDeliveryVehicleTypes();loadMyDeliveryRequests()};$('reviewsBtn').onclick=()=>{page('reviews');loadReviewsPage()};$('paymentBtn').onclick=()=>page('payment');$('addNav').onclick=()=>{page('need');loadData();loadMyRequests()};$('homeNav').onclick=()=>page('home');$('searchNav').onclick=()=>openGlobalSearch($('homeSearchInput').value);$('favNav').onclick=()=>{page('favorites');loadFavoritesPage()};
 document.querySelectorAll('[data-home]').forEach(b=>b.onclick=()=>page('home'));document.querySelectorAll('[data-soon]').forEach(x=>x.onclick=()=>alert(x.dataset.soon+' قيد التجهيز'));
 
 
@@ -1793,6 +1835,52 @@ async function startDelivery(id){
  if(r.error)alert('تعذر بدء التوصيل: '+r.error.message);else{alert('✅ تم تحويل الطلب إلى قيد التوصيل');loadDriverJobs()}
 }
 
+
+async function loadReviewsPage(){
+ const box=$('reviewsPageList');
+ const {data:{user}}=await sb.auth.getUser();
+ if(!user){box.innerHTML='<div class="notice">سجّل الدخول أولًا لعرض الخدمات المكتملة والتقييمات.</div>';openAuth();return}
+ box.innerHTML='<div class="empty">جاري تحميل الخدمات المكتملة…</div>';
+ const rq=await sb.from('service_requests').select('id,description,selected_provider_id,created_at,categories(name_ar)').eq('requester_user_id',user.id).eq('status','completed').order('created_at',{ascending:false}).limit(30);
+ if(rq.error){box.innerHTML='<div class="notice">تعذر تحميل الخدمات المكتملة الآن.</div>';return}
+ const rows=(rq.data||[]).filter(x=>x.selected_provider_id);
+ if(!rows.length){box.innerHTML='<div class="empty">لا توجد خدمة مكتملة جاهزة للتقييم حتى الآن.</div>';return}
+ const pids=[...new Set(rows.map(x=>x.selected_provider_id))];
+ const pq=await sb.from('provider_profiles').select('id,display_name,address_text').in('id',pids);
+ const providers={};(pq.data||[]).forEach(x=>providers[x.id]=x);
+ const ids=rows.map(x=>x.id);
+ const rv=await sb.from('reviews').select('id,service_request_id,provider_id,rating,comment,created_at').in('service_request_id',ids);
+ const reviews={};(rv.data||[]).forEach(x=>reviews[x.service_request_id]=x);
+ box.innerHTML=rows.map(r=>{
+   const p=providers[r.selected_provider_id]||{},v=reviews[r.id];
+   if(v){const stars='⭐'.repeat(Number(v.rating)||0);return `<div class="review-page-card"><b>${esc(r.categories?.name_ar||'خدمة مكتملة')}</b><p>${esc(r.description||'')}</p><small>مقدم الخدمة: ${esc(p.display_name||'مقدم خدمة')}</small><div class="review-done"><b>✅ تم إرسال تقييمك</b><div class="review-stars">${stars}</div>${v.comment?`<small>${esc(v.comment)}</small>`:''}</div></div>`}
+   return `<div class="review-page-card"><b>${esc(r.categories?.name_ar||'خدمة مكتملة')}</b><p>${esc(r.description||'')}</p><small>مقدم الخدمة: ${esc(p.display_name||'مقدم خدمة')}</small><div class="review-box"><label>التقييم بالنجوم</label><select id="reviewPage-rating-${r.id}"><option value="">اختر التقييم</option><option value="5">⭐⭐⭐⭐⭐ ممتاز</option><option value="4">⭐⭐⭐⭐ جيد جدًا</option><option value="3">⭐⭐⭐ جيد</option><option value="2">⭐⭐ مقبول</option><option value="1">⭐ ضعيف</option></select><label>تعليقك</label><textarea id="reviewPage-comment-${r.id}" placeholder="اكتب رأيك في الخدمة – اختياري"></textarea><button class="primary select-btn" data-review-page-request="${r.id}" data-review-page-provider="${r.selected_provider_id}">إرسال التقييم</button></div></div>`;
+ }).join('');
+ document.querySelectorAll('[data-review-page-request]').forEach(b=>b.onclick=()=>submitReviewFromPage(b.dataset.reviewPageRequest,b.dataset.reviewPageProvider,b));
+}
+
+async function submitReviewFromPage(requestId,providerId,btn){
+ const rating=Number($('reviewPage-rating-'+requestId)?.value||0),comment=($('reviewPage-comment-'+requestId)?.value||'').trim();
+ if(rating<1||rating>5){alert('اختاري التقييم من نجمة إلى خمس نجوم');return}
+ const {data:{user}}=await sb.auth.getUser();if(!user){openAuth();return}
+ btn.disabled=true;btn.textContent='جاري إرسال التقييم…';
+ const r=await sb.from('reviews').insert({reviewer_user_id:user.id,provider_id:providerId,service_request_id:requestId,rating,comment:comment||null});
+ if(r.error){btn.disabled=false;btn.textContent='إرسال التقييم';alert('تعذر إرسال التقييم: '+r.error.message);return}
+ alert('⭐ شكرًا، تم حفظ تقييمك');await loadReviewsPage();
+}
+$('refreshReviewsPage').onclick=loadReviewsPage;
+
+$('sendPaymentNotice').onclick=()=>{
+ const cat=$('payCategory').value,method=$('payMethod').value;
+ const accounts={
+   'بنكك':'2892867',
+   'فوري':'51555823',
+   'أوكاش':'لم يُضف رقم الحساب بعد'
+ };
+ const account=accounts[method]||'';
+ const msg=`السلام عليكم، أريد إرسال إشعار اشتراك تطبيق سندك في الحياة.\nالفئة: ${cat}\nطريقة الدفع: ${method}\nرقم الحساب: ${account}\nسأرفق صورة إشعار الدفع في واتساب.`;
+ window.open('https://wa.me/249913032542?text='+encodeURIComponent(msg),'_blank');
+};
 
 function openAuth(){$('authModal').classList.add('show')}function closeAuth(){$('authModal').classList.remove('show')}
 $('authBtn').onclick=openAuth;$('accountNav').onclick=openAuth;$('closeAuth').onclick=closeAuth;
