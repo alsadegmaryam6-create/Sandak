@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#16894b">
-<title>سندك في الحياة V0.15.7</title>
+<title>سندك في الحياة V0.15.8</title>
 <style>
 :root{--g:#16894b;--g2:#0f6e3b;--bg:#f6faf7;--text:#152019;--muted:#6b766e;--line:#e4eee7;--bad:#b42318;--blue:#235a9f}
 *{box-sizing:border-box}body{margin:0;font-family:Tahoma,Arial,sans-serif;background:var(--bg);color:var(--text);padding-bottom:76px}
@@ -242,7 +242,7 @@ h1{font-size:19px;margin:0}.ver{font-size:10px;color:var(--g);font-weight:bold}s
 </head>
 <body>
 <div class="app">
-<header><div class="top"><div class="brand"><div class="logo">س</div><div><h1>سندك في الحياة 🇸🇩</h1><div class="ver">V0.15.7</div></div></div><button id="authBtn" class="secondary">دخول</button></div></header>
+<header><div class="top"><div class="brand"><div class="logo">س</div><div><h1>سندك في الحياة 🇸🇩</h1><div class="ver">V0.15.8</div></div></div><button id="authBtn" class="secondary">دخول</button></div></header>
 
 <div id="home" class="show">
 <section class="hero"><div class="hero-card"><h2>محتاج شنو اليوم؟</h2><p>خدمات، طبيب، عقار، منتج أو توصيل… كلها في مكان واحد.</p><div class="search"><button id="homeSearchGo" class="search-go" aria-label="بحث">🔎</button><input id="homeSearchInput" placeholder="ابحث عن خدمة أو طبيب أو مستشفى أو منتج"></div></div></section>
@@ -712,6 +712,11 @@ h1{font-size:19px;margin:0}.ver{font-size:10px;color:var(--g);font-weight:bold}s
 <button id="accountNav" class="nav"><i>👤</i>حسابي</button>
 </nav>
 
+<div id="providerProfileModal" class="modal"><div class="sheet" style="max-height:86vh;overflow-y:auto">
+<div class="section-title" style="margin-top:0"><h3>⭐ ملف مقدم الخدمة</h3><button id="closeProviderProfile" class="secondary" style="padding:7px 10px">إغلاق</button></div>
+<div id="providerProfileBody"><div class="empty">جاري تحميل الملف والتقييمات…</div></div>
+</div></div>
+
 <div id="authModal" class="modal"><div class="sheet">
 <h3>مرحبًا بك في سندك 💚</h3>
 <div class="tabs"><button id="loginTab" class="tab active">دخول</button><button id="signupTab" class="tab">حساب جديد</button></div>
@@ -872,6 +877,39 @@ function resultContact(phone,wa){
  if(!p&&!w)return '';
  return `<div class="search-actions">${p?`<a class="search-call" href="tel:${esc(p)}">📞 اتصال</a>`:'<span></span>'}${w?`<a class="search-wa" target="_blank" href="https://wa.me/${esc(w)}">💬 واتساب</a>`:'<span></span>'}</div>`;
 }
+
+async function openProviderProfile(providerId){
+ const modal=$('providerProfileModal'),body=$('providerProfileBody');
+ modal.classList.add('show');
+ body.innerHTML='<div class="empty">جاري تحميل الملف والتقييمات…</div>';
+ const [pr,rr]=await Promise.all([
+   sb.from('provider_profiles').select('id,display_name,description,address_text,phone,whatsapp,price_mode,price_amount,provider_categories(categories(name_ar))').eq('id',providerId).maybeSingle(),
+   sb.from('reviews').select('rating,comment,created_at').eq('provider_id',providerId).eq('status','visible').order('created_at',{ascending:false}).limit(30)
+ ]);
+ if(pr.error||!pr.data){body.innerHTML='<div class="notice">تعذر تحميل ملف مقدم الخدمة الآن.</div>';return}
+ const p=pr.data,reviews=rr.data||[];
+ const cats=(p.provider_categories||[]).map(v=>v.categories?.name_ar).filter(Boolean).join('، ');
+ const avg=reviews.length?(reviews.reduce((s,r)=>s+(Number(r.rating)||0),0)/reviews.length):0;
+ const stars=avg?('⭐'.repeat(Math.max(1,Math.round(avg)))):'';
+ const phone=normalizePhone(p.phone),wa=sudanWa(p.whatsapp||p.phone);
+ const reviewHtml=reviews.length
+   ?reviews.map(r=>`<div class="review-page-card"><div class="review-stars">${'⭐'.repeat(Number(r.rating)||0)}</div>${r.comment?`<div style="margin-top:6px">${esc(r.comment)}</div>`:'<small>بدون تعليق</small>'}</div>`).join('')
+   :'<div class="empty">لا توجد تقييمات منشورة لهذا مقدم الخدمة حتى الآن.</div>';
+ body.innerHTML=`<div class="review-page-card">
+   <h3 style="margin:0 0 8px">${esc(p.display_name||'مقدم خدمة')}</h3>
+   <div class="search-meta">${cats?`الخدمة: ${esc(cats)}<br>`:''}📍 ${esc(p.address_text||'بورتسودان')}</div>
+   ${p.description?`<p>${esc(p.description)}</p>`:''}
+   <div class="review-done" style="margin-top:12px">
+     <b>${reviews.length?`${stars} ${avg.toFixed(1)} من 5`:'لا يوجد تقييم بعد'}</b>
+     <div><small>${reviews.length} تقييم</small></div>
+   </div>
+   ${(phone||wa)?`<div class="search-actions" style="margin-top:10px">${phone?`<a class="search-call" href="tel:${esc(phone)}">📞 اتصال</a>`:'<span></span>'}${wa?`<a class="search-wa" target="_blank" href="https://wa.me/${esc(wa)}">💬 واتساب</a>`:'<span></span>'}</div>`:''}
+ </div>
+ <div class="section-title"><h3>آراء العملاء</h3><span>${reviews.length} تقييم</span></div>
+ ${reviewHtml}`;
+}
+$('closeProviderProfile').onclick=()=>$('providerProfileModal').classList.remove('show');
+$('providerProfileModal').onclick=e=>{if(e.target===$('providerProfileModal'))$('providerProfileModal').classList.remove('show')};
 let globalSearchItems=[],globalSearchQuery='',globalSearchFilter='all';
 function renderGlobalResults(items,q){
  globalSearchItems=items||[];
@@ -894,9 +932,11 @@ function renderGlobalResults(items,q){
    ${x.price?`<div class="search-price">${esc(x.price)}</div>`:''}
    ${x.desc?`<div class="search-desc">${esc(x.desc)}</div>`:''}
    ${x.targetType&&x.targetId?`<div class="fav-inline">${favButton(x.targetType,x.targetId)}</div>`:''}
+   ${x.type==='service'&&x.targetId?`<button class="secondary" data-provider-profile="${esc(x.targetId)}" style="width:100%;margin-top:9px">⭐ عرض الملف والتقييمات</button>`:''}
    ${resultContact(x.phone,x.wa)}
  </div>`).join('');
  bindFavoriteButtons(box);
+ box.querySelectorAll('[data-provider-profile]').forEach(b=>b.onclick=()=>openProviderProfile(b.dataset.providerProfile));
 }
 document.querySelectorAll('.search-filter').forEach(btn=>{
  btn.onclick=()=>{
