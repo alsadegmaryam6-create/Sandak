@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#16894b">
-<title>سندك في الحياة V0.15.4</title>
+<title>سندك في الحياة V0.15.5</title>
 <style>
 :root{--g:#16894b;--g2:#0f6e3b;--bg:#f6faf7;--text:#152019;--muted:#6b766e;--line:#e4eee7;--bad:#b42318;--blue:#235a9f}
 *{box-sizing:border-box}body{margin:0;font-family:Tahoma,Arial,sans-serif;background:var(--bg);color:var(--text);padding-bottom:76px}
@@ -242,7 +242,7 @@ h1{font-size:19px;margin:0}.ver{font-size:10px;color:var(--g);font-weight:bold}s
 </head>
 <body>
 <div class="app">
-<header><div class="top"><div class="brand"><div class="logo">س</div><div><h1>سندك في الحياة 🇸🇩</h1><div class="ver">V0.15.4</div></div></div><button id="authBtn" class="secondary">دخول</button></div></header>
+<header><div class="top"><div class="brand"><div class="logo">س</div><div><h1>سندك في الحياة 🇸🇩</h1><div class="ver">V0.15.5</div></div></div><button id="authBtn" class="secondary">دخول</button></div></header>
 
 <div id="home" class="show">
 <section class="hero"><div class="hero-card"><h2>محتاج شنو اليوم؟</h2><p>خدمات، طبيب، عقار، منتج أو توصيل… كلها في مكان واحد.</p><div class="search"><button id="homeSearchGo" class="search-go" aria-label="بحث">🔎</button><input id="homeSearchInput" placeholder="ابحث عن خدمة أو طبيب أو مستشفى أو منتج"></div></div></section>
@@ -259,7 +259,7 @@ h1{font-size:19px;margin:0}.ver{font-size:10px;color:var(--g);font-weight:bold}s
 <div class="cat" id="reviewsBtn"><div class="ico">⭐</div><b>التقييمات</b><small>قيّم الخدمة بعد اكتمالها وراجع تقييماتك</small></div>
 <div class="cat" id="paymentBtn"><div class="ico">💳</div><b>الاشتراك والدفع</b><small>الخطط الشهرية وطرق إرسال إشعار الدفع</small></div>
 </div></section>
-<section class="section"><div class="notice"><strong>✅ النسخة V0.15.4</strong><br>تم ربط إرسال إشعار الدفع بواتساب الإدارة 0913032542 مع بيانات حسابات الدفع، مع الإبقاء على جميع أقسام النسخة السابقة.</div></section>
+<section class="section"><div class="notice"><strong>✅ النسخة V0.15.5</strong><br>تم ربط إرسال إشعار الدفع بواتساب الإدارة 0913032542 مع بيانات حسابات الدفع، مع الإبقاء على جميع أقسام النسخة السابقة.</div></section>
 </div>
 
 <section id="needPage" class="page">
@@ -656,8 +656,8 @@ h1{font-size:19px;margin:0}.ver{font-size:10px;color:var(--g);font-weight:bold}s
 </div>
 <div class="card">
   <h3 style="margin-top:0">طرق الدفع</h3>
-  <div class="payment-methods"><div class="payment-method">🏦 بنكك<br><small>2892867</small></div><div class="payment-method">💰 فوري<br><small>51555823</small></div><div class="payment-method">📱 أوكاش<br><small>سيضاف الرقم لاحقًا</small></div></div>
-  <div class="notice"><b>بيانات الدفع:</b><br>بنكك: 2892867<br>فوري: 51555823<br>أوكاش: لم يُضف رقم الحساب بعد.</div>
+  <div class="payment-methods"><div class="payment-method">🏦 بنكك<br><small>2892867</small><br><small>مريم الصادق ريهاب</small></div><div class="payment-method">💰 فوري<br><small>51555823</small><br><small>مريم الصادق ريهاب</small></div><div class="payment-method">📱 أوكاش<br><small>سيضاف الرقم لاحقًا</small></div></div>
+  <div class="notice"><b>بيانات الدفع:</b><br>بنكك: 2892867 — باسم مريم الصادق ريهاب<br>فوري: 51555823 — باسم مريم الصادق ريهاب<br>أوكاش: لم يُضف رقم الحساب بعد.</div>
   <div class="field"><label>الفئة</label><select id="payCategory"><option>مقدم خدمة</option><option>طبيب</option><option>صيدلية</option><option>مستشفى</option><option>بيع وشراء</option><option>توصيل</option></select></div>
   <div class="field"><label>طريقة الدفع</label><select id="payMethod"><option>بنكك</option><option>فوري</option><option>أوكاش</option></select></div>
   <div class="hint">بعد التحويل اضغط الزر أدناه لفتح واتساب الإدارة على الرقم <b>0913032542</b>، ثم أرفق صورة إشعار/إيصال البنك وأرسلها.</div>
@@ -1873,12 +1873,13 @@ $('refreshReviewsPage').onclick=loadReviewsPage;
 $('sendPaymentNotice').onclick=()=>{
  const cat=$('payCategory').value,method=$('payMethod').value;
  const accounts={
-   'بنكك':'2892867',
-   'فوري':'51555823',
-   'أوكاش':'لم يُضف رقم الحساب بعد'
+   'بنكك':{number:'2892867',name:'مريم الصادق ريهاب'},
+   'فوري':{number:'51555823',name:'مريم الصادق ريهاب'},
+   'أوكاش':{number:'لم يُضف رقم الحساب بعد',name:''}
  };
- const account=accounts[method]||'';
- const msg=`السلام عليكم، أريد إرسال إشعار اشتراك تطبيق سندك في الحياة.\nالفئة: ${cat}\nطريقة الدفع: ${method}\nرقم الحساب: ${account}\nسأرفق صورة إشعار الدفع في واتساب.`;
+ const account=accounts[method]||{number:'',name:''};
+ const ownerLine=account.name?`\nاسم الحساب: ${account.name}`:'';
+ const msg=`السلام عليكم، أريد إرسال إشعار اشتراك تطبيق سندك في الحياة.\nالفئة: ${cat}\nطريقة الدفع: ${method}\nرقم الحساب: ${account.number}${ownerLine}\nسأرفق صورة إشعار الدفع في واتساب.`;
  window.open('https://wa.me/249913032542?text='+encodeURIComponent(msg),'_blank');
 };
 
