@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#16894b">
-<title>سندك في الحياة V0.15.6</title>
+<title>سندك في الحياة V0.15.7</title>
 <style>
 :root{--g:#16894b;--g2:#0f6e3b;--bg:#f6faf7;--text:#152019;--muted:#6b766e;--line:#e4eee7;--bad:#b42318;--blue:#235a9f}
 *{box-sizing:border-box}body{margin:0;font-family:Tahoma,Arial,sans-serif;background:var(--bg);color:var(--text);padding-bottom:76px}
@@ -242,7 +242,7 @@ h1{font-size:19px;margin:0}.ver{font-size:10px;color:var(--g);font-weight:bold}s
 </head>
 <body>
 <div class="app">
-<header><div class="top"><div class="brand"><div class="logo">س</div><div><h1>سندك في الحياة 🇸🇩</h1><div class="ver">V0.15.6</div></div></div><button id="authBtn" class="secondary">دخول</button></div></header>
+<header><div class="top"><div class="brand"><div class="logo">س</div><div><h1>سندك في الحياة 🇸🇩</h1><div class="ver">V0.15.7</div></div></div><button id="authBtn" class="secondary">دخول</button></div></header>
 
 <div id="home" class="show">
 <section class="hero"><div class="hero-card"><h2>محتاج شنو اليوم؟</h2><p>خدمات، طبيب، عقار، منتج أو توصيل… كلها في مكان واحد.</p><div class="search"><button id="homeSearchGo" class="search-go" aria-label="بحث">🔎</button><input id="homeSearchInput" placeholder="ابحث عن خدمة أو طبيب أو مستشفى أو منتج"></div></div></section>
@@ -259,7 +259,7 @@ h1{font-size:19px;margin:0}.ver{font-size:10px;color:var(--g);font-weight:bold}s
 <div class="cat" id="reviewsBtn"><div class="ico">⭐</div><b>التقييمات</b><small>قيّم الخدمة بعد اكتمالها وراجع تقييماتك</small></div>
 <div class="cat" id="paymentBtn"><div class="ico">💳</div><b>الاشتراك والدفع</b><small>الخطط الشهرية وطرق إرسال إشعار الدفع</small></div>
 </div></section>
-<section class="section"><div class="notice"><strong>✅ النسخة V0.15.6</strong><br>تم إصلاح تحميل الفئات والتخصصات والأقسام وأنواع المركبات والعقارات والمنتجات، مع الحفاظ على إعدادات الدفع وواتساب الإدارة.</div></section>
+<section class="section"><div class="notice"><strong>✅ النسخة V0.15.7</strong><br>تم إصلاح تحميل الفئات والتخصصات والأقسام وأنواع المركبات والعقارات والمنتجات، مع الحفاظ على إعدادات الدفع وواتساب الإدارة.</div></section>
 </div>
 
 <section id="needPage" class="page">
@@ -688,6 +688,20 @@ h1{font-size:19px;margin:0}.ver{font-size:10px;color:var(--g);font-weight:bold}s
 </div>
 </div>
 </section>
+
+<section id="accountPage" class="page">
+<div class="pagehead"><button class="back" data-home>→</button><h2>👤 حسابي</h2></div>
+<div class="card">
+<div id="accountStatus" class="hint">جاري تحميل بيانات الحساب…</div>
+<div class="field"><label>البريد الإلكتروني</label><input id="accountEmail" type="email" readonly></div>
+<div class="row">
+<button id="accountRequestsBtn" class="secondary" style="width:100%">📋 طلباتي والعروض</button>
+<button id="accountFavoritesBtn" class="secondary" style="width:100%">❤️ المفضلة</button>
+</div>
+<button id="accountPaymentBtn" class="secondary" style="width:100%;margin-top:10px">💳 الاشتراك والدفع</button>
+<button id="accountLogout" class="secondary" style="width:100%;margin-top:10px;color:var(--bad);border-color:#e8b9b5">تسجيل الخروج</button>
+</div>
+</section>
 </div>
 
 <nav class="bottom">
@@ -712,7 +726,7 @@ h1{font-size:19px;margin:0}.ver{font-size:10px;color:var(--g);font-weight:bold}s
 const sb=supabase.createClient("https://xcdobqsqfdupovtwamer.supabase.co","sb_publishable_cbFKfqs1Aibfup2Iuh_ltg_nA5NlQNS");
 let mode='login',cityId=null,catsLoaded=false,currentProvider=null;const $=x=>document.getElementById(x);
 function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]))}
-function page(p){$('home').classList.toggle('show',p==='home');$('needPage').classList.toggle('show',p==='need');$('offerPage').classList.toggle('show',p==='offer');$('propertyPage').classList.toggle('show',p==='property');$('productPage').classList.toggle('show',p==='product');$('doctorPage').classList.toggle('show',p==='doctor');$('hospitalPage').classList.toggle('show',p==='hospital');$('pharmacyPage').classList.toggle('show',p==='pharmacy');$('deliveryPage').classList.toggle('show',p==='delivery');$('searchPage').classList.toggle('show',p==='search');$('favoritesPage').classList.toggle('show',p==='favorites');$('reviewsPage').classList.toggle('show',p==='reviews');$('paymentPage').classList.toggle('show',p==='payment');window.scrollTo(0,0)}
+function page(p){$('home').classList.toggle('show',p==='home');$('needPage').classList.toggle('show',p==='need');$('offerPage').classList.toggle('show',p==='offer');$('propertyPage').classList.toggle('show',p==='property');$('productPage').classList.toggle('show',p==='product');$('doctorPage').classList.toggle('show',p==='doctor');$('hospitalPage').classList.toggle('show',p==='hospital');$('pharmacyPage').classList.toggle('show',p==='pharmacy');$('deliveryPage').classList.toggle('show',p==='delivery');$('searchPage').classList.toggle('show',p==='search');$('favoritesPage').classList.toggle('show',p==='favorites');$('reviewsPage').classList.toggle('show',p==='reviews');$('paymentPage').classList.toggle('show',p==='payment');$('accountPage').classList.toggle('show',p==='account');window.scrollTo(0,0)}
 $('needBtn').onclick=()=>{page('need');loadData();loadMyRequests()};$('offerBtn').onclick=()=>{page('offer');loadOfferArea()};$('propertyBtn').onclick=()=>{page('property');showPropertyTab('browse');loadPropertyData();loadProperties()};$('productBtn').onclick=()=>{page('product');showProductTab('browse');loadProductData();loadProducts()};$('doctorBtn').onclick=()=>{page('doctor');showDoctorTab('browse');loadDoctorData();loadDoctors()};$('hospitalBtn').onclick=()=>{page('hospital');showHospitalTab('browse');loadHospitalData();loadHospitals()};$('pharmacyBtn').onclick=()=>{page('pharmacy');showPharmacyTab('browse');loadPharmacies()};$('deliveryBtn').onclick=()=>{page('delivery');showDeliveryTab('customer');loadDeliveryVehicleTypes();loadMyDeliveryRequests()};$('reviewsBtn').onclick=()=>{page('reviews');loadReviewsPage()};$('paymentBtn').onclick=()=>page('payment');$('addNav').onclick=()=>{page('need');loadData();loadMyRequests()};$('homeNav').onclick=()=>page('home');$('searchNav').onclick=()=>openGlobalSearch($('homeSearchInput').value);$('favNav').onclick=()=>{page('favorites');loadFavoritesPage()};
 document.querySelectorAll('[data-home]').forEach(b=>b.onclick=()=>page('home'));document.querySelectorAll('[data-soon]').forEach(x=>x.onclick=()=>alert(x.dataset.soon+' قيد التجهيز'));
 
@@ -1883,8 +1897,37 @@ $('sendPaymentNotice').onclick=()=>{
  window.open('https://wa.me/249913032542?text='+encodeURIComponent(msg),'_blank');
 };
 
-function openAuth(){$('authModal').classList.add('show')}function closeAuth(){$('authModal').classList.remove('show')}
-$('authBtn').onclick=openAuth;$('accountNav').onclick=openAuth;$('closeAuth').onclick=closeAuth;
+let authReturnToAccount=false;
+function openAuth(){authReturnToAccount=false;$('authMsg').textContent='';$('authModal').classList.add('show')}
+function openAuthForAccount(){authReturnToAccount=true;$('authMsg').textContent='';$('authModal').classList.add('show')}
+function closeAuth(){$('authModal').classList.remove('show')}
+
+async function loadAccountPage(userArg){
+ let user=userArg;
+ if(!user){const r=await sb.auth.getUser();user=r.data.user}
+ if(!user){openAuthForAccount();return}
+ $('accountEmail').value=user.email||'';
+ $('accountStatus').innerHTML='<b>✅ أنت مسجل الدخول</b><br>يمكنك الآن فتح حسابك وطلباتك والمفضلة دون إعادة تسجيل الدخول.';
+}
+
+async function openAccount(){
+ const {data:{user}}=await sb.auth.getUser();
+ if(!user){openAuthForAccount();return}
+ page('account');await loadAccountPage(user);
+}
+
+async function signOutUser(){
+ await sb.auth.signOut();currentProvider=null;authReturnToAccount=false;
+ await refreshAuth();page('home');
+ if($('needPage').classList.contains('show'))loadMyRequests();
+ if($('offerPage').classList.contains('show'))loadOfferArea();
+}
+
+$('authBtn').onclick=openAuth;$('accountNav').onclick=openAccount;$('closeAuth').onclick=closeAuth;
+$('accountLogout').onclick=signOutUser;
+$('accountRequestsBtn').onclick=()=>{page('need');loadData();loadMyRequests()};
+$('accountFavoritesBtn').onclick=()=>{page('favorites');loadFavoritesPage()};
+$('accountPaymentBtn').onclick=()=>page('payment');
 $('loginTab').onclick=()=>{mode='login';$('loginTab').classList.add('active');$('signupTab').classList.remove('active');$('authSubmit').textContent='تسجيل الدخول'};
 $('signupTab').onclick=()=>{mode='signup';$('signupTab').classList.add('active');$('loginTab').classList.remove('active');$('authSubmit').textContent='إنشاء الحساب'};
 
@@ -1894,12 +1937,17 @@ $('authSubmit').onclick=async()=>{
  const r=mode==='login'?await sb.auth.signInWithPassword({email,password}):await sb.auth.signUp({email,password});
  if(r.error){$('authMsg').className='msg err';$('authMsg').textContent=r.error.message;return}
  if(mode==='signup'&&!r.data.session){$('authMsg').className='msg ok';$('authMsg').textContent='تم إنشاء الحساب. راجعي البريد إذا طُلب التأكيد.';return}
- closeAuth();await refreshAuth();if($('needPage').classList.contains('show'))loadMyRequests();if($('offerPage').classList.contains('show'))loadOfferArea();
+ const goAccount=authReturnToAccount;authReturnToAccount=false;
+ closeAuth();await refreshAuth();
+ if(goAccount){page('account');await loadAccountPage(r.data.user||null)}
+ if($('needPage').classList.contains('show'))loadMyRequests();if($('offerPage').classList.contains('show'))loadOfferArea();
 };
 
 async function refreshAuth(){
  const {data:{user}}=await sb.auth.getUser();$('authBtn').textContent=user?'خروج':'دخول';
- $('authBtn').onclick=user?async()=>{await sb.auth.signOut();currentProvider=null;await refreshAuth();if($('needPage').classList.contains('show'))loadMyRequests();if($('offerPage').classList.contains('show'))loadOfferArea()}:openAuth;
+ $('authBtn').onclick=user?signOutUser:openAuth;
+ $('accountNav').onclick=openAccount;
+ if(user&&$('accountPage').classList.contains('show'))await loadAccountPage(user);
 }
 refreshAuth();
 
