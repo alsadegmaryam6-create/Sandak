@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#16894b">
-<title>سندك في الحياة V0.16.1</title>
+<title>سندك في الحياة V0.16.3</title>
 <style>
 :root{--g:#16894b;--g2:#0f6e3b;--bg:#f6faf7;--text:#152019;--muted:#6b766e;--line:#e4eee7;--bad:#b42318;--blue:#235a9f}
 *{box-sizing:border-box}body{margin:0;font-family:Tahoma,Arial,sans-serif;background:var(--bg);color:var(--text);padding-bottom:76px}
@@ -234,11 +234,18 @@ h1{font-size:19px;margin:0}.ver{font-size:10px;color:var(--g);font-weight:bold}s
 .payment-methods{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0}
 .payment-method{background:#f2f8f4;border:1px solid #d9e7dd;border-radius:13px;padding:12px 7px;text-align:center;font-weight:bold}
 .admin-contact{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}.admin-contact a{text-decoration:none;text-align:center;padding:12px;border-radius:12px;font-weight:bold}
+.admin-payment-card{border:1px solid #dce9e2;border-radius:16px;padding:14px;margin:10px 0;background:#fff}
+.admin-payment-card.pending{border-right:5px solid #d69e2e}.admin-payment-card.approved{border-right:5px solid #18864b}.admin-payment-card.rejected{border-right:5px solid #c94a42}
+.admin-payment-meta{display:grid;gap:5px;color:#4b5d53;font-size:14px;margin-top:8px}
+.admin-payment-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
+.admin-payment-actions button{width:100%}
+.admin-badge{display:inline-block;padding:5px 9px;border-radius:999px;font-weight:700;font-size:12px;background:#eef8f2}
+
 .review-page-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:14px;margin:10px 0}
 @media(max-width:470px){.subscription-grid{grid-template-columns:1fr}.payment-methods{grid-template-columns:1fr 1fr 1fr}.admin-contact{grid-template-columns:1fr}}
 
 
-/* V0.16.1: provider account billing + products/jobs/schools/media */
+/* V0.16.3: unified subscription visibility + provider billing + products/jobs/schools/media */
 
 .school-tabs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px;background:#edf4ef;border-radius:14px;padding:5px}.school-tab{border:0;background:transparent;padding:10px;border-radius:11px;font-weight:bold;color:#5f6b63}.school-tab.active{background:#fff;color:var(--g);box-shadow:0 3px 12px #1a492713}
 .school-search-row{display:grid;grid-template-columns:1fr auto;gap:8px;margin:10px 0}.school-search-row input{border:1px solid var(--line);border-radius:13px;padding:12px;font-family:inherit;min-width:0}
@@ -262,7 +269,7 @@ h1{font-size:19px;margin:0}.ver{font-size:10px;color:var(--g);font-weight:bold}s
 </head>
 <body>
 <div class="app">
-<header><div class="top"><div class="brand"><div class="logo">س</div><div><h1>سندك في الحياة 🇸🇩</h1><div class="ver">V0.16.1</div></div></div><button id="authBtn" class="secondary">دخول</button></div></header>
+<header><div class="top"><div class="brand"><div class="logo">س</div><div><h1>سندك في الحياة 🇸🇩</h1><div class="ver">V0.16.3</div></div></div><button id="authBtn" class="secondary">دخول</button></div></header>
 
 <div id="home" class="show">
 <section class="hero"><div class="hero-card"><h2>محتاج شنو اليوم؟</h2><p>خدمات، وظائف، مدارس خاصة، أطباء، عقارات، منتجات وتوصيل… كلها في مكان واحد.</p><div class="search"><button id="homeSearchGo" class="search-go" aria-label="بحث">🔎</button><input id="homeSearchInput" placeholder="ابحث عن خدمة، منتج، وظيفة، مدرسة أو طبيب"></div></div></section>
@@ -281,7 +288,7 @@ h1{font-size:19px;margin:0}.ver{font-size:10px;color:var(--g);font-weight:bold}s
 <div class="cat" id="reviewsBtn"><div class="ico">⭐</div><b>التقييمات</b><small>قيّم الخدمة بعد اكتمالها وراجع تقييماتك</small></div>
 <div class="cat" id="paymentBtn"><div class="ico">💳</div><b>الاشتراك والدفع</b><small>الخطط الشهرية وطرق إرسال إشعار الدفع</small></div>
 </div></section>
-<section class="section"><div class="notice"><strong>✅ النسخة V0.16.1</strong><br>تمت إضافة الدفع المباشر داخل حساب مقدم الخدمة عبر بنكك أو فوري، مع إرسال إشعار الدفع إلى واتساب الإدارة، إلى جانب أقسام المنتجات والوظائف والمدارس الخاصة.</div></section>
+<section class="section"><div class="notice"><strong>✅ النسخة V0.16.3</strong><br>تم توحيد نظام الاشتراك: أول شهرين مجانًا، وبعدها لا تظهر صفحة الجهة أو مقدم الخدمة للعامة إلا باشتراك نشط. إشعار الدفع يُسجّل داخل النظام ثم يُرسل عبر واتساب الإدارة للمراجعة والاعتماد.</div></section>
 </div>
 
 <section id="needPage" class="page">
@@ -738,6 +745,7 @@ h1{font-size:19px;margin:0}.ver{font-size:10px;color:var(--g);font-weight:bold}s
   <div class="subscription-card"><b>💊 الصيدليات</b><span class="subscription-price">20,000 ج.س / شهر</span></div>
   <div class="subscription-card"><b>🏥 المستشفيات</b><span class="subscription-price">20,000 ج.س / شهر</span></div>
   <div class="subscription-card"><b>🛒 أبيع منتج</b><span class="subscription-price">20,000 ج.س / شهر</span></div>
+  <div class="subscription-card"><b>🏠 السكن والعقارات</b><span class="subscription-price">20,000 ج.س / شهر</span></div>
   <div class="subscription-card"><b>🏫 المدارس الخاصة</b><span class="subscription-price">20,000 ج.س / شهر</span></div>
   <div class="subscription-card"><b>🛵 التوصيل</b><span class="subscription-price">10,000 ج.س / شهر</span></div>
 </div>
@@ -746,7 +754,7 @@ h1{font-size:19px;margin:0}.ver{font-size:10px;color:var(--g);font-weight:bold}s
   <div class="payment-methods"><div class="payment-method">🏦 بنكك<br><small>2892867</small><br><small>مريم الصادق ريهاب</small></div><div class="payment-method">💰 فوري<br><small>51555823</small><br><small>مريم الصادق ريهاب</small></div></div>
   <div class="notice"><b>بيانات الدفع:</b><br>بنكك: 2892867 — باسم مريم الصادق ريهاب<br>فوري: 51555823 — باسم مريم الصادق ريهاب</div>
   <div id="paymentContextNote" class="hint" style="display:none"></div>
-  <div class="field"><label>الفئة</label><select id="payCategory"><option>مقدم خدمة</option><option>طبيب</option><option>صيدلية</option><option>مستشفى</option><option>أبيع منتج</option><option>المدارس الخاصة</option><option>توصيل</option></select></div>
+  <div class="field"><label>الفئة</label><select id="payCategory"><option>مقدم خدمة</option><option>طبيب</option><option>صيدلية</option><option>مستشفى</option><option>أبيع منتج</option><option>السكن والعقارات</option><option>المدارس الخاصة</option><option>توصيل</option></select></div>
   <div class="field"><label>طريقة الدفع</label><select id="payMethod"><option>بنكك</option><option>فوري</option></select></div>
   <div class="hint">بعد التحويل اضغط الزر أدناه لفتح واتساب الإدارة على الرقم <b>0913032542</b>، ثم أرفق صورة إشعار بنكك أو فوري وأرسلها.</div>
   <button id="sendPaymentNotice" class="primary" style="width:100%">💬 إرسال إشعار الدفع إلى واتساب 0913032542</button>
@@ -797,7 +805,7 @@ h1{font-size:19px;margin:0}.ver{font-size:10px;color:var(--g);font-weight:bold}s
 </div>
 <div id="accountBillingCard" class="card" style="display:none;margin-top:12px;background:#f8fffb">
   <h3 style="margin-top:0">💳 دفع اشتراك مقدم الخدمة</h3>
-  <div class="hint"><b>🎁 أول شهرين مجانًا</b><br>بعد الفترة المجانية يمكنك الدفع من هنا مباشرة وإرسال الإشعار للإدارة.</div>
+  <div class="hint"><b>🎁 أول شهرين مجانًا</b><br>بعد انتهاء الشهرين، تتوقف صفحتك عن الظهور للعامة إلى أن يتم تجديد الاشتراك. يمكنك الدفع من هنا وإرسال الإشعار للإدارة.</div>
   <div id="accountBillingSummary" class="notice"></div>
   <div class="field"><label>الفئة التي تريد دفع اشتراكها</label><select id="accountPayCategory"></select></div>
   <div class="payment-methods"><div class="payment-method">🏦 بنكك<br><small>2892867</small><br><small>مريم الصادق ريهاب</small></div><div class="payment-method">💰 فوري<br><small>51555823</small><br><small>مريم الصادق ريهاب</small></div></div>
@@ -809,7 +817,21 @@ h1{font-size:19px;margin:0}.ver{font-size:10px;color:var(--g);font-weight:bold}s
   <a class="wa-btn" target="_blank" href="https://wa.me/249913032542" style="display:block;text-align:center;margin-top:10px;text-decoration:none">💬 فتح واتساب الإدارة 0913032542</a>
 </div>
 <button id="accountPaymentBtn" class="secondary" style="width:100%;margin-top:10px">💳 فتح صفحة الاشتراك والدفع كاملة</button>
+<button id="adminPanelBtn" class="primary" style="width:100%;margin-top:10px;display:none">🛡️ إدارة إشعارات الدفع</button>
 <button id="accountLogout" class="secondary" style="width:100%;margin-top:10px;color:var(--bad);border-color:#e8b9b5">تسجيل الخروج</button>
+</div>
+</section>
+
+<section id="adminPage" class="page">
+<div class="pagehead"><button class="back" data-home>→</button><h2>🛡️ إدارة إشعارات الدفع</h2></div>
+<div class="hint"><b>للإدارة فقط.</b> راجعي صورة الإشعار التي وصلت في واتساب، ثم طابقي رقم الإشعار واضغطي اعتماد أو رفض. عند الاعتماد يتفعّل الاشتراك تلقائيًا لمدة شهر.</div>
+<div class="card">
+  <div class="row">
+    <div class="field" style="margin:0"><label>عرض</label><select id="adminPaymentFilter"><option value="pending">قيد المراجعة</option><option value="approved">المعتمدة</option><option value="rejected">المرفوضة</option><option value="all">الكل</option></select></div>
+    <div class="field" style="margin:0;display:flex;align-items:end"><button id="refreshAdminPayments" class="secondary" style="width:100%">🔄 تحديث</button></div>
+  </div>
+  <div id="adminPaymentCount" class="hint" style="margin-top:10px"></div>
+  <div id="adminPaymentsList"><div class="empty">جاري تحميل إشعارات الدفع…</div></div>
 </div>
 </section>
 </div>
@@ -846,7 +868,7 @@ h1{font-size:19px;margin:0}.ver{font-size:10px;color:var(--g);font-weight:bold}s
 const sb=supabase.createClient("https://xcdobqsqfdupovtwamer.supabase.co","sb_publishable_cbFKfqs1Aibfup2Iuh_ltg_nA5NlQNS");
 let mode='login',cityId=null,catsLoaded=false,currentProvider=null;const $=x=>document.getElementById(x);
 function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]))}
-function page(p){$('home').classList.toggle('show',p==='home');$('needPage').classList.toggle('show',p==='need');$('offerPage').classList.toggle('show',p==='offer');$('propertyPage').classList.toggle('show',p==='property');$('productPage').classList.toggle('show',p==='product');$('jobPage').classList.toggle('show',p==='job');$('schoolPage').classList.toggle('show',p==='school');$('doctorPage').classList.toggle('show',p==='doctor');$('hospitalPage').classList.toggle('show',p==='hospital');$('pharmacyPage').classList.toggle('show',p==='pharmacy');$('deliveryPage').classList.toggle('show',p==='delivery');$('searchPage').classList.toggle('show',p==='search');$('favoritesPage').classList.toggle('show',p==='favorites');$('reviewsPage').classList.toggle('show',p==='reviews');$('paymentPage').classList.toggle('show',p==='payment');$('accountPage').classList.toggle('show',p==='account');window.scrollTo(0,0)}
+function page(p){$('home').classList.toggle('show',p==='home');$('needPage').classList.toggle('show',p==='need');$('offerPage').classList.toggle('show',p==='offer');$('propertyPage').classList.toggle('show',p==='property');$('productPage').classList.toggle('show',p==='product');$('jobPage').classList.toggle('show',p==='job');$('schoolPage').classList.toggle('show',p==='school');$('doctorPage').classList.toggle('show',p==='doctor');$('hospitalPage').classList.toggle('show',p==='hospital');$('pharmacyPage').classList.toggle('show',p==='pharmacy');$('deliveryPage').classList.toggle('show',p==='delivery');$('searchPage').classList.toggle('show',p==='search');$('favoritesPage').classList.toggle('show',p==='favorites');$('reviewsPage').classList.toggle('show',p==='reviews');$('paymentPage').classList.toggle('show',p==='payment');$('accountPage').classList.toggle('show',p==='account');$('adminPage').classList.toggle('show',p==='admin');window.scrollTo(0,0)}
 $('needBtn').onclick=()=>{page('need');loadData();loadMyRequests()};$('offerBtn').onclick=()=>{page('offer');loadOfferArea()};$('propertyBtn').onclick=()=>{page('property');showPropertyTab('browse');loadPropertyData();loadProperties()};$('productBtn').onclick=()=>{page('product');showProductTab('browse');loadProductData();loadProducts()};$('jobBtn').onclick=()=>{page('job');showJobTab('browse');loadJobs()};$('schoolBtn').onclick=()=>{page('school');showSchoolTab('browse');loadSchools()};$('doctorBtn').onclick=()=>{page('doctor');showDoctorTab('browse');loadDoctorData();loadDoctors()};$('hospitalBtn').onclick=()=>{page('hospital');showHospitalTab('browse');loadHospitalData();loadHospitals()};$('pharmacyBtn').onclick=()=>{page('pharmacy');showPharmacyTab('browse');loadPharmacies()};$('deliveryBtn').onclick=()=>{page('delivery');showDeliveryTab('customer');loadDeliveryVehicleTypes();loadMyDeliveryRequests()};$('reviewsBtn').onclick=()=>{page('reviews');loadReviewsPage()};$('paymentBtn').onclick=()=>page('payment');$('addNav').onclick=()=>{page('need');loadData();loadMyRequests()};$('homeNav').onclick=()=>page('home');$('searchNav').onclick=()=>openGlobalSearch($('homeSearchInput').value);$('favNav').onclick=()=>{page('favorites');loadFavoritesPage()};
 document.querySelectorAll('[data-home]').forEach(b=>b.onclick=()=>page('home'));document.querySelectorAll('[data-soon]').forEach(x=>x.onclick=()=>alert(x.dataset.soon+' قيد التجهيز'));
 
@@ -2077,20 +2099,25 @@ $('refreshReviewsPage').onclick=loadReviewsPage;
 
 const PAYMENT_WHATSAPP='249913032542';
 const PAYMENT_ACCOUNTS={
- 'بنكك':{number:'2892867',name:'مريم الصادق ريهاب'},
- 'فوري':{number:'51555823',name:'مريم الصادق ريهاب'}
+ 'بنكك':{number:'2892867',name:'مريم الصادق ريهاب',code:'bankak'},
+ 'فوري':{number:'51555823',name:'مريم الصادق ريهاب',code:'fawry'}
 };
-const PAYMENT_PRICES={'مقدم خدمة':20000,'طبيب':20000,'صيدلية':20000,'مستشفى':20000,'أبيع منتج':20000,'المدارس الخاصة':20000,'توصيل':10000};
+const PAYMENT_PRICES={'مقدم خدمة':20000,'طبيب':20000,'صيدلية':20000,'مستشفى':20000,'أبيع منتج':20000,'السكن والعقارات':20000,'المدارس الخاصة':20000,'توصيل':10000};
+const TYPE_TO_CATEGORY={professional:'مقدم خدمة',doctor:'طبيب',pharmacy:'صيدلية',hospital:'مستشفى',seller:'أبيع منتج',real_estate:'السكن والعقارات',school:'المدارس الخاصة',delivery:'توصيل'};
+const CATEGORY_TO_TYPE=Object.fromEntries(Object.entries(TYPE_TO_CATEGORY).map(([k,v])=>[v,k]));
 let currentBillingCategories=[];
+let currentBillingAccounts=[];
 
-function paymentMessage(cat,method,userLabel=''){
+function paymentRef(id){return String(id||'').split('-')[0].toUpperCase()}
+function paymentMessage(cat,method,userLabel='',paymentId=''){
  const account=PAYMENT_ACCOUNTS[method];
  if(!account)return '';
  const price=PAYMENT_PRICES[cat]||'';
- return `السلام عليكم، أريد إرسال إشعار اشتراك تطبيق سندك في الحياة.\n${userLabel?`الحساب/الاسم: ${userLabel}\n`:''}الفئة: ${cat}\nالمبلغ الشهري: ${price?Number(price).toLocaleString('en-US')+' ج.س':'حسب الفئة'}\nطريقة الدفع: ${method}\nرقم الحساب: ${account.number}\nاسم الحساب: ${account.name}\nسأرفق صورة إشعار الدفع في واتساب.`;
+ const ref=paymentRef(paymentId);
+ return `السلام عليكم، أريد إرسال إشعار اشتراك تطبيق سندك في الحياة.\n${ref?`رقم الإشعار: ${ref}\n`:''}${userLabel?`الحساب/الاسم: ${userLabel}\n`:''}الفئة: ${cat}\nالمبلغ الشهري: ${price?Number(price).toLocaleString('en-US')+' ج.س':'حسب الفئة'}\nطريقة الدفع: ${method}\nرقم الحساب: ${account.number}\nاسم الحساب: ${account.name}\nأرفقت صورة إشعار الدفع للمراجعة.`;
 }
-function openPaymentWhatsapp(cat,method,userLabel=''){
- const msg=paymentMessage(cat,method,userLabel);
+function openPaymentWhatsapp(cat,method,userLabel='',paymentId=''){
+ const msg=paymentMessage(cat,method,userLabel,paymentId);
  if(!msg)return;
  window.open('https://wa.me/'+PAYMENT_WHATSAPP+'?text='+encodeURIComponent(msg),'_blank');
 }
@@ -2099,10 +2126,120 @@ function setPaymentContext(cat,label=''){
  const note=$('paymentContextNote');
  if(note){note.style.display=label?'block':'none';note.textContent=label?`الدفع لحساب: ${label}`:''}
 }
-$('sendPaymentNotice').onclick=()=>{
+async function resolveBillingProvider(cat,preferredProviderId=''){
+ const {data:{user}}=await sb.auth.getUser();
+ if(!user){openAuthForAccount();return null}
+ const type=CATEGORY_TO_TYPE[cat];
+ if(!type)return null;
+ let q=sb.from('provider_profiles').select('id,display_name,business_name,provider_type,owner_user_id').eq('owner_user_id',user.id).eq('provider_type',type).eq('account_status','active');
+ if(preferredProviderId)q=q.eq('id',preferredProviderId);
+ const r=await q.order('created_at',{ascending:false}).limit(1).maybeSingle();
+ if(r.error){alert('تعذر تحديد صفحة الاشتراك: '+r.error.message);return null}
+ return r.data||null;
+}
+async function registerPaymentNotice(cat,method,userLabel='',preferredProviderId=''){
+ const account=PAYMENT_ACCOUNTS[method];
+ if(!account){alert('اختاري طريقة دفع صحيحة');return}
+ const provider=await resolveBillingProvider(cat,preferredProviderId);
+ if(!provider){alert('لم نجد صفحة مسجلة لهذه الفئة على حسابك. سجّل صفحتك أولًا ثم أرسل إشعار الدفع.');return}
+ const sr=await sb.from('provider_subscriptions').select('id,status,trial_ends_at,current_period_end,subscription_plans(monthly_price_sdg)').eq('provider_id',provider.id).order('created_at',{ascending:false}).limit(1).maybeSingle();
+ if(sr.error||!sr.data){alert('تعذر العثور على اشتراك هذه الصفحة.');return}
+ const sub=sr.data;
+ let amount=Number(sub.subscription_plans?.monthly_price_sdg||PAYMENT_PRICES[cat]||0);
+ if(!amount){alert('تعذر تحديد مبلغ الاشتراك.');return}
+
+ let pr=await sb.from('payments').select('id,status,submitted_at').eq('subscription_id',sub.id).eq('status','pending').order('submitted_at',{ascending:false}).limit(1).maybeSingle();
+ if(pr.error){alert('تعذر فحص إشعارات الدفع: '+pr.error.message);return}
+ let payment=pr.data;
+ if(!payment){
+   const ins=await sb.from('payments').insert({
+     provider_id:provider.id,
+     subscription_id:sub.id,
+     payment_method:account.code,
+     amount_sdg:amount,
+     status:'pending'
+   }).select('id,status,submitted_at').single();
+   if(ins.error){
+     if(String(ins.error.code||'')==='23505'){
+       const again=await sb.from('payments').select('id,status,submitted_at').eq('subscription_id',sub.id).eq('status','pending').order('submitted_at',{ascending:false}).limit(1).maybeSingle();
+       payment=again.data;
+     }else{
+       alert('تعذر تسجيل إشعار الدفع: '+ins.error.message);return;
+     }
+   }else payment=ins.data;
+ }
+ if(!payment){alert('تعذر إنشاء إشعار الدفع.');return}
+ const label=userLabel||provider.business_name||provider.display_name||'';
+ alert(`تم تسجيل إشعار الدفع رقم ${paymentRef(payment.id)}.\nأرفق صورة بنكك/فوري في واتساب ثم أرسل الرسالة.`);
+ openPaymentWhatsapp(cat,method,label,payment.id);
+ return payment;
+}
+$('sendPaymentNotice').onclick=async()=>{
  const cat=$('payCategory').value,method=$('payMethod').value;
- openPaymentWhatsapp(cat,method,$('accountEmail')?.value||'');
+ await registerPaymentNotice(cat,method,$('accountEmail')?.value||'');
 };
+
+
+async function loadAdminPayments(){
+ const box=$('adminPaymentsList'),count=$('adminPaymentCount'),filter=$('adminPaymentFilter').value;
+ box.innerHTML='<div class="empty">جاري تحميل إشعارات الدفع…</div>';
+ const ar=await sb.rpc('is_admin');
+ if(ar.error||ar.data!==true){box.innerHTML='<div class="empty">غير مصرح لك بفتح صفحة الإدارة.</div>';return}
+ let q=sb.from('payments').select('id,provider_id,subscription_id,payment_method,amount_sdg,status,submitted_at,reviewed_at,rejection_reason').order('submitted_at',{ascending:false}).limit(100);
+ if(filter!=='all')q=q.eq('status',filter);
+ const r=await q;
+ if(r.error){box.innerHTML=`<div class="empty">تعذر تحميل الإشعارات: ${esc(r.error.message)}</div>`;return}
+ const rows=r.data||[];
+ count.textContent=`${rows.length} إشعار`;
+ if(!rows.length){box.innerHTML='<div class="empty">لا توجد إشعارات في هذا القسم.</div>';return}
+ const pids=[...new Set(rows.map(x=>x.provider_id).filter(Boolean))];
+ const pr=await sb.from('provider_profiles').select('id,display_name,business_name,provider_type,phone,whatsapp').in('id',pids);
+ const providers={};(pr.data||[]).forEach(x=>providers[x.id]=x);
+ const statusText={pending:'قيد المراجعة',approved:'معتمد',rejected:'مرفوض'};
+ const methodText={bankak:'بنكك',fawry:'فوري',ocash:'أوكاش'};
+ box.innerHTML=rows.map(x=>{
+   const p=providers[x.provider_id]||{},cat=TYPE_TO_CATEGORY[p.provider_type]||p.provider_type||'';
+   const nm=p.business_name||p.display_name||'مقدم خدمة';
+   const wa=sudanWa(p.whatsapp||p.phone),phone=normalizePhone(p.phone);
+   const dt=x.submitted_at?new Date(x.submitted_at).toLocaleString('ar-EG'):'';
+   return `<div class="admin-payment-card ${esc(x.status)}">
+     <div><b>${esc(nm)}</b> <span class="admin-badge">${esc(statusText[x.status]||x.status)}</span></div>
+     <div class="admin-payment-meta">
+       <span>🔖 رقم الإشعار: <b>${esc(paymentRef(x.id))}</b></span>
+       <span>📂 الفئة: ${esc(cat)}</span>
+       <span>💵 المبلغ: <b>${Number(x.amount_sdg||0).toLocaleString('en-US')} ج.س</b></span>
+       <span>🏦 الطريقة: ${esc(methodText[x.payment_method]||x.payment_method)}</span>
+       <span>🕒 الإرسال: ${esc(dt)}</span>
+       ${x.rejection_reason?`<span>سبب الرفض: ${esc(x.rejection_reason)}</span>`:''}
+     </div>
+     ${(phone||wa)?`<div class="search-actions" style="margin-top:10px">${phone?`<a class="search-call" href="tel:${esc(phone)}">📞 اتصال</a>`:'<span></span>'}${wa?`<a class="search-wa" target="_blank" href="https://wa.me/${esc(wa)}">💬 واتساب</a>`:'<span></span>'}</div>`:''}
+     ${x.status==='pending'?`<div class="admin-payment-actions"><button class="primary" data-approve-payment="${esc(x.id)}">✅ اعتماد الدفع</button><button class="secondary" style="color:var(--bad);border-color:#e8b9b5" data-reject-payment="${esc(x.id)}">❌ رفض</button></div>`:''}
+   </div>`;
+ }).join('');
+ document.querySelectorAll('[data-approve-payment]').forEach(b=>b.onclick=()=>reviewPayment(b.dataset.approvePayment,'approved'));
+ document.querySelectorAll('[data-reject-payment]').forEach(b=>b.onclick=()=>reviewPayment(b.dataset.rejectPayment,'rejected'));
+}
+async function reviewPayment(id,status){
+ const ar=await sb.rpc('is_admin');
+ if(ar.error||ar.data!==true){alert('غير مصرح');return}
+ let reason=null;
+ if(status==='rejected'){
+   reason=prompt('سبب الرفض – اختياري:','')||null;
+   if(!confirm('تأكيد رفض إشعار الدفع؟'))return;
+ }else{
+   if(!confirm('تأكيد اعتماد الدفع وتفعيل الاشتراك لمدة شهر؟'))return;
+ }
+ const {data:{user}}=await sb.auth.getUser();
+ const upd={status,reviewed_by:user?.id||null,reviewed_at:new Date().toISOString(),rejection_reason:status==='rejected'?reason:null};
+ const r=await sb.from('payments').update(upd).eq('id',id).eq('status','pending').select('id,status').maybeSingle();
+ if(r.error){alert('تعذر تحديث الإشعار: '+r.error.message);return}
+ if(!r.data){alert('الإشعار تم التعامل معه مسبقًا أو لم يعد معلقًا.');await loadAdminPayments();return}
+ alert(status==='approved'?'✅ تم اعتماد الدفع وتفعيل الاشتراك.':'تم رفض إشعار الدفع.');
+ await loadAdminPayments();
+}
+$('refreshAdminPayments').onclick=loadAdminPayments;
+$('adminPaymentFilter').onchange=loadAdminPayments;
+
 
 let authReturnToAccount=false;
 function openAuth(){authReturnToAccount=false;$('authMsg').textContent='';$('authModal').classList.add('show')}
@@ -2116,27 +2253,34 @@ async function loadAccountPage(userArg){
  $('accountEmail').value=user.email||'';
  $('accountStatus').innerHTML='<b>✅ أنت مسجل الدخول</b><br>يمكنك الآن فتح حسابك وطلباتك والمفضلة والدفع دون إعادة تسجيل الدخول.';
 
- const typeMap={professional:'مقدم خدمة',doctor:'طبيب',pharmacy:'صيدلية',hospital:'مستشفى',seller:'أبيع منتج',delivery:'توصيل'};
- let cats=[],names=[];
+ let cats=[],names=[],accounts=[];
  try{
-   const p=await sb.from('provider_profiles').select('provider_type,display_name').eq('owner_user_id',user.id).eq('account_status','active').order('created_at',{ascending:false});
-   (p.data||[]).forEach(x=>{const c=typeMap[x.provider_type];if(c&&!cats.includes(c))cats.push(c);if(x.display_name&&!names.includes(x.display_name))names.push(x.display_name)});
-   const sc=await sb.from('private_schools').select('name').eq('owner_user_id',user.id).limit(20);
-   if((sc.data||[]).length&&!cats.includes('المدارس الخاصة'))cats.push('المدارس الخاصة');
-   (sc.data||[]).forEach(x=>{if(x.name&&!names.includes(x.name))names.push(x.name)});
+   const p=await sb.from('provider_profiles').select('id,provider_type,display_name,business_name').eq('owner_user_id',user.id).eq('account_status','active').order('created_at',{ascending:false});
+   (p.data||[]).forEach(x=>{
+     const c=TYPE_TO_CATEGORY[x.provider_type];
+     if(c&&!cats.includes(c))cats.push(c);
+     const nm=x.business_name||x.display_name||c;
+     if(nm&&!names.includes(nm))names.push(nm);
+     if(c)accounts.push({provider_id:x.id,category:c,name:nm,provider_type:x.provider_type});
+   });
  }catch(e){}
  currentBillingCategories=cats;
+ currentBillingAccounts=accounts;
  const card=$('accountBillingCard'),sel=$('accountPayCategory'),summary=$('accountBillingSummary');
- if(cats.length){
+ if(accounts.length){
    card.style.display='block';
-   sel.innerHTML=cats.map(c=>`<option value="${esc(c)}">${esc(c)} — ${(PAYMENT_PRICES[c]||0).toLocaleString('en-US')} ج.س/شهر</option>`).join('');
-   summary.innerHTML='<b>الفئات المسجلة على حسابك:</b><br>'+cats.map(c=>`${esc(c)}: <b>${(PAYMENT_PRICES[c]||0).toLocaleString('en-US')} ج.س / شهر</b>`).join('<br>');
+   sel.innerHTML=accounts.map(a=>`<option value="${esc(a.provider_id)}" data-category="${esc(a.category)}">${esc(a.name)} — ${esc(a.category)} — ${(PAYMENT_PRICES[a.category]||0).toLocaleString('en-US')} ج.س/شهر</option>`).join('');
+   summary.innerHTML='<b>الصفحات المسجلة على حسابك:</b><br>'+accounts.map(a=>`${esc(a.name)} — ${esc(a.category)}: <b>${(PAYMENT_PRICES[a.category]||0).toLocaleString('en-US')} ج.س / شهر</b>`).join('<br>');
  }else{
    card.style.display='none';sel.innerHTML='';summary.innerHTML='';
  }
- const label=names[0]||user.email||'';
- $('accountSendBankakBtn').onclick=()=>openPaymentWhatsapp(sel.value,'بنكك',label);
- $('accountSendFawryBtn').onclick=()=>openPaymentWhatsapp(sel.value,'فوري',label);
+ const selectedBilling=()=>{const o=sel.selectedOptions?.[0];return o?{provider_id:o.value,category:o.dataset.category,name:o.textContent.split(' — ')[0]}:null};
+ $('accountSendBankakBtn').onclick=async()=>{const a=selectedBilling();if(a)await registerPaymentNotice(a.category,'بنكك',a.name,a.provider_id)};
+ $('accountSendFawryBtn').onclick=async()=>{const a=selectedBilling();if(a)await registerPaymentNotice(a.category,'فوري',a.name,a.provider_id)};
+
+ let admin=false;
+ try{const ar=await sb.rpc('is_admin');admin=ar.data===true}catch(e){}
+ $('adminPanelBtn').style.display=admin?'block':'none';
 }
 
 async function openAccount(){
@@ -2156,8 +2300,13 @@ $('authBtn').onclick=openAuth;$('accountNav').onclick=openAccount;$('closeAuth')
 $('accountLogout').onclick=signOutUser;
 $('accountRequestsBtn').onclick=()=>{page('need');loadData();loadMyRequests()};
 $('accountFavoritesBtn').onclick=()=>{page('favorites');loadFavoritesPage()};
-$('accountPaymentBtn').onclick=()=>{const c=$('accountPayCategory')?.value||currentBillingCategories[0]||'مقدم خدمة';setPaymentContext(c,$('accountEmail')?.value||'');page('payment')};
+$('accountPaymentBtn').onclick=()=>{
+ const o=$('accountPayCategory')?.selectedOptions?.[0];
+ const c=o?.dataset?.category||currentBillingCategories[0]||'مقدم خدمة';
+ setPaymentContext(c,$('accountEmail')?.value||'');page('payment')
+};
 $('providerPaymentBtn').onclick=()=>{setPaymentContext('مقدم خدمة',currentProvider?.display_name||'');page('payment')};
+$('adminPanelBtn').onclick=async()=>{page('admin');await loadAdminPayments()};
 $('loginTab').onclick=()=>{mode='login';$('loginTab').classList.add('active');$('signupTab').classList.remove('active');$('authSubmit').textContent='تسجيل الدخول'};
 $('signupTab').onclick=()=>{mode='signup';$('signupTab').classList.add('active');$('loginTab').classList.remove('active');$('authSubmit').textContent='إنشاء الحساب'};
 
@@ -2362,7 +2511,7 @@ $('sendPro').onclick=async()=>{
 };
 
 
-/* ===== V0.16.1 enhanced product/job/school/media + provider billing ===== */
+/* ===== V0.16.3 unified subscriptions + product/job/school/media + provider billing ===== */
 function jobTypeAr(v){return ({full_time:'دوام كامل',part_time:'دوام جزئي',remote:'عن بُعد',freelance:'عمل حر',temporary:'مؤقت',internship:'تدريب',other:'أخرى'})[v]||v||'غير محدد'}
 function isVideoMedia(path,mime){return String(mime||'').startsWith('video/')||/\.(mp4|webm|mov|m4v|ogg)$/i.test(String(path||''))}
 function publicMediaUrl(bucket,path){return sb.storage.from(bucket).getPublicUrl(path).data.publicUrl}
