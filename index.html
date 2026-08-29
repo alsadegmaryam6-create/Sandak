@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#16894b">
-<title>سندك في الحياة V0.16.3</title>
+<title>سندك في الحياة V0.16.4</title>
 <style>
 :root{--g:#16894b;--g2:#0f6e3b;--bg:#f6faf7;--text:#152019;--muted:#6b766e;--line:#e4eee7;--bad:#b42318;--blue:#235a9f}
 *{box-sizing:border-box}body{margin:0;font-family:Tahoma,Arial,sans-serif;background:var(--bg);color:var(--text);padding-bottom:76px}
@@ -245,7 +245,7 @@ h1{font-size:19px;margin:0}.ver{font-size:10px;color:var(--g);font-weight:bold}s
 @media(max-width:470px){.subscription-grid{grid-template-columns:1fr}.payment-methods{grid-template-columns:1fr 1fr 1fr}.admin-contact{grid-template-columns:1fr}}
 
 
-/* V0.16.3: unified subscription visibility + provider billing + products/jobs/schools/media */
+/* V0.16.4: subscriptions + admin payments + password recovery */
 
 .school-tabs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px;background:#edf4ef;border-radius:14px;padding:5px}.school-tab{border:0;background:transparent;padding:10px;border-radius:11px;font-weight:bold;color:#5f6b63}.school-tab.active{background:#fff;color:var(--g);box-shadow:0 3px 12px #1a492713}
 .school-search-row{display:grid;grid-template-columns:1fr auto;gap:8px;margin:10px 0}.school-search-row input{border:1px solid var(--line);border-radius:13px;padding:12px;font-family:inherit;min-width:0}
@@ -269,7 +269,7 @@ h1{font-size:19px;margin:0}.ver{font-size:10px;color:var(--g);font-weight:bold}s
 </head>
 <body>
 <div class="app">
-<header><div class="top"><div class="brand"><div class="logo">س</div><div><h1>سندك في الحياة 🇸🇩</h1><div class="ver">V0.16.3</div></div></div><button id="authBtn" class="secondary">دخول</button></div></header>
+<header><div class="top"><div class="brand"><div class="logo">س</div><div><h1>سندك في الحياة 🇸🇩</h1><div class="ver">V0.16.4</div></div></div><button id="authBtn" class="secondary">دخول</button></div></header>
 
 <div id="home" class="show">
 <section class="hero"><div class="hero-card"><h2>محتاج شنو اليوم؟</h2><p>خدمات، وظائف، مدارس خاصة، أطباء، عقارات، منتجات وتوصيل… كلها في مكان واحد.</p><div class="search"><button id="homeSearchGo" class="search-go" aria-label="بحث">🔎</button><input id="homeSearchInput" placeholder="ابحث عن خدمة، منتج، وظيفة، مدرسة أو طبيب"></div></div></section>
@@ -288,7 +288,7 @@ h1{font-size:19px;margin:0}.ver{font-size:10px;color:var(--g);font-weight:bold}s
 <div class="cat" id="reviewsBtn"><div class="ico">⭐</div><b>التقييمات</b><small>قيّم الخدمة بعد اكتمالها وراجع تقييماتك</small></div>
 <div class="cat" id="paymentBtn"><div class="ico">💳</div><b>الاشتراك والدفع</b><small>الخطط الشهرية وطرق إرسال إشعار الدفع</small></div>
 </div></section>
-<section class="section"><div class="notice"><strong>✅ النسخة V0.16.3</strong><br>تم توحيد نظام الاشتراك: أول شهرين مجانًا، وبعدها لا تظهر صفحة الجهة أو مقدم الخدمة للعامة إلا باشتراك نشط. إشعار الدفع يُسجّل داخل النظام ثم يُرسل عبر واتساب الإدارة للمراجعة والاعتماد.</div></section>
+<section class="section"><div class="notice"><strong>✅ النسخة V0.16.4</strong><br>تم توحيد نظام الاشتراك: أول شهرين مجانًا، وبعدها لا تظهر صفحة الجهة أو مقدم الخدمة للعامة إلا باشتراك نشط. إشعار الدفع يُسجّل داخل النظام ثم يُرسل عبر واتساب الإدارة للمراجعة والاعتماد.</div></section>
 </div>
 
 <section id="needPage" class="page">
@@ -859,8 +859,19 @@ h1{font-size:19px;margin:0}.ver{font-size:10px;color:var(--g);font-weight:bold}s
 <div class="tabs"><button id="loginTab" class="tab active">دخول</button><button id="signupTab" class="tab">حساب جديد</button></div>
 <div class="field"><label>البريد الإلكتروني</label><input id="email" type="email"></div>
 <div class="field"><label>كلمة المرور</label><input id="pass" type="password"></div>
+<button id="forgotPasswordBtn" class="secondary" style="width:100%;margin-bottom:8px">🔑 نسيت كلمة المرور؟</button>
 <button id="authSubmit" class="primary" style="width:100%">تسجيل الدخول</button><div id="authMsg" class="msg"></div>
 <button id="closeAuth" class="secondary" style="width:100%;margin-top:8px">إغلاق</button>
+</div></div>
+
+<div id="resetPasswordModal" class="modal"><div class="sheet">
+<h3>🔐 تعيين كلمة مرور جديدة</h3>
+<div class="hint">اكتبي كلمة مرور جديدة لحسابك، ثم احفظيها في مكان آمن.</div>
+<div class="field"><label>كلمة المرور الجديدة</label><input id="resetPassNew" type="password" minlength="6" autocomplete="new-password"></div>
+<div class="field"><label>تأكيد كلمة المرور</label><input id="resetPassConfirm" type="password" minlength="6" autocomplete="new-password"></div>
+<button id="resetPasswordSubmit" class="primary" style="width:100%">حفظ كلمة المرور الجديدة</button>
+<div id="resetPasswordMsg" class="msg"></div>
+<button id="closeResetPassword" class="secondary" style="width:100%;margin-top:8px">إغلاق</button>
 </div></div>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -2307,8 +2318,57 @@ $('accountPaymentBtn').onclick=()=>{
 };
 $('providerPaymentBtn').onclick=()=>{setPaymentContext('مقدم خدمة',currentProvider?.display_name||'');page('payment')};
 $('adminPanelBtn').onclick=async()=>{page('admin');await loadAdminPayments()};
-$('loginTab').onclick=()=>{mode='login';$('loginTab').classList.add('active');$('signupTab').classList.remove('active');$('authSubmit').textContent='تسجيل الدخول'};
-$('signupTab').onclick=()=>{mode='signup';$('signupTab').classList.add('active');$('loginTab').classList.remove('active');$('authSubmit').textContent='إنشاء الحساب'};
+$('loginTab').onclick=()=>{mode='login';$('loginTab').classList.add('active');$('signupTab').classList.remove('active');$('authSubmit').textContent='تسجيل الدخول';$('forgotPasswordBtn').style.display='block'};
+$('signupTab').onclick=()=>{mode='signup';$('signupTab').classList.add('active');$('loginTab').classList.remove('active');$('authSubmit').textContent='إنشاء الحساب';$('forgotPasswordBtn').style.display='none'};
+
+const PASSWORD_RESET_REDIRECT=window.location.origin+window.location.pathname;
+function openResetPasswordModal(){
+ $('resetPasswordMsg').textContent='';$('resetPassNew').value='';$('resetPassConfirm').value='';
+ $('resetPasswordModal').classList.add('show');
+}
+function closeResetPasswordModal(){$('resetPasswordModal').classList.remove('show')}
+$('closeResetPassword').onclick=closeResetPasswordModal;
+
+$('forgotPasswordBtn').onclick=async()=>{
+ const email=$('email').value.trim();
+ if(!email){$('authMsg').className='msg err';$('authMsg').textContent='اكتبي بريدك الإلكتروني أولًا ثم اضغطي «نسيت كلمة المرور؟»';return}
+ const btn=$('forgotPasswordBtn');btn.disabled=true;btn.textContent='جاري إرسال رابط الاستعادة…';
+ $('authMsg').className='msg';$('authMsg').textContent='';
+ let r=await sb.auth.resetPasswordForEmail(email,{redirectTo:PASSWORD_RESET_REDIRECT});
+ if(r.error){
+   // Fallback to the project Site URL if the current GitHub Pages URL is not yet allow-listed.
+   r=await sb.auth.resetPasswordForEmail(email);
+ }
+ btn.disabled=false;btn.textContent='🔑 نسيت كلمة المرور؟';
+ if(r.error){$('authMsg').className='msg err';$('authMsg').textContent='تعذر إرسال رابط الاستعادة: '+r.error.message;return}
+ $('authMsg').className='msg ok';$('authMsg').textContent='✅ تم طلب رابط تغيير كلمة المرور. افتحي بريدك (وتحققي من الرسائل غير المرغوب فيها) ثم اضغطي رابط Reset Password.';
+};
+
+$('resetPasswordSubmit').onclick=async()=>{
+ const p1=$('resetPassNew').value,p2=$('resetPassConfirm').value;
+ if(p1.length<6){$('resetPasswordMsg').className='msg err';$('resetPasswordMsg').textContent='كلمة المرور يجب أن تكون 6 أحرف على الأقل.';return}
+ if(p1!==p2){$('resetPasswordMsg').className='msg err';$('resetPasswordMsg').textContent='كلمتا المرور غير متطابقتين.';return}
+ const btn=$('resetPasswordSubmit');btn.disabled=true;btn.textContent='جاري الحفظ…';
+ const r=await sb.auth.updateUser({password:p1});
+ btn.disabled=false;btn.textContent='حفظ كلمة المرور الجديدة';
+ if(r.error){$('resetPasswordMsg').className='msg err';$('resetPasswordMsg').textContent='تعذر تغيير كلمة المرور: '+r.error.message;return}
+ $('resetPasswordMsg').className='msg ok';$('resetPasswordMsg').textContent='✅ تم تغيير كلمة المرور بنجاح. يمكنك الآن الدخول بها.';
+ try{history.replaceState({},document.title,window.location.pathname)}catch(e){}
+ setTimeout(async()=>{closeResetPasswordModal();closeAuth();await refreshAuth();page('account');await loadAccountPage(r.data?.user||null)},900);
+};
+
+sb.auth.onAuthStateChange((event,session)=>{
+ if(event==='PASSWORD_RECOVERY')setTimeout(openResetPasswordModal,0);
+});
+
+// Extra fallback for recovery links that established a session before the listener fired.
+setTimeout(async()=>{
+ const h=window.location.hash||'',q=window.location.search||'';
+ if(h.includes('type=recovery')||q.includes('type=recovery')){
+   const {data:{session}}=await sb.auth.getSession();
+   if(session)openResetPasswordModal();
+ }
+},500);
 
 $('authSubmit').onclick=async()=>{
  const email=$('email').value.trim(),password=$('pass').value;
@@ -2511,7 +2571,7 @@ $('sendPro').onclick=async()=>{
 };
 
 
-/* ===== V0.16.3 unified subscriptions + product/job/school/media + provider billing ===== */
+/* ===== V0.16.4 unified subscriptions + admin payments + password recovery ===== */
 function jobTypeAr(v){return ({full_time:'دوام كامل',part_time:'دوام جزئي',remote:'عن بُعد',freelance:'عمل حر',temporary:'مؤقت',internship:'تدريب',other:'أخرى'})[v]||v||'غير محدد'}
 function isVideoMedia(path,mime){return String(mime||'').startsWith('video/')||/\.(mp4|webm|mov|m4v|ogg)$/i.test(String(path||''))}
 function publicMediaUrl(bucket,path){return sb.storage.from(bucket).getPublicUrl(path).data.publicUrl}
