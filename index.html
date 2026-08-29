@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#16894b">
-<title>سندك في الحياة V0.15.8</title>
+<title>سندك في الحياة V0.16.0</title>
 <style>
 :root{--g:#16894b;--g2:#0f6e3b;--bg:#f6faf7;--text:#152019;--muted:#6b766e;--line:#e4eee7;--bad:#b42318;--blue:#235a9f}
 *{box-sizing:border-box}body{margin:0;font-family:Tahoma,Arial,sans-serif;background:var(--bg);color:var(--text);padding-bottom:76px}
@@ -237,21 +237,43 @@ h1{font-size:19px;margin:0}.ver{font-size:10px;color:var(--g);font-weight:bold}s
 .review-page-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:14px;margin:10px 0}
 @media(max-width:470px){.subscription-grid{grid-template-columns:1fr}.payment-methods{grid-template-columns:1fr 1fr 1fr}.admin-contact{grid-template-columns:1fr}}
 
+
+/* V0.16.0: products, jobs, private schools and media galleries */
+
+.school-tabs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px;background:#edf4ef;border-radius:14px;padding:5px}.school-tab{border:0;background:transparent;padding:10px;border-radius:11px;font-weight:bold;color:#5f6b63}.school-tab.active{background:#fff;color:var(--g);box-shadow:0 3px 12px #1a492713}
+.school-search-row{display:grid;grid-template-columns:1fr auto;gap:8px;margin:10px 0}.school-search-row input{border:1px solid var(--line);border-radius:13px;padding:12px;font-family:inherit;min-width:0}
+.school-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:14px;margin:11px 0}.school-card h4{margin:0;font-size:19px}.school-meta{display:flex;gap:6px;flex-wrap:wrap;margin:9px 0}.school-detail{background:#f7faf8;border-radius:12px;padding:10px;margin:7px 0;font-size:13px;line-height:1.7}.school-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}.school-actions a,.school-actions button{text-decoration:none;text-align:center;padding:11px;border-radius:12px;font-weight:bold;border:0;font-family:inherit}.school-levels{display:grid;grid-template-columns:1fr 1fr;gap:8px}.school-levels label{background:#f7faf8;border:1px solid var(--line);border-radius:11px;padding:9px;font-size:13px}.school-request{background:var(--g);color:#fff}.school-call{background:#edf3ff;color:#245da8}.school-wa{background:#edf9f0;color:#18763f}.school-report{background:#fff3f2;color:#9d2b22;border:1px solid #f0c8c4!important}
+@media(max-width:470px){.school-search-row{grid-template-columns:1fr auto}.school-levels{grid-template-columns:1fr 1fr}}
+
+.media-picker-note{font-size:12px;color:var(--muted);line-height:1.7;margin-top:6px}
+.media-selection{display:flex;flex-wrap:wrap;gap:6px;margin-top:7px}.media-selection span{background:#eef6f0;border:1px solid #d9e8dd;border-radius:10px;padding:5px 8px;font-size:11px}
+.media-gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin:10px 0}.media-tile{position:relative;border-radius:13px;overflow:hidden;background:#edf4ef;min-height:92px;border:1px solid var(--line)}
+.media-tile img,.media-tile video{width:100%;height:110px;object-fit:cover;display:block}.media-tile img{cursor:pointer}.media-open-video{position:absolute;right:6px;bottom:6px;border:0;border-radius:9px;background:#ffffffdd;color:var(--g2);font-weight:bold;padding:5px 7px;font-size:11px}
+.media-manager{background:#fff;border:1px solid var(--line);border-radius:18px;padding:13px;margin:12px 0}.media-manager h4{margin:0 0 8px}.media-manager-actions{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:end}
+.media-viewer-box{background:#07110b;border-radius:18px;padding:10px;max-width:720px;width:94vw;max-height:90vh}.media-viewer-box img,.media-viewer-box video{width:100%;max-height:78vh;object-fit:contain;border-radius:12px;display:block}.media-viewer-close{width:100%;margin-top:8px}
+.product-search-row,.job-search-row{display:grid;grid-template-columns:1fr auto;gap:8px;margin:10px 0}.product-search-row input,.job-search-row input{border:1px solid var(--line);border-radius:13px;padding:12px;font-family:inherit;min-width:0}.filter-chips{display:flex;gap:7px;overflow-x:auto;padding:4px 0 9px}.filter-chip{white-space:nowrap;border:1px solid #cee0d3;background:#fff;color:#536158;border-radius:999px;padding:7px 11px;font-family:inherit}.filter-chip.active{background:var(--g);color:#fff;border-color:var(--g)}
+.product-seller{font-size:12px;color:#536158;margin-top:8px}.product-extra-actions,.job-actions{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-top:9px}.mini-action{border:1px solid var(--line);background:#fff;border-radius:11px;padding:9px 6px;font-family:inherit;font-weight:bold;color:#435047}
+.result-count{font-size:12px;color:var(--muted);margin:4px 0 8px}.job-tabs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px;background:#edf4ef;border-radius:14px;padding:5px}.job-tab{border:0;background:transparent;padding:10px;border-radius:11px;font-weight:bold;color:#5f6b63}.job-tab.active{background:#fff;color:var(--g);box-shadow:0 3px 12px #1a492713}
+.job-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:14px;margin:11px 0}.job-card h4{margin:0;font-size:18px}.job-company{font-weight:bold;color:var(--g2);margin-top:4px}.job-meta{display:flex;flex-wrap:wrap;gap:6px;margin:9px 0}.job-detail{background:#f7faf8;border-radius:12px;padding:10px;margin:7px 0;font-size:13px;line-height:1.7}.job-contact{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}.job-contact a{text-decoration:none;text-align:center;padding:11px;border-radius:12px;font-weight:bold}.job-apply{background:var(--g);color:#fff}.job-wa{background:#edf9f0;color:#18763f}.job-call{background:#edf3ff;color:#245da8}
+@media(max-width:470px){.media-gallery{grid-template-columns:1fr 1fr}.product-extra-actions,.job-actions{grid-template-columns:1fr 1fr}.media-manager-actions{grid-template-columns:1fr}.product-search-row,.job-search-row{grid-template-columns:1fr auto}}
+
 @media(max-width:470px){h1{font-size:17px}}
 </style>
 </head>
 <body>
 <div class="app">
-<header><div class="top"><div class="brand"><div class="logo">س</div><div><h1>سندك في الحياة 🇸🇩</h1><div class="ver">V0.15.8</div></div></div><button id="authBtn" class="secondary">دخول</button></div></header>
+<header><div class="top"><div class="brand"><div class="logo">س</div><div><h1>سندك في الحياة 🇸🇩</h1><div class="ver">V0.16.0</div></div></div><button id="authBtn" class="secondary">دخول</button></div></header>
 
 <div id="home" class="show">
-<section class="hero"><div class="hero-card"><h2>محتاج شنو اليوم؟</h2><p>خدمات، طبيب، عقار، منتج أو توصيل… كلها في مكان واحد.</p><div class="search"><button id="homeSearchGo" class="search-go" aria-label="بحث">🔎</button><input id="homeSearchInput" placeholder="ابحث عن خدمة أو طبيب أو مستشفى أو منتج"></div></div></section>
+<section class="hero"><div class="hero-card"><h2>محتاج شنو اليوم؟</h2><p>خدمات، وظائف، مدارس خاصة، أطباء، عقارات، منتجات وتوصيل… كلها في مكان واحد.</p><div class="search"><button id="homeSearchGo" class="search-go" aria-label="بحث">🔎</button><input id="homeSearchInput" placeholder="ابحث عن خدمة، منتج، وظيفة، مدرسة أو طبيب"></div></div></section>
 <section class="section"><div class="section-title"><h3>الأقسام الرئيسية</h3><span>بورتسودان</span></div>
 <div class="grid">
 <div class="cat" id="offerBtn"><div class="ico">🛠️</div><b>أقدم خدمة</b><small>خدمتك والطلبات المناسبة لك</small></div>
 <div class="cat" id="needBtn"><div class="ico">🙋</div><b>أحتاج خدمة</b><small>طلب جديد + العروض التي وصلتك</small></div>
 <div class="cat" id="propertyBtn"><div class="ico">🏠</div><b>السكن والعقارات</b><small>بيع وإيجار وإضافة عقار</small></div>
-<div class="cat" id="productBtn"><div class="ico">🛒</div><b>البيع والشراء</b><small>منتجات جديدة ومستعملة</small></div>
+<div class="cat" id="productBtn"><div class="ico">🛒</div><b>أبحث عن منتج</b><small>سلع جديدة ومستعملة من بائعين محليين</small></div>
+<div class="cat" id="jobBtn"><div class="ico">💼</div><b>أبحث عن عمل</b><small>وظائف وفرص عمل محلية</small></div>
+<div class="cat" id="schoolBtn"><div class="ico">🏫</div><b>المدارس الخاصة</b><small>ابحث عن مدرسة مناسبة لأبنائك</small></div>
 <div class="cat" id="doctorBtn"><div class="ico">👨‍⚕️</div><b>الأطباء</b><small>حسب التخصص والتواصل مع الاستقبال</small></div>
 <div class="cat" id="hospitalBtn"><div class="ico">🏥</div><b>المستشفيات</b><small>الأقسام والغرف والاستقبال</small></div>
 <div class="cat" id="pharmacyBtn"><div class="ico">💊</div><b>الصيدليات</b><small>الموقع وساعات العمل والتواصل</small></div>
@@ -259,7 +281,7 @@ h1{font-size:19px;margin:0}.ver{font-size:10px;color:var(--g);font-weight:bold}s
 <div class="cat" id="reviewsBtn"><div class="ico">⭐</div><b>التقييمات</b><small>قيّم الخدمة بعد اكتمالها وراجع تقييماتك</small></div>
 <div class="cat" id="paymentBtn"><div class="ico">💳</div><b>الاشتراك والدفع</b><small>الخطط الشهرية وطرق إرسال إشعار الدفع</small></div>
 </div></section>
-<section class="section"><div class="notice"><strong>✅ النسخة V0.15.7</strong><br>تم إصلاح تحميل الفئات والتخصصات والأقسام وأنواع المركبات والعقارات والمنتجات، مع الحفاظ على إعدادات الدفع وواتساب الإدارة.</div></section>
+<section class="section"><div class="notice"><strong>✅ النسخة V0.16.0</strong><br>تمت إضافة قسم المدارس الخاصة مع البحث والمراحل والرسوم والتواصل والصور والفيديو، إلى جانب أقسام المنتجات والوظائف والخدمات.</div></section>
 </div>
 
 <section id="needPage" class="page">
@@ -322,38 +344,100 @@ h1{font-size:19px;margin:0}.ver{font-size:10px;color:var(--g);font-weight:bold}s
 
 
 <section id="productPage" class="page">
-<div class="pagehead"><button class="back" data-home>→</button><h2>🛒 البيع والشراء</h2></div>
-
+<div class="pagehead"><button class="back" data-home>→</button><h2>🛒 أبحث عن منتج</h2></div>
 <div class="product-tabs">
 <button id="browseProductTab" class="product-tab active">عرض المنتجات</button>
-<button id="addProductTab" class="product-tab">إضافة منتج</button>
+<button id="addProductTab" class="product-tab">أبيع منتج</button>
 </div>
-
 <div id="productBrowseWrap">
-<div class="section-title"><h3>المنتجات المنشورة</h3><button id="refreshProducts" class="secondary" style="padding:7px 10px">تحديث</button></div>
-<div class="hint">تصفح المنتجات وتواصل مباشرة مع البائع عبر الاتصال أو واتساب.</div>
+<div class="hint">ابحث بالاسم أو الفئة أو المكان، وافتح صور المنتج وفيديوهاته ثم تواصل مباشرة مع البائع.</div>
+<div class="product-search-row"><input id="productSearchInput" placeholder="ابحث عن منتج"><button id="productSearchBtn" class="primary">بحث</button></div>
+<div id="productCategoryFilters" class="filter-chips"><button class="filter-chip active" data-product-cat="">الكل</button></div>
+<div id="productResultCount" class="result-count"></div>
+<div class="section-title"><h3>المنتجات والسلع</h3><button id="refreshProducts" class="secondary" style="padding:7px 10px">تحديث</button></div>
 <div id="productList"><div class="empty">جاري تحميل المنتجات…</div></div>
 </div>
-
 <div id="productAddWrap" style="display:none">
-<div class="hint">سجّل الدخول لإضافة منتج. أول إعلان ينشئ لك ملف بائع تلقائيًا ويبدأ فترة التجربة المجانية.</div>
+<div class="hint">سجّل الدخول لإضافة منتج. يمكنك رفع عدة صور وفيديوهات ليشاهد العميل المنتج بوضوح.</div>
 <div class="card">
-<div class="field"><label>اسم المنتج *</label><input id="prodTitle" placeholder="مثال: ثلاجة مستعملة بحالة ممتازة"></div>
-<div class="row">
-<div class="field"><label>الفئة *</label><select id="prodCat"><option value="">جاري التحميل…</option></select></div>
-<div class="field"><label>حالة المنتج *</label><select id="prodCondition"><option value="new">جديد</option><option value="used">مستعمل</option></select></div>
-</div>
+<div class="field"><label>اسم المنتج *</label><input id="prodTitle" placeholder="مثال: ثلاجة 14 قدم بحالة ممتازة"></div>
+<div class="row"><div class="field"><label>الفئة *</label><select id="prodCat"><option value="">جاري التحميل…</option></select></div><div class="field"><label>حالة المنتج *</label><select id="prodCondition"><option value="new">جديد</option><option value="used">مستعمل</option></select></div></div>
+<div class="field"><label>المكان أو الحي</label><input id="prodLocation" placeholder="مثال: بورتسودان - ديم المدينة"></div>
 <div class="field"><label>السعر بالجنيه السوداني</label><input id="prodPrice" type="number" min="0" inputmode="decimal" placeholder="اختياري"></div>
 <div class="field"><label>وصف المنتج</label><textarea id="prodDesc" placeholder="اكتب تفاصيل المنتج وحالته"></textarea></div>
 <div class="field"><label>رقم الهاتف *</label><input id="prodPhone" inputmode="tel" placeholder="0912345678"></div>
 <div class="field"><label>واتساب</label><input id="prodWhats" inputmode="tel" placeholder="إذا كان مختلفًا"></div>
-<div class="field"><label>صورة المنتج (اختياري)</label><input id="prodImage" type="file" accept="image/*"><img id="prodImagePreview" class="image-preview" alt="معاينة الصورة"></div>
-<button id="sendProduct" class="primary" style="width:100%">نشر المنتج</button>
-<div id="prodMsg" class="msg"></div>
+<div class="field"><label>صور وفيديوهات المنتج (حتى 8 ملفات)</label><input id="prodImage" type="file" accept="image/*,video/*" multiple><div class="media-picker-note">يمكن رفع عدة صور، ومعها فيديو أو أكثر. الحد داخل التطبيق: 8MB للصورة و40MB للفيديو.</div><div id="prodMediaPreview" class="media-selection"></div><img id="prodImagePreview" class="image-preview" alt="معاينة" style="display:none"></div>
+<button id="sendProduct" class="primary" style="width:100%">نشر المنتج</button><div id="prodMsg" class="msg"></div>
+</div></div>
+</section>
+
+<section id="jobPage" class="page">
+<div class="pagehead"><button class="back" data-home>→</button><h2>💼 أبحث عن عمل</h2></div>
+<div class="job-tabs"><button id="browseJobTab" class="job-tab active">عرض الوظائف</button><button id="addJobTab" class="job-tab">إضافة وظيفة</button></div>
+<div id="jobBrowseWrap">
+<div class="hint">فرص عمل محلية محدثة. ابحث عن وظيفة أو جهة عمل وتواصل مباشرة مع صاحب الإعلان.</div>
+<div class="job-search-row"><input id="jobSearchInput" placeholder="ابحث عن وظيفة أو جهة عمل"><button id="jobSearchBtn" class="primary">بحث</button></div>
+<div class="field"><label>نوع العمل</label><select id="jobTypeFilter"><option value="">كل أنواع العمل</option><option value="full_time">دوام كامل</option><option value="part_time">دوام جزئي</option><option value="remote">عن بُعد</option><option value="freelance">عمل حر</option><option value="temporary">مؤقت</option><option value="internship">تدريب</option><option value="other">أخرى</option></select></div>
+<div id="jobResultCount" class="result-count"></div>
+<div class="section-title"><h3>الوظائف المتاحة</h3><button id="refreshJobs" class="secondary" style="padding:7px 10px">تحديث</button></div>
+<div id="jobList"><div class="empty">جاري تحميل الوظائف…</div></div>
+</div>
+<div id="jobAddWrap" style="display:none">
+<div class="hint">أضف وظيفة حقيقية فقط. سيظهر رقم التواصل للباحثين عن عمل.</div>
+<div class="card">
+<div class="field"><label>المسمى الوظيفي *</label><input id="jobTitle" placeholder="مثال: محاسب"></div>
+<div class="field"><label>اسم الجهة أو الشركة *</label><input id="jobCompany" placeholder="مثال: شركة الميناء للتجارة"></div>
+<div class="row"><div class="field"><label>المكان *</label><input id="jobLocation" placeholder="مثال: بورتسودان"></div><div class="field"><label>نوع العمل *</label><select id="jobWorkType"><option value="full_time">دوام كامل</option><option value="part_time">دوام جزئي</option><option value="remote">عن بُعد</option><option value="freelance">عمل حر</option><option value="temporary">مؤقت</option><option value="internship">تدريب</option><option value="other">أخرى</option></select></div></div>
+<div class="field"><label>المتطلبات</label><textarea id="jobRequirements" placeholder="المؤهل، الخبرة، المهارات المطلوبة"></textarea></div>
+<div class="field"><label>الأجر</label><input id="jobSalary" placeholder="مثال: 400,000 ج.س / شهر أو حسب الخبرة"></div>
+<div class="field"><label>تفاصيل إضافية</label><textarea id="jobDescription" placeholder="وصف مختصر للوظيفة"></textarea></div>
+<div class="row"><div class="field"><label>رقم الهاتف *</label><input id="jobPhone" inputmode="tel" placeholder="0912345678"></div><div class="field"><label>واتساب</label><input id="jobWhats" inputmode="tel" placeholder="إذا كان مختلفًا"></div></div>
+<button id="sendJob" class="primary" style="width:100%">نشر الوظيفة</button><div id="jobMsg" class="msg"></div>
+</div></div>
+</section>
+
+
+<section id="schoolPage" class="page">
+<div class="pagehead"><button class="back" data-home>→</button><h2>🏫 المدارس الخاصة</h2></div>
+<div class="school-tabs"><button id="browseSchoolTab" class="school-tab active">عرض المدارس</button><button id="addSchoolTab" class="school-tab">أضف مدرستك</button></div>
+
+<div id="schoolBrowseWrap">
+<div class="hint">ابحث عن مدرسة خاصة حسب الاسم أو الموقع أو المرحلة، وافتح صور المدرسة وفيديوهاتها ثم تواصل مباشرة مع الإدارة.</div>
+<div class="school-search-row"><input id="schoolSearchInput" placeholder="ابحث عن مدرسة أو حي"><button id="schoolSearchBtn" class="primary">بحث</button></div>
+<div class="row">
+<div class="field"><label>المرحلة الدراسية</label><select id="schoolLevelFilter"><option value="">كل المراحل</option><option value="nursery">روضة</option><option value="primary">أساس / ابتدائي</option><option value="middle">متوسط</option><option value="secondary">ثانوي</option></select></div>
+<div class="field"><label>نوع المدرسة</label><select id="schoolGenderFilter"><option value="">الكل</option><option value="boys">بنين</option><option value="girls">بنات</option><option value="mixed">مختلط</option></select></div>
+</div>
+<div id="schoolResultCount" class="result-count"></div>
+<div class="section-title"><h3>المدارس الخاصة</h3><button id="refreshSchools" class="secondary" style="padding:7px 10px">تحديث</button></div>
+<div id="schoolList"><div class="empty">جاري تحميل المدارس…</div></div>
+</div>
+
+<div id="schoolAddWrap" style="display:none">
+<div class="hint">سجّل الدخول لإضافة مدرستك. يمكنك رفع عدة صور وفيديو تعريفي، وتعديل بيانات المدرسة لاحقًا من قاعدة البيانات.</div>
+<div class="card">
+<div class="field"><label>اسم المدرسة *</label><input id="schoolName" placeholder="مثال: مدارس المستقبل الخاصة"></div>
+<div class="field"><label>الموقع أو الحي *</label><input id="schoolLocation" placeholder="مثال: بورتسودان - ديم المدينة"></div>
+<div class="field"><label>المراحل الدراسية *</label><div class="school-levels">
+<label><input type="checkbox" class="school-level" value="nursery"> روضة</label>
+<label><input type="checkbox" class="school-level" value="primary"> أساس / ابتدائي</label>
+<label><input type="checkbox" class="school-level" value="middle"> متوسط</label>
+<label><input type="checkbox" class="school-level" value="secondary"> ثانوي</label>
+</div></div>
+<div class="row">
+<div class="field"><label>نوع المدرسة *</label><select id="schoolGender"><option value="mixed">مختلط</option><option value="boys">بنين</option><option value="girls">بنات</option></select></div>
+<div class="field"><label>حالة التسجيل</label><select id="schoolRegistration"><option value="open">التسجيل مفتوح</option><option value="contact">اتصل للاستفسار</option><option value="closed">التسجيل مغلق</option></select></div>
+</div>
+<div class="field"><label>الرسوم الدراسية</label><input id="schoolFees" placeholder="مثال: تبدأ من 500,000 ج.س أو اتصل لمعرفة الرسوم"></div>
+<div class="field"><label>المواصلات</label><select id="schoolTransport"><option value="false">غير متوفرة / غير محددة</option><option value="true">مواصلات متوفرة</option></select></div>
+<div class="field"><label>نبذة عن المدرسة</label><textarea id="schoolDescription" placeholder="المنهج، الأنشطة، البيئة الدراسية، المميزات..."></textarea></div>
+<div class="row"><div class="field"><label>رقم الإدارة *</label><input id="schoolPhone" inputmode="tel" placeholder="0912345678"></div><div class="field"><label>واتساب الإدارة</label><input id="schoolWhats" inputmode="tel" placeholder="إذا كان مختلفًا"></div></div>
+<div class="field"><label>صور وفيديوهات المدرسة (حتى 8 ملفات)</label><input id="schoolMedia" type="file" accept="image/*,video/*" multiple><div class="media-picker-note">يمكن رفع صور الفصول والساحة والمرافق وفيديو تعريفي. الحد: 8MB للصورة و40MB للفيديو.</div><div id="schoolMediaPreview" class="media-selection"></div></div>
+<button id="sendSchool" class="primary" style="width:100%">نشر المدرسة</button><div id="schoolMsg" class="msg"></div>
 </div>
 </div>
 </section>
-
 
 <section id="doctorPage" class="page">
 <div class="pagehead"><button class="back" data-home>→</button><h2>👨‍⚕️ الأطباء</h2></div>
@@ -536,7 +620,7 @@ h1{font-size:19px;margin:0}.ver{font-size:10px;color:var(--g);font-weight:bold}s
 
 <section id="favoritesPage" class="page">
 <div class="pagehead"><button class="back" data-home>→</button><h2>❤️ المفضلة</h2></div>
-<div class="hint">احفظ ما يعجبك من الخدمات والأطباء والمستشفيات والصيدليات والعقارات والمنتجات، وارجع إليه من هنا في أي وقت.</div>
+<div class="hint">احفظ ما يعجبك من الخدمات والأطباء والمستشفيات والصيدليات والعقارات والمنتجات والوظائف، وارجع إليه من هنا في أي وقت.</div>
 <div class="section-title"><h3>العناصر المحفوظة</h3><button id="refreshFavorites" class="secondary" style="padding:7px 10px">تحديث</button></div>
 <div id="favoritesList"><div class="empty">جاري تحميل المفضلة…</div></div>
 </section>
@@ -544,7 +628,7 @@ h1{font-size:19px;margin:0}.ver{font-size:10px;color:var(--g);font-weight:bold}s
 <section id="searchPage" class="page">
 <div class="pagehead"><button class="back" data-home>→</button><h2>🔎 البحث</h2></div>
 <div class="global-search-box">
-<input id="globalSearchInput" placeholder="اكتب اسم خدمة، طبيب، مستشفى، صيدلية، عقار أو منتج">
+<input id="globalSearchInput" placeholder="اكتب خدمة، منتج، وظيفة، طبيب، مستشفى أو عقار">
 <button id="globalSearchGo">بحث</button>
 </div>
 <div class="hint">يمكنك البحث بالاسم أو التخصص أو الفئة أو الحي. تظهر لك النتائج المنشورة فقط.</div>
@@ -556,6 +640,8 @@ h1{font-size:19px;margin:0}.ver{font-size:10px;color:var(--g);font-weight:bold}s
 <button class="search-filter" data-filter="pharmacy">صيدليات</button>
 <button class="search-filter" data-filter="property">عقارات</button>
 <button class="search-filter" data-filter="product">منتجات</button>
+<button class="search-filter" data-filter="job">وظائف</button>
+<button class="search-filter" data-filter="school">مدارس خاصة</button>
 </div>
 <div id="searchSummary" class="search-summary"></div>
 <div id="globalSearchResults"><div class="search-empty">اكتب ما تبحث عنه ثم اضغط «بحث».</div></div>
@@ -645,20 +731,21 @@ h1{font-size:19px;margin:0}.ver{font-size:10px;color:var(--g);font-weight:bold}s
 
 <section id="paymentPage" class="page">
 <div class="pagehead"><button class="back" data-home>→</button><h2>💳 الاشتراك والدفع</h2></div>
-<div class="hint"><b>🎁 الشهر الأول مجاني</b><br>بعد انتهاء الفترة المجانية يبدأ الاشتراك الشهري لمقدمي الخدمات والجهات المسجلة.</div>
+<div class="hint"><b>🎁 أول شهرين مجانًا</b><br>بعد انتهاء الشهرين المجانيين يبدأ الاشتراك الشهري لمقدمي الخدمات والجهات المسجلة.</div>
 <div class="subscription-grid">
   <div class="subscription-card"><b>🛠️ مقدمو الخدمات</b><span class="subscription-price">20,000 ج.س / شهر</span></div>
   <div class="subscription-card"><b>👨‍⚕️ الأطباء</b><span class="subscription-price">20,000 ج.س / شهر</span></div>
   <div class="subscription-card"><b>💊 الصيدليات</b><span class="subscription-price">20,000 ج.س / شهر</span></div>
   <div class="subscription-card"><b>🏥 المستشفيات</b><span class="subscription-price">20,000 ج.س / شهر</span></div>
-  <div class="subscription-card"><b>🛒 البيع والشراء</b><span class="subscription-price">20,000 ج.س / شهر</span></div>
+  <div class="subscription-card"><b>🛒 أبيع منتج</b><span class="subscription-price">20,000 ج.س / شهر</span></div>
+  <div class="subscription-card"><b>🏫 المدارس الخاصة</b><span class="subscription-price">20,000 ج.س / شهر</span></div>
   <div class="subscription-card"><b>🛵 التوصيل</b><span class="subscription-price">10,000 ج.س / شهر</span></div>
 </div>
 <div class="card">
   <h3 style="margin-top:0">طرق الدفع</h3>
   <div class="payment-methods"><div class="payment-method">🏦 بنكك<br><small>2892867</small><br><small>مريم الصادق ريهاب</small></div><div class="payment-method">💰 فوري<br><small>51555823</small><br><small>مريم الصادق ريهاب</small></div><div class="payment-method">📱 أوكاش<br><small>سيضاف الرقم لاحقًا</small></div></div>
   <div class="notice"><b>بيانات الدفع:</b><br>بنكك: 2892867 — باسم مريم الصادق ريهاب<br>فوري: 51555823 — باسم مريم الصادق ريهاب<br>أوكاش: لم يُضف رقم الحساب بعد.</div>
-  <div class="field"><label>الفئة</label><select id="payCategory"><option>مقدم خدمة</option><option>طبيب</option><option>صيدلية</option><option>مستشفى</option><option>بيع وشراء</option><option>توصيل</option></select></div>
+  <div class="field"><label>الفئة</label><select id="payCategory"><option>مقدم خدمة</option><option>طبيب</option><option>صيدلية</option><option>مستشفى</option><option>أبيع منتج</option><option>المدارس الخاصة</option><option>توصيل</option></select></div>
   <div class="field"><label>طريقة الدفع</label><select id="payMethod"><option>بنكك</option><option>فوري</option><option>أوكاش</option></select></div>
   <div class="hint">بعد التحويل اضغط الزر أدناه لفتح واتساب الإدارة على الرقم <b>0913032542</b>، ثم أرفق صورة إشعار/إيصال البنك وأرسلها.</div>
   <button id="sendPaymentNotice" class="primary" style="width:100%">إرسال إشعار الدفع إلى واتساب 0913032542</button>
@@ -669,6 +756,14 @@ h1{font-size:19px;margin:0}.ver{font-size:10px;color:var(--g);font-weight:bold}s
 <section id="offerPage" class="page">
 <div class="pagehead"><button class="back" data-home>→</button><h2>🛠️ أقدم خدمة</h2></div>
 <div id="providerExisting" class="provider-box" style="display:none"><b id="providerTitle"></b><small id="providerInfo"></small></div>
+<div id="providerMediaManager" class="media-manager" style="display:none">
+<h4>📸 صور وفيديوهات أعمالي</h4>
+<div class="hint">أضف صورًا وفيديوهات لأعمالك. ستظهر للعميل داخل ملف مقدم الخدمة ويمكن فتحها بحجم كبير.</div>
+<div id="myProviderMedia"></div>
+<div class="media-manager-actions"><div class="field" style="margin:0"><input id="providerMediaInput" type="file" accept="image/*,video/*" multiple><div class="media-picker-note">حتى 8 ملفات في المرة الواحدة.</div><div id="providerMediaPreview" class="media-selection"></div></div><button id="uploadProviderMediaBtn" class="primary">رفع الملفات</button></div>
+<button id="viewMyProviderProfile" class="secondary" style="width:100%;margin-top:9px">⭐ عرض ملفي كما يراه العميل</button>
+<div id="providerMediaMsg" class="msg"></div>
+</div>
 <div id="matchedSection" style="display:none">
 <div class="section-title"><h3>طلبات مناسبة لي</h3><button id="refreshMatches" class="secondary" style="padding:7px 10px">تحديث</button></div>
 <div class="hint">نعرض لك الطلبات المطابقة لخدمتك ومدينة عملك فقط، دون بيانات العميل الخاصة.</div>
@@ -683,6 +778,7 @@ h1{font-size:19px;margin:0}.ver{font-size:10px;color:var(--g);font-weight:bold}s
 <div class="field"><label>رقم الهاتف *</label><input id="proPhone" inputmode="tel" placeholder="مثال: 0912345678"></div>
 <div class="field"><label>واتساب</label><input id="proWhats" inputmode="tel" placeholder="إذا كان مختلفًا عن رقم الهاتف"></div>
 <div class="field"><label>الحي أو مكان العمل *</label><input id="proLoc" placeholder="مثال: بورتسودان - ديم المدينة"></div>
+<div class="field"><label>صور وفيديوهات من أعمالك</label><input id="proMedia" type="file" accept="image/*,video/*" multiple><div class="media-picker-note">اختياري: حتى 8 صور/فيديوهات. يمكنك إضافة المزيد لاحقًا من ملفك.</div><div id="proMediaPreview" class="media-selection"></div></div>
 <div class="row"><div class="field"><label>طريقة السعر</label><select id="proPriceMode"><option value="agreement">حسب الاتفاق</option><option value="negotiable">قابل للتفاوض</option><option value="starting_from">يبدأ من</option><option value="fixed">سعر ثابت</option></select></div><div class="field"><label>السعر</label><input id="proPrice" type="number" min="0" inputmode="numeric" placeholder="اختياري"></div></div>
 <button id="sendPro" class="primary" style="width:100%">تسجيل خدمتي</button><div id="proMsg" class="msg"></div>
 </div>
@@ -717,6 +813,11 @@ h1{font-size:19px;margin:0}.ver{font-size:10px;color:var(--g);font-weight:bold}s
 <div id="providerProfileBody"><div class="empty">جاري تحميل الملف والتقييمات…</div></div>
 </div></div>
 
+<div id="mediaViewer" class="modal"><div class="media-viewer-box">
+<img id="mediaViewerImage" alt="عرض الصورة" style="display:none"><video id="mediaViewerVideo" controls playsinline style="display:none"></video>
+<button id="closeMediaViewer" class="secondary media-viewer-close">إغلاق</button>
+</div></div>
+
 <div id="authModal" class="modal"><div class="sheet">
 <h3>مرحبًا بك في سندك 💚</h3>
 <div class="tabs"><button id="loginTab" class="tab active">دخول</button><button id="signupTab" class="tab">حساب جديد</button></div>
@@ -731,8 +832,8 @@ h1{font-size:19px;margin:0}.ver{font-size:10px;color:var(--g);font-weight:bold}s
 const sb=supabase.createClient("https://xcdobqsqfdupovtwamer.supabase.co","sb_publishable_cbFKfqs1Aibfup2Iuh_ltg_nA5NlQNS");
 let mode='login',cityId=null,catsLoaded=false,currentProvider=null;const $=x=>document.getElementById(x);
 function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]))}
-function page(p){$('home').classList.toggle('show',p==='home');$('needPage').classList.toggle('show',p==='need');$('offerPage').classList.toggle('show',p==='offer');$('propertyPage').classList.toggle('show',p==='property');$('productPage').classList.toggle('show',p==='product');$('doctorPage').classList.toggle('show',p==='doctor');$('hospitalPage').classList.toggle('show',p==='hospital');$('pharmacyPage').classList.toggle('show',p==='pharmacy');$('deliveryPage').classList.toggle('show',p==='delivery');$('searchPage').classList.toggle('show',p==='search');$('favoritesPage').classList.toggle('show',p==='favorites');$('reviewsPage').classList.toggle('show',p==='reviews');$('paymentPage').classList.toggle('show',p==='payment');$('accountPage').classList.toggle('show',p==='account');window.scrollTo(0,0)}
-$('needBtn').onclick=()=>{page('need');loadData();loadMyRequests()};$('offerBtn').onclick=()=>{page('offer');loadOfferArea()};$('propertyBtn').onclick=()=>{page('property');showPropertyTab('browse');loadPropertyData();loadProperties()};$('productBtn').onclick=()=>{page('product');showProductTab('browse');loadProductData();loadProducts()};$('doctorBtn').onclick=()=>{page('doctor');showDoctorTab('browse');loadDoctorData();loadDoctors()};$('hospitalBtn').onclick=()=>{page('hospital');showHospitalTab('browse');loadHospitalData();loadHospitals()};$('pharmacyBtn').onclick=()=>{page('pharmacy');showPharmacyTab('browse');loadPharmacies()};$('deliveryBtn').onclick=()=>{page('delivery');showDeliveryTab('customer');loadDeliveryVehicleTypes();loadMyDeliveryRequests()};$('reviewsBtn').onclick=()=>{page('reviews');loadReviewsPage()};$('paymentBtn').onclick=()=>page('payment');$('addNav').onclick=()=>{page('need');loadData();loadMyRequests()};$('homeNav').onclick=()=>page('home');$('searchNav').onclick=()=>openGlobalSearch($('homeSearchInput').value);$('favNav').onclick=()=>{page('favorites');loadFavoritesPage()};
+function page(p){$('home').classList.toggle('show',p==='home');$('needPage').classList.toggle('show',p==='need');$('offerPage').classList.toggle('show',p==='offer');$('propertyPage').classList.toggle('show',p==='property');$('productPage').classList.toggle('show',p==='product');$('jobPage').classList.toggle('show',p==='job');$('schoolPage').classList.toggle('show',p==='school');$('doctorPage').classList.toggle('show',p==='doctor');$('hospitalPage').classList.toggle('show',p==='hospital');$('pharmacyPage').classList.toggle('show',p==='pharmacy');$('deliveryPage').classList.toggle('show',p==='delivery');$('searchPage').classList.toggle('show',p==='search');$('favoritesPage').classList.toggle('show',p==='favorites');$('reviewsPage').classList.toggle('show',p==='reviews');$('paymentPage').classList.toggle('show',p==='payment');$('accountPage').classList.toggle('show',p==='account');window.scrollTo(0,0)}
+$('needBtn').onclick=()=>{page('need');loadData();loadMyRequests()};$('offerBtn').onclick=()=>{page('offer');loadOfferArea()};$('propertyBtn').onclick=()=>{page('property');showPropertyTab('browse');loadPropertyData();loadProperties()};$('productBtn').onclick=()=>{page('product');showProductTab('browse');loadProductData();loadProducts()};$('jobBtn').onclick=()=>{page('job');showJobTab('browse');loadJobs()};$('schoolBtn').onclick=()=>{page('school');showSchoolTab('browse');loadSchools()};$('doctorBtn').onclick=()=>{page('doctor');showDoctorTab('browse');loadDoctorData();loadDoctors()};$('hospitalBtn').onclick=()=>{page('hospital');showHospitalTab('browse');loadHospitalData();loadHospitals()};$('pharmacyBtn').onclick=()=>{page('pharmacy');showPharmacyTab('browse');loadPharmacies()};$('deliveryBtn').onclick=()=>{page('delivery');showDeliveryTab('customer');loadDeliveryVehicleTypes();loadMyDeliveryRequests()};$('reviewsBtn').onclick=()=>{page('reviews');loadReviewsPage()};$('paymentBtn').onclick=()=>page('payment');$('addNav').onclick=()=>{page('need');loadData();loadMyRequests()};$('homeNav').onclick=()=>page('home');$('searchNav').onclick=()=>openGlobalSearch($('homeSearchInput').value);$('favNav').onclick=()=>{page('favorites');loadFavoritesPage()};
 document.querySelectorAll('[data-home]').forEach(b=>b.onclick=()=>page('home'));document.querySelectorAll('[data-soon]').forEach(x=>x.onclick=()=>alert(x.dataset.soon+' قيد التجهيز'));
 
 
@@ -839,6 +940,22 @@ async function loadFavoritesPage(){
    }));
  }
 
+ if(idsBy.job?.length){
+   const r=await sb.from('job_posts').select('id,title,company_name,location_text,work_type,salary_text,contact_phone,whatsapp').in('id',idsBy.job);
+   (r.data||[]).forEach(x=>dataMap.set(`job:${x.id}`,{
+     type:'job',id:x.id,kind:'وظيفة',icon:'💼',title:x.title,
+     meta:`${x.company_name||'جهة عمل'}${x.location_text?' • 📍 '+x.location_text:''}${x.salary_text?' • '+x.salary_text:''}`,phone:x.contact_phone,wa:x.whatsapp
+   }));
+ }
+
+ if(idsBy.school?.length){
+   const r=await sb.from('private_schools').select('id,name,location_text,school_gender,education_levels,fees_text,phone,whatsapp').in('id',idsBy.school);
+   (r.data||[]).forEach(x=>dataMap.set(`school:${x.id}`,{
+     type:'school',id:x.id,kind:'مدرسة خاصة',icon:'🏫',title:x.name,
+     meta:`${schoolGenderAr(x.school_gender)}${x.education_levels?.length?' • '+schoolLevelsAr(x.education_levels):''}${x.location_text?' • 📍 '+x.location_text:''}${x.fees_text?' • '+x.fees_text:''}`,phone:x.phone,wa:x.whatsapp
+   }));
+ }
+
  const rows=favs.map(f=>dataMap.get(`${f.target_type}:${f.target_id}`)).filter(Boolean);
  if(!rows.length){box.innerHTML='<div class="empty">العناصر المحفوظة لم تعد منشورة أو متاحة.</div>';return}
  box.innerHTML=rows.map(x=>{
@@ -916,7 +1033,7 @@ function renderGlobalResults(items,q){
  globalSearchQuery=q||globalSearchQuery||'';
  const box=$('globalSearchResults');
  const filtered=globalSearchFilter==='all'?globalSearchItems:globalSearchItems.filter(x=>x.type===globalSearchFilter);
- const labels={all:'الكل',service:'خدمات',doctor:'أطباء',hospital:'مستشفيات',pharmacy:'صيدليات',property:'عقارات',product:'منتجات'};
+ const labels={all:'الكل',service:'خدمات',doctor:'أطباء',hospital:'مستشفيات',pharmacy:'صيدليات',property:'عقارات',product:'منتجات',job:'وظائف',school:'مدارس خاصة'};
  $('searchSummary').textContent=filtered.length
    ?`تم العثور على ${filtered.length} نتيجة في ${labels[globalSearchFilter]} لـ «${globalSearchQuery}»`
    :`لا توجد نتائج في ${labels[globalSearchFilter]} لـ «${globalSearchQuery}»`;
@@ -924,7 +1041,7 @@ function renderGlobalResults(items,q){
    box.innerHTML='<div class="search-empty">لا توجد نتائج ضمن هذا النوع. جرّب فلترًا آخر أو كلمة بحث مختلفة.</div>';
    return;
  }
- const order={service:1,doctor:2,hospital:3,pharmacy:4,property:5,product:6};
+ const order={service:1,doctor:2,hospital:3,pharmacy:4,property:5,product:6,job:7,school:8};
  filtered.sort((a,b)=>(order[a.type]||99)-(order[b.type]||99));
  box.innerHTML=filtered.slice(0,60).map(x=>`<div class="search-result">
    <div class="search-result-top"><div class="search-result-title">${esc(x.icon||'🔎')} ${esc(x.title)}</div><span class="search-kind">${esc(x.kind)}</span></div>
@@ -961,13 +1078,15 @@ async function runGlobalSearch(){
  if(!q){$('searchSummary').textContent='';box.innerHTML='<div class="search-empty">اكتب كلمة للبحث.</div>';return}
  box.innerHTML='<div class="search-empty">جاري البحث…</div>';$('searchSummary').textContent='';
 
- const [svc,docs,hosps,pharms,props,prods]=await Promise.all([
+ const [svc,docs,hosps,pharms,props,prods,jobs,schools]=await Promise.all([
    sb.from('provider_profiles').select('id,display_name,description,address_text,phone,whatsapp,price_mode,price_amount,verification_status,provider_categories(category_id,categories(name_ar))').eq('provider_type','professional').eq('account_status','active').eq('is_published',true).limit(100),
    sb.from('doctor_profiles').select('provider_id,clinic_or_hospital_name,receptionist_name,receptionist_phone,receptionist_whatsapp,consultation_price,provider_profiles(display_name,address_text,verification_status,account_status,is_published),categories!doctor_profiles_specialty_category_id_fkey(name_ar)').limit(100),
    sb.from('hospital_profiles').select('provider_id,reception_name,reception_phone,reception_whatsapp,room_availability_status,provider_profiles(display_name,address_text,verification_status,account_status,is_published)').limit(100),
    sb.from('pharmacy_profiles').select('provider_id,manager_name,manager_phone,manager_whatsapp,delivery_available,provider_profiles(display_name,address_text,verification_status,account_status,is_published)').limit(100),
    sb.from('properties').select('id,title,transaction_type,address_text,price,description,contact_name,contact_phone,whatsapp,categories(name_ar)').eq('status','published').order('created_at',{ascending:false}).limit(100),
-   sb.from('products').select('id,title,item_condition,price,description,contact_phone,whatsapp,categories(name_ar)').eq('status','published').order('created_at',{ascending:false}).limit(100)
+   sb.from('products').select('id,title,item_condition,price,description,contact_phone,whatsapp,categories(name_ar)').eq('status','published').order('created_at',{ascending:false}).limit(100),
+   sb.from('job_posts').select('id,title,company_name,location_text,work_type,requirements,salary_text,description,contact_phone,whatsapp').eq('status','published').order('created_at',{ascending:false}).limit(100),
+   sb.from('private_schools').select('id,name,description,location_text,school_gender,education_levels,fees_text,registration_status,transport_available,phone,whatsapp').eq('status','published').order('created_at',{ascending:false}).limit(100)
  ]);
 
  const items=[];
@@ -1033,8 +1152,26 @@ async function runGlobalSearch(){
    }
  });
 
- const errors=[svc,docs,hosps,pharms,props,prods].filter(r=>r.error);
- if(errors.length===6){$('searchSummary').textContent='';box.innerHTML='<div class="notice">تعذر إجراء البحث الآن. حاول مرة أخرى.</div>';return}
+ (jobs.data||[]).forEach(j=>{
+   const wt=jobTypeAr(j.work_type);
+   if(searchMatch(q,j.title,j.company_name,j.location_text,j.requirements,j.description,wt,'وظيفة','وظائف','عمل')){
+     items.push({type:'job',targetType:'job',targetId:j.id,kind:'وظيفة',icon:'💼',title:j.title,
+       meta:`${esc(j.company_name||'جهة عمل')} • 📍 ${esc(j.location_text||'السودان')} • ${esc(wt)}`,
+       price:j.salary_text||'',desc:j.requirements||j.description||'',phone:j.contact_phone,wa:j.whatsapp});
+   }
+ });
+
+ (schools.data||[]).forEach(sc=>{
+   const levels=schoolLevelsAr(sc.education_levels||[]),gender=schoolGenderAr(sc.school_gender);
+   if(searchMatch(q,sc.name,sc.description,sc.location_text,levels,gender,sc.fees_text,'مدرسة','مدارس','تعليم','روضة','اساس','متوسط','ثانوي')){
+     items.push({type:'school',targetType:'school',targetId:sc.id,kind:'مدرسة خاصة',icon:'🏫',title:sc.name,
+       meta:`${esc(gender)}${levels?' • '+esc(levels):''} • 📍 ${esc(sc.location_text||'السودان')}`,
+       price:sc.fees_text||'',desc:sc.description||'',phone:sc.phone,wa:sc.whatsapp});
+   }
+ });
+
+ const errors=[svc,docs,hosps,pharms,props,prods,jobs,schools].filter(r=>r.error);
+ if(errors.length===8){$('searchSummary').textContent='';box.innerHTML='<div class="notice">تعذر إجراء البحث الآن. حاول مرة أخرى.</div>';return}
  renderGlobalResults(items,q);
 }
 $('globalSearchGo').onclick=runGlobalSearch;
@@ -2170,5 +2307,153 @@ $('sendPro').onclick=async()=>{
  if(link.error){$('proMsg').className='msg err';$('proMsg').textContent='تم إنشاء الملف لكن تعذر ربط نوع الخدمة';return}
  $('proMsg').className='msg ok';$('proMsg').textContent='✅ تم تسجيل خدمتك بنجاح';await loadOfferArea();
 };
+
+
+/* ===== V0.16.0 enhanced product/job/school/media functionality ===== */
+function jobTypeAr(v){return ({full_time:'دوام كامل',part_time:'دوام جزئي',remote:'عن بُعد',freelance:'عمل حر',temporary:'مؤقت',internship:'تدريب',other:'أخرى'})[v]||v||'غير محدد'}
+function isVideoMedia(path,mime){return String(mime||'').startsWith('video/')||/\.(mp4|webm|mov|m4v|ogg)$/i.test(String(path||''))}
+function publicMediaUrl(bucket,path){return sb.storage.from(bucket).getPublicUrl(path).data.publicUrl}
+function safeAttr(s){return esc(s)}
+function renderMediaGallery(media,bucket,title='وسائط'){
+ const rows=(media||[]).slice().sort((a,b)=>(b.is_primary?1:0)-(a.is_primary?1:0)||(a.sort_order||0)-(b.sort_order||0));
+ if(!rows.length)return '';
+ return `<div class="media-gallery">${rows.slice(0,8).map(m=>{
+   const url=publicMediaUrl(bucket,m.storage_path),video=isVideoMedia(m.storage_path,m.mime_type);
+   return `<div class="media-tile">${video
+    ?`<video src="${safeAttr(url)}" controls playsinline preload="metadata"></video><button class="media-open-video" data-open-media="${safeAttr(url)}" data-media-kind="video">⛶ فتح</button>`
+    :`<img src="${safeAttr(url)}" alt="${esc(title)}" loading="lazy" data-open-media="${safeAttr(url)}" data-media-kind="image">`}</div>`;
+ }).join('')}</div>`;
+}
+function bindMediaOpeners(root=document){root.querySelectorAll('[data-open-media]').forEach(el=>{el.onclick=()=>openMediaViewer(el.dataset.openMedia,el.dataset.mediaKind)})}
+function openMediaViewer(url,kind){
+ const modal=$('mediaViewer'),img=$('mediaViewerImage'),vid=$('mediaViewerVideo');
+ vid.pause();vid.removeAttribute('src');img.removeAttribute('src');img.style.display='none';vid.style.display='none';
+ if(kind==='video'){vid.src=url;vid.style.display='block';vid.load()}else{img.src=url;img.style.display='block'}
+ modal.classList.add('show');
+}
+function closeMediaViewer(){const v=$('mediaViewerVideo');v.pause();v.removeAttribute('src');$('mediaViewer').classList.remove('show')}
+$('closeMediaViewer').onclick=closeMediaViewer;$('mediaViewer').onclick=e=>{if(e.target===$('mediaViewer'))closeMediaViewer()};
+
+function mediaFilesFrom(id){return [...($(id).files||[])].slice(0,8)}
+function validateMediaFiles(files){
+ if(files.length>8)return 'الحد الأقصى 8 ملفات في المرة الواحدة.';
+ for(const f of files){
+  if(!String(f.type).startsWith('image/')&&!String(f.type).startsWith('video/'))return `الملف ${f.name} ليس صورة أو فيديو.`;
+  if(String(f.type).startsWith('image/')&&f.size>8*1024*1024)return `الصورة ${f.name} أكبر من 8MB.`;
+  if(String(f.type).startsWith('video/')&&f.size>40*1024*1024)return `الفيديو ${f.name} أكبر من 40MB.`;
+ }
+ return '';
+}
+function showSelectedMedia(inputId,previewId){
+ const files=mediaFilesFrom(inputId),box=$(previewId);if(!box)return;
+ const err=validateMediaFiles(files);box.innerHTML=err?`<span>⚠️ ${esc(err)}</span>`:files.map(f=>`<span>${f.type.startsWith('video/')?'🎬':'🖼️'} ${esc(f.name)}</span>`).join('');
+}
+$('prodImage').onchange=()=>showSelectedMedia('prodImage','prodMediaPreview');
+$('proMedia').onchange=()=>showSelectedMedia('proMedia','proMediaPreview');
+$('providerMediaInput').onchange=()=>showSelectedMedia('providerMediaInput','providerMediaPreview');
+
+async function uploadMediaRows({user,entityId,files,bucket,table,fk,providerMedia=false}){
+ const err=validateMediaFiles(files);if(err)throw new Error(err);
+ const saved=[];
+ for(let i=0;i<files.length;i++){
+  const file=files[i],safe=(file.name||'media').replace(/[^a-zA-Z0-9._-]/g,'_');
+  const path=`${user.id}/${entityId}/${Date.now()}-${i}-${safe}`;
+  const up=await sb.storage.from(bucket).upload(path,file,{cacheControl:'3600',upsert:false,contentType:file.type||undefined});
+  if(up.error)throw up.error;
+  const row={[fk]:entityId,storage_path:path,mime_type:file.type||null,is_primary:i===0,sort_order:i};
+  if(providerMedia)row.media_type='work';
+  const ins=await sb.from(table).insert(row);if(ins.error)throw ins.error;saved.push(path);
+ }
+ return saved;
+}
+
+async function openProviderProfile(providerId){
+ const modal=$('providerProfileModal'),body=$('providerProfileBody');modal.classList.add('show');body.innerHTML='<div class="empty">جاري تحميل الملف والتقييمات…</div>';
+ const [pr,rr]=await Promise.all([
+  sb.from('provider_profiles').select('id,display_name,description,address_text,phone,whatsapp,price_mode,price_amount,provider_categories(categories(name_ar)),provider_media(storage_path,mime_type,media_type,is_primary,sort_order)').eq('id',providerId).maybeSingle(),
+  sb.from('reviews').select('rating,comment,created_at').eq('provider_id',providerId).eq('status','visible').order('created_at',{ascending:false}).limit(30)
+ ]);
+ if(pr.error||!pr.data){body.innerHTML='<div class="notice">تعذر تحميل ملف مقدم الخدمة الآن.</div>';return}
+ const p=pr.data,reviews=rr.data||[],cats=(p.provider_categories||[]).map(v=>v.categories?.name_ar).filter(Boolean).join('، '),avg=reviews.length?reviews.reduce((s,r)=>s+(Number(r.rating)||0),0)/reviews.length:0,stars=avg?'⭐'.repeat(Math.max(1,Math.round(avg))):'',phone=normalizePhone(p.phone),wa=sudanWa(p.whatsapp||p.phone);
+ const reviewHtml=reviews.length?reviews.map(r=>`<div class="review-page-card"><div class="review-stars">${'⭐'.repeat(Number(r.rating)||0)}</div>${r.comment?`<div style="margin-top:6px">${esc(r.comment)}</div>`:'<small>بدون تعليق</small>'}</div>`).join(''):'<div class="empty">لا توجد تقييمات منشورة لهذا مقدم الخدمة حتى الآن.</div>';
+ body.innerHTML=`<div class="review-page-card"><h3 style="margin:0 0 8px">${esc(p.display_name||'مقدم خدمة')}</h3><div class="search-meta">${cats?`الخدمة: ${esc(cats)}<br>`:''}📍 ${esc(p.address_text||'بورتسودان')}</div>${p.description?`<p>${esc(p.description)}</p>`:''}${renderMediaGallery((p.provider_media||[]).filter(m=>m.media_type==='work'),'provider-media','أعمال '+(p.display_name||''))}<div class="review-done" style="margin-top:12px"><b>${reviews.length?`${stars} ${avg.toFixed(1)} من 5`:'لا يوجد تقييم بعد'}</b><div><small>${reviews.length} تقييم</small></div></div>${(phone||wa)?`<div class="search-actions" style="margin-top:10px">${phone?`<a class="search-call" href="tel:${esc(phone)}">📞 اتصال</a>`:'<span></span>'}${wa?`<a class="search-wa" target="_blank" href="https://wa.me/${esc(wa)}">💬 واتساب</a>`:'<span></span>'}</div>`:''}</div><div class="section-title"><h3>آراء العملاء</h3><span>${reviews.length} تقييم</span></div>${reviewHtml}`;
+ bindMediaOpeners(body);
+}
+
+let productBrowseCategory='';
+async function loadProductData(){
+ if(!cityId)await loadData();
+ const r=await sb.from('categories').select('id,name_ar').eq('section','product').eq('is_active',true).order('sort_order');
+ if(r.error){$('prodCat').innerHTML='<option value="">تعذر التحميل</option>';return}
+ $('prodCat').innerHTML='<option value="">اختر الفئة</option>'+r.data.map(x=>`<option value="${x.id}">${esc(x.name_ar)}</option>`).join('');
+ $('productCategoryFilters').innerHTML=`<button class="filter-chip ${productBrowseCategory?'':'active'}" data-product-cat="">الكل</button>`+r.data.map(x=>`<button class="filter-chip ${productBrowseCategory===x.id?'active':''}" data-product-cat="${x.id}">${esc(x.name_ar)}</button>`).join('');
+ $('productCategoryFilters').querySelectorAll('[data-product-cat]').forEach(b=>b.onclick=()=>{productBrowseCategory=b.dataset.productCat||'';$('productCategoryFilters').querySelectorAll('.filter-chip').forEach(x=>x.classList.toggle('active',x===b));loadProducts()});
+ productCatsLoaded=true;
+}
+async function loadProducts(){
+ const box=$('productList');box.innerHTML='<div class="empty">جاري تحميل المنتجات…</div>';await loadProductData();
+ let q=sb.from('products').select('id,title,item_condition,price,description,contact_phone,whatsapp,created_at,category_id,categories(name_ar),cities(name_ar),provider_profiles(display_name,address_text),product_media(storage_path,mime_type,is_primary,sort_order)').eq('status','published').order('created_at',{ascending:false}).limit(80);
+ if(productBrowseCategory)q=q.eq('category_id',productBrowseCategory);
+ const r=await q;if(r.error){box.innerHTML='<div class="notice">تعذر تحميل المنتجات الآن.</div>';return}
+ const search=$('productSearchInput').value.trim();const rows=(r.data||[]).filter(p=>!search||searchMatch(search,p.title,p.description,p.categories?.name_ar,p.cities?.name_ar,p.provider_profiles?.address_text,p.provider_profiles?.display_name));
+ $('productResultCount').textContent=`${rows.length} نتيجة`;
+ if(!rows.length){box.innerHTML='<div class="empty">لا توجد منتجات مطابقة حاليًا.</div>';return}
+ box.innerHTML=rows.map(p=>{const phone=normalizePhone(p.contact_phone),wa=sudanWa(p.whatsapp||p.contact_phone),cond=p.item_condition==='used'?'مستعمل':'جديد',seller=p.provider_profiles?.display_name||'بائع',loc=p.provider_profiles?.address_text||p.cities?.name_ar||'السودان',gallery=renderMediaGallery(p.product_media||[],'product-media',p.title);return `<div class="product-card">${gallery||'<div class="product-img-placeholder">🛍️</div>'}<div class="product-body"><div class="product-title-row"><h4>${esc(p.title)}</h4><span class="product-price">${esc(p.price?money(p.price):'حسب الاتفاق')}</span></div><div class="meta"><span class="chip">🏷️ ${esc(p.categories?.name_ar||'منتج')}</span><span class="chip">${cond==='جديد'?'✨':'♻️'} ${cond}</span><span class="chip">📍 ${esc(loc)}</span></div>${p.description?`<div class="product-desc">${esc(p.description)}</div>`:''}<div class="product-seller">البائع: <b>${esc(seller)}</b></div><div class="fav-inline">${favButton('product',p.id)}</div><div class="product-actions">${phone?`<a class="product-contact product-call" href="tel:${esc(phone)}">📞 اتصال</a>`:'<span></span>'}${wa?`<a class="product-contact product-wa" target="_blank" href="https://wa.me/${esc(wa)}">💬 واتساب</a>`:'<span></span>'}</div><div class="product-extra-actions"><button class="mini-action" data-request-product="${p.id}" data-product-title="${esc(p.title)}" data-product-wa="${esc(wa||'')}">🛒 طلب المنتج</button><button class="mini-action" data-report-type="product" data-report-id="${p.id}">🚩 إبلاغ</button></div></div></div>`}).join('');
+ await bindFavoriteButtons(box);bindMediaOpeners(box);box.querySelectorAll('[data-request-product]').forEach(b=>b.onclick=()=>requestByWhatsapp(b.dataset.productWa,`مرحبًا، أريد طلب المنتج: ${b.dataset.productTitle} عبر تطبيق سندك في الحياة.`));box.querySelectorAll('[data-report-type]').forEach(b=>b.onclick=()=>reportListing(b.dataset.reportType,b.dataset.reportId));
+}
+$('productSearchBtn').onclick=loadProducts;$('productSearchInput').addEventListener('keydown',e=>{if(e.key==='Enter')loadProducts()});
+
+async function sendProductEnhanced(){
+ const {data:{user}}=await sb.auth.getUser();if(!user){$('prodMsg').className='msg err';$('prodMsg').textContent='سجّل الدخول أولًا لنشر منتج';openAuth();return}
+ await loadProductData();const title=$('prodTitle').value.trim(),category_id=$('prodCat').value,phone=$('prodPhone').value.trim(),files=mediaFilesFrom('prodImage'),mediaErr=validateMediaFiles(files);if(mediaErr){$('prodMsg').className='msg err';$('prodMsg').textContent=mediaErr;return}if(!title||!category_id||!phone){$('prodMsg').className='msg err';$('prodMsg').textContent='أكمل اسم المنتج والفئة ورقم الهاتف';return}
+ const price=$('prodPrice').value.trim(),whatsapp=$('prodWhats').value.trim()||phone;$('sendProduct').disabled=true;$('sendProduct').textContent='جاري النشر…';
+ try{const provider=await getOrCreateSellerProvider(user,phone,whatsapp);const loc=$('prodLocation').value.trim();if(loc)await sb.from('provider_profiles').update({address_text:loc}).eq('id',provider.id);const ins=await sb.from('products').insert({provider_id:provider.id,title,category_id,item_condition:$('prodCondition').value,price:price?Number(price):null,description:$('prodDesc').value.trim()||null,city_id:cityId,contact_phone:phone,whatsapp,status:'published'}).select('id').single();if(ins.error)throw ins.error;if(files.length)await uploadMediaRows({user,entityId:ins.data.id,files,bucket:'product-media',table:'product_media',fk:'product_id'});$('prodMsg').className='msg ok';$('prodMsg').textContent='✅ تم نشر المنتج بالصور/الفيديوهات بنجاح';['prodTitle','prodLocation','prodPrice','prodDesc','prodPhone','prodWhats'].forEach(id=>$(id).value='');$('prodCat').value='';$('prodCondition').value='new';$('prodImage').value='';$('prodMediaPreview').innerHTML='';showProductTab('browse');await loadProducts()}catch(e){$('prodMsg').className='msg err';$('prodMsg').textContent='تعذر نشر المنتج: '+(e.message||'خطأ غير معروف')}finally{$('sendProduct').disabled=false;$('sendProduct').textContent='نشر المنتج'}
+}
+$('sendProduct').onclick=sendProductEnhanced;
+
+function showJobTab(tab){const browse=tab==='browse';$('jobBrowseWrap').style.display=browse?'block':'none';$('jobAddWrap').style.display=browse?'none':'block';$('browseJobTab').classList.toggle('active',browse);$('addJobTab').classList.toggle('active',!browse);if(browse)loadJobs()}
+$('browseJobTab').onclick=()=>showJobTab('browse');$('addJobTab').onclick=()=>showJobTab('add');$('refreshJobs').onclick=loadJobs;$('jobSearchBtn').onclick=loadJobs;$('jobSearchInput').addEventListener('keydown',e=>{if(e.key==='Enter')loadJobs()});$('jobTypeFilter').onchange=loadJobs;
+async function loadJobs(){
+ const box=$('jobList');box.innerHTML='<div class="empty">جاري تحميل الوظائف…</div>';let q=sb.from('job_posts').select('*').eq('status','published').order('created_at',{ascending:false}).limit(100);const type=$('jobTypeFilter').value;if(type)q=q.eq('work_type',type);const r=await q;if(r.error){box.innerHTML='<div class="notice">تعذر تحميل الوظائف الآن.</div>';return}const search=$('jobSearchInput').value.trim();const rows=(r.data||[]).filter(j=>!search||searchMatch(search,j.title,j.company_name,j.location_text,j.requirements,j.description,jobTypeAr(j.work_type)));$('jobResultCount').textContent=`${rows.length} وظيفة`;
+ if(!rows.length){box.innerHTML='<div class="empty">لا توجد وظائف مطابقة حاليًا. يمكن لصاحب العمل إضافة أول وظيفة من تبويب «إضافة وظيفة».</div>';return}
+ box.innerHTML=rows.map(j=>{const p=normalizePhone(j.contact_phone),w=sudanWa(j.whatsapp||j.contact_phone);return `<div class="job-card"><h4>${esc(j.title)}</h4><div class="job-company">${esc(j.company_name)}</div><div class="job-meta"><span class="chip">📍 ${esc(j.location_text||'السودان')}</span><span class="chip">🕒 ${esc(jobTypeAr(j.work_type))}</span></div>${j.requirements?`<div class="job-detail"><b>المتطلبات:</b> ${esc(j.requirements)}</div>`:''}${j.salary_text?`<div class="job-detail"><b>الأجر:</b> ${esc(j.salary_text)}</div>`:''}${j.description?`<div class="job-detail">${esc(j.description)}</div>`:''}<div class="fav-inline">${favButton('job',j.id)}</div><div class="job-contact">${p?`<a class="job-call" href="tel:${esc(p)}">📞 اتصال</a>`:'<span></span>'}${w?`<a class="job-wa" target="_blank" href="https://wa.me/${esc(w)}">💬 واتساب</a>`:'<span></span>'}</div><div class="job-actions"><button class="mini-action" data-apply-job="${j.id}" data-job-title="${esc(j.title)}" data-job-company="${esc(j.company_name)}" data-job-wa="${esc(w||'')}">📝 تقديم طلب</button><button class="mini-action" data-report-type="job" data-report-id="${j.id}">🚩 إبلاغ</button></div></div>`}).join('');await bindFavoriteButtons(box);box.querySelectorAll('[data-apply-job]').forEach(b=>b.onclick=()=>requestByWhatsapp(b.dataset.jobWa,`مرحبًا، أرغب في التقديم لوظيفة ${b.dataset.jobTitle} لدى ${b.dataset.jobCompany}. وصلت للإعلان عبر تطبيق سندك في الحياة.`));box.querySelectorAll('[data-report-type]').forEach(b=>b.onclick=()=>reportListing(b.dataset.reportType,b.dataset.reportId));
+}
+$('sendJob').onclick=async()=>{const {data:{user}}=await sb.auth.getUser();if(!user){$('jobMsg').className='msg err';$('jobMsg').textContent='سجّل الدخول أولًا لإضافة وظيفة';openAuth();return}const title=$('jobTitle').value.trim(),company=$('jobCompany').value.trim(),loc=$('jobLocation').value.trim(),phone=$('jobPhone').value.trim();if(!title||!company||!loc||!phone){$('jobMsg').className='msg err';$('jobMsg').textContent='أكمل المسمى الوظيفي والجهة والمكان ورقم الهاتف';return}$('sendJob').disabled=true;const r=await sb.from('job_posts').insert({owner_user_id:user.id,title,company_name:company,location_text:loc,work_type:$('jobWorkType').value,requirements:$('jobRequirements').value.trim()||null,salary_text:$('jobSalary').value.trim()||null,description:$('jobDescription').value.trim()||null,contact_phone:phone,whatsapp:$('jobWhats').value.trim()||phone,status:'published'});$('sendJob').disabled=false;if(r.error){$('jobMsg').className='msg err';$('jobMsg').textContent='تعذر نشر الوظيفة: '+r.error.message;return}$('jobMsg').className='msg ok';$('jobMsg').textContent='✅ تم نشر الوظيفة بنجاح';['jobTitle','jobCompany','jobLocation','jobRequirements','jobSalary','jobDescription','jobPhone','jobWhats'].forEach(id=>$(id).value='');showJobTab('browse')};
+
+function requestByWhatsapp(wa,text){if(wa){window.open(`https://wa.me/${encodeURIComponent(wa)}?text=${encodeURIComponent(text)}`,'_blank')}else alert('لا يوجد رقم واتساب لهذا الإعلان. استخدم زر الاتصال.')}
+
+function schoolGenderAr(v){return ({boys:'بنين',girls:'بنات',mixed:'مختلط'})[v]||'غير محدد'}
+function schoolLevelAr(v){return ({nursery:'روضة',primary:'أساس / ابتدائي',middle:'متوسط',secondary:'ثانوي'})[v]||v}
+function schoolLevelsAr(arr){return (arr||[]).map(schoolLevelAr).filter(Boolean).join('، ')}
+function schoolRegistrationAr(v){return ({open:'التسجيل مفتوح',closed:'التسجيل مغلق',contact:'اتصل للاستفسار'})[v]||'اتصل للاستفسار'}
+function showSchoolTab(tab){const browse=tab==='browse';$('schoolBrowseWrap').style.display=browse?'block':'none';$('schoolAddWrap').style.display=browse?'none':'block';$('browseSchoolTab').classList.toggle('active',browse);$('addSchoolTab').classList.toggle('active',!browse);if(browse)loadSchools()}
+$('browseSchoolTab').onclick=()=>showSchoolTab('browse');$('addSchoolTab').onclick=()=>showSchoolTab('add');$('refreshSchools').onclick=loadSchools;$('schoolSearchBtn').onclick=loadSchools;$('schoolSearchInput').addEventListener('keydown',e=>{if(e.key==='Enter')loadSchools()});$('schoolLevelFilter').onchange=loadSchools;$('schoolGenderFilter').onchange=loadSchools;
+$('schoolMedia').onchange=()=>showSelectedMedia('schoolMedia','schoolMediaPreview');
+async function loadSchools(){
+ const box=$('schoolList');box.innerHTML='<div class="empty">جاري تحميل المدارس…</div>';
+ const r=await sb.from('private_schools').select('id,name,description,location_text,school_gender,education_levels,fees_text,registration_status,transport_available,phone,whatsapp,created_at,private_school_media(storage_path,mime_type,is_primary,sort_order)').eq('status','published').order('created_at',{ascending:false}).limit(100);
+ if(r.error){box.innerHTML='<div class="notice">تعذر تحميل المدارس الآن.</div>';return}
+ const search=$('schoolSearchInput').value.trim(),level=$('schoolLevelFilter').value,gender=$('schoolGenderFilter').value;
+ const rows=(r.data||[]).filter(sc=>(!gender||sc.school_gender===gender)&&(!level||(sc.education_levels||[]).includes(level))&&(!search||searchMatch(search,sc.name,sc.description,sc.location_text,schoolLevelsAr(sc.education_levels||[]),schoolGenderAr(sc.school_gender),sc.fees_text)));
+ $('schoolResultCount').textContent=`${rows.length} مدرسة`;
+ if(!rows.length){box.innerHTML='<div class="empty">لا توجد مدارس مطابقة حاليًا. يمكن لصاحب المدرسة إضافة مدرسته من تبويب «أضف مدرستك».</div>';return}
+ box.innerHTML=rows.map(sc=>{const p=normalizePhone(sc.phone),w=sudanWa(sc.whatsapp||sc.phone),levels=schoolLevelsAr(sc.education_levels||[]),reg=schoolRegistrationAr(sc.registration_status);return `<div class="school-card"><h4>🏫 ${esc(sc.name)}</h4><div class="school-meta"><span class="chip">📍 ${esc(sc.location_text)}</span><span class="chip">👥 ${esc(schoolGenderAr(sc.school_gender))}</span>${levels?`<span class="chip">📚 ${esc(levels)}</span>`:''}<span class="chip">📝 ${esc(reg)}</span>${sc.transport_available?'<span class="chip">🚌 مواصلات متوفرة</span>':''}</div>${renderMediaGallery(sc.private_school_media||[],'school-media',sc.name)}${sc.fees_text?`<div class="school-detail"><b>💰 الرسوم:</b> ${esc(sc.fees_text)}</div>`:''}${sc.description?`<div class="school-detail">${esc(sc.description)}</div>`:''}<div class="fav-inline">${favButton('school',sc.id)}</div><div class="school-actions">${p?`<a class="school-call" href="tel:${esc(p)}">📞 اتصال بالإدارة</a>`:'<span></span>'}${w?`<a class="school-wa" target="_blank" href="https://wa.me/${esc(w)}">💬 واتساب</a>`:'<span></span>'}${w?`<button class="school-request" data-school-request="${sc.id}" data-school-name="${esc(sc.name)}" data-school-wa="${esc(w)}">📝 طلب تسجيل / استفسار</button>`:'<span></span>'}<button class="school-report" data-report-type="school" data-report-id="${sc.id}">🚩 إبلاغ</button></div></div>`}).join('');
+ await bindFavoriteButtons(box);bindMediaOpeners(box);box.querySelectorAll('[data-school-request]').forEach(b=>b.onclick=()=>requestByWhatsapp(b.dataset.schoolWa,`السلام عليكم، أرغب في الاستفسار عن التسجيل في ${b.dataset.schoolName}. وصلت لمدرستكم عبر تطبيق سندك في الحياة.`));box.querySelectorAll('[data-report-type]').forEach(b=>b.onclick=()=>reportListing(b.dataset.reportType,b.dataset.reportId));
+}
+$('sendSchool').onclick=async()=>{const {data:{user}}=await sb.auth.getUser();if(!user){$('schoolMsg').className='msg err';$('schoolMsg').textContent='سجّل الدخول أولًا لإضافة المدرسة';openAuth();return}const name=$('schoolName').value.trim(),loc=$('schoolLocation').value.trim(),phone=$('schoolPhone').value.trim(),levels=[...document.querySelectorAll('.school-level:checked')].map(x=>x.value),files=mediaFilesFrom('schoolMedia'),mediaErr=validateMediaFiles(files);if(mediaErr){$('schoolMsg').className='msg err';$('schoolMsg').textContent=mediaErr;return}if(!name||!loc||!phone||!levels.length){$('schoolMsg').className='msg err';$('schoolMsg').textContent='أكمل اسم المدرسة والموقع والمرحلة ورقم الإدارة';return}$('sendSchool').disabled=true;$('sendSchool').textContent='جاري النشر…';try{const ins=await sb.from('private_schools').insert({owner_user_id:user.id,name,description:$('schoolDescription').value.trim()||null,location_text:loc,school_gender:$('schoolGender').value,education_levels:levels,fees_text:$('schoolFees').value.trim()||null,registration_status:$('schoolRegistration').value,transport_available:$('schoolTransport').value==='true',phone,whatsapp:$('schoolWhats').value.trim()||phone,status:'published'}).select('id').single();if(ins.error)throw ins.error;if(files.length)await uploadMediaRows({user,entityId:ins.data.id,files,bucket:'school-media',table:'private_school_media',fk:'school_id'});$('schoolMsg').className='msg ok';$('schoolMsg').textContent='✅ تم نشر المدرسة بنجاح';['schoolName','schoolLocation','schoolFees','schoolDescription','schoolPhone','schoolWhats'].forEach(id=>$(id).value='');document.querySelectorAll('.school-level').forEach(x=>x.checked=false);$('schoolMedia').value='';$('schoolMediaPreview').innerHTML='';showSchoolTab('browse');await loadSchools()}catch(e){$('schoolMsg').className='msg err';$('schoolMsg').textContent='تعذر نشر المدرسة: '+(e.message||'خطأ غير معروف')}finally{$('sendSchool').disabled=false;$('sendSchool').textContent='نشر المدرسة'}};
+
+async function reportListing(type,id){const {data:{user}}=await sb.auth.getUser();if(!user){openAuth();return}const details=prompt('اكتب سبب الإبلاغ باختصار:');if(details===null)return;if(!details.trim()){alert('اكتب سبب الإبلاغ.');return}const r=await sb.from('reports').insert({reporter_user_id:user.id,target_type:type,target_id:id,reason_code:'other',details:details.trim()});if(r.error){alert('تعذر إرسال البلاغ: '+r.error.message);return}alert('✅ تم إرسال البلاغ للإدارة')}
+
+async function loadProviderMediaManager(){if(!currentProvider)return;const box=$('myProviderMedia');box.innerHTML='<div class="empty">جاري تحميل الصور والفيديوهات…</div>';const r=await sb.from('provider_media').select('id,storage_path,mime_type,media_type,is_primary,sort_order').eq('provider_id',currentProvider.id).eq('media_type','work').order('sort_order');if(r.error){box.innerHTML='<div class="notice">تعذر تحميل الوسائط.</div>';return}box.innerHTML=renderMediaGallery(r.data||[],'provider-media','أعمالي')||'<div class="empty">لم تضف صورًا أو فيديوهات لأعمالك بعد.</div>';bindMediaOpeners(box)}
+async function loadOfferArea(){
+ await loadData();const {data:{user}}=await sb.auth.getUser();$('providerExisting').style.display='none';$('providerMediaManager').style.display='none';$('matchedSection').style.display='none';$('providerFormWrap').style.display='none';if(!user){$('providerFormWrap').style.display='block';currentProvider=null;return}
+ const p=await sb.from('provider_profiles').select('id,display_name,city_id,address_text,phone,whatsapp').eq('owner_user_id',user.id).eq('provider_type','professional').eq('account_status','active').order('created_at',{ascending:false}).limit(1).maybeSingle();if(p.error||!p.data){$('providerFormWrap').style.display='block';currentProvider=null;return}const pc=await sb.from('provider_categories').select('category_id,categories(name_ar)').eq('provider_id',p.data.id);currentProvider={...p.data,provider_categories:pc.data||[]};const names=currentProvider.provider_categories.map(x=>x.categories?.name_ar).filter(Boolean).join('، ');$('providerTitle').textContent='✅ أنت مسجل كمقدم خدمة';$('providerInfo').innerHTML=esc(currentProvider.display_name)+'<br>الخدمة: '+esc(names||'—')+'<br>المكان: '+esc(currentProvider.address_text||'بورتسودان');$('providerExisting').style.display='block';$('providerMediaManager').style.display='block';$('matchedSection').style.display='block';await Promise.all([loadMatches(),loadProviderMediaManager()]);
+}
+$('uploadProviderMediaBtn').onclick=async()=>{if(!currentProvider)return;const {data:{user}}=await sb.auth.getUser();if(!user){openAuth();return}const files=mediaFilesFrom('providerMediaInput'),err=validateMediaFiles(files);if(err){$('providerMediaMsg').className='msg err';$('providerMediaMsg').textContent=err;return}if(!files.length){$('providerMediaMsg').className='msg err';$('providerMediaMsg').textContent='اختر صورًا أو فيديوهات أولًا';return}$('uploadProviderMediaBtn').disabled=true;try{await uploadMediaRows({user,entityId:currentProvider.id,files,bucket:'provider-media',table:'provider_media',fk:'provider_id',providerMedia:true});$('providerMediaMsg').className='msg ok';$('providerMediaMsg').textContent='✅ تم رفع الملفات وستظهر في ملفك';$('providerMediaInput').value='';$('providerMediaPreview').innerHTML='';await loadProviderMediaManager()}catch(e){$('providerMediaMsg').className='msg err';$('providerMediaMsg').textContent='تعذر الرفع: '+(e.message||'خطأ')}finally{$('uploadProviderMediaBtn').disabled=false}};
+$('viewMyProviderProfile').onclick=()=>{if(currentProvider)openProviderProfile(currentProvider.id)};
+
+$('sendPro').onclick=async()=>{const {data:{user}}=await sb.auth.getUser();if(!user){$('proMsg').className='msg err';$('proMsg').textContent='سجّل الدخول أولًا';openAuth();return}const name=$('proName').value.trim(),cat=$('proCat').value,phone=$('proPhone').value.trim(),loc=$('proLoc').value.trim(),files=mediaFilesFrom('proMedia'),mediaErr=validateMediaFiles(files);if(mediaErr){$('proMsg').className='msg err';$('proMsg').textContent=mediaErr;return}if(!name||!cat||!phone||!loc){$('proMsg').className='msg err';$('proMsg').textContent='أكمل الاسم ونوع الخدمة والهاتف والمكان';return}if(!cityId)await loadData();const p=$('proPrice').value.trim();$('sendPro').disabled=true;try{const ins=await sb.from('provider_profiles').insert({owner_user_id:user.id,provider_type:'professional',display_name:name,description:$('proDesc').value.trim()||null,phone,whatsapp:$('proWhats').value.trim()||phone,city_id:cityId,address_text:loc,price_mode:$('proPriceMode').value,price_amount:p?Number(p):null}).select('id').single();if(ins.error)throw ins.error;const link=await sb.from('provider_categories').insert({provider_id:ins.data.id,category_id:cat});if(link.error)throw link.error;if(files.length)await uploadMediaRows({user,entityId:ins.data.id,files,bucket:'provider-media',table:'provider_media',fk:'provider_id',providerMedia:true});$('proMsg').className='msg ok';$('proMsg').textContent='✅ تم تسجيل خدمتك ورفع صور/فيديوهات أعمالك';await loadOfferArea()}catch(e){$('proMsg').className='msg err';$('proMsg').textContent='لم يتم التسجيل: '+(e.message||'خطأ غير معروف')}finally{$('sendPro').disabled=false}};
+
+
 </script>
 </body></html>
