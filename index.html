@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#16894b">
-<title>سندك في الحياة V0.16.4</title>
+<title>دليلك V0.16.5</title>
 <style>
 :root{--g:#16894b;--g2:#0f6e3b;--bg:#f6faf7;--text:#152019;--muted:#6b766e;--line:#e4eee7;--bad:#b42318;--blue:#235a9f}
 *{box-sizing:border-box}body{margin:0;font-family:Tahoma,Arial,sans-serif;background:var(--bg);color:var(--text);padding-bottom:76px}
@@ -245,7 +245,7 @@ h1{font-size:19px;margin:0}.ver{font-size:10px;color:var(--g);font-weight:bold}s
 @media(max-width:470px){.subscription-grid{grid-template-columns:1fr}.payment-methods{grid-template-columns:1fr 1fr 1fr}.admin-contact{grid-template-columns:1fr}}
 
 
-/* V0.16.4: subscriptions + admin payments + password recovery */
+/* V0.16.5: rebrand to Daleel + subscriptions + admin payments + password recovery */
 
 .school-tabs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px;background:#edf4ef;border-radius:14px;padding:5px}.school-tab{border:0;background:transparent;padding:10px;border-radius:11px;font-weight:bold;color:#5f6b63}.school-tab.active{background:#fff;color:var(--g);box-shadow:0 3px 12px #1a492713}
 .school-search-row{display:grid;grid-template-columns:1fr auto;gap:8px;margin:10px 0}.school-search-row input{border:1px solid var(--line);border-radius:13px;padding:12px;font-family:inherit;min-width:0}
@@ -269,10 +269,10 @@ h1{font-size:19px;margin:0}.ver{font-size:10px;color:var(--g);font-weight:bold}s
 </head>
 <body>
 <div class="app">
-<header><div class="top"><div class="brand"><div class="logo">س</div><div><h1>سندك في الحياة 🇸🇩</h1><div class="ver">V0.16.4</div></div></div><button id="authBtn" class="secondary">دخول</button></div></header>
+<header><div class="top"><div class="brand"><div class="logo">د</div><div><h1>دليلك 🇸🇩</h1><div class="ver">V0.16.5</div></div></div><button id="authBtn" class="secondary">دخول</button></div></header>
 
 <div id="home" class="show">
-<section class="hero"><div class="hero-card"><h2>محتاج شنو اليوم؟</h2><p>خدمات، وظائف، مدارس خاصة، أطباء، عقارات، منتجات وتوصيل… كلها في مكان واحد.</p><div class="search"><button id="homeSearchGo" class="search-go" aria-label="بحث">🔎</button><input id="homeSearchInput" placeholder="ابحث عن خدمة، منتج، وظيفة، مدرسة أو طبيب"></div></div></section>
+<section class="hero"><div class="hero-card"><h2>محتاج شنو اليوم؟</h2><p>دليلك لأي خدمة في السودان — خدمات، وظائف، مدارس خاصة، أطباء، عقارات، منتجات وتوصيل… كلها في مكان واحد.</p><div class="search"><button id="homeSearchGo" class="search-go" aria-label="بحث">🔎</button><input id="homeSearchInput" placeholder="ابحث عن خدمة، منتج، وظيفة، مدرسة أو طبيب"></div></div></section>
 <section class="section"><div class="section-title"><h3>الأقسام الرئيسية</h3><span>بورتسودان</span></div>
 <div class="grid">
 <div class="cat" id="offerBtn"><div class="ico">🛠️</div><b>أقدم خدمة</b><small>خدمتك والطلبات المناسبة لك</small></div>
@@ -288,7 +288,7 @@ h1{font-size:19px;margin:0}.ver{font-size:10px;color:var(--g);font-weight:bold}s
 <div class="cat" id="reviewsBtn"><div class="ico">⭐</div><b>التقييمات</b><small>قيّم الخدمة بعد اكتمالها وراجع تقييماتك</small></div>
 <div class="cat" id="paymentBtn"><div class="ico">💳</div><b>الاشتراك والدفع</b><small>الخطط الشهرية وطرق إرسال إشعار الدفع</small></div>
 </div></section>
-<section class="section"><div class="notice"><strong>✅ النسخة V0.16.4</strong><br>تم توحيد نظام الاشتراك: أول شهرين مجانًا، وبعدها لا تظهر صفحة الجهة أو مقدم الخدمة للعامة إلا باشتراك نشط. إشعار الدفع يُسجّل داخل النظام ثم يُرسل عبر واتساب الإدارة للمراجعة والاعتماد.</div></section>
+<section class="section"><div class="notice"><strong>✅ النسخة V0.16.5</strong><br>تم توحيد نظام الاشتراك: أول شهرين مجانًا، وبعدها لا تظهر صفحة الجهة أو مقدم الخدمة للعامة إلا باشتراك نشط. إشعار الدفع يُسجّل داخل النظام ثم يُرسل عبر واتساب الإدارة للمراجعة والاعتماد.</div></section>
 </div>
 
 <section id="needPage" class="page">
@@ -855,7 +855,7 @@ h1{font-size:19px;margin:0}.ver{font-size:10px;color:var(--g);font-weight:bold}s
 </div></div>
 
 <div id="authModal" class="modal"><div class="sheet">
-<h3>مرحبًا بك في سندك 💚</h3>
+<h3>مرحبًا بك في دليلك 💚</h3>
 <div class="tabs"><button id="loginTab" class="tab active">دخول</button><button id="signupTab" class="tab">حساب جديد</button></div>
 <div class="field"><label>البريد الإلكتروني</label><input id="email" type="email"></div>
 <div class="field"><label>كلمة المرور</label><input id="pass" type="password"></div>
@@ -2125,7 +2125,7 @@ function paymentMessage(cat,method,userLabel='',paymentId=''){
  if(!account)return '';
  const price=PAYMENT_PRICES[cat]||'';
  const ref=paymentRef(paymentId);
- return `السلام عليكم، أريد إرسال إشعار اشتراك تطبيق سندك في الحياة.\n${ref?`رقم الإشعار: ${ref}\n`:''}${userLabel?`الحساب/الاسم: ${userLabel}\n`:''}الفئة: ${cat}\nالمبلغ الشهري: ${price?Number(price).toLocaleString('en-US')+' ج.س':'حسب الفئة'}\nطريقة الدفع: ${method}\nرقم الحساب: ${account.number}\nاسم الحساب: ${account.name}\nأرفقت صورة إشعار الدفع للمراجعة.`;
+ return `السلام عليكم، أريد إرسال إشعار اشتراك تطبيق دليلك.\n${ref?`رقم الإشعار: ${ref}\n`:''}${userLabel?`الحساب/الاسم: ${userLabel}\n`:''}الفئة: ${cat}\nالمبلغ الشهري: ${price?Number(price).toLocaleString('en-US')+' ج.س':'حسب الفئة'}\nطريقة الدفع: ${method}\nرقم الحساب: ${account.number}\nاسم الحساب: ${account.name}\nأرفقت صورة إشعار الدفع للمراجعة.`;
 }
 function openPaymentWhatsapp(cat,method,userLabel='',paymentId=''){
  const msg=paymentMessage(cat,method,userLabel,paymentId);
@@ -2571,7 +2571,7 @@ $('sendPro').onclick=async()=>{
 };
 
 
-/* ===== V0.16.4 unified subscriptions + admin payments + password recovery ===== */
+/* ===== V0.16.5 Daleel branding + unified subscriptions + admin payments + password recovery ===== */
 function jobTypeAr(v){return ({full_time:'دوام كامل',part_time:'دوام جزئي',remote:'عن بُعد',freelance:'عمل حر',temporary:'مؤقت',internship:'تدريب',other:'أخرى'})[v]||v||'غير محدد'}
 function isVideoMedia(path,mime){return String(mime||'').startsWith('video/')||/\.(mp4|webm|mov|m4v|ogg)$/i.test(String(path||''))}
 function publicMediaUrl(bucket,path){return sb.storage.from(bucket).getPublicUrl(path).data.publicUrl}
@@ -2661,7 +2661,7 @@ async function loadProducts(){
  $('productResultCount').textContent=`${rows.length} نتيجة`;
  if(!rows.length){box.innerHTML='<div class="empty">لا توجد منتجات مطابقة حاليًا.</div>';return}
  box.innerHTML=rows.map(p=>{const phone=normalizePhone(p.contact_phone),wa=sudanWa(p.whatsapp||p.contact_phone),cond=p.item_condition==='used'?'مستعمل':'جديد',seller=p.provider_profiles?.display_name||'بائع',loc=p.provider_profiles?.address_text||p.cities?.name_ar||'السودان',gallery=renderMediaGallery(p.product_media||[],'product-media',p.title);return `<div class="product-card">${gallery||'<div class="product-img-placeholder">🛍️</div>'}<div class="product-body"><div class="product-title-row"><h4>${esc(p.title)}</h4><span class="product-price">${esc(p.price?money(p.price):'حسب الاتفاق')}</span></div><div class="meta"><span class="chip">🏷️ ${esc(p.categories?.name_ar||'منتج')}</span><span class="chip">${cond==='جديد'?'✨':'♻️'} ${cond}</span><span class="chip">📍 ${esc(loc)}</span></div>${p.description?`<div class="product-desc">${esc(p.description)}</div>`:''}<div class="product-seller">البائع: <b>${esc(seller)}</b></div><div class="fav-inline">${favButton('product',p.id)}</div><div class="product-actions">${phone?`<a class="product-contact product-call" href="tel:${esc(phone)}">📞 اتصال</a>`:'<span></span>'}${wa?`<a class="product-contact product-wa" target="_blank" href="https://wa.me/${esc(wa)}">💬 واتساب</a>`:'<span></span>'}</div><div class="product-extra-actions"><button class="mini-action" data-request-product="${p.id}" data-product-title="${esc(p.title)}" data-product-wa="${esc(wa||'')}">🛒 طلب المنتج</button><button class="mini-action" data-report-type="product" data-report-id="${p.id}">🚩 إبلاغ</button></div></div></div>`}).join('');
- await bindFavoriteButtons(box);bindMediaOpeners(box);box.querySelectorAll('[data-request-product]').forEach(b=>b.onclick=()=>requestByWhatsapp(b.dataset.productWa,`مرحبًا، أريد طلب المنتج: ${b.dataset.productTitle} عبر تطبيق سندك في الحياة.`));box.querySelectorAll('[data-report-type]').forEach(b=>b.onclick=()=>reportListing(b.dataset.reportType,b.dataset.reportId));
+ await bindFavoriteButtons(box);bindMediaOpeners(box);box.querySelectorAll('[data-request-product]').forEach(b=>b.onclick=()=>requestByWhatsapp(b.dataset.productWa,`مرحبًا، أريد طلب المنتج: ${b.dataset.productTitle} عبر تطبيق دليلك.`));box.querySelectorAll('[data-report-type]').forEach(b=>b.onclick=()=>reportListing(b.dataset.reportType,b.dataset.reportId));
 }
 $('productSearchBtn').onclick=loadProducts;$('productSearchInput').addEventListener('keydown',e=>{if(e.key==='Enter')loadProducts()});
 
@@ -2678,7 +2678,7 @@ $('browseJobTab').onclick=()=>showJobTab('browse');$('addJobTab').onclick=()=>sh
 async function loadJobs(){
  const box=$('jobList');box.innerHTML='<div class="empty">جاري تحميل الوظائف…</div>';let q=sb.from('job_posts').select('*').eq('status','published').order('created_at',{ascending:false}).limit(100);const type=$('jobTypeFilter').value;if(type)q=q.eq('work_type',type);const r=await q;if(r.error){box.innerHTML='<div class="notice">تعذر تحميل الوظائف الآن.</div>';return}const search=$('jobSearchInput').value.trim();const rows=(r.data||[]).filter(j=>!search||searchMatch(search,j.title,j.company_name,j.location_text,j.requirements,j.description,jobTypeAr(j.work_type)));$('jobResultCount').textContent=`${rows.length} وظيفة`;
  if(!rows.length){box.innerHTML='<div class="empty">لا توجد وظائف مطابقة حاليًا. يمكن لصاحب العمل إضافة أول وظيفة من تبويب «إضافة وظيفة».</div>';return}
- box.innerHTML=rows.map(j=>{const p=normalizePhone(j.contact_phone),w=sudanWa(j.whatsapp||j.contact_phone);return `<div class="job-card"><h4>${esc(j.title)}</h4><div class="job-company">${esc(j.company_name)}</div><div class="job-meta"><span class="chip">📍 ${esc(j.location_text||'السودان')}</span><span class="chip">🕒 ${esc(jobTypeAr(j.work_type))}</span></div>${j.requirements?`<div class="job-detail"><b>المتطلبات:</b> ${esc(j.requirements)}</div>`:''}${j.salary_text?`<div class="job-detail"><b>الأجر:</b> ${esc(j.salary_text)}</div>`:''}${j.description?`<div class="job-detail">${esc(j.description)}</div>`:''}<div class="fav-inline">${favButton('job',j.id)}</div><div class="job-contact">${p?`<a class="job-call" href="tel:${esc(p)}">📞 اتصال</a>`:'<span></span>'}${w?`<a class="job-wa" target="_blank" href="https://wa.me/${esc(w)}">💬 واتساب</a>`:'<span></span>'}</div><div class="job-actions"><button class="mini-action" data-apply-job="${j.id}" data-job-title="${esc(j.title)}" data-job-company="${esc(j.company_name)}" data-job-wa="${esc(w||'')}">📝 تقديم طلب</button><button class="mini-action" data-report-type="job" data-report-id="${j.id}">🚩 إبلاغ</button></div></div>`}).join('');await bindFavoriteButtons(box);box.querySelectorAll('[data-apply-job]').forEach(b=>b.onclick=()=>requestByWhatsapp(b.dataset.jobWa,`مرحبًا، أرغب في التقديم لوظيفة ${b.dataset.jobTitle} لدى ${b.dataset.jobCompany}. وصلت للإعلان عبر تطبيق سندك في الحياة.`));box.querySelectorAll('[data-report-type]').forEach(b=>b.onclick=()=>reportListing(b.dataset.reportType,b.dataset.reportId));
+ box.innerHTML=rows.map(j=>{const p=normalizePhone(j.contact_phone),w=sudanWa(j.whatsapp||j.contact_phone);return `<div class="job-card"><h4>${esc(j.title)}</h4><div class="job-company">${esc(j.company_name)}</div><div class="job-meta"><span class="chip">📍 ${esc(j.location_text||'السودان')}</span><span class="chip">🕒 ${esc(jobTypeAr(j.work_type))}</span></div>${j.requirements?`<div class="job-detail"><b>المتطلبات:</b> ${esc(j.requirements)}</div>`:''}${j.salary_text?`<div class="job-detail"><b>الأجر:</b> ${esc(j.salary_text)}</div>`:''}${j.description?`<div class="job-detail">${esc(j.description)}</div>`:''}<div class="fav-inline">${favButton('job',j.id)}</div><div class="job-contact">${p?`<a class="job-call" href="tel:${esc(p)}">📞 اتصال</a>`:'<span></span>'}${w?`<a class="job-wa" target="_blank" href="https://wa.me/${esc(w)}">💬 واتساب</a>`:'<span></span>'}</div><div class="job-actions"><button class="mini-action" data-apply-job="${j.id}" data-job-title="${esc(j.title)}" data-job-company="${esc(j.company_name)}" data-job-wa="${esc(w||'')}">📝 تقديم طلب</button><button class="mini-action" data-report-type="job" data-report-id="${j.id}">🚩 إبلاغ</button></div></div>`}).join('');await bindFavoriteButtons(box);box.querySelectorAll('[data-apply-job]').forEach(b=>b.onclick=()=>requestByWhatsapp(b.dataset.jobWa,`مرحبًا، أرغب في التقديم لوظيفة ${b.dataset.jobTitle} لدى ${b.dataset.jobCompany}. وصلت للإعلان عبر تطبيق دليلك.`));box.querySelectorAll('[data-report-type]').forEach(b=>b.onclick=()=>reportListing(b.dataset.reportType,b.dataset.reportId));
 }
 $('sendJob').onclick=async()=>{const {data:{user}}=await sb.auth.getUser();if(!user){$('jobMsg').className='msg err';$('jobMsg').textContent='سجّل الدخول أولًا لإضافة وظيفة';openAuth();return}const title=$('jobTitle').value.trim(),company=$('jobCompany').value.trim(),loc=$('jobLocation').value.trim(),phone=$('jobPhone').value.trim();if(!title||!company||!loc||!phone){$('jobMsg').className='msg err';$('jobMsg').textContent='أكمل المسمى الوظيفي والجهة والمكان ورقم الهاتف';return}$('sendJob').disabled=true;const r=await sb.from('job_posts').insert({owner_user_id:user.id,title,company_name:company,location_text:loc,work_type:$('jobWorkType').value,requirements:$('jobRequirements').value.trim()||null,salary_text:$('jobSalary').value.trim()||null,description:$('jobDescription').value.trim()||null,contact_phone:phone,whatsapp:$('jobWhats').value.trim()||phone,status:'published'});$('sendJob').disabled=false;if(r.error){$('jobMsg').className='msg err';$('jobMsg').textContent='تعذر نشر الوظيفة: '+r.error.message;return}$('jobMsg').className='msg ok';$('jobMsg').textContent='✅ تم نشر الوظيفة بنجاح';['jobTitle','jobCompany','jobLocation','jobRequirements','jobSalary','jobDescription','jobPhone','jobWhats'].forEach(id=>$(id).value='');showJobTab('browse')};
 
@@ -2700,7 +2700,7 @@ async function loadSchools(){
  $('schoolResultCount').textContent=`${rows.length} مدرسة`;
  if(!rows.length){box.innerHTML='<div class="empty">لا توجد مدارس مطابقة حاليًا. يمكن لصاحب المدرسة إضافة مدرسته من تبويب «أضف مدرستك».</div>';return}
  box.innerHTML=rows.map(sc=>{const p=normalizePhone(sc.phone),w=sudanWa(sc.whatsapp||sc.phone),levels=schoolLevelsAr(sc.education_levels||[]),reg=schoolRegistrationAr(sc.registration_status);return `<div class="school-card"><h4>🏫 ${esc(sc.name)}</h4><div class="school-meta"><span class="chip">📍 ${esc(sc.location_text)}</span><span class="chip">👥 ${esc(schoolGenderAr(sc.school_gender))}</span>${levels?`<span class="chip">📚 ${esc(levels)}</span>`:''}<span class="chip">📝 ${esc(reg)}</span>${sc.transport_available?'<span class="chip">🚌 مواصلات متوفرة</span>':''}</div>${renderMediaGallery(sc.private_school_media||[],'school-media',sc.name)}${sc.fees_text?`<div class="school-detail"><b>💰 الرسوم:</b> ${esc(sc.fees_text)}</div>`:''}${sc.description?`<div class="school-detail">${esc(sc.description)}</div>`:''}<div class="fav-inline">${favButton('school',sc.id)}</div><div class="school-actions">${p?`<a class="school-call" href="tel:${esc(p)}">📞 اتصال بالإدارة</a>`:'<span></span>'}${w?`<a class="school-wa" target="_blank" href="https://wa.me/${esc(w)}">💬 واتساب</a>`:'<span></span>'}${w?`<button class="school-request" data-school-request="${sc.id}" data-school-name="${esc(sc.name)}" data-school-wa="${esc(w)}">📝 طلب تسجيل / استفسار</button>`:'<span></span>'}<button class="school-report" data-report-type="school" data-report-id="${sc.id}">🚩 إبلاغ</button></div></div>`}).join('');
- await bindFavoriteButtons(box);bindMediaOpeners(box);box.querySelectorAll('[data-school-request]').forEach(b=>b.onclick=()=>requestByWhatsapp(b.dataset.schoolWa,`السلام عليكم، أرغب في الاستفسار عن التسجيل في ${b.dataset.schoolName}. وصلت لمدرستكم عبر تطبيق سندك في الحياة.`));box.querySelectorAll('[data-report-type]').forEach(b=>b.onclick=()=>reportListing(b.dataset.reportType,b.dataset.reportId));
+ await bindFavoriteButtons(box);bindMediaOpeners(box);box.querySelectorAll('[data-school-request]').forEach(b=>b.onclick=()=>requestByWhatsapp(b.dataset.schoolWa,`السلام عليكم، أرغب في الاستفسار عن التسجيل في ${b.dataset.schoolName}. وصلت لمدرستكم عبر تطبيق دليلك.`));box.querySelectorAll('[data-report-type]').forEach(b=>b.onclick=()=>reportListing(b.dataset.reportType,b.dataset.reportId));
 }
 $('sendSchool').onclick=async()=>{const {data:{user}}=await sb.auth.getUser();if(!user){$('schoolMsg').className='msg err';$('schoolMsg').textContent='سجّل الدخول أولًا لإضافة المدرسة';openAuth();return}const name=$('schoolName').value.trim(),loc=$('schoolLocation').value.trim(),phone=$('schoolPhone').value.trim(),levels=[...document.querySelectorAll('.school-level:checked')].map(x=>x.value),files=mediaFilesFrom('schoolMedia'),mediaErr=validateMediaFiles(files);if(mediaErr){$('schoolMsg').className='msg err';$('schoolMsg').textContent=mediaErr;return}if(!name||!loc||!phone||!levels.length){$('schoolMsg').className='msg err';$('schoolMsg').textContent='أكمل اسم المدرسة والموقع والمرحلة ورقم الإدارة';return}$('sendSchool').disabled=true;$('sendSchool').textContent='جاري النشر…';try{const ins=await sb.from('private_schools').insert({owner_user_id:user.id,name,description:$('schoolDescription').value.trim()||null,location_text:loc,school_gender:$('schoolGender').value,education_levels:levels,fees_text:$('schoolFees').value.trim()||null,registration_status:$('schoolRegistration').value,transport_available:$('schoolTransport').value==='true',phone,whatsapp:$('schoolWhats').value.trim()||phone,status:'published'}).select('id').single();if(ins.error)throw ins.error;if(files.length)await uploadMediaRows({user,entityId:ins.data.id,files,bucket:'school-media',table:'private_school_media',fk:'school_id'});$('schoolMsg').className='msg ok';$('schoolMsg').textContent='✅ تم نشر المدرسة بنجاح';['schoolName','schoolLocation','schoolFees','schoolDescription','schoolPhone','schoolWhats'].forEach(id=>$(id).value='');document.querySelectorAll('.school-level').forEach(x=>x.checked=false);$('schoolMedia').value='';$('schoolMediaPreview').innerHTML='';showSchoolTab('browse');await loadSchools()}catch(e){$('schoolMsg').className='msg err';$('schoolMsg').textContent='تعذر نشر المدرسة: '+(e.message||'خطأ غير معروف')}finally{$('sendSchool').disabled=false;$('sendSchool').textContent='نشر المدرسة'}};
 
