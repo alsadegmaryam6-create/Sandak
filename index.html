@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#16894b">
-<title>دليلك V0.16.5</title>
+<title>دليلك V0.16.7</title>
 <style>
 :root{--g:#16894b;--g2:#0f6e3b;--bg:#f6faf7;--text:#152019;--muted:#6b766e;--line:#e4eee7;--bad:#b42318;--blue:#235a9f}
 *{box-sizing:border-box}body{margin:0;font-family:Tahoma,Arial,sans-serif;background:var(--bg);color:var(--text);padding-bottom:76px}
@@ -16,6 +16,8 @@ h1{font-size:19px;margin:0}.ver{font-size:10px;color:var(--g);font-weight:bold}s
 .search{background:#fff;border-radius:15px;padding:0 12px;display:flex;align-items:center}.search input{border:0;outline:0;width:100%;padding:14px;font-size:15px;background:transparent}
 
 .search-go{border:0;background:transparent;font-size:20px;padding:8px 3px;cursor:pointer}
+.search-location{display:flex;align-items:center;gap:8px;background:#f7fbf8;border:1px solid #dbe8df;border-radius:13px;padding:7px 10px;margin:9px 0 8px}
+.search-location span{font-size:13px;font-weight:bold;color:#496153;white-space:nowrap}.search-location select{flex:1;border:0;outline:0;background:transparent;font-family:inherit;color:var(--g2);font-weight:bold;min-width:0}
 .global-search-box{display:flex;gap:8px;background:#fff;border:1px solid var(--line);border-radius:15px;padding:7px;margin-bottom:12px}
 .global-search-box input{flex:1;border:0;outline:0;background:transparent;padding:9px;font-size:15px;font-family:inherit;min-width:0}
 .global-search-box button{border:0;background:var(--g);color:#fff;border-radius:11px;padding:8px 15px;font-weight:bold;font-family:inherit}
@@ -245,7 +247,7 @@ h1{font-size:19px;margin:0}.ver{font-size:10px;color:var(--g);font-weight:bold}s
 @media(max-width:470px){.subscription-grid{grid-template-columns:1fr}.payment-methods{grid-template-columns:1fr 1fr 1fr}.admin-contact{grid-template-columns:1fr}}
 
 
-/* V0.16.5: rebrand to Daleel + subscriptions + admin payments + password recovery */
+/* V0.16.7: rebrand to Daleel + subscriptions + admin payments + password recovery */
 
 .school-tabs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px;background:#edf4ef;border-radius:14px;padding:5px}.school-tab{border:0;background:transparent;padding:10px;border-radius:11px;font-weight:bold;color:#5f6b63}.school-tab.active{background:#fff;color:var(--g);box-shadow:0 3px 12px #1a492713}
 .school-search-row{display:grid;grid-template-columns:1fr auto;gap:8px;margin:10px 0}.school-search-row input{border:1px solid var(--line);border-radius:13px;padding:12px;font-family:inherit;min-width:0}
@@ -269,11 +271,11 @@ h1{font-size:19px;margin:0}.ver{font-size:10px;color:var(--g);font-weight:bold}s
 </head>
 <body>
 <div class="app">
-<header><div class="top"><div class="brand"><div class="logo">د</div><div><h1>دليلك 🇸🇩</h1><div class="ver">V0.16.5</div></div></div><button id="authBtn" class="secondary">دخول</button></div></header>
+<header><div class="top"><div class="brand"><div class="logo">د</div><div><h1>دليلك 🇸🇩</h1><div class="ver">V0.16.7</div></div></div><button id="authBtn" class="secondary">دخول</button></div></header>
 
 <div id="home" class="show">
-<section class="hero"><div class="hero-card"><h2>محتاج شنو اليوم؟</h2><p>دليلك لأي خدمة في السودان — خدمات، وظائف، مدارس خاصة، أطباء، عقارات، منتجات وتوصيل… كلها في مكان واحد.</p><div class="search"><button id="homeSearchGo" class="search-go" aria-label="بحث">🔎</button><input id="homeSearchInput" placeholder="ابحث عن خدمة، منتج، وظيفة، مدرسة أو طبيب"></div></div></section>
-<section class="section"><div class="section-title"><h3>الأقسام الرئيسية</h3><span>بورتسودان</span></div>
+<section class="hero"><div class="hero-card"><h2>محتاج شنو اليوم؟</h2><p>دليلك لأي خدمة في السودان — خدمات، وظائف، مدارس خاصة، أطباء، عقارات، منتجات وتوصيل… كلها في مكان واحد.</p><div class="search-location"><span>📍 المدينة</span><select id="homeSearchCity" aria-label="اختر المدينة"><option value="">جاري تحميل المدن…</option></select></div><div class="search"><button id="homeSearchGo" class="search-go" aria-label="بحث">🔎</button><input id="homeSearchInput" placeholder="ابحث عن خدمة، منتج، وظيفة، مدرسة أو طبيب"></div></div></section>
+<section class="section"><div class="section-title"><h3>الأقسام الرئيسية</h3><span>بورتسودان • حالياً</span></div>
 <div class="grid">
 <div class="cat" id="offerBtn"><div class="ico">🛠️</div><b>أقدم خدمة</b><small>خدمتك والطلبات المناسبة لك</small></div>
 <div class="cat" id="needBtn"><div class="ico">🙋</div><b>أحتاج خدمة</b><small>طلب جديد + العروض التي وصلتك</small></div>
@@ -288,7 +290,7 @@ h1{font-size:19px;margin:0}.ver{font-size:10px;color:var(--g);font-weight:bold}s
 <div class="cat" id="reviewsBtn"><div class="ico">⭐</div><b>التقييمات</b><small>قيّم الخدمة بعد اكتمالها وراجع تقييماتك</small></div>
 <div class="cat" id="paymentBtn"><div class="ico">💳</div><b>الاشتراك والدفع</b><small>الخطط الشهرية وطرق إرسال إشعار الدفع</small></div>
 </div></section>
-<section class="section"><div class="notice"><strong>✅ النسخة V0.16.5</strong><br>تم توحيد نظام الاشتراك: أول شهرين مجانًا، وبعدها لا تظهر صفحة الجهة أو مقدم الخدمة للعامة إلا باشتراك نشط. إشعار الدفع يُسجّل داخل النظام ثم يُرسل عبر واتساب الإدارة للمراجعة والاعتماد.</div></section>
+<section class="section"><div class="notice"><strong>✅ النسخة V0.16.7</strong><br>قائمة البحث تعرض مدن السودان مع بورتسودان كمدينة حالية، ودعم العقارات حتى 6 صور + فيديو واحد، مع استمرار نظام الاشتراك والدفع.</div></section>
 </div>
 
 <section id="needPage" class="page">
@@ -342,7 +344,7 @@ h1{font-size:19px;margin:0}.ver{font-size:10px;color:var(--g);font-weight:bold}s
 <div class="field"><label>رقم الهاتف *</label><input id="propPhone" inputmode="tel" placeholder="0912345678"></div>
 <div class="field"><label>واتساب</label><input id="propWhats" inputmode="tel" placeholder="إذا كان مختلفًا"></div>
 </div>
-<div class="field"><label>صورة العقار (اختياري)</label><input id="propImage" type="file" accept="image/*"><img id="propImagePreview" class="image-preview" alt="معاينة الصورة"></div>
+<div class="field"><label>صور وفيديو العقار (اختياري)</label><input id="propMedia" type="file" accept="image/*,video/*" multiple><div class="media-picker-note">يمكن رفع حتى 6 صور + فيديو واحد. الحد: 8MB للصورة و40MB للفيديو.</div><div id="propMediaPreview" class="media-selection"></div></div>
 <button id="sendProperty" class="primary" style="width:100%">نشر العقار</button>
 <div id="propMsg" class="msg"></div>
 </div>
@@ -634,6 +636,7 @@ h1{font-size:19px;margin:0}.ver{font-size:10px;color:var(--g);font-weight:bold}s
 
 <section id="searchPage" class="page">
 <div class="pagehead"><button class="back" data-home>→</button><h2>🔎 البحث</h2></div>
+<div class="search-location"><span>📍 المدينة</span><select id="globalSearchCity" aria-label="اختر المدينة"><option value="">جاري تحميل المدن…</option></select></div>
 <div class="global-search-box">
 <input id="globalSearchInput" placeholder="اكتب خدمة، منتج، وظيفة، طبيب، مستشفى أو عقار">
 <button id="globalSearchGo">بحث</button>
@@ -877,9 +880,58 @@ h1{font-size:19px;margin:0}.ver{font-size:10px;color:var(--g);font-weight:bold}s
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
 const sb=supabase.createClient("https://xcdobqsqfdupovtwamer.supabase.co","sb_publishable_cbFKfqs1Aibfup2Iuh_ltg_nA5NlQNS");
-let mode='login',cityId=null,catsLoaded=false,currentProvider=null;const $=x=>document.getElementById(x);
+let mode='login',cityId=null,catsLoaded=false,currentProvider=null,searchCities=[],selectedSearchCity='';const $=x=>document.getElementById(x);
 function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]))}
 function page(p){$('home').classList.toggle('show',p==='home');$('needPage').classList.toggle('show',p==='need');$('offerPage').classList.toggle('show',p==='offer');$('propertyPage').classList.toggle('show',p==='property');$('productPage').classList.toggle('show',p==='product');$('jobPage').classList.toggle('show',p==='job');$('schoolPage').classList.toggle('show',p==='school');$('doctorPage').classList.toggle('show',p==='doctor');$('hospitalPage').classList.toggle('show',p==='hospital');$('pharmacyPage').classList.toggle('show',p==='pharmacy');$('deliveryPage').classList.toggle('show',p==='delivery');$('searchPage').classList.toggle('show',p==='search');$('favoritesPage').classList.toggle('show',p==='favorites');$('reviewsPage').classList.toggle('show',p==='reviews');$('paymentPage').classList.toggle('show',p==='payment');$('accountPage').classList.toggle('show',p==='account');$('adminPage').classList.toggle('show',p==='admin');window.scrollTo(0,0)}
+const SUDAN_SEARCH_CITIES=[
+ 'بورتسودان','الخرطوم','أم درمان','بحري','ود مدني','الحصاحيصا','المناقل','رفاعة','الكاملين',
+ 'سنار','سنجة','الدمازين','الروصيرص','كوستي','ربك','القطينة','الأبيض','بارا','أم روابة','الرهد',
+ 'كادوقلي','الدلنج','أبو جبيهة','الفولة','بابنوسة','المجلد','النهود','نيالا','كاس','الضعين','عديلة',
+ 'زالنجي','الجنينة','الفاشر','مليط','كبكابية','كتم','دنقلا','مروي','كريمة','وادي حلفا','عبري',
+ 'عطبرة','الدامر','شندي','بربر','أبو حمد','كسلا','حلفا الجديدة','خشم القربة','القضارف','الفاو','دوكة',
+ 'سواكن','طوكر','سنكات'
+];
+async function loadSearchCities(){
+ if(searchCities.length){syncSearchCitySelectors();return}
+ let dbCities=[];
+ try{
+   const r=await sb.from('cities').select('id,name_ar,is_launch_city,sort_order').eq('is_active',true).order('sort_order').order('name_ar');
+   if(!r.error)dbCities=r.data||[];
+ }catch(_e){}
+ const byName=new Map(dbCities.map(c=>[String(c.name_ar||'').trim(),c]));
+ searchCities=SUDAN_SEARCH_CITIES.map((name,i)=>{
+   const db=byName.get(name);
+   return db?{...db,name_ar:name}:{id:`name:${name}`,name_ar:name,is_launch_city:name==='بورتسودان',sort_order:100+i};
+ });
+ dbCities.forEach(c=>{if(!searchCities.some(x=>x.name_ar===c.name_ar))searchCities.push(c)});
+ const launch=searchCities.find(c=>c.is_launch_city)||searchCities.find(c=>c.name_ar==='بورتسودان')||searchCities[0];
+ if(!selectedSearchCity)selectedSearchCity=launch?.id||'all';
+ syncSearchCitySelectors();
+}
+function searchCityOptions(){
+ return '<option value="all">كل المدن</option><option disabled>──────── مدن السودان ────────</option>'+searchCities.map(c=>`<option value="${esc(c.id)}">${esc(c.name_ar)}${c.name_ar==='بورتسودان'?' (حالياً)':''}</option>`).join('');
+}
+function syncSearchCitySelectors(){
+ const opts=searchCityOptions();
+ ['homeSearchCity','globalSearchCity'].forEach(id=>{const el=$(id);if(!el)return;el.innerHTML=opts;el.value=selectedSearchCity||'all';if(!el.value)el.value='all'});
+}
+function selectedSearchCityName(){
+ if(!selectedSearchCity||selectedSearchCity==='all')return 'كل المدن';
+ return searchCities.find(c=>c.id===selectedSearchCity)?.name_ar||'المدينة الحالية';
+}
+function selectedSearchCityInfo(){
+ if(!selectedSearchCity||selectedSearchCity==='all')return {id:null,name:null};
+ const c=searchCities.find(x=>x.id===selectedSearchCity);
+ if(!c)return {id:null,name:null};
+ return {id:String(c.id).startsWith('name:')?null:c.id,name:c.name_ar};
+}
+function rowMatchesSelectedCity(cityIdValue,addressText){
+ const sel=selectedSearchCityInfo();
+ if(!sel.id&&!sel.name)return true;
+ if(sel.id&&cityIdValue===sel.id)return true;
+ return !!(sel.name&&String(addressText||'').includes(sel.name));
+}
+function setSearchCity(value){selectedSearchCity=value||'all';syncSearchCitySelectors()}
 $('needBtn').onclick=()=>{page('need');loadData();loadMyRequests()};$('offerBtn').onclick=()=>{page('offer');loadOfferArea()};$('propertyBtn').onclick=()=>{page('property');showPropertyTab('browse');loadPropertyData();loadProperties()};$('productBtn').onclick=()=>{page('product');showProductTab('browse');loadProductData();loadProducts()};$('jobBtn').onclick=()=>{page('job');showJobTab('browse');loadJobs()};$('schoolBtn').onclick=()=>{page('school');showSchoolTab('browse');loadSchools()};$('doctorBtn').onclick=()=>{page('doctor');showDoctorTab('browse');loadDoctorData();loadDoctors()};$('hospitalBtn').onclick=()=>{page('hospital');showHospitalTab('browse');loadHospitalData();loadHospitals()};$('pharmacyBtn').onclick=()=>{page('pharmacy');showPharmacyTab('browse');loadPharmacies()};$('deliveryBtn').onclick=()=>{page('delivery');showDeliveryTab('customer');loadDeliveryVehicleTypes();loadMyDeliveryRequests()};$('reviewsBtn').onclick=()=>{page('reviews');loadReviewsPage()};$('paymentBtn').onclick=()=>page('payment');$('addNav').onclick=()=>{page('need');loadData();loadMyRequests()};$('homeNav').onclick=()=>page('home');$('searchNav').onclick=()=>openGlobalSearch($('homeSearchInput').value);$('favNav').onclick=()=>{page('favorites');loadFavoritesPage()};
 document.querySelectorAll('[data-home]').forEach(b=>b.onclick=()=>page('home'));document.querySelectorAll('[data-soon]').forEach(x=>x.onclick=()=>alert(x.dataset.soon+' قيد التجهيز'));
 
@@ -1082,8 +1134,8 @@ function renderGlobalResults(items,q){
  const filtered=globalSearchFilter==='all'?globalSearchItems:globalSearchItems.filter(x=>x.type===globalSearchFilter);
  const labels={all:'الكل',service:'خدمات',doctor:'أطباء',hospital:'مستشفيات',pharmacy:'صيدليات',property:'عقارات',product:'منتجات',job:'وظائف',school:'مدارس خاصة'};
  $('searchSummary').textContent=filtered.length
-   ?`تم العثور على ${filtered.length} نتيجة في ${labels[globalSearchFilter]} لـ «${globalSearchQuery}»`
-   :`لا توجد نتائج في ${labels[globalSearchFilter]} لـ «${globalSearchQuery}»`;
+   ?`تم العثور على ${filtered.length} نتيجة في ${labels[globalSearchFilter]} لـ «${globalSearchQuery}» — ${selectedSearchCityName()}`
+   :`لا توجد نتائج في ${labels[globalSearchFilter]} لـ «${globalSearchQuery}» — ${selectedSearchCityName()}`;
  if(!filtered.length){
    box.innerHTML='<div class="search-empty">لا توجد نتائج ضمن هذا النوع. جرّب فلترًا آخر أو كلمة بحث مختلفة.</div>';
    return;
@@ -1111,6 +1163,7 @@ document.querySelectorAll('.search-filter').forEach(btn=>{
 });
 async function openGlobalSearch(initial=''){
  page('search');
+ await loadSearchCities();
  const q=String(initial||'').trim();
  $('globalSearchInput').value=q;
  if(q) await runGlobalSearch();
@@ -1125,20 +1178,25 @@ async function runGlobalSearch(){
  if(!q){$('searchSummary').textContent='';box.innerHTML='<div class="search-empty">اكتب كلمة للبحث.</div>';return}
  box.innerHTML='<div class="search-empty">جاري البحث…</div>';$('searchSummary').textContent='';
 
+ const selectedCityInfo=selectedSearchCityInfo(),selectedCity=selectedCityInfo.id,selectedCityName=selectedCityInfo.name;
+ let svcQ=sb.from('provider_profiles').select('id,display_name,description,address_text,phone,whatsapp,city_id,price_mode,price_amount,verification_status,provider_categories(category_id,categories(name_ar))').eq('provider_type','professional').eq('account_status','active').eq('is_published',true).limit(100);
+ let propsQ=sb.from('properties').select('id,title,transaction_type,address_text,city_id,price,description,contact_name,contact_phone,whatsapp,categories(name_ar)').eq('status','published').order('created_at',{ascending:false}).limit(100);
+ let prodsQ=sb.from('products').select('id,title,item_condition,city_id,price,description,contact_phone,whatsapp,categories(name_ar)').eq('status','published').order('created_at',{ascending:false}).limit(100);
+ if(selectedCity){svcQ=svcQ.eq('city_id',selectedCity);propsQ=propsQ.eq('city_id',selectedCity);prodsQ=prodsQ.eq('city_id',selectedCity)}
  const [svc,docs,hosps,pharms,props,prods,jobs,schools]=await Promise.all([
-   sb.from('provider_profiles').select('id,display_name,description,address_text,phone,whatsapp,price_mode,price_amount,verification_status,provider_categories(category_id,categories(name_ar))').eq('provider_type','professional').eq('account_status','active').eq('is_published',true).limit(100),
-   sb.from('doctor_profiles').select('provider_id,clinic_or_hospital_name,receptionist_name,receptionist_phone,receptionist_whatsapp,consultation_price,provider_profiles(display_name,address_text,verification_status,account_status,is_published),categories!doctor_profiles_specialty_category_id_fkey(name_ar)').limit(100),
-   sb.from('hospital_profiles').select('provider_id,reception_name,reception_phone,reception_whatsapp,room_availability_status,provider_profiles(display_name,address_text,verification_status,account_status,is_published)').limit(100),
-   sb.from('pharmacy_profiles').select('provider_id,manager_name,manager_phone,manager_whatsapp,delivery_available,provider_profiles(display_name,address_text,verification_status,account_status,is_published)').limit(100),
-   sb.from('properties').select('id,title,transaction_type,address_text,price,description,contact_name,contact_phone,whatsapp,categories(name_ar)').eq('status','published').order('created_at',{ascending:false}).limit(100),
-   sb.from('products').select('id,title,item_condition,price,description,contact_phone,whatsapp,categories(name_ar)').eq('status','published').order('created_at',{ascending:false}).limit(100),
+   svcQ,
+   sb.from('doctor_profiles').select('provider_id,clinic_or_hospital_name,receptionist_name,receptionist_phone,receptionist_whatsapp,consultation_price,provider_profiles(display_name,address_text,city_id,verification_status,account_status,is_published),categories!doctor_profiles_specialty_category_id_fkey(name_ar)').limit(100),
+   sb.from('hospital_profiles').select('provider_id,reception_name,reception_phone,reception_whatsapp,room_availability_status,provider_profiles(display_name,address_text,city_id,verification_status,account_status,is_published)').limit(100),
+   sb.from('pharmacy_profiles').select('provider_id,manager_name,manager_phone,manager_whatsapp,delivery_available,provider_profiles(display_name,address_text,city_id,verification_status,account_status,is_published)').limit(100),
+   propsQ,
+   prodsQ,
    sb.from('job_posts').select('id,title,company_name,location_text,work_type,requirements,salary_text,description,contact_phone,whatsapp').eq('status','published').order('created_at',{ascending:false}).limit(100),
    sb.from('private_schools').select('id,name,description,location_text,school_gender,education_levels,fees_text,registration_status,transport_available,phone,whatsapp').eq('status','published').order('created_at',{ascending:false}).limit(100)
  ]);
 
  const items=[];
 
- (svc.data||[]).forEach(p=>{
+ (svc.data||[]).filter(p=>rowMatchesSelectedCity(p.city_id,p.address_text)).forEach(p=>{
    const cats=(p.provider_categories||[]).map(v=>v.categories?.name_ar).filter(Boolean);
    if(searchMatch(q,p.display_name,p.description,p.address_text,cats,'خدمة','خدمات')){
      items.push({type:'service',targetType:'provider',targetId:p.id,kind:'خدمة',icon:'🛠️',title:p.display_name||'مقدم خدمة',
@@ -1147,7 +1205,7 @@ async function runGlobalSearch(){
    }
  });
 
- (docs.data||[]).filter(d=>d.provider_profiles?.account_status==='active'&&d.provider_profiles?.is_published!==false).forEach(d=>{
+ (docs.data||[]).filter(d=>d.provider_profiles?.account_status==='active'&&d.provider_profiles?.is_published!==false&&rowMatchesSelectedCity(d.provider_profiles?.city_id,d.provider_profiles?.address_text)).forEach(d=>{
    const p=d.provider_profiles||{},sp=d.categories?.name_ar||'';
    if(searchMatch(q,p.display_name,sp,d.clinic_or_hospital_name,p.address_text,'طبيب','دكتور','اطباء')){
      items.push({type:'doctor',targetType:'doctor',targetId:d.provider_id,kind:'طبيب',icon:'👨‍⚕️',title:p.display_name||'طبيب',
@@ -1157,7 +1215,7 @@ async function runGlobalSearch(){
  });
 
  let deptBy={};
- const hospRows=(hosps.data||[]).filter(h=>h.provider_profiles?.account_status==='active'&&h.provider_profiles?.is_published!==false);
+ const hospRows=(hosps.data||[]).filter(h=>h.provider_profiles?.account_status==='active'&&h.provider_profiles?.is_published!==false&&rowMatchesSelectedCity(h.provider_profiles?.city_id,h.provider_profiles?.address_text));
  if(hospRows.length){
    const dr=await sb.from('hospital_departments').select('hospital_provider_id,categories(name_ar)').in('hospital_provider_id',hospRows.map(h=>h.provider_id));
    (dr.data||[]).forEach(d=>(deptBy[d.hospital_provider_id]??=[]).push(d.categories?.name_ar));
@@ -1172,7 +1230,7 @@ async function runGlobalSearch(){
    }
  });
 
- (pharms.data||[]).filter(x=>x.provider_profiles?.account_status==='active'&&x.provider_profiles?.is_published!==false).forEach(x=>{
+ (pharms.data||[]).filter(x=>x.provider_profiles?.account_status==='active'&&x.provider_profiles?.is_published!==false&&rowMatchesSelectedCity(x.provider_profiles?.city_id,x.provider_profiles?.address_text)).forEach(x=>{
    const p=x.provider_profiles||{};
    if(searchMatch(q,p.display_name,p.address_text,x.manager_name,'صيدلية','صيدليات','دواء')){
      items.push({type:'pharmacy',targetType:'pharmacy',targetId:x.provider_id,kind:'صيدلية',icon:'💊',title:p.display_name||'صيدلية',
@@ -1181,7 +1239,7 @@ async function runGlobalSearch(){
    }
  });
 
- (props.data||[]).forEach(p=>{
+ (props.data||[]).filter(p=>rowMatchesSelectedCity(p.city_id,p.address_text)).forEach(p=>{
    const cat=p.categories?.name_ar||'',tx=p.transaction_type==='rent'?'إيجار':p.transaction_type==='sale'?'بيع':p.transaction_type||'';
    if(searchMatch(q,p.title,p.description,p.address_text,cat,tx,'عقار','عقارات','منزل','شقة')){
      items.push({type:'property',targetType:'property',targetId:p.id,kind:'عقار',icon:'🏠',title:p.title,
@@ -1190,7 +1248,7 @@ async function runGlobalSearch(){
    }
  });
 
- (prods.data||[]).forEach(p=>{
+ (prods.data||[]).filter(p=>!selectedCityName||selectedCity||rowMatchesSelectedCity(p.city_id,'' )).forEach(p=>{
    const cat=p.categories?.name_ar||'',cond=p.item_condition==='used'?'مستعمل':'جديد';
    if(searchMatch(q,p.title,p.description,cat,cond,'منتج','منتجات','بيع','شراء')){
      items.push({type:'product',targetType:'product',targetId:p.id,kind:'منتج',icon:'🛒',title:p.title,
@@ -1199,7 +1257,7 @@ async function runGlobalSearch(){
    }
  });
 
- (jobs.data||[]).forEach(j=>{
+ (jobs.data||[]).filter(j=>!selectedCityName||String(j.location_text||'').includes(selectedCityName)).forEach(j=>{
    const wt=jobTypeAr(j.work_type);
    if(searchMatch(q,j.title,j.company_name,j.location_text,j.requirements,j.description,wt,'وظيفة','وظائف','عمل')){
      items.push({type:'job',targetType:'job',targetId:j.id,kind:'وظيفة',icon:'💼',title:j.title,
@@ -1208,7 +1266,7 @@ async function runGlobalSearch(){
    }
  });
 
- (schools.data||[]).forEach(sc=>{
+ (schools.data||[]).filter(sc=>!selectedCityName||String(sc.location_text||'').includes(selectedCityName)).forEach(sc=>{
    const levels=schoolLevelsAr(sc.education_levels||[]),gender=schoolGenderAr(sc.school_gender);
    if(searchMatch(q,sc.name,sc.description,sc.location_text,levels,gender,sc.fees_text,'مدرسة','مدارس','تعليم','روضة','اساس','متوسط','ثانوي')){
      items.push({type:'school',targetType:'school',targetId:sc.id,kind:'مدرسة خاصة',icon:'🏫',title:sc.name,
@@ -1223,6 +1281,8 @@ async function runGlobalSearch(){
 }
 $('globalSearchGo').onclick=runGlobalSearch;
 $('globalSearchInput').addEventListener('keydown',e=>{if(e.key==='Enter')runGlobalSearch()});
+$('homeSearchCity').onchange=e=>setSearchCity(e.target.value);
+$('globalSearchCity').onchange=e=>{setSearchCity(e.target.value);if($('globalSearchInput').value.trim())runGlobalSearch()};
 $('homeSearchGo').onclick=()=>openGlobalSearch($('homeSearchInput').value);
 $('homeSearchInput').addEventListener('keydown',e=>{if(e.key==='Enter')openGlobalSearch(e.target.value)});
 
@@ -1271,15 +1331,10 @@ async function loadProperties(){
  if(r.error){box.innerHTML='<div class="notice">تعذر تحميل العقارات الآن.</div>';return}
  if(!r.data||!r.data.length){box.innerHTML='<div class="empty">لا توجد عقارات منشورة حتى الآن. يمكنك إضافة أول عقار.</div>';return}
  box.innerHTML=r.data.map(p=>{
-   const media=(p.property_media||[]).sort((a,b)=>(b.is_primary?1:0)-(a.is_primary?1:0)||(a.sort_order||0)-(b.sort_order||0))[0];
-   let img='';
-   if(media?.storage_path){
-     const pub=sb.storage.from('property-media').getPublicUrl(media.storage_path).data.publicUrl;
-     img=`<img class="property-img" src="${esc(pub)}" alt="${esc(p.title)}">`;
-   } else img='<div class="property-img-placeholder">🏠</div>';
+   const gallery=(p.property_media||[]).length?renderMediaGallery(p.property_media||[],'property-media',p.title):'<div class="property-img-placeholder">🏠</div>';
    const phone=normalizePhone(p.contact_phone), wa=sudanWa(p.whatsapp||p.contact_phone);
    const trans=p.transaction_type==='rent'?'للإيجار':'للبيع';
-   return `<div class="property-card">${img}<div class="property-body">
+   return `<div class="property-card">${gallery}<div class="property-body">
     <div class="property-title-row"><h4>${esc(p.title)}</h4><span class="property-price">${esc(money(p.price))}</span></div>
     <div class="meta"><span class="chip">🏷️ ${esc(p.categories?.name_ar||'عقار')}</span><span class="chip">${trans}</span><span class="chip">📍 ${esc(p.address_text||'بورتسودان')}</span>${p.area_sqm!==null?`<span class="chip">📐 ${esc(p.area_sqm)} م²</span>`:''}${p.rooms_count!==null?`<span class="chip">🚪 ${esc(p.rooms_count)} غرف</span>`:''}</div>
     ${p.description?`<div class="property-desc">${esc(p.description)}</div>`:''}
@@ -1287,6 +1342,7 @@ async function loadProperties(){
     <div class="property-actions">${phone?`<a class="property-contact property-call" href="tel:${esc(phone)}">📞 اتصال</a>`:'<span></span>'}${wa?`<a class="property-contact property-wa" target="_blank" href="https://wa.me/${esc(wa)}">💬 واتساب</a>`:'<span></span>'}</div>
    </div></div>`;
  }).join('');
+ bindMediaOpeners(box);
 }
 
 async function getOrCreateRealEstateProvider(user,name,phone,whatsapp,address){
@@ -1301,10 +1357,17 @@ async function getOrCreateRealEstateProvider(user,name,phone,whatsapp,address){
  realEstateProvider=ins.data;return ins.data;
 }
 
-$('propImage').onchange=()=>{
- const f=$('propImage').files?.[0],img=$('propImagePreview');
- if(!f){img.style.display='none';img.src='';return}
- img.src=URL.createObjectURL(f);img.style.display='block';
+function propertyMediaFiles(){return [...($('propMedia').files||[])]}
+function validatePropertyMedia(files){
+ const images=files.filter(f=>String(f.type).startsWith('image/')),videos=files.filter(f=>String(f.type).startsWith('video/'));
+ if(images.length>6)return 'الحد الأقصى للعقار 6 صور.';
+ if(videos.length>1)return 'يمكن رفع فيديو واحد فقط للعقار.';
+ if(files.length>7)return 'الحد الأقصى 6 صور + فيديو واحد.';
+ return validateMediaFiles(files);
+}
+$('propMedia').onchange=()=>{
+ const files=propertyMediaFiles(),box=$('propMediaPreview'),err=validatePropertyMedia(files);
+ box.innerHTML=err?`<span>⚠️ ${esc(err)}</span>`:files.map(f=>`<span>${String(f.type).startsWith('video/')?'🎬':'🖼️'} ${esc(f.name)}</span>`).join('');
 };
 
 $('sendProperty').onclick=async()=>{
@@ -1313,6 +1376,8 @@ $('sendProperty').onclick=async()=>{
  await loadPropertyData();
  const title=$('propTitle').value.trim(),category_id=$('propCat').value,address=$('propAddress').value.trim(),name=$('propContactName').value.trim(),phone=$('propPhone').value.trim();
  if(!title||!category_id||!address||!name||!phone){$('propMsg').className='msg err';$('propMsg').textContent='أكملي عنوان الإعلان، نوع العقار، المكان، اسم المعلن ورقم الهاتف';return}
+ const files=propertyMediaFiles(),mediaErr=validatePropertyMedia(files);
+ if(mediaErr){$('propMsg').className='msg err';$('propMsg').textContent=mediaErr;return}
  const area=$('propArea').value.trim(),rooms=$('propRooms').value.trim(),price=$('propPrice').value.trim(),whatsapp=$('propWhats').value.trim()||phone;
  $('sendProperty').disabled=true;$('sendProperty').textContent='جاري النشر…';$('propMsg').textContent='';
  try{
@@ -1325,19 +1390,20 @@ $('sendProperty').onclick=async()=>{
    }).select('id').single();
    if(ins.error) throw ins.error;
 
-   const file=$('propImage').files?.[0];
-   if(file){
-     const safe=(file.name||'property.jpg').replace(/[^a-zA-Z0-9._-]/g,'_');
-     const path=`${user.id}/${ins.data.id}/${Date.now()}-${safe}`;
-     const up=await sb.storage.from('property-media').upload(path,file,{cacheControl:'3600',upsert:false});
-     if(!up.error){
-       await sb.from('property_media').insert({property_id:ins.data.id,storage_path:path,is_primary:true,sort_order:0});
-     }
+   let primarySet=false;
+   for(let i=0;i<files.length;i++){
+     const file=files[i],safe=(file.name||'property-media').replace(/[^a-zA-Z0-9._-]/g,'_');
+     const path=`${user.id}/${ins.data.id}/${Date.now()}-${i}-${safe}`;
+     const up=await sb.storage.from('property-media').upload(path,file,{cacheControl:'3600',upsert:false,contentType:file.type||undefined});
+     if(up.error)throw up.error;
+     const isImage=String(file.type).startsWith('image/'),isPrimary=!primarySet&&(isImage||i===files.length-1);
+     const mr=await sb.from('property_media').insert({property_id:ins.data.id,storage_path:path,is_primary:isPrimary,sort_order:i});
+     if(mr.error)throw mr.error;if(isPrimary)primarySet=true;
    }
 
-   $('propMsg').className='msg ok';$('propMsg').textContent='✅ تم نشر العقار بنجاح';
+   $('propMsg').className='msg ok';$('propMsg').textContent='✅ تم نشر العقار بالصور/الفيديو بنجاح';
    ['propTitle','propAddress','propArea','propRooms','propPrice','propDesc','propContactName','propPhone','propWhats'].forEach(id=>$(id).value='');
-   $('propCat').value='';$('propTransaction').value='sale';$('propImage').value='';$('propImagePreview').style.display='none';
+   $('propCat').value='';$('propTransaction').value='sale';$('propMedia').value='';$('propMediaPreview').innerHTML='';
    showPropertyTab('browse');await loadProperties();
  }catch(e){
    $('propMsg').className='msg err';$('propMsg').textContent='تعذر نشر العقار: '+(e.message||'خطأ غير معروف');
@@ -2389,6 +2455,7 @@ async function refreshAuth(){
  if(user&&$('accountPage').classList.contains('show'))await loadAccountPage(user);
 }
 refreshAuth();
+loadSearchCities();
 
 async function loadData(){
  if(!cityId){const r=await sb.from('cities').select('id').eq('is_launch_city',true).eq('is_active',true).limit(1).maybeSingle();if(r.data)cityId=r.data.id}
@@ -2571,7 +2638,7 @@ $('sendPro').onclick=async()=>{
 };
 
 
-/* ===== V0.16.5 Daleel branding + unified subscriptions + admin payments + password recovery ===== */
+/* ===== V0.16.7 Daleel branding + unified subscriptions + admin payments + password recovery ===== */
 function jobTypeAr(v){return ({full_time:'دوام كامل',part_time:'دوام جزئي',remote:'عن بُعد',freelance:'عمل حر',temporary:'مؤقت',internship:'تدريب',other:'أخرى'})[v]||v||'غير محدد'}
 function isVideoMedia(path,mime){return String(mime||'').startsWith('video/')||/\.(mp4|webm|mov|m4v|ogg)$/i.test(String(path||''))}
 function publicMediaUrl(bucket,path){return sb.storage.from(bucket).getPublicUrl(path).data.publicUrl}
