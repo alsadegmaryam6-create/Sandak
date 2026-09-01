@@ -271,10 +271,10 @@ h1{font-size:19px;margin:0}.ver{font-size:10px;color:var(--g);font-weight:bold}s
 </head>
 <body>
 <div class="app">
-<header><div class="top"><div class="brand"><div class="logo">د</div><div><h1>دليلك 🇸🇩</h1><div class="ver">V0.16.7</div></div></div><button id="authBtn" class="secondary">دخول</button></div></header>
+<header><div class="top"><div class="brand"><div class="logo">د</div><div><h1>دليلك 🇸🇩</h1><div class="ver">V0.17.1</div></div></div><button id="authBtn" class="secondary">دخول</button></div></header>
 
 <div id="home" class="show">
-<section class="hero"><div class="hero-card"><h2>محتاج شنو اليوم؟</h2><p>دليلك لأي خدمة في السودان — خدمات، وظائف، مدارس خاصة، أطباء، عقارات، منتجات وتوصيل… كلها في مكان واحد.</p><div class="search-location"><span>📍 المدينة</span><select id="homeSearchCity" aria-label="اختر المدينة"><option value="">جاري تحميل المدن…</option></select></div><div class="search"><button id="homeSearchGo" class="search-go" aria-label="بحث">🔎</button><input id="homeSearchInput" placeholder="ابحث عن خدمة، منتج، وظيفة، مدرسة أو طبيب"></div></div></section>
+<section class="hero"><div class="hero-card"><h2>محتاج شنو اليوم؟</h2><p>دليلك لأي خدمة في السودان — خدمات، مطاعم وكافيهات، وظائف، مدارس خاصة، أطباء، عقارات، منتجات وتوصيل… كلها في مكان واحد.</p><div class="search-location"><span>📍 المدينة</span><select id="homeSearchCity" aria-label="اختر المدينة"><option value="">جاري تحميل المدن…</option></select></div><div class="search"><button id="homeSearchGo" class="search-go" aria-label="بحث">🔎</button><input id="homeSearchInput" placeholder="ابحث عن خدمة، مطعم، كافيه، منتج، وظيفة، مدرسة أو طبيب"></div></div></section>
 <section class="section"><div class="section-title"><h3>الأقسام الرئيسية</h3><span>بورتسودان • حالياً</span></div>
 <div class="grid">
 <div class="cat" id="offerBtn"><div class="ico">🛠️</div><b>أقدم خدمة</b><small>خدمتك والطلبات المناسبة لك</small></div>
@@ -286,12 +286,42 @@ h1{font-size:19px;margin:0}.ver{font-size:10px;color:var(--g);font-weight:bold}s
 <div class="cat" id="doctorBtn"><div class="ico">👨‍⚕️</div><b>الأطباء</b><small>حسب التخصص والتواصل مع الاستقبال</small></div>
 <div class="cat" id="hospitalBtn"><div class="ico">🏥</div><b>المستشفيات</b><small>الأقسام والغرف والاستقبال</small></div>
 <div class="cat" id="pharmacyBtn"><div class="ico">💊</div><b>الصيدليات</b><small>الموقع وساعات العمل والتواصل</small></div>
+<div class="cat" id="restaurantBtn"><div class="ico">🍽️</div><b>مطاعم وكافيهات</b><small>الأكلات والمنيو والتوصيل والتواصل</small></div>
 <div class="cat" id="deliveryBtn"><div class="ico">🛵</div><b>التوصيل</b><small>اطلب توصيل أو سجّل كسائق</small></div>
 <div class="cat" id="reviewsBtn"><div class="ico">⭐</div><b>التقييمات</b><small>قيّم الخدمة بعد اكتمالها وراجع تقييماتك</small></div>
 <div class="cat" id="paymentBtn"><div class="ico">💳</div><b>الاشتراك والدفع</b><small>الخطط الشهرية وطرق إرسال إشعار الدفع</small></div>
 </div></section>
-<section class="section"><div class="notice"><strong>✅ النسخة V0.16.7</strong><br>قائمة البحث تعرض مدن السودان مع بورتسودان كمدينة حالية، ودعم العقارات حتى 6 صور + فيديو واحد، مع استمرار نظام الاشتراك والدفع.</div></section>
+<section class="section"><div class="notice"><strong>✅ النسخة V0.17.1</strong><br>قسم مطاعم وكافيهات متكامل مع المنيو والتوصيل ومواعيد العمل ورقم الكاشير للطلبات، مع استمرار بقية خصائص التطبيق.</div></section>
 </div>
+
+<section id="restaurantPage" class="page">
+<div class="pagehead"><button class="back" data-home>→</button><h2>🍽️ مطاعم وكافيهات</h2></div>
+<div class="hint">اكتشف المطاعم والكافيهات في مدينتك، شاهد نوع الأكل والخدمات المتاحة وتواصل مباشرة.</div>
+<div class="doctor-tabs">
+<button id="browseRestaurantTab" class="doctor-tab active">عرض المطاعم</button>
+<button id="addRestaurantTab" class="doctor-tab">إضافة مطعم أو كافيه</button>
+</div>
+<div id="restaurantBrowseWrap">
+<div class="section-title"><h3>المطاعم والكافيهات</h3><button id="refreshRestaurants" class="secondary" style="padding:7px 10px">تحديث</button></div>
+<div id="restaurantList"><div class="empty">جاري تحميل المطاعم…</div></div>
+</div>
+<div id="restaurantAddWrap" style="display:none">
+<div class="hint">سجّل الدخول وأدخل بيانات المطعم. رقم الكاشير هو الرقم الذي سيظهر للزبائن لاستقبال الطلبات.</div>
+<div class="card">
+<div class="field"><label>اسم المطعم أو الكافيه *</label><input id="restName" placeholder="مثال: مطعم المذاق السوداني"></div>
+<div class="field"><label>المنطقة أو العنوان *</label><input id="restLocation" placeholder="مثال: السوق الكبير، بورتسودان"></div>
+<div class="field"><label>نوع الأكل</label><input id="restCuisine" placeholder="مثال: أكلات سودانية، مشويات، حلويات"></div>
+<div class="field"><label>المنيو أو أشهر الأصناف</label><textarea id="restMenu" placeholder="اكتب الأصناف والأسعار المتاحة"></textarea></div>
+<div class="field"><label>اسم الكاشير *</label><input id="restCashier" placeholder="اسم مسؤول استقبال الطلبات"></div>
+<div class="field"><label>رقم الكاشير للطلبات *</label><input id="restPhone" type="tel" inputmode="tel" placeholder="09xxxxxxxx"></div>
+<div class="field"><label>واتساب الطلبات</label><input id="restWhats" type="tel" inputmode="tel" placeholder="اتركه فارغاً لاستخدام رقم الكاشير"></div>
+<div class="field"><label>مواعيد العمل</label><input id="restHours" placeholder="مثال: يومياً من 8 صباحاً إلى 11 مساءً"></div>
+<label class="toggle-line"><input id="restDelivery" type="checkbox"> 🛵 يوجد توصيل</label>
+<button id="sendRestaurant" class="primary" style="width:100%;margin-top:10px">تسجيل المطعم</button>
+<div id="restaurantMsg" class="msg"></div>
+</div>
+</div>
+</section>
 
 <section id="needPage" class="page">
 <div class="pagehead"><button class="back" data-home>→</button><h2>🙋 أحتاج خدمة</h2></div>
@@ -750,6 +780,7 @@ h1{font-size:19px;margin:0}.ver{font-size:10px;color:var(--g);font-weight:bold}s
   <div class="subscription-card"><b>🛒 أبيع منتج</b><span class="subscription-price">20,000 ج.س / شهر</span></div>
   <div class="subscription-card"><b>🏠 السكن والعقارات</b><span class="subscription-price">20,000 ج.س / شهر</span></div>
   <div class="subscription-card"><b>🏫 المدارس الخاصة</b><span class="subscription-price">20,000 ج.س / شهر</span></div>
+  <div class="subscription-card"><b>🍽️ مطاعم وكافيهات</b><span class="subscription-price">20,000 ج.س / شهر</span></div>
   <div class="subscription-card"><b>🛵 التوصيل</b><span class="subscription-price">10,000 ج.س / شهر</span></div>
 </div>
 <div class="card">
@@ -757,7 +788,7 @@ h1{font-size:19px;margin:0}.ver{font-size:10px;color:var(--g);font-weight:bold}s
   <div class="payment-methods"><div class="payment-method">🏦 بنكك<br><small>2892867</small><br><small>مريم الصادق ريهاب</small></div><div class="payment-method">💰 فوري<br><small>51555823</small><br><small>مريم الصادق ريهاب</small></div></div>
   <div class="notice"><b>بيانات الدفع:</b><br>بنكك: 2892867 — باسم مريم الصادق ريهاب<br>فوري: 51555823 — باسم مريم الصادق ريهاب</div>
   <div id="paymentContextNote" class="hint" style="display:none"></div>
-  <div class="field"><label>الفئة</label><select id="payCategory"><option>مقدم خدمة</option><option>طبيب</option><option>صيدلية</option><option>مستشفى</option><option>أبيع منتج</option><option>السكن والعقارات</option><option>المدارس الخاصة</option><option>توصيل</option></select></div>
+  <div class="field"><label>الفئة</label><select id="payCategory"><option>مقدم خدمة</option><option>طبيب</option><option>صيدلية</option><option>مستشفى</option><option>أبيع منتج</option><option>السكن والعقارات</option><option>المدارس الخاصة</option><option>مطاعم وكافيهات</option><option>توصيل</option></select></div>
   <div class="field"><label>طريقة الدفع</label><select id="payMethod"><option>بنكك</option><option>فوري</option></select></div>
   <div class="hint">بعد التحويل اضغط الزر أدناه لفتح واتساب الإدارة على الرقم <b>0913032542</b>، ثم أرفق صورة إشعار بنكك أو فوري وأرسلها.</div>
   <button id="sendPaymentNotice" class="primary" style="width:100%">💬 إرسال إشعار الدفع إلى واتساب 0913032542</button>
@@ -882,7 +913,7 @@ h1{font-size:19px;margin:0}.ver{font-size:10px;color:var(--g);font-weight:bold}s
 const sb=supabase.createClient("https://xcdobqsqfdupovtwamer.supabase.co","sb_publishable_cbFKfqs1Aibfup2Iuh_ltg_nA5NlQNS");
 let mode='login',cityId=null,catsLoaded=false,currentProvider=null,searchCities=[],selectedSearchCity='';const $=x=>document.getElementById(x);
 function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]))}
-function page(p){$('home').classList.toggle('show',p==='home');$('needPage').classList.toggle('show',p==='need');$('offerPage').classList.toggle('show',p==='offer');$('propertyPage').classList.toggle('show',p==='property');$('productPage').classList.toggle('show',p==='product');$('jobPage').classList.toggle('show',p==='job');$('schoolPage').classList.toggle('show',p==='school');$('doctorPage').classList.toggle('show',p==='doctor');$('hospitalPage').classList.toggle('show',p==='hospital');$('pharmacyPage').classList.toggle('show',p==='pharmacy');$('deliveryPage').classList.toggle('show',p==='delivery');$('searchPage').classList.toggle('show',p==='search');$('favoritesPage').classList.toggle('show',p==='favorites');$('reviewsPage').classList.toggle('show',p==='reviews');$('paymentPage').classList.toggle('show',p==='payment');$('accountPage').classList.toggle('show',p==='account');$('adminPage').classList.toggle('show',p==='admin');window.scrollTo(0,0)}
+function page(p){$('home').classList.toggle('show',p==='home');$('needPage').classList.toggle('show',p==='need');$('offerPage').classList.toggle('show',p==='offer');$('propertyPage').classList.toggle('show',p==='property');$('productPage').classList.toggle('show',p==='product');$('jobPage').classList.toggle('show',p==='job');$('schoolPage').classList.toggle('show',p==='school');$('doctorPage').classList.toggle('show',p==='doctor');$('hospitalPage').classList.toggle('show',p==='hospital');$('pharmacyPage').classList.toggle('show',p==='pharmacy');$('restaurantPage').classList.toggle('show',p==='restaurant');$('deliveryPage').classList.toggle('show',p==='delivery');$('searchPage').classList.toggle('show',p==='search');$('favoritesPage').classList.toggle('show',p==='favorites');$('reviewsPage').classList.toggle('show',p==='reviews');$('paymentPage').classList.toggle('show',p==='payment');$('accountPage').classList.toggle('show',p==='account');$('adminPage').classList.toggle('show',p==='admin');window.scrollTo(0,0)}
 const SUDAN_SEARCH_CITIES=[
  'بورتسودان','الخرطوم','أم درمان','بحري','ود مدني','الحصاحيصا','المناقل','رفاعة','الكاملين',
  'سنار','سنجة','الدمازين','الروصيرص','كوستي','ربك','القطينة','الأبيض','بارا','أم روابة','الرهد',
@@ -932,8 +963,46 @@ function rowMatchesSelectedCity(cityIdValue,addressText){
  return !!(sel.name&&String(addressText||'').includes(sel.name));
 }
 function setSearchCity(value){selectedSearchCity=value||'all';syncSearchCitySelectors()}
-$('needBtn').onclick=()=>{page('need');loadData();loadMyRequests()};$('offerBtn').onclick=()=>{page('offer');loadOfferArea()};$('propertyBtn').onclick=()=>{page('property');showPropertyTab('browse');loadPropertyData();loadProperties()};$('productBtn').onclick=()=>{page('product');showProductTab('browse');loadProductData();loadProducts()};$('jobBtn').onclick=()=>{page('job');showJobTab('browse');loadJobs()};$('schoolBtn').onclick=()=>{page('school');showSchoolTab('browse');loadSchools()};$('doctorBtn').onclick=()=>{page('doctor');showDoctorTab('browse');loadDoctorData();loadDoctors()};$('hospitalBtn').onclick=()=>{page('hospital');showHospitalTab('browse');loadHospitalData();loadHospitals()};$('pharmacyBtn').onclick=()=>{page('pharmacy');showPharmacyTab('browse');loadPharmacies()};$('deliveryBtn').onclick=()=>{page('delivery');showDeliveryTab('customer');loadDeliveryVehicleTypes();loadMyDeliveryRequests()};$('reviewsBtn').onclick=()=>{page('reviews');loadReviewsPage()};$('paymentBtn').onclick=()=>page('payment');$('addNav').onclick=()=>{page('need');loadData();loadMyRequests()};$('homeNav').onclick=()=>page('home');$('searchNav').onclick=()=>openGlobalSearch($('homeSearchInput').value);$('favNav').onclick=()=>{page('favorites');loadFavoritesPage()};
+$('needBtn').onclick=()=>{page('need');loadData();loadMyRequests()};$('offerBtn').onclick=()=>{page('offer');loadOfferArea()};$('propertyBtn').onclick=()=>{page('property');showPropertyTab('browse');loadPropertyData();loadProperties()};$('productBtn').onclick=()=>{page('product');showProductTab('browse');loadProductData();loadProducts()};$('jobBtn').onclick=()=>{page('job');showJobTab('browse');loadJobs()};$('schoolBtn').onclick=()=>{page('school');showSchoolTab('browse');loadSchools()};$('doctorBtn').onclick=()=>{page('doctor');showDoctorTab('browse');loadDoctorData();loadDoctors()};$('hospitalBtn').onclick=()=>{page('hospital');showHospitalTab('browse');loadHospitalData();loadHospitals()};$('pharmacyBtn').onclick=()=>{page('pharmacy');showPharmacyTab('browse');loadPharmacies()};$('restaurantBtn').onclick=()=>{page('restaurant');showRestaurantTab('browse');loadRestaurants()};$('deliveryBtn').onclick=()=>{page('delivery');showDeliveryTab('customer');loadDeliveryVehicleTypes();loadMyDeliveryRequests()};$('reviewsBtn').onclick=()=>{page('reviews');loadReviewsPage()};$('paymentBtn').onclick=()=>page('payment');$('addNav').onclick=()=>{page('need');loadData();loadMyRequests()};$('homeNav').onclick=()=>page('home');$('searchNav').onclick=()=>openGlobalSearch($('homeSearchInput').value);$('favNav').onclick=()=>{page('favorites');loadFavoritesPage()};
 document.querySelectorAll('[data-home]').forEach(b=>b.onclick=()=>page('home'));document.querySelectorAll('[data-soon]').forEach(x=>x.onclick=()=>alert(x.dataset.soon+' قيد التجهيز'));
+
+function showRestaurantTab(tab){
+ const browse=tab==='browse';
+ $('restaurantBrowseWrap').style.display=browse?'block':'none';
+ $('restaurantAddWrap').style.display=browse?'none':'block';
+ $('browseRestaurantTab').classList.toggle('active',browse);
+ $('addRestaurantTab').classList.toggle('active',!browse);
+}
+$('browseRestaurantTab').onclick=()=>{showRestaurantTab('browse');loadRestaurants()};
+$('addRestaurantTab').onclick=()=>showRestaurantTab('add');
+$('refreshRestaurants').onclick=loadRestaurants;
+
+async function loadRestaurants(){
+ const box=$('restaurantList');box.innerHTML='<div class="empty">جاري تحميل المطاعم…</div>';
+ const r=await sb.from('restaurant_profiles').select('provider_id,cashier_name,cashier_phone,cashier_whatsapp,cuisine_type,menu_text,delivery_available,opening_hours,provider_profiles(display_name,address_text,verification_status,account_status,is_published)').order('created_at',{ascending:false}).limit(100);
+ if(r.error){box.innerHTML='<div class="notice">تعذر تحميل المطاعم الآن: '+esc(r.error.message)+'</div>';return}
+ const rows=(r.data||[]).filter(x=>x.provider_profiles);
+ if(!rows.length){box.innerHTML='<div class="empty">لا توجد مطاعم مسجلة حالياً. يمكنك إضافة أول مطعم أو كافيه.</div>';return}
+ box.innerHTML=rows.map(x=>{
+  const p=x.provider_profiles||{},phone=telDigits(x.cashier_phone),wa=waDigits(x.cashier_whatsapp||x.cashier_phone);
+  return `<div class="provider-card"><div class="offer-head"><h4>🍽️ ${esc(p.display_name||'مطعم أو كافيه')}</h4>${p.verification_status==='verified'?'<span class="verified">✅ موثّق</span>':''}</div><div class="meta"><span class="chip">📍 ${esc(p.address_text||'بورتسودان')}</span>${x.cuisine_type?`<span class="chip">🍴 ${esc(x.cuisine_type)}</span>`:''}${x.delivery_available?'<span class="chip">🛵 يوجد توصيل</span>':''}</div>${x.menu_text?`<div class="job-detail"><b>المنيو:</b><br>${esc(x.menu_text)}</div>`:''}${x.opening_hours?`<p><b>🕒 مواعيد العمل:</b> ${esc(x.opening_hours)}</p>`:''}<p><b>الكاشير:</b> ${esc(x.cashier_name)}</p><div class="contact-row">${phone?`<a class="contact-btn call-btn" href="tel:${phone}">📞 اتصال بالكاشير</a>`:'<span></span>'}${wa?`<a class="contact-btn wa-btn" href="https://wa.me/${wa}?text=${encodeURIComponent('السلام عليكم، أريد طلباً من '+(p.display_name||'المطعم'))}" target="_blank">💬 اطلب عبر واتساب</a>`:'<span></span>'}</div></div>`;
+ }).join('');
+}
+
+$('sendRestaurant').onclick=async()=>{
+ const {data:{user}}=await sb.auth.getUser();if(!user){$('restaurantMsg').className='msg err';$('restaurantMsg').textContent='سجّل الدخول أولاً';openAuth();return}
+ const name=$('restName').value.trim(),location=$('restLocation').value.trim(),cashier=$('restCashier').value.trim(),phone=$('restPhone').value.trim(),whatsapp=$('restWhats').value.trim()||phone;
+ if(!name||!location||!cashier||!phone){$('restaurantMsg').className='msg err';$('restaurantMsg').textContent='أكمل اسم المطعم والمنطقة واسم الكاشير ورقم الطلبات';return}
+ if(!cityId)await loadData();$('sendRestaurant').disabled=true;$('sendRestaurant').textContent='جاري التسجيل…';let providerId=null;
+ try{
+  const cat=await sb.from('categories').select('id').eq('section','professional_service').eq('name_ar','مطاعم وكافيهات').eq('is_active',true).limit(1).maybeSingle();if(cat.error||!cat.data)throw new Error('فئة مطاعم وكافيهات غير موجودة في قاعدة البيانات');
+  const pr=await sb.from('provider_profiles').insert({owner_user_id:user.id,provider_type:'professional',display_name:name,description:$('restMenu').value.trim()||null,phone,whatsapp,city_id:cityId,address_text:location,price_mode:'agreement'}).select('id').single();if(pr.error)throw pr.error;providerId=pr.data.id;
+  const link=await sb.from('provider_categories').insert({provider_id:providerId,category_id:cat.data.id});if(link.error)throw link.error;
+  const rp=await sb.from('restaurant_profiles').insert({provider_id:providerId,cashier_name:cashier,cashier_phone:phone,cashier_whatsapp:whatsapp,cuisine_type:$('restCuisine').value.trim()||null,menu_text:$('restMenu').value.trim()||null,delivery_available:$('restDelivery').checked,opening_hours:$('restHours').value.trim()||null});if(rp.error)throw rp.error;
+  $('restaurantMsg').className='msg ok';$('restaurantMsg').textContent='✅ تم تسجيل المطعم وبيانات الكاشير بنجاح';['restName','restLocation','restCuisine','restMenu','restCashier','restPhone','restWhats','restHours'].forEach(id=>$(id).value='');$('restDelivery').checked=false;showRestaurantTab('browse');await loadRestaurants();
+ }catch(e){if(providerId){try{await sb.from('provider_profiles').delete().eq('id',providerId)}catch(_){}}$('restaurantMsg').className='msg err';$('restaurantMsg').textContent='تعذر تسجيل المطعم: '+(e.message||'خطأ غير معروف')}
+ finally{$('sendRestaurant').disabled=false;$('sendRestaurant').textContent='تسجيل المطعم'}
+};
 
 
 
