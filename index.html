@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#16894b">
-<title>دليلك V0.16.7</title>
+<title>دليلك V0.17.3</title>
 <style>
 :root{--g:#16894b;--g2:#0f6e3b;--bg:#f6faf7;--text:#152019;--muted:#6b766e;--line:#e4eee7;--bad:#b42318;--blue:#235a9f}
 *{box-sizing:border-box}body{margin:0;font-family:Tahoma,Arial,sans-serif;background:var(--bg);color:var(--text);padding-bottom:76px}
@@ -74,6 +74,8 @@ h1{font-size:19px;margin:0}.ver{font-size:10px;color:var(--g);font-weight:bold}s
 .review-done b{color:var(--g2)}
 .empty{text-align:center;padding:22px;color:var(--muted);font-size:13px}
 .bottom{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:min(720px,100%);background:#fff;border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(5,1fr);padding:7px 4px;z-index:10}.nav{border:0;background:transparent;color:#68736b;font-size:11px}.nav i{display:block;font-style:normal;font-size:21px}.nav.active{color:var(--g);font-weight:bold}
+.floating-contact{position:fixed;left:max(14px,calc((100vw - 720px)/2 + 14px));right:auto;bottom:88px;width:54px;height:54px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#16a34a;color:#fff;text-decoration:none;font-size:28px;line-height:1;border:3px solid #fff;box-shadow:0 8px 24px #0b512b55;z-index:16;direction:ltr}
+.floating-contact:active{transform:scale(.95)}
 .modal{position:fixed;inset:0;background:#0007;display:none;align-items:flex-end;z-index:20}.modal.show{display:flex}.sheet{background:#fff;width:100%;max-width:720px;margin:auto;border-radius:24px 24px 0 0;padding:20px}
 .tabs{display:grid;grid-template-columns:1fr 1fr;background:#edf4ef;border-radius:13px;padding:4px}.tab{border:0;padding:9px;background:transparent}.tab.active{background:#fff;color:var(--g);border-radius:10px;font-weight:bold}
 
@@ -271,7 +273,7 @@ h1{font-size:19px;margin:0}.ver{font-size:10px;color:var(--g);font-weight:bold}s
 </head>
 <body>
 <div class="app">
-<header><div class="top"><div class="brand"><div class="logo">د</div><div><h1>دليلك 🇸🇩</h1><div class="ver">V0.17.1</div></div></div><button id="authBtn" class="secondary">دخول</button></div></header>
+<header><div class="top"><div class="brand"><div class="logo">د</div><div><h1>دليلك 🇸🇩</h1><div class="ver">V0.17.3</div></div></div><button id="authBtn" class="secondary">دخول</button></div></header>
 
 <div id="home" class="show">
 <section class="hero"><div class="hero-card"><h2>محتاج شنو اليوم؟</h2><p>دليلك لأي خدمة في السودان — خدمات، مطاعم وكافيهات، وظائف، مدارس خاصة، أطباء، عقارات، منتجات وتوصيل… كلها في مكان واحد.</p><div class="search-location"><span>📍 المدينة</span><select id="homeSearchCity" aria-label="اختر المدينة"><option value="">جاري تحميل المدن…</option></select></div><div class="search"><button id="homeSearchGo" class="search-go" aria-label="بحث">🔎</button><input id="homeSearchInput" placeholder="ابحث عن خدمة، مطعم، كافيه، منتج، وظيفة، مدرسة أو طبيب"></div></div></section>
@@ -291,7 +293,7 @@ h1{font-size:19px;margin:0}.ver{font-size:10px;color:var(--g);font-weight:bold}s
 <div class="cat" id="reviewsBtn"><div class="ico">⭐</div><b>التقييمات</b><small>قيّم الخدمة بعد اكتمالها وراجع تقييماتك</small></div>
 <div class="cat" id="paymentBtn"><div class="ico">💳</div><b>الاشتراك والدفع</b><small>الخطط الشهرية وطرق إرسال إشعار الدفع</small></div>
 </div></section>
-<section class="section"><div class="notice"><strong>✅ النسخة V0.17.1</strong><br>قسم مطاعم وكافيهات متكامل مع المنيو والتوصيل ومواعيد العمل ورقم الكاشير للطلبات، مع استمرار بقية خصائص التطبيق.</div></section>
+<section class="section"><div class="notice"><strong>✅ النسخة V0.17.3</strong><br>تم تحسين التواصل والبحث، وإضافة 3 صور وفيديو للمطاعم والكافيهات، وإلزام الصور والفيديو للعقارات.</div></section>
 </div>
 
 <section id="restaurantPage" class="page">
@@ -315,6 +317,7 @@ h1{font-size:19px;margin:0}.ver{font-size:10px;color:var(--g);font-weight:bold}s
 <div class="field"><label>اسم الكاشير *</label><input id="restCashier" placeholder="اسم مسؤول استقبال الطلبات"></div>
 <div class="field"><label>رقم الكاشير للطلبات *</label><input id="restPhone" type="tel" inputmode="tel" placeholder="09xxxxxxxx"></div>
 <div class="field"><label>واتساب الطلبات</label><input id="restWhats" type="tel" inputmode="tel" placeholder="اتركه فارغاً لاستخدام رقم الكاشير"></div>
+<div class="field"><label>صور وفيديو المطعم</label><input id="restMedia" type="file" accept="image/*,video/*" multiple><div class="media-picker-note">يمكن رفع حتى 3 صور + فيديو واحد. الحد: 8MB للصورة و40MB للفيديو.</div><div id="restMediaPreview" class="media-selection"></div></div>
 <div class="field"><label>مواعيد العمل</label><input id="restHours" placeholder="مثال: يومياً من 8 صباحاً إلى 11 مساءً"></div>
 <label class="toggle-line"><input id="restDelivery" type="checkbox"> 🛵 يوجد توصيل</label>
 <button id="sendRestaurant" class="primary" style="width:100%;margin-top:10px">تسجيل المطعم</button>
@@ -374,7 +377,7 @@ h1{font-size:19px;margin:0}.ver{font-size:10px;color:var(--g);font-weight:bold}s
 <div class="field"><label>رقم الهاتف *</label><input id="propPhone" inputmode="tel" placeholder="0912345678"></div>
 <div class="field"><label>واتساب</label><input id="propWhats" inputmode="tel" placeholder="إذا كان مختلفًا"></div>
 </div>
-<div class="field"><label>صور وفيديو العقار (اختياري)</label><input id="propMedia" type="file" accept="image/*,video/*" multiple><div class="media-picker-note">يمكن رفع حتى 6 صور + فيديو واحد. الحد: 8MB للصورة و40MB للفيديو.</div><div id="propMediaPreview" class="media-selection"></div></div>
+<div class="field"><label>صور وفيديو العقار *</label><input id="propMedia" type="file" accept="image/*,video/*" multiple required><div class="media-picker-note">مطلوب صورة واحدة على الأقل + فيديو واحد. يمكن رفع حتى 6 صور، والحد 8MB للصورة و40MB للفيديو.</div><div id="propMediaPreview" class="media-selection"></div></div>
 <button id="sendProperty" class="primary" style="width:100%">نشر العقار</button>
 <div id="propMsg" class="msg"></div>
 </div>
@@ -878,6 +881,8 @@ h1{font-size:19px;margin:0}.ver{font-size:10px;color:var(--g);font-weight:bold}s
 <button id="accountNav" class="nav"><i>👤</i>حسابي</button>
 </nav>
 
+<a class="floating-contact" href="https://wa.me/249913032542?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D8%A8%D8%B1%20%D8%AA%D8%B7%D8%A8%D9%8A%D9%82%20%D8%AF%D9%84%D9%8A%D9%84%D9%83" target="_blank" rel="noopener" aria-label="التواصل مع الإدارة عبر واتساب" title="واتساب الإدارة">☎</a>
+
 <div id="providerProfileModal" class="modal"><div class="sheet" style="max-height:86vh;overflow-y:auto">
 <div class="section-title" style="margin-top:0"><h3>⭐ ملف مقدم الخدمة</h3><button id="closeProviderProfile" class="secondary" style="padding:7px 10px">إغلاق</button></div>
 <div id="providerProfileBody"><div class="empty">جاري تحميل الملف والتقييمات…</div></div>
@@ -979,27 +984,44 @@ $('refreshRestaurants').onclick=loadRestaurants;
 
 async function loadRestaurants(){
  const box=$('restaurantList');box.innerHTML='<div class="empty">جاري تحميل المطاعم…</div>';
- const r=await sb.from('restaurant_profiles').select('provider_id,cashier_name,cashier_phone,cashier_whatsapp,cuisine_type,menu_text,delivery_available,opening_hours,provider_profiles(display_name,address_text,verification_status,account_status,is_published)').order('created_at',{ascending:false}).limit(100);
+ const r=await sb.from('restaurant_profiles').select('provider_id,cashier_name,cashier_phone,cashier_whatsapp,cuisine_type,menu_text,delivery_available,opening_hours,provider_profiles(display_name,address_text,verification_status,account_status,is_published,provider_media(storage_path,mime_type,media_type,is_primary,sort_order))').order('created_at',{ascending:false}).limit(100);
  if(r.error){box.innerHTML='<div class="notice">تعذر تحميل المطاعم الآن: '+esc(r.error.message)+'</div>';return}
  const rows=(r.data||[]).filter(x=>x.provider_profiles);
  if(!rows.length){box.innerHTML='<div class="empty">لا توجد مطاعم مسجلة حالياً. يمكنك إضافة أول مطعم أو كافيه.</div>';return}
  box.innerHTML=rows.map(x=>{
   const p=x.provider_profiles||{},phone=telDigits(x.cashier_phone),wa=waDigits(x.cashier_whatsapp||x.cashier_phone);
-  return `<div class="provider-card"><div class="offer-head"><h4>🍽️ ${esc(p.display_name||'مطعم أو كافيه')}</h4>${p.verification_status==='verified'?'<span class="verified">✅ موثّق</span>':''}</div><div class="meta"><span class="chip">📍 ${esc(p.address_text||'بورتسودان')}</span>${x.cuisine_type?`<span class="chip">🍴 ${esc(x.cuisine_type)}</span>`:''}${x.delivery_available?'<span class="chip">🛵 يوجد توصيل</span>':''}</div>${x.menu_text?`<div class="job-detail"><b>المنيو:</b><br>${esc(x.menu_text)}</div>`:''}${x.opening_hours?`<p><b>🕒 مواعيد العمل:</b> ${esc(x.opening_hours)}</p>`:''}<p><b>الكاشير:</b> ${esc(x.cashier_name)}</p><div class="contact-row">${phone?`<a class="contact-btn call-btn" href="tel:${phone}">📞 اتصال بالكاشير</a>`:'<span></span>'}${wa?`<a class="contact-btn wa-btn" href="https://wa.me/${wa}?text=${encodeURIComponent('السلام عليكم، أريد طلباً من '+(p.display_name||'المطعم'))}" target="_blank">💬 اطلب عبر واتساب</a>`:'<span></span>'}</div></div>`;
+  const gallery=renderMediaGallery((p.provider_media||[]).filter(m=>m.media_type==='work'),'provider-media',p.display_name||'المطعم');
+  return `<div class="provider-card"><div class="offer-head"><h4>🍽️ ${esc(p.display_name||'مطعم أو كافيه')}</h4>${p.verification_status==='verified'?'<span class="verified">✅ موثّق</span>':''}</div>${gallery}<div class="meta"><span class="chip">📍 ${esc(p.address_text||'بورتسودان')}</span>${x.cuisine_type?`<span class="chip">🍴 ${esc(x.cuisine_type)}</span>`:''}${x.delivery_available?'<span class="chip">🛵 يوجد توصيل</span>':''}</div>${x.menu_text?`<div class="job-detail"><b>المنيو:</b><br>${esc(x.menu_text)}</div>`:''}${x.opening_hours?`<p><b>🕒 مواعيد العمل:</b> ${esc(x.opening_hours)}</p>`:''}<p><b>الكاشير:</b> ${esc(x.cashier_name)}</p><div class="contact-row">${phone?`<a class="contact-btn call-btn" href="tel:${phone}">📞 اتصال بالكاشير</a>`:'<span></span>'}${wa?`<a class="contact-btn wa-btn" href="https://wa.me/${wa}?text=${encodeURIComponent('السلام عليكم، أريد طلباً من '+(p.display_name||'المطعم'))}" target="_blank">💬 اطلب عبر واتساب</a>`:'<span></span>'}</div></div>`;
  }).join('');
+ bindMediaOpeners(box);
 }
+
+function restaurantMediaFiles(){return [...($('restMedia').files||[])]}
+function validateRestaurantMedia(files){
+ const images=files.filter(f=>String(f.type).startsWith('image/')),videos=files.filter(f=>String(f.type).startsWith('video/'));
+ if(images.length>3)return 'الحد الأقصى للمطعم 3 صور.';
+ if(videos.length>1)return 'يمكن رفع فيديو واحد فقط للمطعم.';
+ if(files.length>4)return 'الحد الأقصى 3 صور + فيديو واحد.';
+ return validateMediaFiles(files);
+}
+$('restMedia').onchange=()=>{
+ const files=restaurantMediaFiles(),box=$('restMediaPreview'),err=validateRestaurantMedia(files);
+ box.innerHTML=err?`<span>⚠️ ${esc(err)}</span>`:files.map(f=>`<span>${String(f.type).startsWith('video/')?'🎬':'🖼️'} ${esc(f.name)}</span>`).join('');
+};
 
 $('sendRestaurant').onclick=async()=>{
  const {data:{user}}=await sb.auth.getUser();if(!user){$('restaurantMsg').className='msg err';$('restaurantMsg').textContent='سجّل الدخول أولاً';openAuth();return}
  const name=$('restName').value.trim(),location=$('restLocation').value.trim(),cashier=$('restCashier').value.trim(),phone=$('restPhone').value.trim(),whatsapp=$('restWhats').value.trim()||phone;
  if(!name||!location||!cashier||!phone){$('restaurantMsg').className='msg err';$('restaurantMsg').textContent='أكمل اسم المطعم والمنطقة واسم الكاشير ورقم الطلبات';return}
+ const files=restaurantMediaFiles(),mediaErr=validateRestaurantMedia(files);if(mediaErr){$('restaurantMsg').className='msg err';$('restaurantMsg').textContent=mediaErr;return}
  if(!cityId)await loadData();$('sendRestaurant').disabled=true;$('sendRestaurant').textContent='جاري التسجيل…';let providerId=null;
  try{
   const cat=await sb.from('categories').select('id').eq('section','professional_service').eq('name_ar','مطاعم وكافيهات').eq('is_active',true).limit(1).maybeSingle();if(cat.error||!cat.data)throw new Error('فئة مطاعم وكافيهات غير موجودة في قاعدة البيانات');
   const pr=await sb.from('provider_profiles').insert({owner_user_id:user.id,provider_type:'professional',display_name:name,description:$('restMenu').value.trim()||null,phone,whatsapp,city_id:cityId,address_text:location,price_mode:'agreement'}).select('id').single();if(pr.error)throw pr.error;providerId=pr.data.id;
   const link=await sb.from('provider_categories').insert({provider_id:providerId,category_id:cat.data.id});if(link.error)throw link.error;
   const rp=await sb.from('restaurant_profiles').insert({provider_id:providerId,cashier_name:cashier,cashier_phone:phone,cashier_whatsapp:whatsapp,cuisine_type:$('restCuisine').value.trim()||null,menu_text:$('restMenu').value.trim()||null,delivery_available:$('restDelivery').checked,opening_hours:$('restHours').value.trim()||null});if(rp.error)throw rp.error;
-  $('restaurantMsg').className='msg ok';$('restaurantMsg').textContent='✅ تم تسجيل المطعم وبيانات الكاشير بنجاح';['restName','restLocation','restCuisine','restMenu','restCashier','restPhone','restWhats','restHours'].forEach(id=>$(id).value='');$('restDelivery').checked=false;showRestaurantTab('browse');await loadRestaurants();
+  if(files.length)await uploadMediaRows({user,entityId:providerId,files,bucket:'provider-media',table:'provider_media',fk:'provider_id',providerMedia:true});
+  $('restaurantMsg').className='msg ok';$('restaurantMsg').textContent='✅ تم تسجيل المطعم ورفع الصور والفيديو بنجاح';['restName','restLocation','restCuisine','restMenu','restCashier','restPhone','restWhats','restHours'].forEach(id=>$(id).value='');$('restMedia').value='';$('restMediaPreview').innerHTML='';$('restDelivery').checked=false;showRestaurantTab('browse');await loadRestaurants();
  }catch(e){if(providerId){try{await sb.from('provider_profiles').delete().eq('id',providerId)}catch(_){}}$('restaurantMsg').className='msg err';$('restaurantMsg').textContent='تعذر تسجيل المطعم: '+(e.message||'خطأ غير معروف')}
  finally{$('sendRestaurant').disabled=false;$('sendRestaurant').textContent='تسجيل المطعم'}
 };
@@ -1252,11 +1274,12 @@ async function runGlobalSearch(){
  let propsQ=sb.from('properties').select('id,title,transaction_type,address_text,city_id,price,description,contact_name,contact_phone,whatsapp,categories(name_ar)').eq('status','published').order('created_at',{ascending:false}).limit(100);
  let prodsQ=sb.from('products').select('id,title,item_condition,city_id,price,description,contact_phone,whatsapp,categories(name_ar)').eq('status','published').order('created_at',{ascending:false}).limit(100);
  if(selectedCity){svcQ=svcQ.eq('city_id',selectedCity);propsQ=propsQ.eq('city_id',selectedCity);prodsQ=prodsQ.eq('city_id',selectedCity)}
- const [svc,docs,hosps,pharms,props,prods,jobs,schools]=await Promise.all([
+ const [svc,docs,hosps,pharms,rests,props,prods,jobs,schools]=await Promise.all([
    svcQ,
    sb.from('doctor_profiles').select('provider_id,clinic_or_hospital_name,receptionist_name,receptionist_phone,receptionist_whatsapp,consultation_price,provider_profiles(display_name,address_text,city_id,verification_status,account_status,is_published),categories!doctor_profiles_specialty_category_id_fkey(name_ar)').limit(100),
    sb.from('hospital_profiles').select('provider_id,reception_name,reception_phone,reception_whatsapp,room_availability_status,provider_profiles(display_name,address_text,city_id,verification_status,account_status,is_published)').limit(100),
    sb.from('pharmacy_profiles').select('provider_id,manager_name,manager_phone,manager_whatsapp,delivery_available,provider_profiles(display_name,address_text,city_id,verification_status,account_status,is_published)').limit(100),
+   sb.from('restaurant_profiles').select('provider_id,cashier_name,cashier_phone,cashier_whatsapp,cuisine_type,menu_text,delivery_available,opening_hours,provider_profiles(display_name,address_text,city_id,verification_status,account_status,is_published)').limit(100),
    propsQ,
    prodsQ,
    sb.from('job_posts').select('id,title,company_name,location_text,work_type,requirements,salary_text,description,contact_phone,whatsapp').eq('status','published').order('created_at',{ascending:false}).limit(100),
@@ -1308,6 +1331,15 @@ async function runGlobalSearch(){
    }
  });
 
+ (rests.data||[]).filter(x=>x.provider_profiles&&x.provider_profiles?.account_status==='active'&&x.provider_profiles?.is_published!==false&&rowMatchesSelectedCity(x.provider_profiles?.city_id,x.provider_profiles?.address_text)).forEach(x=>{
+   const p=x.provider_profiles||{};
+   if(searchMatch(q,p.display_name,p.address_text,x.cuisine_type,x.menu_text,x.cashier_name,'مطعم','مطاعم','كافيه','كافيهات','قهوة','أكل')){
+     items.push({type:'restaurant',targetType:'provider',targetId:x.provider_id,kind:'مطعم أو كافيه',icon:'🍽️',title:p.display_name||'مطعم أو كافيه',
+       meta:`${x.cuisine_type?esc(x.cuisine_type)+' • ':''}📍 ${esc(p.address_text||'بورتسودان')}${x.delivery_available?' • 🛵 يوجد توصيل':''}`,
+       desc:x.menu_text||'',phone:x.cashier_phone,wa:x.cashier_whatsapp||x.cashier_phone});
+   }
+ });
+
  (props.data||[]).filter(p=>rowMatchesSelectedCity(p.city_id,p.address_text)).forEach(p=>{
    const cat=p.categories?.name_ar||'',tx=p.transaction_type==='rent'?'إيجار':p.transaction_type==='sale'?'بيع':p.transaction_type||'';
    if(searchMatch(q,p.title,p.description,p.address_text,cat,tx,'عقار','عقارات','منزل','شقة')){
@@ -1344,8 +1376,8 @@ async function runGlobalSearch(){
    }
  });
 
- const errors=[svc,docs,hosps,pharms,props,prods,jobs,schools].filter(r=>r.error);
- if(errors.length===8){$('searchSummary').textContent='';box.innerHTML='<div class="notice">تعذر إجراء البحث الآن. حاول مرة أخرى.</div>';return}
+ const errors=[svc,docs,hosps,pharms,rests,props,prods,jobs,schools].filter(r=>r.error);
+ if(errors.length===9){$('searchSummary').textContent='';box.innerHTML='<div class="notice">تعذر إجراء البحث الآن. حاول مرة أخرى.</div>';return}
  renderGlobalResults(items,q);
 }
 $('globalSearchGo').onclick=runGlobalSearch;
@@ -1429,6 +1461,7 @@ async function getOrCreateRealEstateProvider(user,name,phone,whatsapp,address){
 function propertyMediaFiles(){return [...($('propMedia').files||[])]}
 function validatePropertyMedia(files){
  const images=files.filter(f=>String(f.type).startsWith('image/')),videos=files.filter(f=>String(f.type).startsWith('video/'));
+ if(!images.length||!videos.length)return 'نشر العقار يتطلب صورة واحدة على الأقل وفيديو واحد.';
  if(images.length>6)return 'الحد الأقصى للعقار 6 صور.';
  if(videos.length>1)return 'يمكن رفع فيديو واحد فقط للعقار.';
  if(files.length>7)return 'الحد الأقصى 6 صور + فيديو واحد.';
