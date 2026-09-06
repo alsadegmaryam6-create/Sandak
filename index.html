@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#16894b">
-<title>دليلك V0.17.3</title>
+<title>دليلك V0.18.1</title>
 <style>
 :root{--g:#16894b;--g2:#0f6e3b;--bg:#f6faf7;--text:#152019;--muted:#6b766e;--line:#e4eee7;--bad:#b42318;--blue:#235a9f}
 *{box-sizing:border-box}body{margin:0;font-family:Tahoma,Arial,sans-serif;background:var(--bg);color:var(--text);padding-bottom:76px}
@@ -273,7 +273,7 @@ h1{font-size:19px;margin:0}.ver{font-size:10px;color:var(--g);font-weight:bold}s
 </head>
 <body>
 <div class="app">
-<header><div class="top"><div class="brand"><div class="logo">د</div><div><h1>دليلك 🇸🇩</h1><div class="ver">V0.17.3</div></div></div><button id="authBtn" class="secondary">دخول</button></div></header>
+<header><div class="top"><div class="brand"><div class="logo">د</div><div><h1>دليلك 🇸🇩</h1><div class="ver">V0.18.1</div></div></div><button id="authBtn" class="secondary">🛡️ الإدارة</button></div></header>
 
 <div id="home" class="show">
 <section class="hero"><div class="hero-card"><h2>محتاج شنو اليوم؟</h2><p>دليلك لأي خدمة في السودان — خدمات، مطاعم وكافيهات، وظائف، مدارس خاصة، أطباء، عقارات، منتجات وتوصيل… كلها في مكان واحد.</p><div class="search-location"><span>📍 المدينة</span><select id="homeSearchCity" aria-label="اختر المدينة"><option value="">جاري تحميل المدن…</option></select></div><div class="search"><button id="homeSearchGo" class="search-go" aria-label="بحث">🔎</button><input id="homeSearchInput" placeholder="ابحث عن خدمة، مطعم، كافيه، منتج، وظيفة، مدرسة أو طبيب"></div></div></section>
@@ -614,7 +614,7 @@ h1{font-size:19px;margin:0}.ver{font-size:10px;color:var(--g);font-weight:bold}s
 </div>
 
 <div id="pharmacyBrowseWrap">
-<div class="hint">تصفح الصيدليات وتواصل مباشرة عبر الاتصال أو واتساب. البحث عن مخزون الأدوية سنضيفه في مرحلة لاحقة.</div>
+<div class="hint">تصفح الصيدليات وتواصل مباشرة عبر الاتصال أو واتساب، ويمكنك إرسال صورة الروشتة للصيدلية للاستفسار عن توفر الدواء.</div>
 <div class="section-title"><h3>الصيدليات</h3><button id="refreshPharmacies" class="secondary" style="padding:7px 10px">تحديث</button></div>
 <div id="pharmacyList"><div class="empty">جاري تحميل الصيدليات…</div></div>
 </div>
@@ -878,7 +878,7 @@ h1{font-size:19px;margin:0}.ver{font-size:10px;color:var(--g);font-weight:bold}s
 <button id="searchNav" class="nav"><i>🔎</i>بحث</button>
 <button id="addNav" class="nav"><i>➕</i>إضافة</button>
 <button id="favNav" class="nav"><i>❤️</i>المفضلة</button>
-<button id="accountNav" class="nav"><i>👤</i>حسابي</button>
+<button id="accountNav" class="nav"><i>🛡️</i>الإدارة</button>
 </nav>
 
 <a class="floating-contact" href="https://wa.me/249913032542?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D8%A8%D8%B1%20%D8%AA%D8%B7%D8%A8%D9%8A%D9%82%20%D8%AF%D9%84%D9%8A%D9%84%D9%83" target="_blank" rel="noopener" aria-label="التواصل مع الإدارة عبر واتساب" title="واتساب الإدارة">☎</a>
@@ -893,12 +893,25 @@ h1{font-size:19px;margin:0}.ver{font-size:10px;color:var(--g);font-weight:bold}s
 <button id="closeMediaViewer" class="secondary media-viewer-close">إغلاق</button>
 </div></div>
 
+
+<div id="prescriptionModal" class="modal"><div class="sheet">
+<h3>📷 إرسال صورة الروشتة</h3>
+<div class="hint">اختر صورة الروشتة من هاتفك، ثم اضغط «مشاركة الصورة». على Android اختر واتساب وأرسلها للصيدلية المحددة.</div>
+<div id="prescriptionPharmacyName" class="notice"></div>
+<div class="field"><label>صورة الروشتة *</label><input id="prescriptionImage" type="file" accept="image/*"></div>
+<img id="prescriptionPreview" class="image-preview" alt="معاينة الروشتة">
+<button id="sharePrescription" class="primary" style="width:100%;margin-top:10px">📤 مشاركة الصورة مع الصيدلية</button>
+<a id="prescriptionWaFallback" class="pharmacy-contact pharmacy-wa" target="_blank" rel="noopener" style="width:100%;margin-top:8px;display:flex">💬 فتح واتساب الصيدلية</a>
+<div id="prescriptionMsg" class="msg"></div>
+<button id="closePrescription" class="secondary" style="width:100%;margin-top:8px">إغلاق</button>
+</div></div>
+
 <div id="authModal" class="modal"><div class="sheet">
-<h3>مرحبًا بك في دليلك 💚</h3>
-<div class="tabs"><button id="loginTab" class="tab active">دخول</button><button id="signupTab" class="tab">حساب جديد</button></div>
+<h3>🛡️ دخول الإدارة</h3><div class="hint">هذا الدخول مخصص للإدارة فقط. المستخدم العادي لا يحتاج إلى تسجيل دخول.</div>
+<div class="tabs" style="display:none"><button id="loginTab" class="tab active">دخول</button><button id="signupTab" class="tab">حساب جديد</button></div>
 <div class="field"><label>البريد الإلكتروني</label><input id="email" type="email"></div>
 <div class="field"><label>كلمة المرور</label><input id="pass" type="password"></div>
-<button id="forgotPasswordBtn" class="secondary" style="width:100%;margin-bottom:8px">🔑 نسيت كلمة المرور؟</button>
+<button id="forgotPasswordBtn" class="secondary" style="width:100%;margin-bottom:8px">🔑 نسيت كلمة مرور الإدارة؟</button>
 <button id="authSubmit" class="primary" style="width:100%">تسجيل الدخول</button><div id="authMsg" class="msg"></div>
 <button id="closeAuth" class="secondary" style="width:100%;margin-top:8px">إغلاق</button>
 </div></div>
@@ -1984,6 +1997,7 @@ async function loadPharmacies(){
      ${x.delivery_available?'<span class="delivery-badge">🛵 التوصيل متاح</span>':''}
      <div class="fav-inline">${favButton('pharmacy',x.provider_id)}</div>
      <div class="pharmacy-actions">${phone?`<a class="pharmacy-contact pharmacy-call" href="tel:${esc(phone)}">📞 اتصال</a>`:'<span></span>'}${wa?`<a class="pharmacy-contact pharmacy-wa" target="_blank" href="https://wa.me/${esc(wa)}">💬 واتساب</a>`:'<span></span>'}</div>
+      ${wa?`<button type="button" class="primary prescription-btn" style="width:100%;margin-top:9px" data-pharmacy-name="${esc(p.display_name||'صيدلية')}" data-pharmacy-wa="${esc(wa)}">📷 إرسال صورة الروشتة</button>`:''}
    </div>`;
  }).join('');
  await bindFavoriteButtons(box);
@@ -2551,10 +2565,10 @@ $('authSubmit').onclick=async()=>{
 };
 
 async function refreshAuth(){
- const {data:{user}}=await sb.auth.getUser();$('authBtn').textContent=user?'خروج':'دخول';
- $('authBtn').onclick=user?signOutUser:openAuth;
- $('accountNav').onclick=openAccount;
- if(user&&$('accountPage').classList.contains('show'))await loadAccountPage(user);
+ // V0.18.1: الزائر لا يرى حالة جلسة Supabase؛ زر الرأس مخصص للإدارة دائمًا.
+ $('authBtn').textContent='🛡️ الإدارة';
+ $('authBtn').onclick=openAdminLogin;
+ $('accountNav').onclick=openAdminLogin;
 }
 refreshAuth();
 loadSearchCities();
@@ -2885,6 +2899,76 @@ $('viewMyProviderProfile').onclick=()=>{if(currentProvider)openProviderProfile(c
 
 $('sendPro').onclick=async()=>{const {data:{user}}=await sb.auth.getUser();if(!user){$('proMsg').className='msg err';$('proMsg').textContent='سجّل الدخول أولًا';openAuth();return}const name=$('proName').value.trim(),cat=$('proCat').value,phone=$('proPhone').value.trim(),loc=$('proLoc').value.trim(),files=mediaFilesFrom('proMedia'),mediaErr=validateMediaFiles(files);if(mediaErr){$('proMsg').className='msg err';$('proMsg').textContent=mediaErr;return}if(!name||!cat||!phone||!loc){$('proMsg').className='msg err';$('proMsg').textContent='أكمل الاسم ونوع الخدمة والهاتف والمكان';return}if(!cityId)await loadData();const p=$('proPrice').value.trim();$('sendPro').disabled=true;try{const ins=await sb.from('provider_profiles').insert({owner_user_id:user.id,provider_type:'professional',display_name:name,description:$('proDesc').value.trim()||null,phone,whatsapp:$('proWhats').value.trim()||phone,city_id:cityId,address_text:loc,price_mode:$('proPriceMode').value,price_amount:p?Number(p):null}).select('id').single();if(ins.error)throw ins.error;const link=await sb.from('provider_categories').insert({provider_id:ins.data.id,category_id:cat});if(link.error)throw link.error;if(files.length)await uploadMediaRows({user,entityId:ins.data.id,files,bucket:'provider-media',table:'provider_media',fk:'provider_id',providerMedia:true});$('proMsg').className='msg ok';$('proMsg').textContent='✅ تم تسجيل خدمتك ورفع صور/فيديوهات أعمالك';await loadOfferArea()}catch(e){$('proMsg').className='msg err';$('proMsg').textContent='لم يتم التسجيل: '+(e.message||'خطأ غير معروف')}finally{$('sendPro').disabled=false}};
 
+
+
+/* ===== V0.18.0: دخول مباشر للمستخدم + إدارة منفصلة + إرسال الروشتة ===== */
+let prescriptionTarget={name:'',wa:''};
+async function ensureGuestSession(){
+  try{
+    const {data:{user}}=await sb.auth.getUser();
+    if(!user){
+      const r=await sb.auth.signInAnonymously();
+      if(r.error)console.warn('Anonymous access is not enabled in Supabase:',r.error.message);
+    }
+  }catch(e){console.warn(e)}
+}
+
+function openAdminLogin(){
+  mode='login';authReturnToAccount=false;
+  $('authMsg').textContent='';
+  $('authModal').classList.add('show');
+}
+
+// المستخدم لا يحتاج بريدًا أو كلمة مرور. زر الدخول أصبح للإدارة فقط.
+$('authBtn').textContent='🛡️ الإدارة';
+$('authBtn').onclick=openAdminLogin;
+$('accountNav').onclick=openAdminLogin;
+$('authSubmit').textContent='دخول الإدارة';
+$('signupTab').style.display='none';
+$('loginTab').style.display='none';
+
+// لا نعرض حالة تسجيل الدخول للزائر حتى لو كانت جلسة مجهولة في الخلفية.
+const oldRefreshAuth=refreshAuth;
+refreshAuth=async function(){
+  $('authBtn').textContent='🛡️ الإدارة';
+  $('authBtn').onclick=openAdminLogin;
+  $('accountNav').onclick=openAdminLogin;
+};
+
+function bindPrescriptionButtons(root){
+  root.querySelectorAll('.prescription-btn').forEach(btn=>{
+    btn.onclick=()=>{
+      prescriptionTarget={name:btn.dataset.pharmacyName||'الصيدلية',wa:btn.dataset.pharmacyWa||''};
+      $('prescriptionPharmacyName').innerHTML='<b>'+esc(prescriptionTarget.name)+'</b><br>سيتم تجهيز الصورة لإرسالها عبر واتساب.';
+      $('prescriptionImage').value='';$('prescriptionPreview').style.display='none';$('prescriptionPreview').removeAttribute('src');
+      $('prescriptionMsg').textContent='';
+      $('prescriptionWaFallback').href='https://wa.me/'+encodeURIComponent(prescriptionTarget.wa)+'?text='+encodeURIComponent('السلام عليكم، لدي روشتة وأريد معرفة هل الأدوية متوفرة لديكم؟ وصلت إليكم عبر تطبيق دليلك.');
+      $('prescriptionModal').classList.add('show');
+    };
+  });
+}
+$('closePrescription').onclick=()=>$('prescriptionModal').classList.remove('show');
+$('prescriptionImage').onchange=()=>{
+  const f=$('prescriptionImage').files?.[0];
+  if(!f){$('prescriptionPreview').style.display='none';return}
+  if(!f.type.startsWith('image/')){$('prescriptionMsg').className='msg err';$('prescriptionMsg').textContent='اختر صورة فقط.';return}
+  const u=URL.createObjectURL(f);$('prescriptionPreview').src=u;$('prescriptionPreview').style.display='block';
+};
+$('sharePrescription').onclick=async()=>{
+  const f=$('prescriptionImage').files?.[0];
+  if(!f){$('prescriptionMsg').className='msg err';$('prescriptionMsg').textContent='اختر صورة الروشتة أولًا.';return}
+  const text='إلى '+prescriptionTarget.name+': السلام عليكم، أريد معرفة هل الأدوية الموجودة في هذه الروشتة متوفرة لديكم؟ عبر تطبيق دليلك.';
+  try{
+    if(navigator.share && (!navigator.canShare || navigator.canShare({files:[f]}))){
+      await navigator.share({files:[f],text});
+      $('prescriptionMsg').className='msg ok';$('prescriptionMsg').textContent='✅ تم فتح المشاركة. اختر واتساب ثم الصيدلية.';
+    }else{
+      $('prescriptionMsg').className='msg err';$('prescriptionMsg').textContent='هاتفك لا يدعم مشاركة الصورة مباشرة من المتصفح. اضغط «فتح واتساب الصيدلية» ثم أرفق صورة الروشتة من داخل واتساب.';
+    }
+  }catch(e){if(e.name!=='AbortError'){$('prescriptionMsg').className='msg err';$('prescriptionMsg').textContent='تعذرت المشاركة. استخدم زر واتساب وأرفق الصورة يدويًا.'}}
+};
+
+ensureGuestSession();
 
 </script>
 </body></html>
