@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#16894b">
-<title>دليلك V0.18.1</title>
+<title>دليلك V0.18.2</title>
 <style>
 :root{--g:#16894b;--g2:#0f6e3b;--bg:#f6faf7;--text:#152019;--muted:#6b766e;--line:#e4eee7;--bad:#b42318;--blue:#235a9f}
 *{box-sizing:border-box}body{margin:0;font-family:Tahoma,Arial,sans-serif;background:var(--bg);color:var(--text);padding-bottom:76px}
@@ -273,7 +273,7 @@ h1{font-size:19px;margin:0}.ver{font-size:10px;color:var(--g);font-weight:bold}s
 </head>
 <body>
 <div class="app">
-<header><div class="top"><div class="brand"><div class="logo">د</div><div><h1>دليلك 🇸🇩</h1><div class="ver">V0.18.1</div></div></div><button id="authBtn" class="secondary">🛡️ الإدارة</button></div></header>
+<header><div class="top"><div class="brand"><div class="logo">د</div><div><h1>دليلك 🇸🇩</h1><div class="ver">V0.18.2</div></div></div><button id="authBtn" class="secondary">🛡️ الإدارة</button></div></header>
 
 <div id="home" class="show">
 <section class="hero"><div class="hero-card"><h2>محتاج شنو اليوم؟</h2><p>دليلك لأي خدمة في السودان — خدمات، مطاعم وكافيهات، وظائف، مدارس خاصة، أطباء، عقارات، منتجات وتوصيل… كلها في مكان واحد.</p><div class="search-location"><span>📍 المدينة</span><select id="homeSearchCity" aria-label="اختر المدينة"><option value="">جاري تحميل المدن…</option></select></div><div class="search"><button id="homeSearchGo" class="search-go" aria-label="بحث">🔎</button><input id="homeSearchInput" placeholder="ابحث عن خدمة، مطعم، كافيه، منتج، وظيفة، مدرسة أو طبيب"></div></div></section>
@@ -788,12 +788,12 @@ h1{font-size:19px;margin:0}.ver{font-size:10px;color:var(--g);font-weight:bold}s
 </div>
 <div class="card">
   <h3 style="margin-top:0">طرق الدفع</h3>
-  <div class="payment-methods"><div class="payment-method">🏦 بنكك<br><small>2892867</small><br><small>مريم الصادق ريهاب</small></div><div class="payment-method">💰 فوري<br><small>51555823</small><br><small>مريم الصادق ريهاب</small></div></div>
-  <div class="notice"><b>بيانات الدفع:</b><br>بنكك: 2892867 — باسم مريم الصادق ريهاب<br>فوري: 51555823 — باسم مريم الصادق ريهاب</div>
+  <div class="payment-methods"><div class="payment-method">🏦 بنكك<br><small>2892867</small><br><small>مريم الصادق ريهاب</small></div><div class="payment-method">💰 فوري<br><small>51555823</small><br><small>مريم الصادق ريهاب</small></div><div class="payment-method">🟠 أوكاش<br><small>337533</small><br><small>مريم الصادق ريهاب</small></div></div>
+  <div class="notice"><b>بيانات الدفع:</b><br>بنكك: 2892867 — باسم مريم الصادق ريهاب<br>فوري: 51555823 — باسم مريم الصادق ريهاب<br>أوكاش: 337533 — باسم مريم الصادق ريهاب</div>
   <div id="paymentContextNote" class="hint" style="display:none"></div>
   <div class="field"><label>الفئة</label><select id="payCategory"><option>مقدم خدمة</option><option>طبيب</option><option>صيدلية</option><option>مستشفى</option><option>أبيع منتج</option><option>السكن والعقارات</option><option>المدارس الخاصة</option><option>مطاعم وكافيهات</option><option>توصيل</option></select></div>
-  <div class="field"><label>طريقة الدفع</label><select id="payMethod"><option>بنكك</option><option>فوري</option></select></div>
-  <div class="hint">بعد التحويل اضغط الزر أدناه لفتح واتساب الإدارة على الرقم <b>0913032542</b>، ثم أرفق صورة إشعار بنكك أو فوري وأرسلها.</div>
+  <div class="field"><label>طريقة الدفع</label><select id="payMethod"><option>بنكك</option><option>فوري</option><option>أوكاش</option></select></div>
+  <div class="hint">بعد التحويل اضغط الزر أدناه لفتح واتساب الإدارة على الرقم <b>0913032542</b>، ثم أرفق صورة إشعار بنكك أو فوري أو أوكاش وأرسلها.</div>
   <button id="sendPaymentNotice" class="primary" style="width:100%">💬 إرسال إشعار الدفع إلى واتساب 0913032542</button>
   <div class="admin-contact"><a class="call-btn" href="tel:0913032542">📞 اتصال بالإدارة</a><a class="wa-btn" target="_blank" href="https://wa.me/249913032542">💬 واتساب الإدارة</a></div>
 </div>
@@ -845,12 +845,13 @@ h1{font-size:19px;margin:0}.ver{font-size:10px;color:var(--g);font-weight:bold}s
   <div class="hint"><b>🎁 أول شهرين مجانًا</b><br>بعد انتهاء الشهرين، تتوقف صفحتك عن الظهور للعامة إلى أن يتم تجديد الاشتراك. يمكنك الدفع من هنا وإرسال الإشعار للإدارة.</div>
   <div id="accountBillingSummary" class="notice"></div>
   <div class="field"><label>الفئة التي تريد دفع اشتراكها</label><select id="accountPayCategory"></select></div>
-  <div class="payment-methods"><div class="payment-method">🏦 بنكك<br><small>2892867</small><br><small>مريم الصادق ريهاب</small></div><div class="payment-method">💰 فوري<br><small>51555823</small><br><small>مريم الصادق ريهاب</small></div></div>
+  <div class="payment-methods"><div class="payment-method">🏦 بنكك<br><small>2892867</small><br><small>مريم الصادق ريهاب</small></div><div class="payment-method">💰 فوري<br><small>51555823</small><br><small>مريم الصادق ريهاب</small></div><div class="payment-method">🟠 أوكاش<br><small>337533</small><br><small>مريم الصادق ريهاب</small></div></div>
   <div class="hint">📱 واتساب الإدارة لإرسال الإشعار: <b>0913032542</b></div>
   <div class="row">
     <button id="accountSendBankakBtn" class="primary" style="width:100%">إرسال إشعار بنكك</button>
     <button id="accountSendFawryBtn" class="primary" style="width:100%">إرسال إشعار فوري</button>
   </div>
+  <button id="accountSendOcashBtn" class="primary" style="width:100%;margin-top:8px">إرسال إشعار أوكاش</button>
   <a class="wa-btn" target="_blank" href="https://wa.me/249913032542" style="display:block;text-align:center;margin-top:10px;text-decoration:none">💬 فتح واتساب الإدارة 0913032542</a>
 </div>
 <button id="accountPaymentBtn" class="secondary" style="width:100%;margin-top:10px">💳 فتح صفحة الاشتراك والدفع كاملة</button>
@@ -2293,7 +2294,8 @@ $('refreshReviewsPage').onclick=loadReviewsPage;
 const PAYMENT_WHATSAPP='249913032542';
 const PAYMENT_ACCOUNTS={
  'بنكك':{number:'2892867',name:'مريم الصادق ريهاب',code:'bankak'},
- 'فوري':{number:'51555823',name:'مريم الصادق ريهاب',code:'fawry'}
+ 'فوري':{number:'51555823',name:'مريم الصادق ريهاب',code:'fawry'},
+ 'أوكاش':{number:'337533',name:'مريم الصادق ريهاب',code:'ocash'}
 };
 const PAYMENT_PRICES={'مقدم خدمة':20000,'طبيب':20000,'صيدلية':20000,'مستشفى':20000,'أبيع منتج':20000,'السكن والعقارات':20000,'المدارس الخاصة':20000,'توصيل':10000};
 const TYPE_TO_CATEGORY={professional:'مقدم خدمة',doctor:'طبيب',pharmacy:'صيدلية',hospital:'مستشفى',seller:'أبيع منتج',real_estate:'السكن والعقارات',school:'المدارس الخاصة',delivery:'توصيل'};
@@ -2363,7 +2365,7 @@ async function registerPaymentNotice(cat,method,userLabel='',preferredProviderId
  }
  if(!payment){alert('تعذر إنشاء إشعار الدفع.');return}
  const label=userLabel||provider.business_name||provider.display_name||'';
- alert(`تم تسجيل إشعار الدفع رقم ${paymentRef(payment.id)}.\nأرفق صورة بنكك/فوري في واتساب ثم أرسل الرسالة.`);
+ alert(`تم تسجيل إشعار الدفع رقم ${paymentRef(payment.id)}.\nأرفق صورة بنكك/فوري/أوكاش في واتساب ثم أرسل الرسالة.`);
  openPaymentWhatsapp(cat,method,label,payment.id);
  return payment;
 }
@@ -2470,6 +2472,7 @@ async function loadAccountPage(userArg){
  const selectedBilling=()=>{const o=sel.selectedOptions?.[0];return o?{provider_id:o.value,category:o.dataset.category,name:o.textContent.split(' — ')[0]}:null};
  $('accountSendBankakBtn').onclick=async()=>{const a=selectedBilling();if(a)await registerPaymentNotice(a.category,'بنكك',a.name,a.provider_id)};
  $('accountSendFawryBtn').onclick=async()=>{const a=selectedBilling();if(a)await registerPaymentNotice(a.category,'فوري',a.name,a.provider_id)};
+ $('accountSendOcashBtn').onclick=async()=>{const a=selectedBilling();if(a)await registerPaymentNotice(a.category,'أوكاش',a.name,a.provider_id)};
 
  let admin=false;
  try{const ar=await sb.rpc('is_admin');admin=ar.data===true}catch(e){}
