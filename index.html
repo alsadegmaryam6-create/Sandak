@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#16894b">
-<title>دليلك V0.18.2</title>
+<title>دليلك</title>
 <style>
 :root{--g:#16894b;--g2:#0f6e3b;--bg:#f6faf7;--text:#152019;--muted:#6b766e;--line:#e4eee7;--bad:#b42318;--blue:#235a9f}
 *{box-sizing:border-box}body{margin:0;font-family:Tahoma,Arial,sans-serif;background:var(--bg);color:var(--text);padding-bottom:76px}
@@ -78,6 +78,7 @@ h1{font-size:19px;margin:0}.ver{font-size:10px;color:var(--g);font-weight:bold}s
 .floating-contact:active{transform:scale(.95)}
 .modal{position:fixed;inset:0;background:#0007;display:none;align-items:flex-end;z-index:20}.modal.show{display:flex}.sheet{background:#fff;width:100%;max-width:720px;margin:auto;border-radius:24px 24px 0 0;padding:20px}
 .tabs{display:grid;grid-template-columns:1fr 1fr;background:#edf4ef;border-radius:13px;padding:4px}.tab{border:0;padding:9px;background:transparent}.tab.active{background:#fff;color:var(--g);border-radius:10px;font-weight:bold}
+.legal-links{display:flex;gap:7px;flex-wrap:wrap;justify-content:center;margin-top:12px}.legal-links a{font-size:11px;color:var(--g2);text-decoration:none;background:#eef8f1;border:1px solid #d6eadc;border-radius:999px;padding:7px 10px}.legal-doc{line-height:1.9;font-size:13px}.legal-doc h3{margin-top:20px}.legal-doc ul{padding-right:20px}.legal-contact{display:block;text-align:center;text-decoration:none;margin-top:12px}
 
 .property-tabs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px;background:#edf4ef;border-radius:14px;padding:5px}
 .property-tab{border:0;background:transparent;padding:10px;border-radius:11px;font-weight:bold;color:#5f6b63}
@@ -273,7 +274,7 @@ h1{font-size:19px;margin:0}.ver{font-size:10px;color:var(--g);font-weight:bold}s
 </head>
 <body>
 <div class="app">
-<header><div class="top"><div class="brand"><div class="logo">د</div><div><h1>دليلك 🇸🇩</h1><div class="ver">V0.18.2</div></div></div><button id="authBtn" class="secondary">🛡️ الإدارة</button></div></header>
+<header><div class="top"><div class="brand"><div class="logo">د</div><div><h1>دليلك 🇸🇩</h1></div></div><button id="authBtn" class="secondary">🛡️ الإدارة</button></div></header>
 
 <div id="home" class="show">
 <section class="hero"><div class="hero-card"><h2>محتاج شنو اليوم؟</h2><p>دليلك لأي خدمة في السودان — خدمات، مطاعم وكافيهات، وظائف، مدارس خاصة، أطباء، عقارات، منتجات وتوصيل… كلها في مكان واحد.</p><div class="search-location"><span>📍 المدينة</span><select id="homeSearchCity" aria-label="اختر المدينة"><option value="">جاري تحميل المدن…</option></select></div><div class="search"><button id="homeSearchGo" class="search-go" aria-label="بحث">🔎</button><input id="homeSearchInput" placeholder="ابحث عن خدمة، مطعم، كافيه، منتج، وظيفة، مدرسة أو طبيب"></div></div></section>
@@ -293,7 +294,8 @@ h1{font-size:19px;margin:0}.ver{font-size:10px;color:var(--g);font-weight:bold}s
 <div class="cat" id="reviewsBtn"><div class="ico">⭐</div><b>التقييمات</b><small>قيّم الخدمة بعد اكتمالها وراجع تقييماتك</small></div>
 <div class="cat" id="paymentBtn"><div class="ico">💳</div><b>الاشتراك والدفع</b><small>الخطط الشهرية وطرق إرسال إشعار الدفع</small></div>
 </div></section>
-<section class="section"><div class="notice"><strong>✅ النسخة V0.17.3</strong><br>تم تحسين التواصل والبحث، وإضافة 3 صور وفيديو للمطاعم والكافيهات، وإلزام الصور والفيديو للعقارات.</div></section>
+<section class="section"><div class="notice">تم تحسين التواصل والبحث، وإضافة 3 صور وفيديو للمطاعم والكافيهات، وإلزام الصور والفيديو للعقارات.</div></section>
+<section class="section"><div class="legal-links"><a href="#privacy">سياسة الخصوصية</a><a href="#terms">الشروط والأحكام</a><a href="#delete-account">حذف الحساب والبيانات</a></div></section>
 </div>
 
 <section id="restaurantPage" class="page">
@@ -860,6 +862,36 @@ h1{font-size:19px;margin:0}.ver{font-size:10px;color:var(--g);font-weight:bold}s
 </div>
 </section>
 
+<section id="legalPage" class="page">
+<div class="pagehead"><button class="back" data-home>→</button><h2>📄 الخصوصية والشروط</h2></div>
+<div class="card legal-doc">
+  <article id="privacy">
+    <h3>سياسة الخصوصية</h3>
+    <div class="hint">آخر تحديث: 7 سبتمبر 2026</div>
+    <p>تطبيق «دليلك» يتيح للزائر التصفح والبحث دون إنشاء حساب عادي. قد ينشئ التطبيق جلسة مجهولة لحفظ بعض الوظائف مثل المفضلة والطلبات، بينما يحتاج مقدم الخدمة إلى حساب حقيقي لإدارة صفحته ونشر الخدمات المدفوعة.</p>
+    <p><b>البيانات التي قد نعالجها:</b> بيانات الحساب لمقدم الخدمة مثل البريد الإلكتروني، وبيانات النشاط أو الإعلان مثل الاسم والهاتف وواتساب والموقع والوصف والصور والفيديوهات، وبيانات الطلبات والمفضلة والتقييمات والبلاغات، ومراجع إشعارات الدفع عند استخدامها.</p>
+    <p>تُستخدم البيانات لتشغيل الدليل، عرض الإعلانات والخدمات، تمكين التواصل، إدارة الاشتراكات، منع إساءة الاستخدام وتحسين الخدمة. تُخزن بيانات التطبيق عبر Supabase وفق إعدادات المشروع، وقد تنتقل بيانات التواصل إلى واتساب عندما يختار المستخدم فتح واتساب.</p>
+    <p>صورة الروشتة التي يختارها المستخدم من الهاتف يتم تجهيزها للمشاركة من الجهاز، ولا يرفعها التطبيق إلى قاعدة بيانات «دليلك» ضمن وظيفة مشاركة الروشتة الحالية.</p>
+    <p>لا نبيع البيانات الشخصية. قد تظهر بيانات مقدم الخدمة التي يختار نشرها للعامة داخل الدليل، مثل الاسم التجاري ورقم التواصل والموقع ومحتوى الإعلان.</p>
+    <p>يمكن طلب حذف حساب مقدم الخدمة والبيانات المرتبطة به من قسم «حذف الحساب والبيانات» أدناه. قد نحتفظ بقدر محدود من السجلات عند الحاجة للأمان أو تسوية إشعارات دفع سابقة أو الالتزامات النظامية.</p>
+  </article>
+  <hr>
+  <article id="terms">
+    <h3>الشروط والأحكام</h3>
+    <p>«دليلك» منصة دليل وربط بين المستخدمين ومقدمي الخدمات. مقدم الخدمة مسؤول عن صحة بياناته وأسعاره ووصف خدماته وصوره ووسائل التواصل التي ينشرها. المستخدم مسؤول عن التحقق من تفاصيل الخدمة والاتفاق النهائي مباشرة مع مقدم الخدمة.</p>
+    <p>يُمنع نشر محتوى مضلل أو غير قانوني أو منتهك لحقوق الآخرين. يحق للإدارة إخفاء أو إيقاف المحتوى أو الحساب عند وجود إساءة استخدام أو بلاغ موثوق أو مخالفة لهذه الشروط.</p>
+    <p>الاشتراكات التجريبية والمدفوعة لمقدمي الخدمات تُدار وفق الفئة والمدة الظاهرة داخل التطبيق. أي شروط دفع مطبقة عبر متجر التطبيقات عند إطلاق نسخة Google Play تكون مقدمة على أي تعليمات دفع مخالفة داخل نسخة الويب.</p>
+  </article>
+  <hr>
+  <article id="delete-account">
+    <h3>حذف الحساب والبيانات</h3>
+    <p>إذا كنت مقدم خدمة ولديك حساب، يمكنك طلب حذف الحساب والبيانات المرتبطة به. أرسل طلبًا واضحًا يتضمن البريد المستخدم في الحساب واسم الصفحة/النشاط حتى تتمكن الإدارة من التحقق من الملكية.</p>
+    <a class="primary legal-contact" target="_blank" rel="noopener" href="https://wa.me/249913032542?text=%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%AD%D8%B0%D9%81%20%D8%AD%D8%B3%D8%A7%D8%A8%D9%8A%20%D9%88%D8%A8%D9%8A%D8%A7%D9%86%D8%A7%D8%AA%D9%8A%20%D9%85%D9%86%20%D8%AA%D8%B7%D8%A8%D9%8A%D9%82%20%D8%AF%D9%84%D9%8A%D9%84%D9%83">🗑️ طلب حذف الحساب عبر واتساب الإدارة</a>
+    <p class="hint" style="margin-top:12px">هذا الرابط متاح دون تسجيل دخول، ويمكن استخدام عنوان الصفحة نفسه كصفحة خارجية لطلب حذف الحساب بعد نشر الموقع.</p>
+  </article>
+</div>
+</section>
+
 <section id="adminPage" class="page">
 <div class="pagehead"><button class="back" data-home>→</button><h2>🛡️ إدارة إشعارات الدفع</h2></div>
 <div class="hint"><b>للإدارة فقط.</b> راجعي صورة الإشعار التي وصلت في واتساب، ثم طابقي رقم الإشعار واضغطي اعتماد أو رفض. عند الاعتماد يتفعّل الاشتراك تلقائيًا لمدة شهر.</div>
@@ -879,7 +911,7 @@ h1{font-size:19px;margin:0}.ver{font-size:10px;color:var(--g);font-weight:bold}s
 <button id="searchNav" class="nav"><i>🔎</i>بحث</button>
 <button id="addNav" class="nav"><i>➕</i>إضافة</button>
 <button id="favNav" class="nav"><i>❤️</i>المفضلة</button>
-<button id="accountNav" class="nav"><i>🛡️</i>الإدارة</button>
+<button id="accountNav" class="nav"><i>🏪</i>حساب مقدم الخدمة</button>
 </nav>
 
 <a class="floating-contact" href="https://wa.me/249913032542?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D8%A8%D8%B1%20%D8%AA%D8%B7%D8%A8%D9%8A%D9%82%20%D8%AF%D9%84%D9%8A%D9%84%D9%83" target="_blank" rel="noopener" aria-label="التواصل مع الإدارة عبر واتساب" title="واتساب الإدارة">☎</a>
@@ -908,11 +940,11 @@ h1{font-size:19px;margin:0}.ver{font-size:10px;color:var(--g);font-weight:bold}s
 </div></div>
 
 <div id="authModal" class="modal"><div class="sheet">
-<h3>🛡️ دخول الإدارة</h3><div class="hint">هذا الدخول مخصص للإدارة فقط. المستخدم العادي لا يحتاج إلى تسجيل دخول.</div>
-<div class="tabs" style="display:none"><button id="loginTab" class="tab active">دخول</button><button id="signupTab" class="tab">حساب جديد</button></div>
-<div class="field"><label>البريد الإلكتروني</label><input id="email" type="email"></div>
-<div class="field"><label>كلمة المرور</label><input id="pass" type="password"></div>
-<button id="forgotPasswordBtn" class="secondary" style="width:100%;margin-bottom:8px">🔑 نسيت كلمة مرور الإدارة؟</button>
+<h3 id="authTitle">🏪 دخول مقدم الخدمة</h3><div id="authHint" class="hint">الزائر لا يحتاج إلى تسجيل دخول. الحساب مطلوب فقط لمقدم الخدمة لإدارة صفحته ونشر الخدمات.</div>
+<div id="authTabs" class="tabs"><button id="loginTab" class="tab active">دخول</button><button id="signupTab" class="tab">حساب جديد</button></div>
+<div class="field"><label>البريد الإلكتروني</label><input id="email" type="email" autocomplete="email"></div>
+<div class="field"><label>كلمة المرور</label><input id="pass" type="password" autocomplete="current-password"></div>
+<button id="forgotPasswordBtn" class="secondary" style="width:100%;margin-bottom:8px">🔑 نسيت كلمة المرور؟</button>
 <button id="authSubmit" class="primary" style="width:100%">تسجيل الدخول</button><div id="authMsg" class="msg"></div>
 <button id="closeAuth" class="secondary" style="width:100%;margin-top:8px">إغلاق</button>
 </div></div>
@@ -932,7 +964,7 @@ h1{font-size:19px;margin:0}.ver{font-size:10px;color:var(--g);font-weight:bold}s
 const sb=supabase.createClient("https://xcdobqsqfdupovtwamer.supabase.co","sb_publishable_cbFKfqs1Aibfup2Iuh_ltg_nA5NlQNS");
 let mode='login',cityId=null,catsLoaded=false,currentProvider=null,searchCities=[],selectedSearchCity='';const $=x=>document.getElementById(x);
 function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]))}
-function page(p){$('home').classList.toggle('show',p==='home');$('needPage').classList.toggle('show',p==='need');$('offerPage').classList.toggle('show',p==='offer');$('propertyPage').classList.toggle('show',p==='property');$('productPage').classList.toggle('show',p==='product');$('jobPage').classList.toggle('show',p==='job');$('schoolPage').classList.toggle('show',p==='school');$('doctorPage').classList.toggle('show',p==='doctor');$('hospitalPage').classList.toggle('show',p==='hospital');$('pharmacyPage').classList.toggle('show',p==='pharmacy');$('restaurantPage').classList.toggle('show',p==='restaurant');$('deliveryPage').classList.toggle('show',p==='delivery');$('searchPage').classList.toggle('show',p==='search');$('favoritesPage').classList.toggle('show',p==='favorites');$('reviewsPage').classList.toggle('show',p==='reviews');$('paymentPage').classList.toggle('show',p==='payment');$('accountPage').classList.toggle('show',p==='account');$('adminPage').classList.toggle('show',p==='admin');window.scrollTo(0,0)}
+function page(p){$('home').classList.toggle('show',p==='home');$('needPage').classList.toggle('show',p==='need');$('offerPage').classList.toggle('show',p==='offer');$('propertyPage').classList.toggle('show',p==='property');$('productPage').classList.toggle('show',p==='product');$('jobPage').classList.toggle('show',p==='job');$('schoolPage').classList.toggle('show',p==='school');$('doctorPage').classList.toggle('show',p==='doctor');$('hospitalPage').classList.toggle('show',p==='hospital');$('pharmacyPage').classList.toggle('show',p==='pharmacy');$('restaurantPage').classList.toggle('show',p==='restaurant');$('deliveryPage').classList.toggle('show',p==='delivery');$('searchPage').classList.toggle('show',p==='search');$('favoritesPage').classList.toggle('show',p==='favorites');$('reviewsPage').classList.toggle('show',p==='reviews');$('paymentPage').classList.toggle('show',p==='payment');$('accountPage').classList.toggle('show',p==='account');$('adminPage').classList.toggle('show',p==='admin');$('legalPage').classList.toggle('show',p==='legal');window.scrollTo(0,0)}
 const SUDAN_SEARCH_CITIES=[
  'بورتسودان','الخرطوم','أم درمان','بحري','ود مدني','الحصاحيصا','المناقل','رفاعة','الكاملين',
  'سنار','سنجة','الدمازين','الروصيرص','كوستي','ربك','القطينة','الأبيض','بارا','أم روابة','الرهد',
@@ -1024,7 +1056,7 @@ $('restMedia').onchange=()=>{
 };
 
 $('sendRestaurant').onclick=async()=>{
- const {data:{user}}=await sb.auth.getUser();if(!user){$('restaurantMsg').className='msg err';$('restaurantMsg').textContent='سجّل الدخول أولاً';openAuth();return}
+ const user=await getRealUser();if(!user){$('restaurantMsg').className='msg err';$('restaurantMsg').textContent='يلزم حساب مقدم خدمة حقيقي لتسجيل المطعم';openProviderAuth();return}
  const name=$('restName').value.trim(),location=$('restLocation').value.trim(),cashier=$('restCashier').value.trim(),phone=$('restPhone').value.trim(),whatsapp=$('restWhats').value.trim()||phone;
  if(!name||!location||!cashier||!phone){$('restaurantMsg').className='msg err';$('restaurantMsg').textContent='أكمل اسم المطعم والمنطقة واسم الكاشير ورقم الطلبات';return}
  const files=restaurantMediaFiles(),mediaErr=validateRestaurantMedia(files);if(mediaErr){$('restaurantMsg').className='msg err';$('restaurantMsg').textContent=mediaErr;return}
@@ -1487,8 +1519,8 @@ $('propMedia').onchange=()=>{
 };
 
 $('sendProperty').onclick=async()=>{
- const {data:{user}}=await sb.auth.getUser();
- if(!user){$('propMsg').className='msg err';$('propMsg').textContent='سجّل الدخول أولًا لنشر عقار';openAuth();return}
+ const user=await getRealUser();
+ if(!user){$('propMsg').className='msg err';$('propMsg').textContent='يلزم حساب مقدم خدمة حقيقي لنشر العقار';openProviderAuth();return}
  await loadPropertyData();
  const title=$('propTitle').value.trim(),category_id=$('propCat').value,address=$('propAddress').value.trim(),name=$('propContactName').value.trim(),phone=$('propPhone').value.trim();
  if(!title||!category_id||!address||!name||!phone){$('propMsg').className='msg err';$('propMsg').textContent='أكملي عنوان الإعلان، نوع العقار، المكان، اسم المعلن ورقم الهاتف';return}
@@ -1599,8 +1631,8 @@ $('prodImage').onchange=()=>{
 };
 
 $('sendProduct').onclick=async()=>{
- const {data:{user}}=await sb.auth.getUser();
- if(!user){$('prodMsg').className='msg err';$('prodMsg').textContent='سجّل الدخول أولًا لنشر منتج';openAuth();return}
+ const user=await getRealUser();
+ if(!user){$('prodMsg').className='msg err';$('prodMsg').textContent='يلزم حساب مقدم خدمة حقيقي لنشر المنتج';openProviderAuth();return}
  await loadProductData();
  const title=$('prodTitle').value.trim(),category_id=$('prodCat').value,phone=$('prodPhone').value.trim();
  if(!title||!category_id||!phone){$('prodMsg').className='msg err';$('prodMsg').textContent='أكملي اسم المنتج والفئة ورقم الهاتف';return}
@@ -1725,8 +1757,8 @@ async function loadDoctors(){
 }
 
 $('sendDoctor').onclick=async()=>{
- const {data:{user}}=await sb.auth.getUser();
- if(!user){$('docMsg').className='msg err';$('docMsg').textContent='سجّل الدخول أولًا لإضافة طبيب';openAuth();return}
+ const user=await getRealUser();
+ if(!user){$('docMsg').className='msg err';$('docMsg').textContent='يلزم حساب مقدم خدمة حقيقي لإضافة طبيب';openProviderAuth();return}
  await loadDoctorData();
  const name=$('docName').value.trim(),specialty=$('docSpecialty').value,address=$('docAddress').value.trim(),
        receptionist=$('docReceptionist').value.trim(),phone=$('docPhone').value.trim();
@@ -1867,8 +1899,8 @@ $('sendRoomRequest').onclick=async()=>{
 };
 
 $('sendHospital').onclick=async()=>{
- const {data:{user}}=await sb.auth.getUser();
- if(!user){$('hospMsg').className='msg err';$('hospMsg').textContent='سجّل الدخول أولًا لإضافة مستشفى';openAuth();return}
+ const user=await getRealUser();
+ if(!user){$('hospMsg').className='msg err';$('hospMsg').textContent='يلزم حساب مقدم خدمة حقيقي لإضافة مستشفى';openProviderAuth();return}
  await loadHospitalData();
  const name=$('hospName').value.trim(),address=$('hospAddress').value.trim(),phone=$('hospReceptionPhone').value.trim();
  if(!name||!address||!phone){$('hospMsg').className='msg err';$('hospMsg').textContent='أكمل اسم المستشفى والموقع ورقم الاستقبال';return}
@@ -2005,8 +2037,8 @@ async function loadPharmacies(){
 }
 
 $('sendPharmacy').onclick=async()=>{
- const {data:{user}}=await sb.auth.getUser();
- if(!user){$('pharmMsg').className='msg err';$('pharmMsg').textContent='سجّل الدخول أولًا لإضافة صيدلية';openAuth();return}
+ const user=await getRealUser();
+ if(!user){$('pharmMsg').className='msg err';$('pharmMsg').textContent='يلزم حساب مقدم خدمة حقيقي لإضافة صيدلية';openProviderAuth();return}
  if(!cityId) await loadData();
 
  const name=$('pharmName').value.trim(),address=$('pharmAddress').value.trim(),
@@ -2188,8 +2220,8 @@ async function completeDelivery(id){
 
 async function loadDriverArea(){
  await loadDeliveryVehicleTypes();
- const {data:{user}}=await sb.auth.getUser();
- if(!user){$('driverRegisterWrap').style.display='block';$('driverDashboard').style.display='none';$('driverRegisterMsg').className='msg err';$('driverRegisterMsg').textContent='سجّل الدخول أولًا لتسجيل سائق توصيل';return}
+ const user=await getRealUser();
+ if(!user){$('driverRegisterWrap').style.display='block';$('driverDashboard').style.display='none';$('driverRegisterMsg').className='msg err';$('driverRegisterMsg').textContent='يلزم حساب مقدم خدمة حقيقي لتسجيل سائق توصيل';return}
  const r=await sb.from('provider_profiles').select('id,display_name,phone,whatsapp,address_text,account_status,is_available').eq('owner_user_id',user.id).eq('provider_type','delivery').order('created_at',{ascending:false}).limit(1).maybeSingle();
  if(r.error||!r.data){currentDeliveryProviderId=null;$('driverRegisterWrap').style.display='block';$('driverDashboard').style.display='none';return}
  currentDeliveryProviderId=r.data.id;$('driverRegisterWrap').style.display='none';$('driverDashboard').style.display='block';
@@ -2201,8 +2233,8 @@ async function loadDriverArea(){
 }
 
 $('registerDriver').onclick=async()=>{
- const {data:{user}}=await sb.auth.getUser();
- if(!user){openAuth();return}
+ const user=await getRealUser();
+ if(!user){openProviderAuth();return}
  if(!cityId)await loadData();await loadDeliveryVehicleTypes();
  const name=$('driverName').value.trim(),phone=$('driverPhone').value.trim(),area=$('driverArea').value.trim(),vehicle=$('driverVehicle').value;
  if(!name||!phone||!area||!vehicle){$('driverRegisterMsg').className='msg err';$('driverRegisterMsg').textContent='أكمل اسم السائق والهاتف ومنطقة العمل ونوع المركبة';return}
@@ -2487,7 +2519,7 @@ async function openAccount(){
 
 async function signOutUser(){
  await sb.auth.signOut();currentProvider=null;authReturnToAccount=false;
- await refreshAuth();page('home');
+ await ensureGuestSession();await refreshAuth();page('home');
  if($('needPage').classList.contains('show'))loadMyRequests();
  if($('offerPage').classList.contains('show'))loadOfferArea();
 }
@@ -2852,7 +2884,7 @@ async function loadProducts(){
 $('productSearchBtn').onclick=loadProducts;$('productSearchInput').addEventListener('keydown',e=>{if(e.key==='Enter')loadProducts()});
 
 async function sendProductEnhanced(){
- const {data:{user}}=await sb.auth.getUser();if(!user){$('prodMsg').className='msg err';$('prodMsg').textContent='سجّل الدخول أولًا لنشر منتج';openAuth();return}
+ const user=await getRealUser();if(!user){$('prodMsg').className='msg err';$('prodMsg').textContent='يلزم حساب مقدم خدمة حقيقي لنشر المنتج';openProviderAuth();return}
  await loadProductData();const title=$('prodTitle').value.trim(),category_id=$('prodCat').value,phone=$('prodPhone').value.trim(),files=mediaFilesFrom('prodImage'),mediaErr=validateMediaFiles(files);if(mediaErr){$('prodMsg').className='msg err';$('prodMsg').textContent=mediaErr;return}if(!title||!category_id||!phone){$('prodMsg').className='msg err';$('prodMsg').textContent='أكمل اسم المنتج والفئة ورقم الهاتف';return}
  const price=$('prodPrice').value.trim(),whatsapp=$('prodWhats').value.trim()||phone;$('sendProduct').disabled=true;$('sendProduct').textContent='جاري النشر…';
  try{const provider=await getOrCreateSellerProvider(user,phone,whatsapp);const loc=$('prodLocation').value.trim();if(loc)await sb.from('provider_profiles').update({address_text:loc}).eq('id',provider.id);const ins=await sb.from('products').insert({provider_id:provider.id,title,category_id,item_condition:$('prodCondition').value,price:price?Number(price):null,description:$('prodDesc').value.trim()||null,city_id:cityId,contact_phone:phone,whatsapp,status:'published'}).select('id').single();if(ins.error)throw ins.error;if(files.length)await uploadMediaRows({user,entityId:ins.data.id,files,bucket:'product-media',table:'product_media',fk:'product_id'});$('prodMsg').className='msg ok';$('prodMsg').textContent='✅ تم نشر المنتج بالصور/الفيديوهات بنجاح';['prodTitle','prodLocation','prodPrice','prodDesc','prodPhone','prodWhats'].forEach(id=>$(id).value='');$('prodCat').value='';$('prodCondition').value='new';$('prodImage').value='';$('prodMediaPreview').innerHTML='';showProductTab('browse');await loadProducts()}catch(e){$('prodMsg').className='msg err';$('prodMsg').textContent='تعذر نشر المنتج: '+(e.message||'خطأ غير معروف')}finally{$('sendProduct').disabled=false;$('sendProduct').textContent='نشر المنتج'}
@@ -2888,19 +2920,19 @@ async function loadSchools(){
  box.innerHTML=rows.map(sc=>{const p=normalizePhone(sc.phone),w=sudanWa(sc.whatsapp||sc.phone),levels=schoolLevelsAr(sc.education_levels||[]),reg=schoolRegistrationAr(sc.registration_status);return `<div class="school-card"><h4>🏫 ${esc(sc.name)}</h4><div class="school-meta"><span class="chip">📍 ${esc(sc.location_text)}</span><span class="chip">👥 ${esc(schoolGenderAr(sc.school_gender))}</span>${levels?`<span class="chip">📚 ${esc(levels)}</span>`:''}<span class="chip">📝 ${esc(reg)}</span>${sc.transport_available?'<span class="chip">🚌 مواصلات متوفرة</span>':''}</div>${renderMediaGallery(sc.private_school_media||[],'school-media',sc.name)}${sc.fees_text?`<div class="school-detail"><b>💰 الرسوم:</b> ${esc(sc.fees_text)}</div>`:''}${sc.description?`<div class="school-detail">${esc(sc.description)}</div>`:''}<div class="fav-inline">${favButton('school',sc.id)}</div><div class="school-actions">${p?`<a class="school-call" href="tel:${esc(p)}">📞 اتصال بالإدارة</a>`:'<span></span>'}${w?`<a class="school-wa" target="_blank" href="https://wa.me/${esc(w)}">💬 واتساب</a>`:'<span></span>'}${w?`<button class="school-request" data-school-request="${sc.id}" data-school-name="${esc(sc.name)}" data-school-wa="${esc(w)}">📝 طلب تسجيل / استفسار</button>`:'<span></span>'}<button class="school-report" data-report-type="school" data-report-id="${sc.id}">🚩 إبلاغ</button></div></div>`}).join('');
  await bindFavoriteButtons(box);bindMediaOpeners(box);box.querySelectorAll('[data-school-request]').forEach(b=>b.onclick=()=>requestByWhatsapp(b.dataset.schoolWa,`السلام عليكم، أرغب في الاستفسار عن التسجيل في ${b.dataset.schoolName}. وصلت لمدرستكم عبر تطبيق دليلك.`));box.querySelectorAll('[data-report-type]').forEach(b=>b.onclick=()=>reportListing(b.dataset.reportType,b.dataset.reportId));
 }
-$('sendSchool').onclick=async()=>{const {data:{user}}=await sb.auth.getUser();if(!user){$('schoolMsg').className='msg err';$('schoolMsg').textContent='سجّل الدخول أولًا لإضافة المدرسة';openAuth();return}const name=$('schoolName').value.trim(),loc=$('schoolLocation').value.trim(),phone=$('schoolPhone').value.trim(),levels=[...document.querySelectorAll('.school-level:checked')].map(x=>x.value),files=mediaFilesFrom('schoolMedia'),mediaErr=validateMediaFiles(files);if(mediaErr){$('schoolMsg').className='msg err';$('schoolMsg').textContent=mediaErr;return}if(!name||!loc||!phone||!levels.length){$('schoolMsg').className='msg err';$('schoolMsg').textContent='أكمل اسم المدرسة والموقع والمرحلة ورقم الإدارة';return}$('sendSchool').disabled=true;$('sendSchool').textContent='جاري النشر…';try{const ins=await sb.from('private_schools').insert({owner_user_id:user.id,name,description:$('schoolDescription').value.trim()||null,location_text:loc,school_gender:$('schoolGender').value,education_levels:levels,fees_text:$('schoolFees').value.trim()||null,registration_status:$('schoolRegistration').value,transport_available:$('schoolTransport').value==='true',phone,whatsapp:$('schoolWhats').value.trim()||phone,status:'published'}).select('id').single();if(ins.error)throw ins.error;if(files.length)await uploadMediaRows({user,entityId:ins.data.id,files,bucket:'school-media',table:'private_school_media',fk:'school_id'});$('schoolMsg').className='msg ok';$('schoolMsg').textContent='✅ تم نشر المدرسة بنجاح';['schoolName','schoolLocation','schoolFees','schoolDescription','schoolPhone','schoolWhats'].forEach(id=>$(id).value='');document.querySelectorAll('.school-level').forEach(x=>x.checked=false);$('schoolMedia').value='';$('schoolMediaPreview').innerHTML='';showSchoolTab('browse');await loadSchools()}catch(e){$('schoolMsg').className='msg err';$('schoolMsg').textContent='تعذر نشر المدرسة: '+(e.message||'خطأ غير معروف')}finally{$('sendSchool').disabled=false;$('sendSchool').textContent='نشر المدرسة'}};
+$('sendSchool').onclick=async()=>{const user=await getRealUser();if(!user){$('schoolMsg').className='msg err';$('schoolMsg').textContent='يلزم حساب مقدم خدمة حقيقي لإضافة المدرسة';openProviderAuth();return}const name=$('schoolName').value.trim(),loc=$('schoolLocation').value.trim(),phone=$('schoolPhone').value.trim(),levels=[...document.querySelectorAll('.school-level:checked')].map(x=>x.value),files=mediaFilesFrom('schoolMedia'),mediaErr=validateMediaFiles(files);if(mediaErr){$('schoolMsg').className='msg err';$('schoolMsg').textContent=mediaErr;return}if(!name||!loc||!phone||!levels.length){$('schoolMsg').className='msg err';$('schoolMsg').textContent='أكمل اسم المدرسة والموقع والمرحلة ورقم الإدارة';return}$('sendSchool').disabled=true;$('sendSchool').textContent='جاري النشر…';try{const ins=await sb.from('private_schools').insert({owner_user_id:user.id,name,description:$('schoolDescription').value.trim()||null,location_text:loc,school_gender:$('schoolGender').value,education_levels:levels,fees_text:$('schoolFees').value.trim()||null,registration_status:$('schoolRegistration').value,transport_available:$('schoolTransport').value==='true',phone,whatsapp:$('schoolWhats').value.trim()||phone,status:'published'}).select('id').single();if(ins.error)throw ins.error;if(files.length)await uploadMediaRows({user,entityId:ins.data.id,files,bucket:'school-media',table:'private_school_media',fk:'school_id'});$('schoolMsg').className='msg ok';$('schoolMsg').textContent='✅ تم نشر المدرسة بنجاح';['schoolName','schoolLocation','schoolFees','schoolDescription','schoolPhone','schoolWhats'].forEach(id=>$(id).value='');document.querySelectorAll('.school-level').forEach(x=>x.checked=false);$('schoolMedia').value='';$('schoolMediaPreview').innerHTML='';showSchoolTab('browse');await loadSchools()}catch(e){$('schoolMsg').className='msg err';$('schoolMsg').textContent='تعذر نشر المدرسة: '+(e.message||'خطأ غير معروف')}finally{$('sendSchool').disabled=false;$('sendSchool').textContent='نشر المدرسة'}};
 
 async function reportListing(type,id){const {data:{user}}=await sb.auth.getUser();if(!user){openAuth();return}const details=prompt('اكتب سبب الإبلاغ باختصار:');if(details===null)return;if(!details.trim()){alert('اكتب سبب الإبلاغ.');return}const r=await sb.from('reports').insert({reporter_user_id:user.id,target_type:type,target_id:id,reason_code:'other',details:details.trim()});if(r.error){alert('تعذر إرسال البلاغ: '+r.error.message);return}alert('✅ تم إرسال البلاغ للإدارة')}
 
 async function loadProviderMediaManager(){if(!currentProvider)return;const box=$('myProviderMedia');box.innerHTML='<div class="empty">جاري تحميل الصور والفيديوهات…</div>';const r=await sb.from('provider_media').select('id,storage_path,mime_type,media_type,is_primary,sort_order').eq('provider_id',currentProvider.id).eq('media_type','work').order('sort_order');if(r.error){box.innerHTML='<div class="notice">تعذر تحميل الوسائط.</div>';return}box.innerHTML=renderMediaGallery(r.data||[],'provider-media','أعمالي')||'<div class="empty">لم تضف صورًا أو فيديوهات لأعمالك بعد.</div>';bindMediaOpeners(box)}
 async function loadOfferArea(){
- await loadData();const {data:{user}}=await sb.auth.getUser();$('providerExisting').style.display='none';$('providerMediaManager').style.display='none';$('matchedSection').style.display='none';$('providerFormWrap').style.display='none';if(!user){$('providerFormWrap').style.display='block';currentProvider=null;return}
+ await loadData();const user=await getRealUser();$('providerExisting').style.display='none';$('providerMediaManager').style.display='none';$('matchedSection').style.display='none';$('providerFormWrap').style.display='none';if(!user){$('providerFormWrap').style.display='block';currentProvider=null;return}
  const p=await sb.from('provider_profiles').select('id,display_name,city_id,address_text,phone,whatsapp').eq('owner_user_id',user.id).eq('provider_type','professional').eq('account_status','active').order('created_at',{ascending:false}).limit(1).maybeSingle();if(p.error||!p.data){$('providerFormWrap').style.display='block';currentProvider=null;return}const pc=await sb.from('provider_categories').select('category_id,categories(name_ar)').eq('provider_id',p.data.id);currentProvider={...p.data,provider_categories:pc.data||[]};const names=currentProvider.provider_categories.map(x=>x.categories?.name_ar).filter(Boolean).join('، ');$('providerTitle').textContent='✅ أنت مسجل كمقدم خدمة';$('providerInfo').innerHTML=esc(currentProvider.display_name)+'<br>الخدمة: '+esc(names||'—')+'<br>المكان: '+esc(currentProvider.address_text||'بورتسودان');$('providerExisting').style.display='block';$('providerMediaManager').style.display='block';$('matchedSection').style.display='block';await Promise.all([loadMatches(),loadProviderMediaManager()]);
 }
-$('uploadProviderMediaBtn').onclick=async()=>{if(!currentProvider)return;const {data:{user}}=await sb.auth.getUser();if(!user){openAuth();return}const files=mediaFilesFrom('providerMediaInput'),err=validateMediaFiles(files);if(err){$('providerMediaMsg').className='msg err';$('providerMediaMsg').textContent=err;return}if(!files.length){$('providerMediaMsg').className='msg err';$('providerMediaMsg').textContent='اختر صورًا أو فيديوهات أولًا';return}$('uploadProviderMediaBtn').disabled=true;try{await uploadMediaRows({user,entityId:currentProvider.id,files,bucket:'provider-media',table:'provider_media',fk:'provider_id',providerMedia:true});$('providerMediaMsg').className='msg ok';$('providerMediaMsg').textContent='✅ تم رفع الملفات وستظهر في ملفك';$('providerMediaInput').value='';$('providerMediaPreview').innerHTML='';await loadProviderMediaManager()}catch(e){$('providerMediaMsg').className='msg err';$('providerMediaMsg').textContent='تعذر الرفع: '+(e.message||'خطأ')}finally{$('uploadProviderMediaBtn').disabled=false}};
+$('uploadProviderMediaBtn').onclick=async()=>{if(!currentProvider)return;const user=await getRealUser();if(!user){openProviderAuth();return}const files=mediaFilesFrom('providerMediaInput'),err=validateMediaFiles(files);if(err){$('providerMediaMsg').className='msg err';$('providerMediaMsg').textContent=err;return}if(!files.length){$('providerMediaMsg').className='msg err';$('providerMediaMsg').textContent='اختر صورًا أو فيديوهات أولًا';return}$('uploadProviderMediaBtn').disabled=true;try{await uploadMediaRows({user,entityId:currentProvider.id,files,bucket:'provider-media',table:'provider_media',fk:'provider_id',providerMedia:true});$('providerMediaMsg').className='msg ok';$('providerMediaMsg').textContent='✅ تم رفع الملفات وستظهر في ملفك';$('providerMediaInput').value='';$('providerMediaPreview').innerHTML='';await loadProviderMediaManager()}catch(e){$('providerMediaMsg').className='msg err';$('providerMediaMsg').textContent='تعذر الرفع: '+(e.message||'خطأ')}finally{$('uploadProviderMediaBtn').disabled=false}};
 $('viewMyProviderProfile').onclick=()=>{if(currentProvider)openProviderProfile(currentProvider.id)};
 
-$('sendPro').onclick=async()=>{const {data:{user}}=await sb.auth.getUser();if(!user){$('proMsg').className='msg err';$('proMsg').textContent='سجّل الدخول أولًا';openAuth();return}const name=$('proName').value.trim(),cat=$('proCat').value,phone=$('proPhone').value.trim(),loc=$('proLoc').value.trim(),files=mediaFilesFrom('proMedia'),mediaErr=validateMediaFiles(files);if(mediaErr){$('proMsg').className='msg err';$('proMsg').textContent=mediaErr;return}if(!name||!cat||!phone||!loc){$('proMsg').className='msg err';$('proMsg').textContent='أكمل الاسم ونوع الخدمة والهاتف والمكان';return}if(!cityId)await loadData();const p=$('proPrice').value.trim();$('sendPro').disabled=true;try{const ins=await sb.from('provider_profiles').insert({owner_user_id:user.id,provider_type:'professional',display_name:name,description:$('proDesc').value.trim()||null,phone,whatsapp:$('proWhats').value.trim()||phone,city_id:cityId,address_text:loc,price_mode:$('proPriceMode').value,price_amount:p?Number(p):null}).select('id').single();if(ins.error)throw ins.error;const link=await sb.from('provider_categories').insert({provider_id:ins.data.id,category_id:cat});if(link.error)throw link.error;if(files.length)await uploadMediaRows({user,entityId:ins.data.id,files,bucket:'provider-media',table:'provider_media',fk:'provider_id',providerMedia:true});$('proMsg').className='msg ok';$('proMsg').textContent='✅ تم تسجيل خدمتك ورفع صور/فيديوهات أعمالك';await loadOfferArea()}catch(e){$('proMsg').className='msg err';$('proMsg').textContent='لم يتم التسجيل: '+(e.message||'خطأ غير معروف')}finally{$('sendPro').disabled=false}};
+$('sendPro').onclick=async()=>{const user=await getRealUser();if(!user){$('proMsg').className='msg err';$('proMsg').textContent='يلزم حساب مقدم خدمة حقيقي لتسجيل الخدمة';openProviderAuth();return}const name=$('proName').value.trim(),cat=$('proCat').value,phone=$('proPhone').value.trim(),loc=$('proLoc').value.trim(),files=mediaFilesFrom('proMedia'),mediaErr=validateMediaFiles(files);if(mediaErr){$('proMsg').className='msg err';$('proMsg').textContent=mediaErr;return}if(!name||!cat||!phone||!loc){$('proMsg').className='msg err';$('proMsg').textContent='أكمل الاسم ونوع الخدمة والهاتف والمكان';return}if(!cityId)await loadData();const p=$('proPrice').value.trim();$('sendPro').disabled=true;try{const ins=await sb.from('provider_profiles').insert({owner_user_id:user.id,provider_type:'professional',display_name:name,description:$('proDesc').value.trim()||null,phone,whatsapp:$('proWhats').value.trim()||phone,city_id:cityId,address_text:loc,price_mode:$('proPriceMode').value,price_amount:p?Number(p):null}).select('id').single();if(ins.error)throw ins.error;const link=await sb.from('provider_categories').insert({provider_id:ins.data.id,category_id:cat});if(link.error)throw link.error;if(files.length)await uploadMediaRows({user,entityId:ins.data.id,files,bucket:'provider-media',table:'provider_media',fk:'provider_id',providerMedia:true});$('proMsg').className='msg ok';$('proMsg').textContent='✅ تم تسجيل خدمتك ورفع صور/فيديوهات أعمالك';await loadOfferArea()}catch(e){$('proMsg').className='msg err';$('proMsg').textContent='لم يتم التسجيل: '+(e.message||'خطأ غير معروف')}finally{$('sendPro').disabled=false}};
 
 
 
@@ -2916,26 +2948,68 @@ async function ensureGuestSession(){
   }catch(e){console.warn(e)}
 }
 
-function openAdminLogin(){
-  mode='login';authReturnToAccount=false;
-  $('authMsg').textContent='';
-  $('authModal').classList.add('show');
+async function getRealUser(){
+  const {data:{user}}=await sb.auth.getUser();
+  if(!user || user.is_anonymous) return null;
+  return user;
 }
 
-// المستخدم لا يحتاج بريدًا أو كلمة مرور. زر الدخول أصبح للإدارة فقط.
+let authPurpose='provider';
+function configureAuthModal(purpose='provider'){
+  authPurpose=purpose;mode='login';authReturnToAccount=false;$('authMsg').textContent='';$('pass').value='';
+  $('loginTab').classList.add('active');$('signupTab').classList.remove('active');
+  if(purpose==='admin'){
+    $('authTitle').textContent='🛡️ دخول الإدارة';
+    $('authHint').textContent='هذا الدخول مخصص للإدارة فقط. المستخدم العادي لا يحتاج إلى تسجيل دخول.';
+    $('authTabs').style.display='none';$('forgotPasswordBtn').style.display='block';$('authSubmit').textContent='دخول الإدارة';
+  }else{
+    $('authTitle').textContent='🏪 حساب مقدم الخدمة';
+    $('authHint').textContent='الزائر يتصفح بدون حساب. أنشئ حسابًا أو سجّل الدخول فقط إذا كنت مقدم خدمة وتريد نشر أو إدارة صفحتك.';
+    $('authTabs').style.display='grid';$('forgotPasswordBtn').style.display='block';$('authSubmit').textContent='تسجيل الدخول';
+  }
+  $('authModal').classList.add('show');
+}
+function openProviderAuth(){configureAuthModal('provider')}
+function openProviderAuthForAccount(){authReturnToAccount=true;configureAuthModal('provider');authReturnToAccount=true}
+function openAdminLogin(){configureAuthModal('admin')}
+openAuth=openProviderAuth;
+openAuthForAccount=openProviderAuthForAccount;
+
+async function openProviderAccount(){
+  const user=await getRealUser();
+  if(!user){openProviderAuthForAccount();return}
+  page('account');await loadAccountPage(user);
+}
+
+// المستخدم العادي لا يحتاج بريدًا أو كلمة مرور؛ الإدارة منفصلة عن حساب مقدم الخدمة.
 $('authBtn').textContent='🛡️ الإدارة';
 $('authBtn').onclick=openAdminLogin;
-$('accountNav').onclick=openAdminLogin;
-$('authSubmit').textContent='دخول الإدارة';
-$('signupTab').style.display='none';
-$('loginTab').style.display='none';
+$('accountNav').innerHTML='<i>🏪</i>حساب مقدم الخدمة';
+$('accountNav').onclick=openProviderAccount;
 
-// لا نعرض حالة تسجيل الدخول للزائر حتى لو كانت جلسة مجهولة في الخلفية.
 const oldRefreshAuth=refreshAuth;
 refreshAuth=async function(){
-  $('authBtn').textContent='🛡️ الإدارة';
-  $('authBtn').onclick=openAdminLogin;
-  $('accountNav').onclick=openAdminLogin;
+  $('authBtn').textContent='🛡️ الإدارة';$('authBtn').onclick=openAdminLogin;
+  $('accountNav').innerHTML='<i>🏪</i>حساب مقدم الخدمة';$('accountNav').onclick=openProviderAccount;
+};
+
+// إعادة ضبط معالج الدخول حتى يفرّق بين مقدم الخدمة والإدارة.
+$('authSubmit').onclick=async()=>{
+  const email=$('email').value.trim(),password=$('pass').value;
+  if(!email||password.length<6){$('authMsg').className='msg err';$('authMsg').textContent='اكتب بريدًا صحيحًا وكلمة مرور 6 أحرف على الأقل';return}
+  if(authPurpose==='admin'&&mode!=='login')mode='login';
+  const r=mode==='login'?await sb.auth.signInWithPassword({email,password}):await sb.auth.signUp({email,password});
+  if(r.error){$('authMsg').className='msg err';$('authMsg').textContent=r.error.message;return}
+  if(mode==='signup'&&!r.data.session){$('authMsg').className='msg ok';$('authMsg').textContent='✅ تم إنشاء الحساب. راجع البريد إذا طُلب تأكيد البريد، ثم سجّل الدخول.';return}
+  if(authPurpose==='admin'){
+    const ar=await sb.rpc('is_admin');
+    if(ar.error||ar.data!==true){$('authMsg').className='msg err';$('authMsg').textContent='هذا الحساب ليس حساب إدارة.';return}
+    closeAuth();await refreshAuth();page('admin');await loadAdminPayments();return;
+  }
+  const goAccount=authReturnToAccount;authReturnToAccount=false;closeAuth();await refreshAuth();
+  if(goAccount){page('account');await loadAccountPage(r.data.user||null)}
+  if($('offerPage').classList.contains('show'))await loadOfferArea();
+  if($('deliveryPage').classList.contains('show'))await loadDriverArea();
 };
 
 function bindPrescriptionButtons(root){
@@ -2970,6 +3044,15 @@ $('sharePrescription').onclick=async()=>{
     }
   }catch(e){if(e.name!=='AbortError'){$('prescriptionMsg').className='msg err';$('prescriptionMsg').textContent='تعذرت المشاركة. استخدم زر واتساب وأرفق الصورة يدويًا.'}}
 };
+
+function handleLegalHash(){
+  const h=(location.hash||'').replace('#','');
+  if(!['privacy','terms','delete-account'].includes(h))return;
+  page('legal');
+  setTimeout(()=>document.getElementById(h)?.scrollIntoView({behavior:'smooth',block:'start'}),30);
+}
+window.addEventListener('hashchange',handleLegalHash);
+handleLegalHash();
 
 ensureGuestSession();
 
