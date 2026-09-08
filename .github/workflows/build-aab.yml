@@ -1,1 +1,69 @@
+name: Build Signed AAB
 
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Find and unzip Daleel Android project
+        run: |
+          mkdir -p daleel_android
+          FILE=$(find . -maxdepth 1 -type f -iname "Daleel_Android*.zip" | head -n 1)
+
+          if [ -z "$FILE" ]; then
+            echo "Daleel Android ZIP file not found"
+            exit 1
+          fi
+
+          echo "Using: $FILE"
+          unzip -q "$FILE" -d daleel_android
+
+      - name: Find Android project
+        id: project
+        run: |
+          GRADLEW=$(find daleel_android -type f -name "gradlew" | head -n 1)
+
+          if [ -z "$GRADLEW" ]; then
+            echo "gradlew not found"
+            exit 1
+          fi
+
+          PROJECT_DIR=$(dirname "$GRADLEW")
+          echo "Project directory: $PROJECT_DIR"
+          echo "dir=$PROJECT_DIR" >> "$GITHUB_OUTPUT"
+
+      - name: Restore signing keystore
+        run: |
+          echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 --decode > "${{ steps.project.outputs.dir }}/daleel-release.jks"
+
+      - name: Make Gradle executable
+        run: |
+          chmod +x "${{ steps.project.outputs.dir }}/gradlew"
+
+      - name: Build signed AAB
+        working-directory: ${{ steps.project.outputs.dir }}
+        run: |
+          ./gradlew bundleRelease \
+            -Pandroid.injected.signing.store.file="$PWD/daleel-release.jks" \
+            -Pandroid.injected.signing.store.password="${{ secrets.KEYSTORE_PASSWORD }}" \
+            -Pandroid.injected.signing.key.alias="${{ secrets.KEY_ALIAS }}" \
+            -Pandroid.injected.signing.key.password="${{ secrets.KEY_PASSWORD }}"
+
+      - name: Upload AAB
+        uses: actions/upload-artifact@v4
+        with:
+          name: Daleel-Signed-AAB
+          path: ${{ steps.project.outputs.dir }}/app/build/outputs/bundle/release/*.aab
+          if-no-files-found: error
