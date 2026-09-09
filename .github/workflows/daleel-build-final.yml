@@ -35,12 +35,16 @@ jobs:
           rm -rf daleel_android
           mkdir daleel_android
           unzip -q "Daleel_Android_GitHubActions_API36.zip" -d daleel_android
+          ls -la daleel_android
 
       - name: Restore signing keystore
         env:
           KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64 }}
+        shell: bash
         run: |
-          echo "$KEYSTORE_BASE64" | base64 --decode > "$GITHUB_WORKSPACE/daleel_android/daleel-release.jks"
+          printf '%s' "$KEYSTORE_BASE64" | tr -cd 'A-Za-z0-9+/=' | base64 --decode > daleel_android/daleel-release.jks
+          test -s daleel_android/daleel-release.jks
+          ls -lh daleel_android/daleel-release.jks
 
       - name: Build Signed AAB
         working-directory: daleel_android
