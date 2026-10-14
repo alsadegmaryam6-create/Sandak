@@ -310,7 +310,7 @@ body{padding-bottom:calc(92px + env(safe-area-inset-bottom,0px))}
 <header><div class="top"><div class="brand"><div class="logo">د</div><div><h1>دليلك 🇸🇩</h1></div></div><button id="authBtn" class="secondary">🛡️ الإدارة</button></div></header>
 
 <div id="home" class="show">
-<section class="hero"><div class="hero-card"><h2>محتاج شنو اليوم؟</h2><p>دليلك في بورتسودان وقريبًا في كل ولايات السودان</p><div class="search-location"><span>📍 المدينة</span><select id="homeSearchCity" aria-label="اختر المدينة"><option value="">جاري تحميل المدن…</option></select></div><div class="search"><button id="homeSearchGo" class="search-go" aria-label="بحث">🔎</button><input id="homeSearchInput" placeholder="ابحث عن خدمة، طبيب، مستشفى، صيدلية، مطعم، منتج، وظيفة أو عقار"></div></div></section>
+<section class="hero"><div class="hero-card"><h2>محتاج شنو اليوم؟</h2><p>دليلك لخدمات مختلف ولايات السودان — اختر المدينة للبحث</p><div class="search-location"><span>📍 المدينة</span><select id="homeSearchCity" aria-label="اختر المدينة"><option value="">جاري تحميل المدن…</option></select></div><div class="search"><button id="homeSearchGo" class="search-go" aria-label="بحث">🔎</button><input id="homeSearchInput" placeholder="ابحث عن خدمة، طبيب، مستشفى، صيدلية، مطعم، منتج، وظيفة أو عقار"></div></div></section>
 <section class="section"><div class="section-title"><h3>الأقسام الرئيسية</h3><span id="homeCityLabel">بورتسودان</span></div>
 <div class="grid">
 <div class="cat" id="offerBtn"><div class="ico">🛠️</div><b>أقدم خدمة</b><small>اعرض خدمتك واستقبل الطلبات المناسبة لك</small></div>
@@ -824,7 +824,7 @@ body{padding-bottom:calc(92px + env(safe-area-inset-bottom,0px))}
 
 <section id="paymentPage" class="page">
 <div class="pagehead"><button class="back" data-home>→</button><h2>💳 الاشتراك والدفع</h2></div>
-<div class="hint"><b>🎁 أول شهرين مجانًا</b><br>بعد انتهاء الشهرين المجانيين يبدأ الاشتراك الشهري لمقدمي الخدمات والجهات المسجلة.</div>
+<div class="hint"><b>🎁 أول شهر مجاني</b><br>بعد انتهاء الشهر المجاني، يلزم تجديد الاشتراك الشهري لاستمرار ظهور الإعلان.</div>
 <div class="subscription-grid">
   <div class="subscription-card"><b>🛠️ مقدمو الخدمات</b><span class="subscription-price">20,000 ج.س / شهر</span></div>
   <div class="subscription-card"><b>👨‍⚕️ الأطباء</b><span class="subscription-price">20,000 ج.س / شهر</span></div>
@@ -907,7 +907,7 @@ body{padding-bottom:calc(92px + env(safe-area-inset-bottom,0px))}
 <div class="field"><label>البريد الإلكتروني</label><input id="accountEmail" type="email" readonly></div>
 <div id="accountBillingCard" class="card" style="display:none;margin-top:12px;background:#f8fffb">
   <h3 style="margin-top:0">💳 دفع اشتراك مقدم الخدمة</h3>
-  <div class="hint"><b>🎁 أول شهرين مجانًا</b><br>بعد انتهاء الشهرين، تتوقف صفحتك عن الظهور للعامة إلى أن يتم تجديد الاشتراك. يمكنك الدفع من هنا وإرسال الإشعار للإدارة.</div>
+  <div class="hint"><b>🎁 أول شهر مجاني</b><br>بعد انتهاء الشهر المجاني، تتوقف صفحتك عن الظهور للعامة إلى أن يتم تجديد الاشتراك. يمكنك الدفع من هنا وإرسال الإشعار للإدارة.</div>
   <div id="accountBillingSummary" class="notice"></div>
   <div class="field"><label>الفئة التي تريد دفع اشتراكها</label><select id="accountPayCategory"></select></div>
   <div class="payment-methods">
@@ -1086,13 +1086,23 @@ const sb=supabase.createClient("https://xcdobqsqfdupovtwamer.supabase.co","sb_pu
 let mode='login',cityId=null,catsLoaded=false,currentProvider=null,searchCities=[],selectedSearchCity='';const $=x=>document.getElementById(x);
 function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]))}
 function page(p){$('home').classList.toggle('show',p==='home');$('needPage').classList.toggle('show',p==='need');$('offerPage').classList.toggle('show',p==='offer');$('propertyPage').classList.toggle('show',p==='property');$('productPage').classList.toggle('show',p==='product');$('jobPage').classList.toggle('show',p==='job');$('schoolPage').classList.toggle('show',p==='school');$('doctorPage').classList.toggle('show',p==='doctor');$('hospitalPage').classList.toggle('show',p==='hospital');$('pharmacyPage').classList.toggle('show',p==='pharmacy');$('restaurantPage').classList.toggle('show',p==='restaurant');$('deliveryPage').classList.toggle('show',p==='delivery');$('searchPage').classList.toggle('show',p==='search');$('favoritesPage').classList.toggle('show',p==='favorites');$('reviewsPage').classList.toggle('show',p==='reviews');$('paymentPage').classList.toggle('show',p==='payment');$('accountPage').classList.toggle('show',p==='account');$('adminPage').classList.toggle('show',p==='admin');$('legalPage').classList.toggle('show',p==='legal');window.scrollTo(0,0)}
+// قائمة مدن للبحث من مختلف ولايات السودان. توفر الخدمات فعليًا يعتمد على بيانات قاعدة البيانات.
 const SUDAN_SEARCH_CITIES=[
- 'بورتسودان','الخرطوم','أم درمان','بحري','ود مدني','الحصاحيصا','المناقل','رفاعة','الكاملين',
- 'سنار','سنجة','الدمازين','الروصيرص','كوستي','ربك','القطينة','الأبيض','بارا','أم روابة','الرهد',
- 'كادوقلي','الدلنج','أبو جبيهة','الفولة','بابنوسة','المجلد','النهود','نيالا','كاس','الضعين','عديلة',
- 'زالنجي','الجنينة','الفاشر','مليط','كبكابية','كتم','دنقلا','مروي','كريمة','وادي حلفا','عبري',
- 'عطبرة','الدامر','شندي','بربر','أبو حمد','كسلا','حلفا الجديدة','خشم القربة','القضارف','الفاو','دوكة',
- 'سواكن','طوكر','سنكات'
+ 'بورتسودان','سواكن','طوكر','سنكات',
+ 'الخرطوم','أم درمان','بحري','جبل أولياء','شرق النيل',
+ 'ود مدني','الحصاحيصا','المناقل','رفاعة','الكاملين','سنار','سنجة','الدمازين','الروصيرص',
+ 'كوستي','ربك','القطينة','الأبيض','بارا','أم روابة','الرهد','كادوقلي','الدلنج','أبو جبيهة',
+ 'الفولة','بابنوسة','المجلد','النهود','نيالا','كاس','الضعين','عديلة','زالنجي','الجنينة',
+ 'الفاشر','مليط','كبكابية','كتم','دنقلا','مروي','كريمة','وادي حلفا','عبري','عطبرة','الدامر',
+ 'شندي','بربر','أبو حمد','كسلا','حلفا الجديدة','خشم القربة','القضارف','الفاو','دوكة',
+ 'الضعين','السوكي','الدندر','أبو حجار','القرشي','تمبول','الحوش','ود الحداد',
+ 'أبو زبد','ود بندة','لقاوة','الميرم','برام','رهيد البردي','تلس','أم دافوق',
+ 'كتمال','الطينة','سرف عمرة','كبكابية','كتم','أم كدادة','اللعيت','المالحة',
+ 'حلفا','دلقو','البرقيق','الغابة','السليم','أرقو','دنقلا العجوز',
+ 'القولد','الدبة','مروي','كريمة','أبو حمد','العبيدية','جبيت المعادن','هيا',
+ 'أروما','تلكوك','همشكوريب','ود الحليو','القريشة','المفازة','قلع النحل','الصباغ',
+ 'أبو جبيهة','تلودي','هيبان','العباسية','أبو كرشولا','رشاد','لقاوة',
+ 'البرقيق','القولد','الدامر','باسندة','القلابات','الفشقة'
 ];
 async function loadSearchCities(){
  if(searchCities.length){syncSearchCitySelectors();return}
@@ -1108,7 +1118,7 @@ async function loadSearchCities(){
  });
  dbCities.forEach(c=>{if(!searchCities.some(x=>x.name_ar===c.name_ar))searchCities.push(c)});
  const launch=searchCities.find(c=>c.is_launch_city)||searchCities.find(c=>c.name_ar==='بورتسودان')||searchCities[0];
- if(!selectedSearchCity)selectedSearchCity=launch?.id||'all';
+ if(!selectedSearchCity)selectedSearchCity='all';
  syncSearchCitySelectors();
 }
 function searchCityOptions(){
